@@ -1,12 +1,10 @@
 import styled from "styled-components";
 const Section = styled.section`
-  background-image: url("Main Background.png");
+  background-image: url("MainBackground.svg");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 900px;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
 `;
 const Nav = styled.nav`
   display: flex;
@@ -45,11 +43,7 @@ const P = styled.p`
   text-shadow: -3px 0 black, 0 2px black, 1px 0 black, 0 -1px black;
   text-shadow: -3px 0 white, 0 2px white, 1px 0 white, 0 -1px white;
   color: black;
-  font-family: "Gluten", cursive;
-  font-family: "DynaPuff", cursive;
-  font-family: "Gluten", cursive;
-  font-family: "Londrina Shadow", cursive;
-  font-family: "Sigmar One", cursive;
+  font-family: "Modak", cursive;
 `;
 const P2 = styled.p`
   letter-spacing: 9px;
@@ -59,11 +53,10 @@ const P2 = styled.p`
   color: white;
   text-shadow: 0 0 white, 0 2px white;
   color: black;
-  font-family: "Gluten", cursive;
-  font-family: "DynaPuff", cursive;
-  font-family: "Gluten", cursive;
-  font-family: "Londrina Shadow", cursive;
-  font-family: "Sigmar One", cursive;
+  font-family: "Modak", cursive;
+`;
+const Footer = styled.footer`
+  height: 200px;
 `;
 function Main() {
   return (
@@ -83,7 +76,7 @@ function Main() {
           </Article>
         </Content>
       </Section>
-      <footer></footer>
+      <Footer></Footer>
     </>
   );
 }
