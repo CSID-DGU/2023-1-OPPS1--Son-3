@@ -5,6 +5,18 @@ const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
+  .Section{
+    background-size: cover;
+  background-repeat: no-repeat;
+  height: 820px;
+  width: 100vw;
+  }
+  *{
+    font-family: "Jua", sans-serif;
+  }
+  button{
+    cursor: pointer;
+  }
 `;
 
 export default GlobalStyle;
