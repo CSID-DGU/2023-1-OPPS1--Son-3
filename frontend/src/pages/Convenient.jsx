@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ReactComponent as Map_Icon } from "./Map_Icon.svg";
+import { pinPosition } from "../lib/Data";
 // import { ReactComponent as Map_mark } from "./Map_mark.svg";
 const Convenient = () => {
   return (

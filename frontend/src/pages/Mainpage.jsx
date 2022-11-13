@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NavBar from "./Nav";
+import NavBar from "../components/Nav";
 const Section = styled.section`
   background-image: url("MainBackground.svg");
 `;

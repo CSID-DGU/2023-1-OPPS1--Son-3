@@ -5,11 +5,11 @@ import {
   Navigate,
   Outlet,
 } from "react-router-dom";
-import MainPage from "./Mainpage";
-import Map from "./Map";
-import Convenient from "./Convenient";
-import To_Map from "./To_Map";
-import Main from "./Mainpage";
+import MainPage from "../pages/Mainpage";
+import Map from "../pages/Map";
+import Convenient from "../pages/Convenient";
+import To_Map from "../pages/To_Map";
+import Main from "../pages/Mainpage";
 function Router() {
   return (
     <BrowserRouter>
