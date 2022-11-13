@@ -1,7 +1,8 @@
 import NavBar from "../components/Nav";
 import styled from "styled-components";
+import Footer from "../components/Footer";
 const Section = styled.section`
-  background-image: url("MapBackground.svg");
+  background-image: url("/MapBackground.png");
   display: flex;
   flex-direction: column;
 `;
@@ -44,21 +45,24 @@ const Div = styled.div`
 `;
 const Map = () => {
   return (
-    <Section className="Section">
-      <NavBar></NavBar>
-      <Form>
-        <H1>지도</H1>
-        <Div>
-          <Span>출발지</Span>
-          <Input type="text" name="" id="" />
-        </Div>
-        <Div>
-          <Span>도착지</Span>
-          <Input type="text" name="" id="" />
-        </Div>
-        <Button>검색</Button>
-      </Form>
-    </Section>
+    <>
+      <Section className="Section">
+        <NavBar></NavBar>
+        <Form>
+          <H1>지도</H1>
+          <Div>
+            <Span>출발지</Span>
+            <Input type="text" name="" id="" />
+          </Div>
+          <Div>
+            <Span>도착지</Span>
+            <Input type="text" name="" id="" />
+          </Div>
+          <Button>검색</Button>
+        </Form>
+      </Section>
+      <Footer></Footer>
+    </>
   );
 };
 export default Map;

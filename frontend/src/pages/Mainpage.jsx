@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import NavBar from "../components/Nav";
+import Footer from "../components/Footer";
 const Section = styled.section`
-  background-image: url("MainBackground.svg");
+  background-image: url("MainBackground.png");
 `;
 
 const Article = styled.article`
@@ -33,9 +34,7 @@ const P2 = styled.p`
   color: black;
   font-family: "Modak", cursive;
 `;
-const Footer = styled.footer`
-  height: 200px;
-`;
+
 function Main() {
   return (
     <>

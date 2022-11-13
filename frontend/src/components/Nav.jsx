@@ -25,6 +25,10 @@ const NavBar = () => {
   return (
     <Nav>
       <Ul>
+        <Link to="/mainPage">
+          <Li>HOME</Li>
+        </Link>
+
         <Link to="/convenient">
           <Li>편의시설</Li>
         </Link>

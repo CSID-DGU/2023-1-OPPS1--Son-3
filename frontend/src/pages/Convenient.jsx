@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as Map_Icon } from "../asset/Map_Icon.svg";
 import { pinPositionData } from "../lib/Data";
+import Footer from "../components/Footer";
 const Convenient = () => {
   const [destination, setDestination] = useState(null);
   const setPinPosition = (destination) => {
@@ -13,7 +14,8 @@ const Convenient = () => {
       }
     });
   };
-  const [pinX, pinY] = destination ? [378, 142] : setPinPosition(destination);
+  const [pinX, pinY] =
+    destination === null ? [294, 137] : setPinPosition(destination);
   const handleOnSubmit = (e) => {
     e.preventDefault();
     console.log(e);
@@ -23,42 +25,46 @@ const Convenient = () => {
     //setDestination(해당 건물명)
   };
   return (
-    <Section className="Section">
-      <SearchMap>
-        <Header>
-          <Icon src="/Logo.svg"></Icon>
-          <Form
-            onSubmit={(e) => {
-              handleOnSubmit(e);
-            }}
-          >
-            <Div>
-              <Span>건물명</Span>
-              <Input type="text" name="" id="" />
-            </Div>
-            <Div>
-              <Span>편의시설</Span>
-              <Input type="text" name="" id="" />
-            </Div>
-            <Button>검색</Button>
-          </Form>
-        </Header>
-        <ImgMarkingContainer>
-          <Img src="/campus_map.png"></Img>
-          <Map_Mark_Container pinX={pinX} pinY={pinY}>
-            <img src="/MapMark.svg" alt="" />
-          </Map_Mark_Container>
-        </ImgMarkingContainer>
-      </SearchMap>
-      <Article>
-        <h1>가까운 편의시설</h1>
-        <Map_Icon_Container>
-          <a href="https://map.naver.com/v5/directions/14137448.103699688,4517303.163985252,%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%20%EC%84%9C%EC%9A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4%EC%9B%90%ED%9D%A5%EA%B4%80,18696982,PLACE_POI/14137925.352620613,4517152.249204071,%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%20%EC%84%9C%EC%9A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4%EB%AC%B8%ED%99%94%EA%B4%80,18698347,PLACE_POI/-/walk?c=14137557.2976135,4517134.0006959,16.65,0,0,0,dh">
-            <Map_Icon width="70" height="70"></Map_Icon>
-          </a>
-        </Map_Icon_Container>
-      </Article>
-    </Section>
+    <>
+      <Section className="Section">
+        <SearchMap>
+          <Header>
+            <Icon src="/Logo.svg"></Icon>
+            <Form
+              onSubmit={(e) => {
+                handleOnSubmit(e);
+              }}
+            >
+              <Div>
+                <Span>건물명</Span>
+                <Input type="text" name="" id="" />
+              </Div>
+              <Div>
+                <Span>편의시설</Span>
+                <Input type="text" name="" id="" />
+              </Div>
+              <Button>검색</Button>
+            </Form>
+          </Header>
+          <ImgMarkingContainer>
+            <Img src="/campus_map.png"></Img>
+            <Map_Mark_Container pinX={pinX} pinY={pinY}>
+              <img src="/MapMark.svg" alt="" />
+            </Map_Mark_Container>
+          </ImgMarkingContainer>
+        </SearchMap>
+        <Article>
+          <h1>가까운 편의시설</h1>
+          <Map_Icon_Container>
+            <a href="https://map.naver.com/v5/directions/14137448.103699688,4517303.163985252,%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%20%EC%84%9C%EC%9A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4%EC%9B%90%ED%9D%A5%EA%B4%80,18696982,PLACE_POI/14137925.352620613,4517152.249204071,%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%20%EC%84%9C%EC%9A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4%EB%AC%B8%ED%99%94%EA%B4%80,18698347,PLACE_POI/-/walk?c=14137557.2976135,4517134.0006959,16.65,0,0,0,dh">
+              <Map_Icon width="70" height="70"></Map_Icon>
+              <Map_Span>길찾기</Map_Span>
+            </a>
+          </Map_Icon_Container>
+        </Article>
+      </Section>
+      <Footer></Footer>
+    </>
   );
 };
 export default Convenient;
@@ -68,6 +74,7 @@ const Section = styled.section`
 `;
 const Map_Icon_Container = styled.div`
   margin-left: auto;
+  margin-right: 15px;
 `;
 const SearchMap = styled.article`
   flex-grow: 1;
@@ -101,13 +108,14 @@ const Header = styled.header`
 const Form = styled.form`
   display: flex;
   align-items: center;
+  flex-shrink: 0;
   /* justify-self: center; */
 `;
 const Map_Mark_Container = styled.div`
   position: absolute;
   width: 20px;
-  left: ${(props) => props.pinX};
-  top: ${(props) => props.pinY};
+  left: ${(props) => `${props.pinX}px`};
+  top: ${(props) => `${props.pinY}px`};
   background-image: url("/Map_mark.svg");
 `;
 const Div = styled.div`
@@ -146,4 +154,8 @@ const Img = styled.img`
 const ImgMarkingContainer = styled.div`
   position: relative;
   margin: 50px 0;
+`;
+const Map_Span = styled.span`
+  display: block;
+  font-size: 20px;
 `;

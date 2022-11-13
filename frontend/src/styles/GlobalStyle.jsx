@@ -5,13 +5,16 @@ const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
+  body{
+    margin: 0;
+  }
   .Section{
     background-size: cover;
   background-repeat: no-repeat;
   height: 820px;
   width: 100vw;
   }
-  *{
+  *:not(footer):not(a){
     font-family: "Jua", sans-serif;
   }
   button{
