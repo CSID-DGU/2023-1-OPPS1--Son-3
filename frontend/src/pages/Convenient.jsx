@@ -1,15 +1,37 @@
+import { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { ReactComponent as Map_Icon } from "./Map_Icon.svg";
-import { pinPosition } from "../lib/Data";
-// import { ReactComponent as Map_mark } from "./Map_mark.svg";
+import { ReactComponent as Map_Icon } from "../asset/Map_Icon.svg";
+import { pinPositionData } from "../lib/Data";
 const Convenient = () => {
+  const [destination, setDestination] = useState(null);
+  const setPinPosition = (destination) => {
+    pinPositionData.map((building) => {
+      if (building[0] === destination) {
+        const x = building[1];
+        const y = building[2];
+        return [x, y];
+      }
+    });
+  };
+  const [pinX, pinY] = destination ? [378, 142] : setPinPosition(destination);
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+    const departures = e.target[0].value;
+    const arrivals = e.target[1].value;
+    //가장 가까운 건물명 알아내는 알고리즘
+    //setDestination(해당 건물명)
+  };
   return (
     <Section className="Section">
       <SearchMap>
         <Header>
           <Icon src="/Logo.svg"></Icon>
-          <Form>
+          <Form
+            onSubmit={(e) => {
+              handleOnSubmit(e);
+            }}
+          >
             <Div>
               <Span>건물명</Span>
               <Input type="text" name="" id="" />
@@ -23,7 +45,7 @@ const Convenient = () => {
         </Header>
         <ImgMarkingContainer>
           <Img src="/campus_map.png"></Img>
-          <Map_Mark_Container>
+          <Map_Mark_Container pinX={pinX} pinY={pinY}>
             <img src="/MapMark.svg" alt="" />
           </Map_Mark_Container>
         </ImgMarkingContainer>
@@ -84,8 +106,8 @@ const Form = styled.form`
 const Map_Mark_Container = styled.div`
   position: absolute;
   width: 20px;
-  left: 378px;
-  top: 142px;
+  left: ${(props) => props.pinX};
+  top: ${(props) => props.pinY};
   background-image: url("/Map_mark.svg");
 `;
 const Div = styled.div`
