@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { ReactComponent as Map_Icon } from "../asset/Map_Icon.svg";
 import { pinPositionData } from "../lib/Data";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 const Convenient = () => {
+  const navigate = useNavigate();
   const [destination, setDestination] = useState(null);
   const [pinPosition, setPinPosition] = useState([0, 0]);
   const [pinX, pinY] = [...pinPosition];
@@ -34,14 +36,18 @@ const Convenient = () => {
       <Section className="Section">
         <SearchMap>
           <Header>
-            <Icon src="/Logo.svg"></Icon>
+            <Icon
+              id="icon"
+              src="/Logo.svg"
+              onClick={() => navigate("/mainPage")}
+            ></Icon>
             <Form
               onSubmit={(e) => {
                 handleOnSubmit(e);
               }}
             >
               <Div>
-                <Span>건물명</Span>
+                <Span>출발지</Span>
                 <Input type="text" name="" id="" />
               </Div>
               <Div>
@@ -60,10 +66,13 @@ const Convenient = () => {
             )}
           </ImgMarkingContainer>
         </SearchMap>
-        <Article>
+        <Article id="convenientList">
           <h1>가까운 편의시설</h1>
           <Map_Icon_Container>
-            <a href="https://map.naver.com/v5/directions/14137448.103699688,4517303.163985252,%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%20%EC%84%9C%EC%9A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4%EC%9B%90%ED%9D%A5%EA%B4%80,18696982,PLACE_POI/14137925.352620613,4517152.249204071,%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%20%EC%84%9C%EC%9A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4%EB%AC%B8%ED%99%94%EA%B4%80,18698347,PLACE_POI/-/walk?c=14137557.2976135,4517134.0006959,16.65,0,0,0,dh">
+            <a
+              href="https://map.naver.com/v5/directions/14137448.103699688,4517303.163985252,%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%20%EC%84%9C%EC%9A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4%EC%9B%90%ED%9D%A5%EA%B4%80,18696982,PLACE_POI/14137925.352620613,4517152.249204071,%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%20%EC%84%9C%EC%9A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4%EB%AC%B8%ED%99%94%EA%B4%80,18698347,PLACE_POI/-/walk?c=14137557.2976135,4517134.0006959,16.65,0,0,0,dh"
+              target={"_blank"}
+            >
               <Map_Icon width="70" height="70"></Map_Icon>
               <Map_Span>길찾기</Map_Span>
             </a>
@@ -78,6 +87,50 @@ export default Convenient;
 const Section = styled.section`
   display: flex;
   height: 100vh;
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    height: auto;
+    #convenientList {
+      margin: 0;
+      width: auto;
+    }
+    *:not(footer > *) {
+      font-size: 0.8rem;
+    }
+    header > form {
+      flex-shrink: 1;
+      input {
+        padding: 2px;
+        width: 6rem;
+        height: 30px;
+      }
+    }
+    button {
+      width: 3rem;
+      height: 1.5rem;
+    }
+    #icon {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1200px) and(min-width: 700px) {
+    flex-direction: column;
+    height: auto;
+    #convenientList {
+      margin: 0;
+      width: auto;
+    }
+    header > form {
+      flex-shrink: 1;
+      input {
+        width: 140px;
+        height: 50px;
+      }
+    }
+    *:not(footer > *) {
+      font-size: 1.5rem;
+    }
+  }
 `;
 const Map_Icon_Container = styled.div`
   margin-left: auto;
@@ -129,6 +182,7 @@ const Div = styled.div`
   padding: 10px;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 const Span = styled.span`
   margin: 10px;
@@ -151,8 +205,8 @@ const Input = styled.input`
 `;
 const Icon = styled.img`
   height: 100%;
-  /* justify-self: flex-start; */
   padding-top: 10px;
+  cursor: pointer;
 `;
 const Img = styled.img`
   display: block;
