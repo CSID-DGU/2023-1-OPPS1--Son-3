@@ -3,6 +3,16 @@ import { Link } from "react-router-dom";
 const Nav = styled.nav`
   display: flex;
   justify-content: flex-end;
+  @media screen and (max-width: 550px) {
+    justify-content: center;
+    li {
+      font-size: 1rem;
+      padding: 1.5rem;
+    }
+    ul {
+      margin: 0;
+    }
+  }
 `;
 const Ul = styled.ul`
   margin: 0;
@@ -41,4 +51,5 @@ const NavBar = () => {
     </Nav>
   );
 };
+
 export default NavBar;
