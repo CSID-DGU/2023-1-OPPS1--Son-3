@@ -1,31 +1,10 @@
 import styled from "styled-components";
+import NavBar from "../components/Nav";
+import Footer from "../components/Footer";
 const Section = styled.section`
-  background-image: url("MainBackground.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 900px;
-  width: 100vw;
+  background-image: url("MainBackground.png");
 `;
-const Nav = styled.nav`
-  display: flex;
-  justify-content: flex-end;
-`;
-const Ul = styled.ul`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  margin-right: 5rem;
-`;
-const Li = styled.li`
-  list-style: none;
-  padding: 1rem;
-  font-size: 1.3rem;
-  font-family: "Jua", sans-serif;
-  cursor: pointer;
-  &:hover {
-    color: #b67e1e;
-  }
-`;
+
 const Article = styled.article`
   position: absolute;
   text-align: center;
@@ -55,20 +34,12 @@ const P2 = styled.p`
   color: black;
   font-family: "Modak", cursive;
 `;
-const Footer = styled.footer`
-  height: 200px;
-`;
+
 function Main() {
   return (
     <>
-      <Section>
-        <Nav>
-          <Ul>
-            <Li>편의시설</Li>
-            <Li>건물정보</Li>
-            <Li>지도</Li>
-          </Ul>
-        </Nav>
+      <Section className="Section">
+        <NavBar></NavBar>
         <Content>
           <Article>
             <P>You're Webcome!</P>

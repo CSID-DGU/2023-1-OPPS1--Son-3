@@ -1,13 +1,11 @@
-import "./App.css";
-import Mainpage from "./Mainpage.jsx";
-import GlobalStyle from "./GlobalStyle.jsx";
-
+import GlobalStyle from "./styles/GlobalStyle.jsx";
+import Router from "./lib/router";
 function App() {
   return (
-    <div className="App">
+    <>
       <GlobalStyle />
-      <Mainpage></Mainpage>
-    </div>
+      <Router></Router>
+    </>
   );
 }
 
