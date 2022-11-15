@@ -2,7 +2,7 @@ import styled from "styled-components";
 import NavBar from "../components/Nav";
 import Footer from "../components/Footer";
 const Section = styled.section`
-  background-image: url("MainBackground.png");
+  background-image: url("/MainBackground.png");
 `;
 
 const Article = styled.article`

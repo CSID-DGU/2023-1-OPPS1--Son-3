@@ -42,10 +42,11 @@ const NavBar = () => {
         <Link to="/convenient">
           <Li>편의시설</Li>
         </Link>
-
-        <Li>건물정보</Li>
+        <Link to="/buildingInfo">
+          <Li>건물정보</Li>
+        </Link>
         <Link to="/to_map/">
-          <Li>지도</Li>
+          <Li>교내 경로</Li>
         </Link>
       </Ul>
     </Nav>
