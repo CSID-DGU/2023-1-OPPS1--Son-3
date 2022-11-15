@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  web:
+    build: .
+    image: you_are_webcome
+    volumes:
+      - /build
+    ports:
+      - "8300:80"
