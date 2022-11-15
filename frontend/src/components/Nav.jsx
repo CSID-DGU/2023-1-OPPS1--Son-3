@@ -3,6 +3,16 @@ import { Link } from "react-router-dom";
 const Nav = styled.nav`
   display: flex;
   justify-content: flex-end;
+  @media screen and (max-width: 550px) {
+    justify-content: center;
+    li {
+      font-size: 1rem;
+      padding: 1.5rem;
+    }
+    ul {
+      margin: 0;
+    }
+  }
 `;
 const Ul = styled.ul`
   margin: 0;
@@ -32,13 +42,15 @@ const NavBar = () => {
         <Link to="/convenient">
           <Li>편의시설</Li>
         </Link>
-
-        <Li>건물정보</Li>
+        <Link to="/buildingInfo">
+          <Li>건물정보</Li>
+        </Link>
         <Link to="/to_map/">
-          <Li>지도</Li>
+          <Li>교내 경로</Li>
         </Link>
       </Ul>
     </Nav>
   );
 };
+
 export default NavBar;
