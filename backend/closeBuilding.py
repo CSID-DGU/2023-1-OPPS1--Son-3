@@ -27,7 +27,7 @@ ListMyeongjin05 = [Myeongjin05, Science02, Manhae04, Library14, Law07, NewEngine
 ListMunhwa06 = [Munhwa06, SocialScience09, Hyehwa18, Haksul17, Business01, Manhae04, Myeongjin05, Law07, Science02, Dahyang03, Library14, NewEngineering11, Main08, Sanglokwon10, Wonheung12, InformationEngineering13, Student16, Haksul17]
 
 #print("1. 경영관\n2. 과학관\n3. 다향관\n4. 만해관\n5. 명진관\n6. 문화관\n7. 법학관\n8. 본관\n9. 사회과학관\n10. 상록원\n11. 신공학관\n12. 원흥관\n13. 정보문화관\n14. 중앙도서관\n15. 학림관\n16. 학생회관\n17. 학술관\n18. 혜화관")
-print("1. 경영관\n2. 과학관\n3. 다향관\n4. 만해관\n5. 명진관\n6. 문화관")
+print("<현재 위치 건물>\n1. 경영관\n2. 과학관\n3. 다향관\n4. 만해관\n5. 명진관\n6. 문화관\n")
 inputBuilding = int(input("현재 위치 : "))
 if inputBuilding==1:
     Building = ListBusiness01
@@ -67,7 +67,7 @@ elif inputBuilding==6:
 #    Building = Hyehwa18
 else:
     print("error")
-print("1. 복사기\n2. 유인복사실\n3. 열람실\n4. atm\n5. 증명서 자동발급기\n6. 제세동기\n7. 식당\n8. 카페\n9. 매점")
+print("\n<편의 시설>\n1. 복사기\n2. 유인복사실\n3. 열람실\n4. atm\n5. 증명서 자동발급기\n6. 제세동기\n7. 식당\n8. 카페\n9. 매점\n")
 inputConvenient = int(input("편의 시설 : "))
 if inputConvenient==1:
     Convenient = "복사기"
