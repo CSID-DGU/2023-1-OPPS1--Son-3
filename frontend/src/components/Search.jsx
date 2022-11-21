@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Search({
   pinX,
@@ -9,6 +9,7 @@ export default function Search({
   convenient,
 }) {
   const navigate = useNavigate();
+  const [imgSize, setImgSize] = useState(1000);
   return (
     <SearchMap>
       <Header>
@@ -34,9 +35,9 @@ export default function Search({
         </Form>
       </Header>
       <ImgMarkingContainer>
-        <Img src="/campus_map.png"></Img>
+        <Img src="/campus_map.png" imgSize={imgSize}></Img>
         {destination && (
-          <Map_Mark_Container pinX={pinX} pinY={pinY}>
+          <Map_Mark_Container pinX={pinX} pinY={pinY} imgSize={imgSize}>
             <img src="/MapMark.svg" alt="" />
           </Map_Mark_Container>
         )}
@@ -65,9 +66,9 @@ const Form = styled.form`
 `;
 const Map_Mark_Container = styled.div`
   position: absolute;
-  width: 20px;
-  left: ${(props) => props && `${props.pinX}px`};
-  top: ${(props) => props && `${props.pinY}px`};
+  width: ${(props) => `${(props.imgSize / 700) * 20}px`};
+  left: ${(props) => props && `${(props.imgSize / 700) * props.pinX}px`};
+  top: ${(props) => props && `${(props.imgSize / 700) * props.pinY}px`};
   background-image: url("/Map_mark.svg");
 `;
 const Div = styled.div`
@@ -102,6 +103,7 @@ const Icon = styled.img`
 `;
 const Img = styled.img`
   display: block;
+  width: ${(props) => `${props.imgSize}px`};
 `;
 
 const ImgMarkingContainer = styled.div`
