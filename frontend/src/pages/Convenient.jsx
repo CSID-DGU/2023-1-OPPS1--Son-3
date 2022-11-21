@@ -38,6 +38,7 @@ const Convenient = () => {
           pinY={pinY}
           handleOnSubmit={handleOnSubmit}
           destination={destination}
+          convenient={true}
         ></Search>
         <Article id="convenientList">
           <h1>가까운 편의시설</h1>

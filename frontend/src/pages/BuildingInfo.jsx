@@ -12,9 +12,6 @@ export default function BuildingInfo() {
               <Item className="selected">
                 <span>건물 정보</span>
               </Item>
-              <Item>
-                <span>지름길 찾기</span>
-              </Item>
             </Div>
             <Content></Content>
           </Section>
@@ -32,13 +29,13 @@ const Article = styled.article`
 `;
 const Section = styled.section`
   display: flex;
-  align-items: center;
 `;
 const Div = styled.div`
-  height: 80vh;
+  height: 20vh;
   display: flex;
+  margin-top: 12px;
   flex-direction: column;
-  align-items: center;
+
   .selected {
     background-color: rgb(247, 214, 123);
   }

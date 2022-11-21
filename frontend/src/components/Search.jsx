@@ -1,6 +1,13 @@
 import styled from "styled-components";
+
 import { useNavigate } from "react-router-dom";
-export default function Search({ pinX, pinY, handleOnSubmit, destination }) {
+export default function Search({
+  pinX,
+  pinY,
+  handleOnSubmit,
+  destination,
+  convenient,
+}) {
   const navigate = useNavigate();
   return (
     <SearchMap>
@@ -20,7 +27,7 @@ export default function Search({ pinX, pinY, handleOnSubmit, destination }) {
             <Input type="text" name="" id="" />
           </Div>
           <Div>
-            <Span>편의시설</Span>
+            <Span>{convenient ? "편의시설" : "목적지"}</Span>
             <Input type="text" name="" id="" />
           </Div>
           <Button>검색</Button>
