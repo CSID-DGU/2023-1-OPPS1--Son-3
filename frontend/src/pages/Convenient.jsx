@@ -26,7 +26,7 @@ const Convenient = () => {
     const arrivals = e.target[1].value;
     //가장 가까운 건물명 알아내는 알고리즘
     //setDestination(해당 건물명)
-    let newDestination = "신공학관";
+    let newDestination = "경영관";
     setPinPosition(ChangePinPosition(newDestination));
     setDestination(newDestination);
   }
@@ -61,7 +61,30 @@ export default Convenient;
 const Section = styled.section`
   display: flex;
   height: 100vh;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 600px) {
+    header input {
+      padding: 1px;
+      width: 4.5rem;
+      height: 30px;
+    }
+    *:not(footer > *) {
+      font-size: 0.8rem;
+    }
+    #icon {
+      display: none;
+    }
+    button {
+      width: 3rem;
+      height: 1.5rem;
+    }
+    flex-direction: column;
+    height: auto;
+    #convenientList {
+      margin: 0;
+      width: auto;
+    }
+  }
+  @media screen and (min-width: 601px) and (max-width: 800px) {
     flex-direction: column;
     height: auto;
     #convenientList {
@@ -69,25 +92,25 @@ const Section = styled.section`
       width: auto;
     }
     *:not(footer > *) {
-      font-size: 0.8rem;
+      font-size: 1.2rem;
     }
     header > form {
       flex-shrink: 1;
       input {
         padding: 2px;
-        width: 6rem;
-        height: 30px;
+        width: 8rem;
+        height: 40px;
       }
     }
     button {
-      width: 3rem;
-      height: 1.5rem;
+      width: 4rem;
+      height: 2rem;
     }
     #icon {
       display: none;
     }
   }
-  @media screen and (max-width: 1200px) and(min-width: 700px) {
+  @media screen and (max-width: 1200px) and(min-width: 800px) {
     flex-direction: column;
     height: auto;
     #convenientList {

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { useState } from "react";
+import styled, { css } from "styled-components";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Search({
   pinX,
@@ -10,8 +10,25 @@ export default function Search({
 }) {
   const navigate = useNavigate();
   const [imgSize, setImgSize] = useState(1000);
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width:601px) and (max-width: 800px)");
+    const smallestmql = window.matchMedia("(max-width: 600px)");
+    function handleChange(e) {
+      if (e.matches && e.media == "(max-width: 600px)") {
+        setImgSize(370);
+        console.log("True");
+      } else if (e.matches) {
+        setImgSize(600);
+      } else setImgSize(1000);
+    }
+    mql.addEventListener("change", handleChange);
+    smallestmql.addEventListener("change", handleChange);
+    return () => {
+      mql.removeEventListener("change", handleChange);
+    };
+  }, []);
   return (
-    <SearchMap>
+    <SearchMap setImgSize={setImgSize}>
       <Header>
         <Icon
           id="icon"
@@ -108,5 +125,4 @@ const Img = styled.img`
 
 const ImgMarkingContainer = styled.div`
   position: relative;
-  margin: 50px 0;
 `;
