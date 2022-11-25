@@ -1,6 +1,7 @@
 # "Business01", "Science02", "Dahyang03", "Manhae04", "Myeongjin05", "Munhwa06", "Law07", "Main08", "SocialScience09", "Sanglokwon10", "NewEngineering11", "Wonheung12", "InformationEngineering13", "Library14", "Haklim15", "Student16", "Haksul17", "Hyehwa18"
 
 import heapq
+import json
 
 def dijkstra(graph, start):
     distances = {node: float('inf') for node in graph}
@@ -120,186 +121,190 @@ Haksul17 = {"name":"학술관", "복사기":True, "유인복사실":False, "열�
 Hyehwa18 = {"name":"혜화관", "복사기":True, "유인복사실":False, "열람실":True, "atm":True, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":True, "매점":True}
 
 ListBuildingName = ["경영관", "과학관", "다향관", "만해관", "명진관", "문화관", "법학관", "본관", "사회과학관", "상록원", "신공학관", "원흥관", "정보문화관", "중앙도서관", "학림관", "학생회관", "학술관", "혜화관"]
-ListBuilding_Sort = [ListBusiness01, ListScience02, ListDahyang03, ListManhae04, ListMyeongjin05, ListMunhwa06, ListLaw07, ListMain08, ListSocialScience09, ListSanglokwon10, ListNewEngineering11, ListWonheung12, ListInformationEngineering13, Library14, ListHaklim15, ListStudent16, ListHaksul17, ListHyehwa18]
 ListBuilding_Convenient = [Business01, Science02, Dahyang03, Manhae04, Myeongjin05, Munhwa06, Law07, Main08, SocialScience09, Sanglokwon10, NewEngineering11, Wonheung12, InformationEngineering13, Library14, Haklim15, Student16, Haksul17, Hyehwa18]
 ListConvenient = ["복사기", "유인복사실", "열람실", "atm", "증명서자동발급기", "제세동기", "식당", "카페", "매점"]
 
 dict_convenient = {}
+dict_convenient01 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListBusiness01:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient01[convenient] = List
+dict_convenient["경영관"] = dict_convenient01
 
-dict_convenient = {}
+dict_convenient02 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListScience02:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient02[convenient] = List
+dict_convenient["과학관"] = dict_convenient02
 
-dict_convenient = {}
+dict_convenient03 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListDahyang03:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient03[convenient] = List
+dict_convenient["다향관"] = dict_convenient03
 
-dict_convenient = {}
+dict_convenient04 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListManhae04:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient04[convenient] = List
+dict_convenient["만해관"] = dict_convenient04
 
-dict_convenient = {}
+dict_convenient05 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListMyeongjin05:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient05[convenient] = List
+dict_convenient["명진관"] = dict_convenient05
 
-dict_convenient = {}
+dict_convenient06 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListMunhwa06:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient06[convenient] = List
+dict_convenient["문화관"] = dict_convenient06
 
-dict_convenient = {}
+dict_convenient07 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListLaw07:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient07[convenient] = List
+dict_convenient["법학관"] = dict_convenient07
 
-dict_convenient = {}
+dict_convenient08 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListMain08:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient08[convenient] = List
+dict_convenient["본관"] = dict_convenient08
 
-dict_convenient = {}
+dict_convenient09 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListSocialScience09:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient09[convenient] = List
+dict_convenient["사회과학관"] = dict_convenient09
 
-dict_convenient = {}
+dict_convenient10 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListSanglokwon10:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient10[convenient] = List
+dict_convenient["상록원"] = dict_convenient10
 
-dict_convenient = {}
+dict_convenient11 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListNewEngineering11:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient11[convenient] = List
+dict_convenient["신공학관"] = dict_convenient11
 
-dict_convenient = {}
+dict_convenient12 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListWonheung12:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient12[convenient] = List
+dict_convenient["원흥관"] = dict_convenient12
 
-dict_convenient = {}
+dict_convenient13 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListInformationEngineering13:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient13[convenient] = List
+dict_convenient["정보문화관"] = dict_convenient13
 
-dict_convenient = {}
+dict_convenient14 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListLibrary14:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient14[convenient] = List
+dict_convenient["중앙도서관"] = dict_convenient14
 
-dict_convenient = {}
+dict_convenient15 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListHaklim15:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient15[convenient] = List
+dict_convenient["학림관"] = dict_convenient15
 
-dict_convenient = {}
+dict_convenient16 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListStudent16:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient16[convenient] = List
+dict_convenient["학생회관"] = dict_convenient16
 
-dict_convenient = {}
+dict_convenient17 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListHaksul17:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient17[convenient] = List
+dict_convenient["학술관"] = dict_convenient17
 
-dict_convenient = {}
+dict_convenient18 = {}
 for convenient in ListConvenient:
     List = []
     for b in ListHyehwa18:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and bc.get(convenient)==True:
                 List.append(bc.get("name"))
-    dict_convenient[convenient] = List
-print(dict_convenient)
+    dict_convenient18[convenient] = List
+dict_convenient["혜화관"] = dict_convenient18
+
+file_path = "./frontend/src/convenient.json"
+with open(file_path, 'w', encoding='utf-8') as outfile:
+    json.dump(dict_convenient, outfile, ensure_ascii=False, indent=4)
