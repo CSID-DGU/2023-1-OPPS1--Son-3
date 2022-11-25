@@ -13,7 +13,7 @@ export default function BuildingInfo() {
                 <span>건물 정보</span>
               </Item>
             </Div>
-            <Content></Content>
+            <Content className="content"></Content>
           </Section>
         </Article>
       </Container>
@@ -23,6 +23,21 @@ export default function BuildingInfo() {
 }
 const Container = styled.section`
   display: flex;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    height: auto;
+    article {
+      flex-grow: 1;
+      margin-left: 0;
+      .content {
+        flex-grow: 1;
+        height: fit-content;
+      }
+    }
+    .selected {
+      display: none;
+    }
+  }
 `;
 const Article = styled.article`
   margin-left: auto;

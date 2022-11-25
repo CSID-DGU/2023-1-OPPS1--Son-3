@@ -29,28 +29,30 @@ export default function Search({
   }, []);
   return (
     <SearchMap setImgSize={setImgSize}>
-      <Header>
-        <Icon
-          id="icon"
-          src="/Logo.svg"
-          onClick={() => navigate("/mainPage")}
-        ></Icon>
-        <Form
-          onSubmit={(e) => {
-            handleOnSubmit(e);
-          }}
-        >
-          <Div>
-            <Span>출발지</Span>
-            <Input type="text" name="" id="" />
-          </Div>
-          <Div>
-            <Span>{convenient ? "편의시설" : "목적지"}</Span>
-            <Input type="text" name="" id="" />
-          </Div>
-          <Button>검색</Button>
-        </Form>
-      </Header>
+      {convenient && (
+        <Header>
+          <Icon
+            id="icon"
+            src="/Logo.svg"
+            onClick={() => navigate("/mainPage")}
+          ></Icon>
+          <Form
+            onSubmit={(e) => {
+              handleOnSubmit(e);
+            }}
+          >
+            <Div>
+              <Span>출발지</Span>
+              <Input type="text" name="" id="" />
+            </Div>
+            <Div>
+              <Span>편의시설</Span>
+              <Input type="text" name="" id="" />
+            </Div>
+            <Button>검색</Button>
+          </Form>
+        </Header>
+      )}
       <ImgMarkingContainer>
         <Img src="/campus_map.png" imgSize={imgSize}></Img>
         {destination && (
