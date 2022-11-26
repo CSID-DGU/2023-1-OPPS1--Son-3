@@ -138,7 +138,7 @@ ListHaksul17.sort()
 ListHyehwa18 = dijkstra(graph, "혜화관")[:18]
 ListHyehwa18.sort()
 
-Business01 = {"name":"경영관", "복사기":True, "유인복사실":False, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":True, "매점":False}
+Business01 = {"name":"경영관", "복사기":True, "유인복사실":False, "열람실":True, "atm":False, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":True, "매점":False}
 Science02 = {"name":"과학관", "복사기":True, "유인복사실":True, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":True, "식당":False, "카페":True, "매점":False}
 Dahyang03 = {"name":"다향관", "복사기":False, "유인복사실":False, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":False, "매점":True}
 Manhae04 = {"name":"만해관", "복사기":True, "유인복사실":False, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":False, "매점":False}
