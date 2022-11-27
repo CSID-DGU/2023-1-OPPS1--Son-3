@@ -1,20 +1,20 @@
 import styled, { css } from "styled-components";
-import { convenients } from "../lib/Data";
-const DropDown = ({ isOpen, innerRef, setInputVal }) => {
+
+const DropDown = ({ isOpen, innerRef, setconvVal, data }) => {
   const handleInput = (e) => {
     //왜 value로는 안 먹는지.. ㅠㅠ
-    setInputVal(e.target.textContent);
+    setconvVal(e.target.textContent);
   };
   return (
     <Dropdown ref={innerRef} isOpen={isOpen}>
-      {convenients.map((conv) => {
+      {data.map((item) => {
         return (
           <DropdownItem
             onClick={(e) => {
               handleInput(e);
             }}
           >
-            {conv}
+            {item}
           </DropdownItem>
         );
       })}

@@ -1,10 +1,15 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useState, useEffect } from "react";
 import SerachNav from "./SearchNav";
-import { pinPositionData } from "../lib/Data";
-export default function Search({ pinX, pinY, handleOnSubmit, destination }) {
+export default function Search({
+  arrivalPinX,
+  arrivalPinY,
+  handleOnSubmit,
+  destination,
+  departurePinX,
+  departurePinY,
+}) {
   const [imgSize, setImgSize] = useState(1000);
-  const [buildingName, setBuildingName] = useState();
   useEffect(() => {
     const mql = window.matchMedia("(min-width:601px) and (max-width: 900px)");
     const smallestmql = window.matchMedia("(max-width: 600px)");
@@ -25,10 +30,23 @@ export default function Search({ pinX, pinY, handleOnSubmit, destination }) {
     <SearchMap setImgSize={setImgSize}>
       <SerachNav handleOnSubmit={handleOnSubmit}></SerachNav>
       <ImgMarkingContainer>
-        <Img src="/campus_map.png" imgSize={imgSize}></Img>
+        <Img src="/backgroundImgs/campus_map.png" imgSize={imgSize}></Img>
         {destination && (
-          <Map_Mark_Container pinX={pinX} pinY={pinY} imgSize={imgSize}>
-            <img src="/MapMark.svg" alt="" />
+          <Map_Mark_Container
+            PinX={arrivalPinX}
+            PinY={arrivalPinY}
+            imgSize={imgSize}
+          >
+            <img src="/markImgs/MapMark.svg" alt="" />
+          </Map_Mark_Container>
+        )}
+        {destination && (
+          <Map_Mark_Container
+            PinX={departurePinX}
+            PinY={departurePinY}
+            imgSize={imgSize}
+          >
+            <img src="/markImgs/MapMark2.svg" alt="" />
           </Map_Mark_Container>
         )}
       </ImgMarkingContainer>
@@ -44,8 +62,8 @@ const SearchMap = styled.article`
 const Map_Mark_Container = styled.div`
   position: absolute;
   width: ${(props) => `${(props.imgSize / 700) * 20}px`};
-  left: ${(props) => props && `${(props.imgSize / 700) * props.pinX}px`};
-  top: ${(props) => props && `${(props.imgSize / 700) * props.pinY}px`};
+  left: ${(props) => props && `${(props.imgSize / 700) * props.PinX}px`};
+  top: ${(props) => props && `${(props.imgSize / 700) * props.PinY}px`};
   background-image: url("/Map_mark.svg");
 `;
 const Img = styled.img`

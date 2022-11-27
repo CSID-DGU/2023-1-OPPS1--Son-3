@@ -1,5 +1,6 @@
 const buildings = [
   "경영관",
+  "사회과학관",
   "과학관",
   "다향관",
   "만해관",
@@ -10,8 +11,7 @@ const buildings = [
   "상록원",
   "신공학관",
   "원흥관",
-  "정보문화관P",
-  "정보문화관Q",
+  "정보문화관",
   "중앙도서관",
   "학림관",
   "학생회관",
@@ -31,6 +31,7 @@ const convenients = [
 ];
 const pinPositionData = [
   ["경영관", 97, 251],
+  ["사회과학관", 150, 251],
   ["과학관", 265, 110],
   ["다향관", 384, 198],
   ["만해관", 261, 192],
@@ -43,7 +44,7 @@ const pinPositionData = [
   ["원흥관", 412, 126],
   ["정보문화관P", 472, 134],
   ["정보문화관Q", 511, 130],
-  ["중앙도서관", 336, 132],
+  ["중앙도서관", 336, 116],
   ["학림관", 523, 246],
   ["학생회관", 550, 129],
   ["학술관", 119, 345],
@@ -268,7 +269,7 @@ const buildingInfo = {
     매점: true,
   },
 };
-console.log(buildingInfo.Business01);
+
 const closeOrder = {
   ListBuisness01: [
     buildingInfo.Business01,

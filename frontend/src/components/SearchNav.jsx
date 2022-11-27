@@ -3,17 +3,20 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import DropDown from "./DropDown";
 import useDetectClose from "../lib/useDetectClose";
+import { convenients, buildings } from "../lib/Data";
 export default function SerachNav({ handleOnSubmit }) {
   const navigate = useNavigate();
-  const dropDownRef = useRef(null);
-  const [inputVal, setInputVal] = useState(null);
-  const [isOpen, setIsOpen] = useDetectClose(dropDownRef, false);
-  console.log(inputVal);
+  const dropDownRef_conv = useRef(null);
+  const dropDownRef_depart = useRef(null);
+  const [convVal, setconvVal] = useState(null);
+  const [departVal, setDepartVal] = useState(null);
+  const [isOpen, setIsOpen] = useDetectClose(dropDownRef_conv, false);
+  const [isOpen2, setIsOpen2] = useDetectClose(dropDownRef_depart, false);
   return (
     <Header>
       <Icon
         id="icon"
-        src="/Logo.svg"
+        src="/markImgs/Logo.svg"
         onClick={() => navigate("/mainPage")}
       ></Icon>
       <Form
@@ -23,25 +26,42 @@ export default function SerachNav({ handleOnSubmit }) {
       >
         <Div>
           <Span>출발지</Span>
-          <Input type="text" name="" id="" />
+          <DropDownWrapper>
+            <Input
+              type="text"
+              name="departInput"
+              innerRef={dropDownRef_depart}
+              onClick={() => {
+                setIsOpen2(!isOpen2);
+              }}
+              autoComplete="off"
+              value={departVal}
+            />
+            <DropDown
+              innerRef={dropDownRef_depart}
+              isOpen={isOpen2}
+              setconvVal={setDepartVal}
+              data={buildings}
+            ></DropDown>
+          </DropDownWrapper>
         </Div>
         <Div>
           <Span>편의시설</Span>
           <DropDownWrapper>
             <Input
               type="text"
-              name=""
-              id=""
+              name="convInput"
               onClick={() => {
                 setIsOpen(!isOpen);
-                console.log("opened");
               }}
-              value={inputVal}
+              value={convVal}
+              autoComplete="off"
             />
             <DropDown
-              innerRef={dropDownRef}
+              innerRef={dropDownRef_conv}
               isOpen={isOpen}
-              setInputVal={setInputVal}
+              setconvVal={setconvVal}
+              data={convenients}
             ></DropDown>
           </DropDownWrapper>
         </Div>
