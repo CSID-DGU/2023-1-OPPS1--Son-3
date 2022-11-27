@@ -2,7 +2,7 @@ import NavBar from "../components/Nav";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 const Section = styled.section`
-  background-image: url("/MapBackground.png");
+  background-image: url("/backgroundImgs/MapBackground.png");
   display: flex;
   flex-direction: column;
 `;

@@ -1,56 +1,74 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as Map_Icon } from "../asset/Map_Icon.svg";
-import { pinPositionData } from "../lib/Data";
 import Footer from "../components/Footer";
 import Search from "../components/Search";
-
+import { Link } from "react-router-dom";
+import { conv } from "../lib/convenient";
+import convImages from "../lib/convImages";
+import PinPosition from "../lib/PinPosition";
 const Convenient = () => {
   const [destination, setDestination] = useState(null);
-  const [pinPosition, setPinPosition] = useState([0, 0]);
-  const [pinX, pinY] = [...pinPosition];
-  const ChangePinPosition = (destination) => {
-    for (let i = 0; i < pinPositionData.length; i++) {
-      const building = pinPositionData[i];
-      if (building[0] === destination) {
-        const x = building[1];
-        const y = building[2];
-        return [x, y];
-      }
-    }
-    return [0, 0];
-  };
+  const [arrivalPinPosition, setArrivalPinPosition] = PinPosition([0, 0]);
+  const [arrivalData, setArrivalData] = useState([]);
+  const [departurePinPosition, setdeparturePinPosition] = PinPosition([0, 0]);
 
+  const showClose = (closeBuildings, arrival) => {
+    const showDataArr = [];
+    closeBuildings.map((building) => {
+      const buildingName = building.replaceAll(" ", "");
+      const img = convImages[arrival][buildingName];
+      const showData = {
+        img: img,
+        title: building,
+      };
+      showDataArr.push(showData);
+    });
+    setArrivalData(showDataArr);
+  };
+  console.log(arrivalPinPosition, "?????");
   function handleOnSubmit(e) {
     e.preventDefault();
-    const departures = e.target[0].value;
-    const arrivals = e.target[1].value;
+    const departures = e.target[0].value.replaceAll(" ", "");
+    const arrivals = e.target[1].value.replaceAll(" ", "");
     //가장 가까운 건물명 알아내는 알고리즘
-    //setDestination(해당 건물명)
-    let newDestination = "경영관";
-    setPinPosition(ChangePinPosition(newDestination));
+    const destinations = conv[departures][arrivals];
+    showClose(destinations, arrivals);
+    setdeparturePinPosition(departures);
+    //목표 건물
+    let newDestination = destinations[0].split(" ")[0];
+    setArrivalPinPosition(newDestination);
     setDestination(newDestination);
   }
   return (
     <>
       <Section className="Section">
         <Search
-          pinX={pinX}
-          pinY={pinY}
+          arrivalPinX={arrivalPinPosition[0]}
+          arrivalPinY={arrivalPinPosition[1]}
+          departurePinX={departurePinPosition[0]}
+          departurePinY={departurePinPosition[1]}
           handleOnSubmit={handleOnSubmit}
           destination={destination}
           convenient={true}
         ></Search>
         <Article id="convenientList">
           <h1>가까운 편의시설</h1>
+          <ConvList>
+            {arrivalData.map((data) => {
+              return (
+                <div>
+                  <ConvTitle>{`<${data.title}>`}</ConvTitle>
+                  <ConvImg src={data.img}></ConvImg>
+                </div>
+              );
+            })}
+          </ConvList>
           <Map_Icon_Container>
-            <a
-              href="https://map.naver.com/v5/directions/14137448.103699688,4517303.163985252,%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%20%EC%84%9C%EC%9A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4%EC%9B%90%ED%9D%A5%EA%B4%80,18696982,PLACE_POI/14137925.352620613,4517152.249204071,%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%20%EC%84%9C%EC%9A%B8%EC%BA%A0%ED%8D%BC%EC%8A%A4%EB%AC%B8%ED%99%94%EA%B4%80,18698347,PLACE_POI/-/walk?c=14137557.2976135,4517134.0006959,16.65,0,0,0,dh"
-              target={"_blank"}
-            >
+            <Link to={"/map"}>
               <Map_Icon width="70" height="70"></Map_Icon>
               <Map_Span>길찾기</Map_Span>
-            </a>
+            </Link>
           </Map_Icon_Container>
         </Article>
       </Section>
@@ -155,4 +173,19 @@ const Article = styled.article`
 const Map_Span = styled.span`
   display: block;
   font-size: 20px;
+`;
+const ConvList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow: scroll;
+`;
+const ConvTitle = styled.h5`
+  padding: 0;
+  margin: 5px 0;
+`;
+const ConvImg = styled.img`
+  width: 90%;
+  height: 190px;
+  border-radius: 5px;
 `;
