@@ -49,7 +49,7 @@ const Map = () => {
       <Section className="Section">
         <NavBar></NavBar>
         <Form>
-          <H1>지도</H1>
+          <H1>교내 경로</H1>
           <Div>
             <Span>출발지</Span>
             <Input type="text" name="" id="" />
