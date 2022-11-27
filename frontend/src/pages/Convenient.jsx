@@ -4,6 +4,7 @@ import { ReactComponent as Map_Icon } from "../asset/Map_Icon.svg";
 import { pinPositionData } from "../lib/Data";
 import Footer from "../components/Footer";
 import Search from "../components/Search";
+
 const Convenient = () => {
   const [destination, setDestination] = useState(null);
   const [pinPosition, setPinPosition] = useState([0, 0]);
@@ -84,7 +85,7 @@ const Section = styled.section`
       width: auto;
     }
   }
-  @media screen and (min-width: 601px) and (max-width: 800px) {
+  @media screen and (min-width: 601px) and (max-width: 900px) {
     flex-direction: column;
     height: auto;
     #convenientList {
