@@ -139,14 +139,14 @@ ListHyehwa18 = dijkstra(graph, "혜화관")[:18]
 ListHyehwa18.sort()
 
 Business01 = {"name":"경영관", "복사기":True, "유인복사실":False, "열람실":True, "atm":False, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":True, "매점":False}
-Science02 = {"name":"과학관", "복사기":True, "유인복사실":True, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":True, "식당":False, "카페":True, "매점":False}
+Science02 = {"name":"과학관", "복사기":True, "유인복사실":True, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":True, "식당":False, "카페":False, "매점":False}
 Dahyang03 = {"name":"다향관", "복사기":False, "유인복사실":False, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":False, "매점":True}
 Manhae04 = {"name":"만해관", "복사기":True, "유인복사실":False, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":False, "매점":False}
 Myeongjin05 = {"name":"명진관", "복사기":True, "유인복사실":True, "열람실":True, "atm":True, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":False, "매점":False}
 Munhwa06 = {"name":"문화관", "복사기":True, "유인복사실":False, "열람실":False, "atm":True, "증명서자동발급기":True, "제세동기":True, "식당":False, "카페":False, "매점":False}
 Law07 = {"name":"법학관", "복사기":False, "유인복사실":False, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":True, "식당":False, "카페":False, "매점":True}
 Main08 = {"name":"본관", "복사기":False, "유인복사실":False, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":True, "식당":False, "카페":True, "매점":False}
-SocialScience09 = {"name":"사회과학관", "복사기":True, "유인복사실":False, "열람실":False, "atm":False, "증명서자동발급기":True, "제세동기":True, "식당":False, "카페":False, "매점":False}
+SocialScience09 = {"name":"사회과학관", "복사기":True, "유인복사실":False, "열람실":True, "atm":False, "증명서자동발급기":True, "제세동기":True, "식당":False, "카페":False, "매점":False}
 Sanglokwon10 = {"name":"상록원", "복사기":False, "유인복사실":False, "열람실":False, "atm":True, "증명서자동발급기":False, "제세동기":False, "식당":True, "카페":False, "매점":True}
 NewEngineering11 = {"name":"신공학관", "복사기":True, "유인복사실":False, "열람실":False, "atm":True, "증명서자동발급기":False, "제세동기":False, "식당":True, "카페":True, "매점":True}
 Wonheung12 = {"name":"원흥관", "복사기":True, "유인복사실":False, "열람실":True, "atm":True, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":False, "매점":False}
