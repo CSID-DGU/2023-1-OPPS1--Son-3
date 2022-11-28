@@ -155,6 +155,7 @@ const Map_Icon_Container = styled.div`
 
 const Article = styled.article`
   background-color: rgb(243, 202, 89);
+  overflow-x: hidden;
   height: 100%;
   width: 300px;
   margin-left: auto;

@@ -37,7 +37,7 @@ export default function Search({
             PinY={arrivalPinY}
             imgSize={imgSize}
           >
-            <img src="/markImgs/MapMark.svg" alt="" />
+            <img src="/markImgs/MapMark2.svg" alt="" />
           </Map_Mark_Container>
         )}
         {destination && (
@@ -46,7 +46,7 @@ export default function Search({
             PinY={departurePinY}
             imgSize={imgSize}
           >
-            <img src="/markImgs/MapMark2.svg" alt="" />
+            <img src="/markImgs/MapMark.svg" alt="" />
           </Map_Mark_Container>
         )}
       </ImgMarkingContainer>
