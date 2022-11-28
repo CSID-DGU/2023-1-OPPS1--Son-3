@@ -155,7 +155,6 @@ const Map_Icon_Container = styled.div`
 
 const Article = styled.article`
   background-color: rgb(243, 202, 89);
-  overflow-x: hidden;
   height: 100%;
   width: 300px;
   margin-left: auto;
@@ -180,6 +179,7 @@ const ConvList = styled.div`
   flex-direction: column;
   gap: 15px;
   overflow: scroll;
+  overflow-x: hidden;
 `;
 const ConvTitle = styled.h5`
   padding: 0;
