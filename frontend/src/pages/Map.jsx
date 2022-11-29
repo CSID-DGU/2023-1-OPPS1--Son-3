@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { Outlet } from "react-router-dom";
 const Map = () => {
   return (
     <section className="Section">
       <Header>
-        <Icon src="/Logo.svg"></Icon>
+        <Icon src="markImgs/Logo.svg"></Icon>
         <Form>
           <Div>
             <Span>출발지</Span>
