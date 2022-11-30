@@ -13,7 +13,8 @@
 ![Asset 22](https://user-images.githubusercontent.com/101785677/201515466-cccf555e-126b-4c38-95e9-c7d33aff1251.png) 
 ##### <수정후>
 ![Asset 30](https://user-images.githubusercontent.com/101785677/204771243-04fd3ecf-b8c5-4050-a487-4e7655fa8608.png)
-![Asset 31](https://user-images.githubusercontent.com/101785677/204771217-fed9f834-ad55-46ce-9df2-f6422f96dfcd.png)
+![Asset 32](https://user-images.githubusercontent.com/101785677/204847754-5a403a9d-675b-45b5-a384-92f9b8904e8f.png)
+
 
 
 ### Map
