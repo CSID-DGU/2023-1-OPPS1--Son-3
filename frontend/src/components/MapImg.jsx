@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import SerachNav from "./SearchNav";
-export default function Search({
+export default function MapImg({
   arrivalPinX,
   arrivalPinY,
   handleOnSubmit,
@@ -14,7 +13,7 @@ export default function Search({
     const mql = window.matchMedia("(min-width:601px) and (max-width: 900px)");
     const smallestmql = window.matchMedia("(max-width: 600px)");
     function handleChange(e) {
-      if (e.matches && e.media == "(max-width: 600px)") {
+      if (e.matches && e.media === "(max-width: 600px)") {
         setImgSize(370);
       } else if (e.matches) {
         setImgSize(600);
@@ -27,39 +26,31 @@ export default function Search({
     };
   }, []);
   return (
-    <SearchMap setImgSize={setImgSize}>
-      <SerachNav handleOnSubmit={handleOnSubmit}></SerachNav>
-      <ImgMarkingContainer>
-        <Img src="/backgroundImgs/campus_map.png" imgSize={imgSize}></Img>
-        {destination && (
-          <Map_Mark_Container
-            PinX={arrivalPinX}
-            PinY={arrivalPinY}
-            imgSize={imgSize}
-          >
-            <img src="/markImgs/MapMark2.svg" alt="" />
-          </Map_Mark_Container>
-        )}
-        {destination && (
-          <Map_Mark_Container
-            PinX={departurePinX}
-            PinY={departurePinY}
-            imgSize={imgSize}
-          >
-            <img src="/markImgs/MapMark.svg" alt="" />
-          </Map_Mark_Container>
-        )}
-      </ImgMarkingContainer>
-    </SearchMap>
+    <ImgMarkingContainer>
+      <Img src="/backgroundImgs/campus_map.png" imgSize={imgSize}></Img>
+      {destination && (
+        <MapMarkContainer
+          PinX={arrivalPinX}
+          PinY={arrivalPinY}
+          imgSize={imgSize}
+        >
+          <img src="/markImgs/MapMark2.svg" alt="" />
+        </MapMarkContainer>
+      )}
+      {destination && (
+        <MapMarkContainer
+          PinX={departurePinX}
+          PinY={departurePinY}
+          imgSize={imgSize}
+        >
+          <img src="/markImgs/MapMark.svg" alt="" />
+        </MapMarkContainer>
+      )}
+    </ImgMarkingContainer>
   );
 }
-const SearchMap = styled.article`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const Map_Mark_Container = styled.div`
+
+const MapMarkContainer = styled.div`
   position: absolute;
   width: ${(props) => `${(props.imgSize / 700) * 20}px`};
   left: ${(props) => props && `${(props.imgSize / 700) * props.PinX}px`};
