@@ -1,11 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Footer from "../components/Footer";
-import Search from "../components/Search";
+import MapImg from "../components/MapImg";
 import { conv } from "../lib/convenient";
 import convImages from "../lib/convImages";
 import PinPosition from "../lib/PinPosition";
 import CloseConvList from "../components/CloseConvs";
+import SerachNav from "../components/SearchNav";
 const Convenient = () => {
   const [destination, setDestination] = useState(null);
   const [arrivalData, setArrivalData] = useState([]);
@@ -52,15 +53,17 @@ const Convenient = () => {
             <Pin pinSrc={"/markImgs/MapMark2.svg"}></Pin>
           </PinWrapper>
         </Pins>
-        <Search
-          arrivalPinX={arrivalPinPosition[0]}
-          arrivalPinY={arrivalPinPosition[1]}
-          departurePinX={departurePinPosition[0]}
-          departurePinY={departurePinPosition[1]}
-          handleOnSubmit={handleOnSubmit}
-          destination={destination}
-          convenient={true}
-        ></Search>
+        <SearchContainer>
+          <SerachNav handleOnSubmit={handleOnSubmit}></SerachNav>
+          <MapImg
+            arrivalPinX={arrivalPinPosition[0]}
+            arrivalPinY={arrivalPinPosition[1]}
+            departurePinX={departurePinPosition[0]}
+            departurePinY={departurePinPosition[1]}
+            destination={destination}
+            convenient={true}
+          ></MapImg>
+        </SearchContainer>
         <CloseConvList arrivalData={arrivalData}></CloseConvList>
       </Section>
       <Footer></Footer>
@@ -163,3 +166,9 @@ const Pin = styled.div`
   height: 35px;
 `;
 const PinName = styled.p``;
+const SearchContainer = styled.article`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

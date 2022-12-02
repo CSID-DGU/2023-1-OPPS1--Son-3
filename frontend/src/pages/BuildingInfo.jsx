@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import Footer from "../components/Footer";
-import Search from "../components/Search";
+import MapImg from "../components/MapImg";
 export default function BuildingInfo() {
   return (
     <>
       <Container className="Section">
-        <Search></Search>
+        <MapImg></MapImg>
         <Article>
           <Section>
             <Div>
