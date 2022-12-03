@@ -28,9 +28,12 @@ export default function BuildingInfo() {
                 return (
                   <BuildingName
                     onClick={() => {
-                      setBuildingPosition(building.name);
                       setDetailPageContent(building);
                       setIsDetailPage(true);
+                      setBuildingPosition(building.name);
+                    }}
+                    onMouseOver={() => {
+                      setBuildingPosition(building.name);
                     }}
                   >
                     {building.name}
