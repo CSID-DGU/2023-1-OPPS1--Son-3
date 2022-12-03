@@ -3,10 +3,9 @@ import { useState, useEffect } from "react";
 export default function MapImg({
   arrivalPinX,
   arrivalPinY,
-  handleOnSubmit,
-  destination,
   departurePinX,
   departurePinY,
+  convenient,
 }) {
   const [imgSize, setImgSize] = useState(1000);
   useEffect(() => {
@@ -28,7 +27,7 @@ export default function MapImg({
   return (
     <ImgMarkingContainer>
       <Img src="/backgroundImgs/campus_map.png" imgSize={imgSize}></Img>
-      {destination && (
+      {!(arrivalPinX + arrivalPinY === 0) && (
         <MapMarkContainer
           PinX={arrivalPinX}
           PinY={arrivalPinY}
@@ -37,7 +36,7 @@ export default function MapImg({
           <img src="/markImgs/MapMark2.svg" alt="" />
         </MapMarkContainer>
       )}
-      {destination && (
+      {!(departurePinX + departurePinY === 0) && convenient && (
         <MapMarkContainer
           PinX={departurePinX}
           PinY={departurePinY}

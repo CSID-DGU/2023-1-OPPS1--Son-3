@@ -1,19 +1,49 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import MapImg from "../components/MapImg";
+import buildingInfo from "../lib/buildingInfo.js";
+import PinPosition from "../lib/PinPosition";
+import BuildingDetail from "../components/BuildingDetail";
 export default function BuildingInfo() {
+  const [buildingPosition, setBuildingPosition] = PinPosition([0, 0]);
+  const [isDetailPage, setIsDetailPage] = useState(false);
+  const [detailPageContent, setDetailPageContent] = useState(null);
   return (
     <>
       <Container className="Section">
-        <MapImg></MapImg>
+        <MapImg
+          arrivalPinX={buildingPosition[0]}
+          arrivalPinY={buildingPosition[1]}
+        ></MapImg>
         <Article>
           <Section>
             <Div>
               <Item className="selected">
-                <span>건물 정보</span>
+                <span>건물명</span>
               </Item>
             </Div>
-            <Content className="content"></Content>
+            <BuildingContent className="content">
+              {buildingInfo.map((building) => {
+                return (
+                  <BuildingName
+                    onClick={() => {
+                      setBuildingPosition(building.name);
+                      setDetailPageContent(building);
+                      setIsDetailPage(true);
+                    }}
+                  >
+                    {building.name}
+                  </BuildingName>
+                );
+              })}
+            </BuildingContent>
+            {isDetailPage && (
+              <BuildingDetail
+                detailPageContent={detailPageContent}
+                setIsDetailPage={setIsDetailPage}
+              />
+            )}
           </Section>
         </Article>
       </Container>
@@ -46,7 +76,7 @@ const Section = styled.section`
   display: flex;
 `;
 const Div = styled.div`
-  height: 20vh;
+  height: 15vh;
   display: flex;
   margin-top: 12px;
   flex-direction: column;
@@ -71,10 +101,23 @@ const Item = styled.div`
     font-size: 23px;
   }
 `;
-const Content = styled.div`
+const BuildingContent = styled.ul`
+  text-align: center;
   border: 3px black solid;
+  padding: 0;
+  margin: 0;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   height: 100vh;
   width: 300px;
+  overflow-y: scroll;
+`;
+const BuildingName = styled.div`
+  list-style-type: unset;
+  padding: 10px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(247, 214, 123);
+  }
 `;

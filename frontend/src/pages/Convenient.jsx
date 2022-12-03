@@ -8,7 +8,6 @@ import PinPosition from "../lib/PinPosition";
 import CloseConvList from "../components/CloseConvs";
 import SerachNav from "../components/SearchNav";
 const Convenient = () => {
-  const [destination, setDestination] = useState(null);
   const [arrivalData, setArrivalData] = useState([]);
   const [arrivalPinPosition, setArrivalPinPosition] = PinPosition([0, 0]);
   const [departurePinPosition, setdeparturePinPosition] = PinPosition([0, 0]);
@@ -37,7 +36,6 @@ const Convenient = () => {
     //목표 건물
     let newDestination = destinations[0].split(" ")[0];
     setArrivalPinPosition(newDestination);
-    setDestination(newDestination);
   }
 
   return (
@@ -60,7 +58,6 @@ const Convenient = () => {
             arrivalPinY={arrivalPinPosition[1]}
             departurePinX={departurePinPosition[0]}
             departurePinY={departurePinPosition[1]}
-            destination={destination}
             convenient={true}
           ></MapImg>
         </SearchContainer>
