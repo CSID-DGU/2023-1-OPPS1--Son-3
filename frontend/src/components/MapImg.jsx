@@ -62,4 +62,5 @@ const Img = styled.img`
 `;
 const ImgMarkingContainer = styled.div`
   position: relative;
+  margin: 0 auto;
 `;

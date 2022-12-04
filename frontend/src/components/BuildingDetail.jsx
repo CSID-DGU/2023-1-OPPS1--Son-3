@@ -42,7 +42,7 @@ const BuildingContainer = styled.div`
   border: 0.1875rem black solid;
   transform: translate(-50%, -50%);
   border-radius: 15px;
-  background-color: #ffffff93;
+  background-color: #ffffffe8;
   padding: 10px;
 `;
 const CloseDetailPage = styled.span`
@@ -56,7 +56,7 @@ const InfosContainer = styled.div`
   display: flex;
   gap: 3px;
   &:not(:last-child) {
-    margin-bottom: 5px;
+    margin-bottom: 7px;
   }
 `;
 const Img = styled.img`
@@ -67,6 +67,7 @@ const Img = styled.img`
   flex-shrink: none;
 `;
 const Key = styled.p`
+  letter-spacing: 1.5px;
   color: rgb(240, 203, 109);
   text-shadow: -1.5px 0 black, 0 1.5px black, 1px 0 black, 0 -1px black;
   align-self: flex-start;

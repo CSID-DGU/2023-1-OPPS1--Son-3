@@ -5,13 +5,20 @@ import MapImg from "../components/MapImg";
 import buildingInfo from "../lib/buildingInfo.js";
 import PinPosition from "../lib/PinPosition";
 import BuildingDetail from "../components/BuildingDetail";
+import { useNavigate } from "react-router-dom";
 export default function BuildingInfo() {
   const [buildingPosition, setBuildingPosition] = PinPosition([0, 0]);
   const [isDetailPage, setIsDetailPage] = useState(false);
   const [detailPageContent, setDetailPageContent] = useState(null);
+  const navigate = useNavigate();
   return (
     <>
       <Container className="Section">
+        <Icon
+          id="icon"
+          src="/markImgs/Logo.svg"
+          onClick={() => navigate("/mainPage")}
+        ></Icon>
         <MapImg
           arrivalPinX={buildingPosition[0]}
           arrivalPinY={buildingPosition[1]}
@@ -20,7 +27,7 @@ export default function BuildingInfo() {
           <Section>
             <Div>
               <Item className="selected">
-                <span>건물명</span>
+                <BuildingTag>건물명</BuildingTag>
               </Item>
             </Div>
             <BuildingContent className="content">
@@ -30,7 +37,6 @@ export default function BuildingInfo() {
                     onClick={() => {
                       setDetailPageContent(building);
                       setIsDetailPage(true);
-                      setBuildingPosition(building.name);
                     }}
                     onMouseOver={() => {
                       setBuildingPosition(building.name);
@@ -69,6 +75,25 @@ const Container = styled.section`
     }
     .selected {
       display: none;
+    }
+    *:not(footer > *) {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 900px) {
+    flex-direction: column;
+    height: auto;
+    *:not(footer > *) {
+      font-size: 1.2rem;
+    }
+    article {
+      flex-grow: 1;
+      margin-left: 0;
+      .content {
+        flex-grow: 1;
+        height: fit-content;
+      }
     }
   }
 `;
@@ -123,4 +148,15 @@ const BuildingName = styled.div`
   &:hover {
     background-color: rgb(247, 214, 123);
   }
+`;
+const BuildingTag = styled.span`
+  letter-spacing: 3px;
+`;
+const Icon = styled.img`
+  width: 10%;
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  z-index: 1;
 `;
