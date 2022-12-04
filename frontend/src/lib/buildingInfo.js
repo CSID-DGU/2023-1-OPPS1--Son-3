@@ -15,7 +15,7 @@ const buildingInfo = [
     ]),
   },
 
-  { name: "과학관", info: new Map([["", ""]]) },
+  { name: "과학관" },
 
   {
     img: "/건물정보 이미지/다향관.jpg",

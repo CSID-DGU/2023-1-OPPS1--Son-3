@@ -19,10 +19,20 @@ export default function BuildingInfo() {
           src="/markImgs/Logo.svg"
           onClick={() => navigate("/mainPage")}
         ></Icon>
-        <MapImg
-          arrivalPinX={buildingPosition[0]}
-          arrivalPinY={buildingPosition[1]}
-        ></MapImg>
+        <BuildingInfoContainer>
+          <div>
+            <InfoIcon src="/markImgs/info_icon2.png"></InfoIcon>
+            표시가 있는 건물은 정보를 볼 수 있습니다.
+          </div>
+          <MapImg
+            arrivalPinX={buildingPosition[0]}
+            arrivalPinY={buildingPosition[1]}
+          ></MapImg>
+          <PageInfo>
+            각 건물을 소개하고, 해당 건물에 해당하는 열람실, 카페, 학사운영실의
+            운영시간, 전화번호를 안내하는 페이지입니다.
+          </PageInfo>
+        </BuildingInfoContainer>
         <Article>
           <Section>
             <Div>
@@ -33,17 +43,22 @@ export default function BuildingInfo() {
             <BuildingContent className="content">
               {buildingInfo.map((building) => {
                 return (
-                  <BuildingName
+                  <Building
                     onClick={() => {
                       setDetailPageContent(building);
-                      setIsDetailPage(true);
+                      if (building.info) {
+                        setIsDetailPage(true);
+                      }
                     }}
                     onMouseOver={() => {
                       setBuildingPosition(building.name);
                     }}
                   >
-                    {building.name}
-                  </BuildingName>
+                    <BuildingName>{building.name}</BuildingName>
+                    {building.info ? (
+                      <InfoIcon src="/markImgs/info_icon2.png"></InfoIcon>
+                    ) : null}
+                  </Building>
                 );
               })}
             </BuildingContent>
@@ -77,7 +92,7 @@ const Container = styled.section`
       display: none;
     }
     *:not(footer > *) {
-      font-size: 0.8rem;
+      font-size: 0.6rem;
     }
   }
 
@@ -85,7 +100,7 @@ const Container = styled.section`
     flex-direction: column;
     height: auto;
     *:not(footer > *) {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
     }
     article {
       flex-grow: 1;
@@ -140,14 +155,11 @@ const BuildingContent = styled.ul`
   width: 300px;
   overflow-y: scroll;
 `;
-const BuildingName = styled.div`
+const BuildingName = styled.span`
   list-style-type: unset;
   padding: 10px;
   font-size: 1.25rem;
   cursor: pointer;
-  &:hover {
-    background-color: rgb(247, 214, 123);
-  }
 `;
 const BuildingTag = styled.span`
   letter-spacing: 3px;
@@ -159,4 +171,33 @@ const Icon = styled.img`
   left: 10px;
   top: 5px;
   z-index: 1;
+`;
+const BuildingInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+const InfoIcon = styled.img`
+  width: 7%;
+  vertical-align: text-bottom;
+  margin: 0 2px;
+`;
+const PageInfo = styled.p`
+  margin: 0 10px;
+`;
+const Building = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:not(:last-child) {
+    border-bottom: 0.7px black solid;
+  }
+  &:hover {
+    background-color: rgb(247, 214, 123);
+  }
+  img {
+    height: 35%;
+  }
 `;
