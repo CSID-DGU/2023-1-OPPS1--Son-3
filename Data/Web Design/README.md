@@ -15,10 +15,3 @@
 ![Asset 30](https://user-images.githubusercontent.com/101785677/204771243-04fd3ecf-b8c5-4050-a487-4e7655fa8608.png)
 ![Asset 32](https://user-images.githubusercontent.com/101785677/204847754-5a403a9d-675b-45b5-a384-92f9b8904e8f.png)
 
-
-
-### Map
-
-##### <수정전>
-![Map layout](https://user-images.githubusercontent.com/101785677/200844438-e0a2acf5-c115-4cb9-b83d-eef6aebb0724.png)
-![Map page2 layout](https://user-images.githubusercontent.com/101785677/200844454-ab5acff2-76eb-4e79-912d-29132503eeb3.png)
