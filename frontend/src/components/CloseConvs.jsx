@@ -18,7 +18,7 @@ export default function CloseConvList({ arrivalData }) {
       </ConvList>
       <Map_Icon_Container>
         <Link to={"/map"}>
-          <Map_Icon width="70" height="70"></Map_Icon>
+          <Map_Icon width="50" height="50"></Map_Icon>
           <Map_Span>길찾기</Map_Span>
         </Link>
       </Map_Icon_Container>
@@ -28,6 +28,7 @@ export default function CloseConvList({ arrivalData }) {
 const Map_Icon_Container = styled.div`
   margin-left: auto;
   margin-right: 15px;
+  margin-top: 10px;
 `;
 
 const Article = styled.article`

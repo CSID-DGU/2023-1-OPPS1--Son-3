@@ -8,8 +8,8 @@ export default function SerachNav({ handleOnSubmit }) {
   const navigate = useNavigate();
   const dropDownRef_conv = useRef(null);
   const dropDownRef_depart = useRef(null);
-  const [convVal, setconvVal] = useState(null);
-  const [departVal, setDepartVal] = useState(null);
+  const [convVal, setconvVal] = useState("");
+  const [departVal, setDepartVal] = useState("");
   const [isOpen, setIsOpen] = useDetectClose(dropDownRef_conv, false);
   const [isOpen2, setIsOpen2] = useDetectClose(dropDownRef_depart, false);
   return (
@@ -25,7 +25,7 @@ export default function SerachNav({ handleOnSubmit }) {
         }}
       >
         <Div>
-          <Span>출발지</Span>
+          <Span>출발 건물</Span>
           <DropDownWrapper>
             <Input
               type="text"
