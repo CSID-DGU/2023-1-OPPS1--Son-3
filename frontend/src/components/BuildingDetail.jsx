@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
   const info = detailPageContent.info;
   return (
-    <BuildingContainer>
+    <BuildingContainer className="detailPage">
       <CloseDetailPage
         onClick={() => {
           setIsDetailPage(false);
@@ -37,8 +37,8 @@ const BuildingContainer = styled.div`
   display: flex;
   flex-direction: column;
   top: 40%;
-  left: 40%;
-  width: 600px;
+  left: 43%;
+  width: 50%;
   border: 0.1875rem black solid;
   transform: translate(-50%, -50%);
   border-radius: 15px;

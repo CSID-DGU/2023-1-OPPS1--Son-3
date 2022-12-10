@@ -40,8 +40,9 @@ export default function SerachNav({ handleOnSubmit }) {
             <DropDown
               innerRef={dropDownRef_depart}
               isOpen={isOpen2}
-              setconvVal={setDepartVal}
+              setVal={setDepartVal}
               data={buildings}
+              top={23}
             ></DropDown>
           </DropDownWrapper>
         </Div>
@@ -60,8 +61,9 @@ export default function SerachNav({ handleOnSubmit }) {
             <DropDown
               innerRef={dropDownRef_conv}
               isOpen={isOpen}
-              setconvVal={setconvVal}
+              setVal={setconvVal}
               data={convenients}
+              top={23}
             ></DropDown>
           </DropDownWrapper>
         </Div>
@@ -101,11 +103,6 @@ const Button = styled.button`
   height: 45px;
   background-color: rgb(243, 202, 89);
 `;
-const DropDownWrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-`;
 const Input = styled.input`
   border-radius: 15px;
   padding: 10px;
@@ -116,4 +113,7 @@ const Icon = styled.img`
   height: 100%;
   padding-top: 10px;
   cursor: pointer;
+`;
+const DropDownWrapper = styled.div`
+  position: relative;
 `;

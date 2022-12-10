@@ -33,7 +33,7 @@ const Map_Icon_Container = styled.div`
 
 const Article = styled.article`
   background-color: rgb(243, 202, 89);
-  height: 100%;
+  height: 100vh;
   width: 300px;
   margin-left: auto;
   display: flex;

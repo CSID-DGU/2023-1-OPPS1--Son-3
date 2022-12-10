@@ -7,7 +7,7 @@ const Nav = styled.nav`
     justify-content: center;
     li {
       font-size: 1rem;
-      padding: 1.5rem;
+      padding: 1.2rem;
     }
     ul {
       margin: 0;
@@ -45,7 +45,7 @@ const NavBar = () => {
         <Link to="/buildingInfo">
           <Li>건물정보</Li>
         </Link>
-        <Link to="/to_map/">
+        <Link to="/map/">
           <Li>교내 경로</Li>
         </Link>
       </Ul>
