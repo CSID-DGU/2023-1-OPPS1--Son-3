@@ -23,7 +23,7 @@ image_info = {"만해관1" : {"title":"만해관 문", "img" : "/건물경로 �
 
 import json
 
-with open("./frontend/src/path1.json", "r", encoding='UTF8') as f:
+with open("./frontend/src/lib/path/path1.json", "r", encoding='UTF8') as f:
     path_data = json.load(f)
 
 dict_key = list(path_data.keys())
@@ -188,13 +188,13 @@ for start in dict_key:
         shortcuts[end] = shortcut
     shortcut_all[start] = shortcuts
 
-file_path1 = "./frontend/src/shortcut1.json"
+file_path1 = "./frontend/src/lib/shortcut/shortcut1.json"
 with open(file_path1, 'w', encoding='utf-8') as outfile:
     json.dump(shortcut_all, outfile, ensure_ascii=False, indent=4)
 
 
 
-with open("./frontend/src/path2.json", "r", encoding='UTF8') as f:
+with open("./frontend/src/lib/path/path2.json", "r", encoding='UTF8') as f:
     path_data = json.load(f)
 
 shortcut_all2 = {}
@@ -357,6 +357,6 @@ for start in dict_key:
         shortcuts[end] = shortcut
     shortcut_all2[start] = shortcuts
 
-file_path2 = "./frontend/src/shortcut2.json"
+file_path2 = "./frontend/src/lib/shortcut/shortcut2.json"
 with open(file_path2, 'w', encoding='utf-8') as outfile:
     json.dump(shortcut_all2, outfile, ensure_ascii=False, indent=4)
