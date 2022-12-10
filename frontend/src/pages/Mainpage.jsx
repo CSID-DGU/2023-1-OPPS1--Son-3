@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import NavBar from "../components/Nav";
 import Footer from "../components/Footer";
+
 const Section = styled.section`
   background-image: url("/backgroundImgs/MainBackground.png");
+`;
+const MainPageContainer = styled.div`
+  height: 100vh;
 `;
 const Article = styled.article`
   position: absolute;
@@ -37,15 +41,17 @@ const P2 = styled.p`
 function Main() {
   return (
     <>
-      <Section className="Section">
-        <NavBar></NavBar>
-        <Content>
-          <Article>
-            <P>You're Webcome!</P>
-            <P2>DGU Information Service</P2>
-          </Article>
-        </Content>
-      </Section>
+      <MainPageContainer>
+        <Section className="Section">
+          <NavBar></NavBar>
+          <Content>
+            <Article>
+              <P>DGU Webcome!</P>
+              <P2>DGU Information Service</P2>
+            </Article>
+          </Content>
+        </Section>
+      </MainPageContainer>
       <Footer></Footer>
     </>
   );
