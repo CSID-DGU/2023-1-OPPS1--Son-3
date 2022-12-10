@@ -1,22 +1,24 @@
 import React from "react";
+import { useRef } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 export default function SlopeIcon({ setIsSlope, isSlope, handleOnClick }) {
+  const clicked = useRef();
+  useEffect(() => {
+    if (clicked.current) handleOnClick();
+  }, [isSlope]);
   return (
     <SlopeIconWrapper
-      onClick={async (e) => {
+      onClick={(e) => {
+        clicked.current = true;
         setIsSlope(!isSlope);
-        await handleOnClick();
       }}
     >
       <Icon
-        src={
-          isSlope === true
-            ? "/markImgs/withoutSlope.png"
-            : "/markImgs/Slope.png"
-        }
+        src={isSlope ? "/markImgs/withoutSlope.png" : "/markImgs/Slope.png"}
       />
       <SlopeIconInfo>
-        {isSlope === true ? "경사 미반영 경로 보기" : "경사 반영 경로 보기"}
+        {isSlope ? "경사 미반영 경로 보기" : "경사 반영 경로 보기"}
       </SlopeIconInfo>
     </SlopeIconWrapper>
   );
