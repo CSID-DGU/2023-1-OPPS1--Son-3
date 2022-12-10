@@ -5,8 +5,8 @@ import MapImg from "../components/MapImg";
 import { conv } from "../lib/convenient";
 import convImages from "../lib/convImages";
 import PinPosition from "../lib/PinPosition";
-import CloseConvList from "../components/CloseConvs";
-import SerachNav from "../components/SearchNav";
+import CloseConvList from "../components/Convenient/CloseConvs";
+import SerachNav from "../components/Convenient/SearchNav";
 const Convenient = () => {
   const [arrivalData, setArrivalData] = useState([]);
   const [arrivalPinPosition, setArrivalPinPosition] = PinPosition([0, 0]);

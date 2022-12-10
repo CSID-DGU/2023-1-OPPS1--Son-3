@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Map_Icon } from "../asset/Map_Icon.svg";
+import { ReactComponent as Map_Icon } from "../../asset/Map_Icon.svg";
 import { Link } from "react-router-dom";
 export default function CloseConvList({ arrivalData }) {
   return (

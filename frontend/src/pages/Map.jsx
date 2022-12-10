@@ -1,15 +1,15 @@
 import { useState, useRef } from "react";
 import styled from "styled-components";
-import Canvas from "../components/Canvas";
+import Canvas from "../components/Map/Canvas";
 import { nodeData } from "../lib/mapInfo.js";
-import pathData from "../path1.json";
-import pathSlopeData from "../path2.json";
+import pathData from "../lib/path/path1.json";
+import pathSlopeData from "../lib/path/path2.json";
 import Footer from "../components/Footer";
-import Shortcut from "../shortcut1.json";
-import SlopShortCut from "../shortcut2.json";
-import DirectionLi from "../components/DirectionsLi";
-import SlopeIcon from "../components/SlopeIcon";
-import MapHeader from "../components/MapHeader";
+import Shortcut from "../lib/shortcut/shortcut1.json";
+import SlopShortCut from "../lib/shortcut/shortcut2.json";
+import DirectionLi from "../components/Map/DirectionsLi";
+import SlopeIcon from "../components/Map/SlopeIcon";
+import MapHeader from "../components/Map/MapHeader";
 const Map = () => {
   const [isStart, setIsStart] = useState(false);
   const [departBuilding, setDepartBuilding] = useState("");
