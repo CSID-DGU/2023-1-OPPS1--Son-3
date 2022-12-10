@@ -137,7 +137,7 @@ ListHaksul17 = dijkstra(graph, "학술관")[:18]
 ListHaksul17.sort()
 ListHyehwa18 = dijkstra(graph, "혜화관")[:18]
 ListHyehwa18.sort()
-
+'''
 Business01 = {"name":"경영관", "복사기":True, "유인복사실":False, "열람실":True, "atm":False, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":True, "매점":False}
 Science02 = {"name":"과학관", "복사기":True, "유인복사실":True, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":True, "식당":False, "카페":False, "매점":False}
 Dahyang03 = {"name":"다향관", "복사기":False, "유인복사실":False, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":False, "매점":True}
@@ -156,6 +156,26 @@ Haklim15 = {"name":"학림관", "복사기":True, "유인복사실":False, "열�
 Student16 = {"name":"학생회관", "복사기":True, "유인복사실":False, "열람실":True, "atm":False, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":False, "매점":False}
 Haksul17 = {"name":"학술관", "복사기":True, "유인복사실":False, "열람실":False, "atm":False, "증명서자동발급기":False, "제세동기":False, "식당":True, "카페":True, "매점":False}
 Hyehwa18 = {"name":"혜화관", "복사기":True, "유인복사실":False, "열람실":True, "atm":True, "증명서자동발급기":False, "제세동기":False, "식당":False, "카페":True, "매점":True}
+'''
+Business01 = {"name":"경영관", "복사기":["경영관 1층"], "유인복사실":[], "열람실":["경영관 지하1층 비즈마루"], "atm":[], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":["경영관 야외 그루터기"], "매점":[]}
+Science02 = {"name":"과학관", "복사기":["과학관 1층"], "유인복사실":["과학관 야외 교재실"], "열람실":[], "atm":[], "증명서자동발급기":[], "제세동기":["과학관 1층"], "식당":[], "카페":[], "매점":[]}
+Dahyang03 = {"name":"다향관", "복사기":[], "유인복사실":[], "열람실":[], "atm":[], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":[], "매점":["다향관 1층"]}
+Manhae04 = {"name":"만해관", "복사기":["만해관 2층"], "유인복사실":[], "열람실":[], "atm":[], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":[], "매점":[]}
+Myeongjin05 = {"name":"명진관", "복사기":["명진관 1층"], "유인복사실":["명진관 1층"], "열람실":["명진관 1층 명진라운지"], "atm":["명진관 야외 신한"], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":[], "매점":[]}
+Munhwa06 = {"name":"문화관", "복사기":["문화관 1층"], "유인복사실":[], "열람실":[], "atm":["문화관 1층 신한"], "증명서자동발급기":["문화관 1층"], "제세동기":["문화관 1층"], "식당":[], "카페":[], "매점":[]}
+Law07 = {"name":"법학관", "복사기":[], "유인복사실":[], "열람실":[], "atm":[], "증명서자동발급기":[], "제세동기":["법학관 1층"], "식당":[], "카페":[], "매점":["법학관 2층"]}
+Main08 = {"name":"본관", "복사기":[], "유인복사실":[], "열람실":[], "atm":[], "증명서자동발급기":[], "제세동기":["본관 3층"], "식당":[], "카페":["본관 야외 가온누리", "본관 야외 블루포트"], "매점":[]}
+SocialScience09 = {"name":"사회과학관", "복사기":["사회과학관 2층"], "유인복사실":[], "열람실":["사회과학관 2층 능금"], "atm":[], "증명서자동발급기":["사회과학관 2층"], "제세동기":["사회과학관 2층"], "식당":[], "카페":[], "매점":[]}
+Sanglokwon10 = {"name":"상록원", "복사기":[], "유인복사실":[], "열람실":[], "atm":["상록원 1층 신한 국민"], "증명서자동발급기":[], "제세동기":[], "식당":["상록원 1층", "상록원 2층", "상록원 3층"], "카페":[], "매점":["상록원 1층"]}
+NewEngineering11 = {"name":"신공학관", "복사기":["신공학관 3층", "신공학관 9층"], "유인복사실":[], "열람실":[], "atm":["신공학관 1층 신한"], "증명서자동발급기":[], "제세동기":[], "식당":["신공학관 1층"], "카페":["신공학관 1층"], "매점":["신공학관 1층"]}
+Wonheung12 = {"name":"원흥관", "복사기":["원흥관 3층"], "유인복사실":[], "열람실":["원흥관 3층 북카페", "원흥관 3층 i-space"], "atm":["원흥관 4층 신한"], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":[], "매점":[]}
+InformationEngineering13 = {"name":"정보문화관", "복사기":["정보문화관P 3층"], "유인복사실":[], "열람실":[], "atm":[], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":[], "매점":[]}
+Library14 = {"name":"중앙도서관", "복사기":["중앙도서관 지하2층", "중앙도서관 지하1층", "중앙도서관 지하1층", "중앙도서관 1층", "중앙도서관 3층", "중앙도서관 4층"], "유인복사실":["중앙도서관 지하1층"], "열람실":[], "atm":[], "증명서자동발급기":["중앙도서관 2층"], "제세동기":[], "식당":[], "카페":[], "매점":["중앙도서관 4층"]}
+Haklim15 = {"name":"학림관", "복사기":["학림관 1층", "학림관 2층"], "유인복사실":[], "열람실":["학림관 1층 라운지 샘"], "atm":["학림관 1층 신한"], "증명서자동발급기":["학림관 1층"], "제세동기":["학림관 1층"], "식당":[], "카페":[], "매점":["학림관 지하1층"]}
+Student16 = {"name":"학생회관", "복사기":["학생회관 1층"], "유인복사실":[], "열람실":["학생회관 1층 i-space"], "atm":[], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":[], "매점":[]}
+Haksul17 = {"name":"학술관", "복사기":["학술관 1층"], "유인복사실":[], "열람실":[], "atm":[], "증명서자동발급기":[], "제세동기":[], "식당":["학술관 지하1층 가든쿡"], "카페":["학술관 지하1층 두리터"], "매점":[]}
+Hyehwa18 = {"name":"혜화관", "복사기":["혜화관 1층"], "유인복사실":[], "열람실":["혜화관 1층 라운지"], "atm":["혜화관 1층 국민"], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":["혜화관 1층 무인카페", "혜화관 야외 카페ing", ], "매점":["혜화관 4층"]}
+
 
 ListBuildingName = ["경영관", "과학관", "다향관", "만해관", "명진관", "문화관", "법학관", "본관", "사회과학관", "상록원", "신공학관", "원흥관", "정보문화관", "중앙도서관", "학림관", "학생회관", "학술관", "혜화관"]
 ListBuilding_Convenient = [Business01, Science02, Dahyang03, Manhae04, Myeongjin05, Munhwa06, Law07, Main08, SocialScience09, Sanglokwon10, NewEngineering11, Wonheung12, InformationEngineering13, Library14, Haklim15, Student16, Haksul17, Hyehwa18]
@@ -167,8 +187,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListBusiness01:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient01[convenient] = List
 dict_convenient["경영관"] = dict_convenient01
 
@@ -177,8 +197,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListScience02:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient02[convenient] = List
 dict_convenient["과학관"] = dict_convenient02
 
@@ -187,8 +207,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListDahyang03:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient03[convenient] = List
 dict_convenient["다향관"] = dict_convenient03
 
@@ -197,8 +217,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListManhae04:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient04[convenient] = List
 dict_convenient["만해관"] = dict_convenient04
 
@@ -207,8 +227,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListMyeongjin05:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient05[convenient] = List
 dict_convenient["명진관"] = dict_convenient05
 
@@ -217,8 +237,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListMunhwa06:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient06[convenient] = List
 dict_convenient["문화관"] = dict_convenient06
 
@@ -227,8 +247,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListLaw07:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient07[convenient] = List
 dict_convenient["법학관"] = dict_convenient07
 
@@ -237,8 +257,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListMain08:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient08[convenient] = List
 dict_convenient["본관"] = dict_convenient08
 
@@ -247,8 +267,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListSocialScience09:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient09[convenient] = List
 dict_convenient["사회과학관"] = dict_convenient09
 
@@ -257,8 +277,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListSanglokwon10:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient10[convenient] = List
 dict_convenient["상록원"] = dict_convenient10
 
@@ -267,8 +287,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListNewEngineering11:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient11[convenient] = List
 dict_convenient["신공학관"] = dict_convenient11
 
@@ -277,8 +297,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListWonheung12:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient12[convenient] = List
 dict_convenient["원흥관"] = dict_convenient12
 
@@ -287,8 +307,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListInformationEngineering13:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient13[convenient] = List
 dict_convenient["정보문화관"] = dict_convenient13
 
@@ -297,8 +317,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListLibrary14:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient14[convenient] = List
 dict_convenient["중앙도서관"] = dict_convenient14
 
@@ -307,8 +327,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListHaklim15:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient15[convenient] = List
 dict_convenient["학림관"] = dict_convenient15
 
@@ -317,8 +337,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListStudent16:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient16[convenient] = List
 dict_convenient["학생회관"] = dict_convenient16
 
@@ -327,8 +347,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListHaksul17:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient17[convenient] = List
 dict_convenient["학술관"] = dict_convenient17
 
@@ -337,8 +357,8 @@ for convenient in ListConvenient:
     List = []
     for b in ListHyehwa18:
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and bc.get(convenient)==True:
-                List.append(bc.get("name"))
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                List += bc.get(convenient)
     dict_convenient18[convenient] = List
 dict_convenient["혜화관"] = dict_convenient18
 
