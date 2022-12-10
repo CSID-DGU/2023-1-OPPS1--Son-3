@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import DropDown from "../components/DropDown";
-import { buildings } from "../lib/mapInfo.js";
-import useDetectClose from "../lib/useDetectClose";
-import MainIcon from "./MainIcon";
+import DropDown from "../DropDown";
+import { buildings } from "../../lib/mapInfo.js";
+import useDetectClose from "../../lib/useDetectClose";
+import MainIcon from "../MainIcon";
 export default function MapHeader({
   setArriveBuilding,
   setDepartBuilding,

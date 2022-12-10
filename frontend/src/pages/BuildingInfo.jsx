@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import MapImg from "../components/MapImg";
 import buildingInfo from "../lib/buildingInfo.js";
 import PinPosition from "../lib/PinPosition";
-import BuildingDetail from "../components/BuildingDetail";
+import BuildingDetail from "../components/BuildingInfo/BuildingDetail";
 import MainIcon from "../components/MainIcon";
 export default function BuildingInfo() {
   const [buildingPosition, setBuildingPosition] = PinPosition([0, 0]);

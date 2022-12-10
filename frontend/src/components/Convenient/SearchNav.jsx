@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import DropDown from "./DropDown";
-import useDetectClose from "../lib/useDetectClose";
-import { convenients, buildings } from "../lib/Data";
-import MainIcon from "./MainIcon";
+import DropDown from "../DropDown";
+import useDetectClose from "../../lib/useDetectClose";
+import { convenients, buildings } from "../../lib/Data";
+import MainIcon from "../MainIcon";
 export default function SerachNav({ handleOnSubmit }) {
   const dropDownRef_conv = useRef(null);
   const dropDownRef_depart = useRef(null);

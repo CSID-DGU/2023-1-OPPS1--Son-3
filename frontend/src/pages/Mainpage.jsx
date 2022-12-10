@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NavBar from "../components/Nav";
+import NavBar from "../components/MainPage/Nav";
 import Footer from "../components/Footer";
 
 const Section = styled.section`
