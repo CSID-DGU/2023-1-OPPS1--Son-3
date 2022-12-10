@@ -155,7 +155,7 @@ for start in dict_key:
                 shortcut.append(sc)
             
             # 대운동장 -> 상록원
-            elif path_data[start][end][i-1]=="상록원" and path_data[start][end][i]=="대운동장":
+            elif path_data[start][end][i-1]=="대운동장" and path_data[start][end][i]=="상록원":
                 sc.append(image_info["상록원2"]["title"])
                 sc.append(image_info["상록원2"]["img"])
                 sc.append(image_info["상록원2"]["info"])
@@ -324,7 +324,7 @@ for start in dict_key:
                 shortcut.append(sc)
             
             # 대운동장 -> 상록원
-            elif path_data[start][end][i-1]=="상록원" and path_data[start][end][i]=="대운동장":
+            elif path_data[start][end][i-1]=="대운동장" and path_data[start][end][i]=="상록원":
                 sc.append(image_info["상록원2"]["title"])
                 sc.append(image_info["상록원2"]["img"])
                 sc.append(image_info["상록원2"]["info"])
