@@ -203,10 +203,10 @@ for start in node_list:
       path_start[end] = dijkstra(graph2, start, end)
     path_all2[start] = path_start
 
-file_path1 = "./frontend/src/path1.json"
+file_path1 = "./frontend/src/lib/path/path1.json"
 with open(file_path1, 'w', encoding='utf-8') as outfile:
     json.dump(path_all1, outfile, ensure_ascii=False, indent=4)
 
-file_path2 = "./frontend/src/path2.json"
+file_path2 = "./frontend/src/lib/path/path2.json"
 with open(file_path2, 'w', encoding='utf-8') as outfile:
     json.dump(path_all2, outfile, ensure_ascii=False, indent=4)
