@@ -43,7 +43,7 @@ const Convenient = () => {
       <Section className="Section">
         <Pins>
           <PinWrapper>
-            <PinName>출발지</PinName>
+            <PinName>출발 건물</PinName>
             <Pin pinSrc={"/markImgs/MapMark.svg"}></Pin>
           </PinWrapper>
           <PinWrapper>
@@ -76,7 +76,8 @@ const Section = styled.section`
   @media screen and (max-width: 600px) {
     header input {
       padding: 1px;
-      width: 4.5rem;
+      width: 6rem;
+      text-align: center;
       height: 30px;
     }
     *:not(footer > *) {
@@ -94,15 +95,20 @@ const Section = styled.section`
     #convenientList {
       margin: 0;
       width: auto;
+      img {
+        width: 50%;
+      }
     }
   }
-
   @media screen and (min-width: 601px) and (max-width: 900px) {
     flex-direction: column;
     height: auto;
     #convenientList {
       margin: 0;
       width: auto;
+      img {
+        width: 40%;
+      }
     }
     *:not(footer > *) {
       font-size: 1.2rem;
