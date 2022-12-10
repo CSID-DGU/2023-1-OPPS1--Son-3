@@ -5,20 +5,15 @@ import MapImg from "../components/MapImg";
 import buildingInfo from "../lib/buildingInfo.js";
 import PinPosition from "../lib/PinPosition";
 import BuildingDetail from "../components/BuildingDetail";
-import { useNavigate } from "react-router-dom";
+import MainIcon from "../components/MainIcon";
 export default function BuildingInfo() {
   const [buildingPosition, setBuildingPosition] = PinPosition([0, 0]);
   const [isDetailPage, setIsDetailPage] = useState(false);
   const [detailPageContent, setDetailPageContent] = useState(null);
-  const navigate = useNavigate();
   return (
     <>
       <Container className="Section">
-        <Icon
-          id="icon"
-          src="/markImgs/Logo.svg"
-          onClick={() => navigate("/mainPage")}
-        ></Icon>
+        <MainIcon />
         <BuildingInfoContainer>
           <div>
             <InfoIcon src="/markImgs/info_icon2.png"></InfoIcon>

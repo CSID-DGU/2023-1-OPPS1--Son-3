@@ -13,7 +13,7 @@ export default function MainIcon() {
   );
 }
 const Icon = styled.img`
-  height: 75px;
+  height: 60px;
   cursor: pointer;
   position: absolute;
   left: 15px;

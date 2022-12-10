@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import DropDown from "./DropDown";
 import useDetectClose from "../lib/useDetectClose";
 import { convenients, buildings } from "../lib/Data";
+import MainIcon from "./MainIcon";
 export default function SerachNav({ handleOnSubmit }) {
-  const navigate = useNavigate();
   const dropDownRef_conv = useRef(null);
   const dropDownRef_depart = useRef(null);
   const [convVal, setconvVal] = useState("");
@@ -14,11 +14,7 @@ export default function SerachNav({ handleOnSubmit }) {
   const [isOpen2, setIsOpen2] = useDetectClose(dropDownRef_depart, false);
   return (
     <Header>
-      <Icon
-        id="icon"
-        src="/markImgs/Logo.svg"
-        onClick={() => navigate("/mainPage")}
-      ></Icon>
+      <MainIcon></MainIcon>
       <Form
         onSubmit={(e) => {
           handleOnSubmit(e);
@@ -108,11 +104,6 @@ const Input = styled.input`
   padding: 10px;
   font-size: 20px;
   border: 2.8px black solid;
-`;
-const Icon = styled.img`
-  height: 100%;
-  padding-top: 10px;
-  cursor: pointer;
 `;
 const DropDownWrapper = styled.div`
   position: relative;
