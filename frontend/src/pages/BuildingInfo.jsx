@@ -29,8 +29,8 @@ export default function BuildingInfo() {
             arrivalPinY={buildingPosition[1]}
           ></MapImg>
           <PageInfo>
-            각 건물을 소개하고, 해당 건물에 해당하는 열람실, 카페, 학사운영실의
-            운영시간, 전화번호를 안내하는 페이지입니다.
+            해당 건물에 해당하는 열람실, 카페, 학사운영실의 운영시간, 전화번호를
+            안내하는 페이지입니다.
           </PageInfo>
         </BuildingInfoContainer>
         <Article>
@@ -45,9 +45,9 @@ export default function BuildingInfo() {
                 return (
                   <Building
                     onClick={() => {
-                      setDetailPageContent(building);
                       if (building.info) {
                         setIsDetailPage(true);
+                        setDetailPageContent(building);
                       }
                     }}
                     onMouseOver={() => {
@@ -86,7 +86,14 @@ const Container = styled.section`
       .content {
         flex-grow: 1;
         height: fit-content;
+        img {
+          width: 3%;
+        }
       }
+    }
+    .detailPage {
+      top: 130px;
+      left: 50%;
     }
     .selected {
       display: none;
@@ -95,12 +102,15 @@ const Container = styled.section`
       font-size: 0.6rem;
     }
   }
-
   @media screen and (min-width: 601px) and (max-width: 900px) {
     flex-direction: column;
     height: auto;
     *:not(footer > *) {
       font-size: 0.9rem;
+    }
+    .detailPage {
+      top: 200px;
+      left: 50%;
     }
     article {
       flex-grow: 1;
@@ -108,6 +118,9 @@ const Container = styled.section`
       .content {
         flex-grow: 1;
         height: fit-content;
+        img {
+          width: 3%;
+        }
       }
     }
   }
@@ -123,7 +136,6 @@ const Div = styled.div`
   display: flex;
   margin-top: 12px;
   flex-direction: column;
-
   .selected {
     background-color: rgb(247, 214, 123);
   }
@@ -137,7 +149,6 @@ const Item = styled.div`
   flex-grow: 1;
   writing-mode: vertical-lr;
   text-align: center;
-
   span {
     display: inline-block;
     padding: 3px;
@@ -159,7 +170,6 @@ const BuildingName = styled.span`
   list-style-type: unset;
   padding: 10px;
   font-size: 1.25rem;
-  cursor: pointer;
 `;
 const BuildingTag = styled.span`
   letter-spacing: 3px;
@@ -178,6 +188,7 @@ const BuildingInfoContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  flex-grow: 1;
 `;
 const InfoIcon = styled.img`
   width: 7%;
@@ -191,13 +202,11 @@ const Building = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
   &:not(:last-child) {
     border-bottom: 0.7px black solid;
   }
   &:hover {
     background-color: rgb(247, 214, 123);
-  }
-  img {
-    height: 35%;
   }
 `;
