@@ -162,7 +162,7 @@ for start in dict_key:
                 shortcut.append(sc)
 
             # 체육관 <-> W
-            elif (path_data[start][end][i-1]=="체육관" and path_data[start][end][i]=="M") or (path_data[start][end][i-1]=="M" and path_data[start][end][i]=="체육관"):
+            elif (path_data[start][end][i-1]=="체육관" and path_data[start][end][i]=="W") or (path_data[start][end][i-1]=="W" and path_data[start][end][i]=="체육관"):
                 sc.append(image_info["학림관"]["title"])
                 sc.append(image_info["학림관"]["img"])
                 sc.append(image_info["학림관"]["info"])
@@ -331,7 +331,7 @@ for start in dict_key:
                 shortcut.append(sc)
 
             # 체육관 <-> W
-            elif (path_data[start][end][i-1]=="체육관" and path_data[start][end][i]=="M") or (path_data[start][end][i-1]=="M" and path_data[start][end][i]=="체육관"):
+            elif (path_data[start][end][i-1]=="체육관" and path_data[start][end][i]=="W") or (path_data[start][end][i-1]=="W" and path_data[start][end][i]=="체육관"):
                 sc.append(image_info["학림관"]["title"])
                 sc.append(image_info["학림관"]["img"])
                 sc.append(image_info["학림관"]["info"])
