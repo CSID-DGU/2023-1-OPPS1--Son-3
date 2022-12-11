@@ -254,7 +254,7 @@ const buildingInfo = [
     ]),
   },
 
-  { name: "혜화문"},
+  { name: "혜화문" },
   { name: "혜화별관" },
   { name: "후문" },
 ];
