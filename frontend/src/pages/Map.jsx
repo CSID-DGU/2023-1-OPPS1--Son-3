@@ -83,7 +83,7 @@ const Section = styled.section`
   display: flex;
   @media screen and (max-width: 600px) {
     header input {
-      padding: 1px;
+      padding: 0px;
       width: 6rem;
       text-align: center;
       height: 30px;
@@ -95,10 +95,20 @@ const Section = styled.section`
       width: 3rem;
       height: 1.5rem;
     }
+    form {
+      margin: 0.625rem;
+    }
+    form > div {
+      padding: 5px;
+    }
     flex-direction: column;
     height: auto;
     #icon {
       display: none;
+    }
+    & #canvas {
+      width: 370px;
+      height: 254.24px;
     }
     #DirectionList {
       width: 100%;
@@ -106,6 +116,9 @@ const Section = styled.section`
       img {
         width: 50%;
       }
+    }
+    .smallerFont {
+      font-size: 10px;
     }
   }
   @media screen and (min-width: 601px) and (max-width: 900px) {
@@ -139,6 +152,13 @@ const Section = styled.section`
     }
     #icon {
       display: none;
+    }
+    & #canvas {
+      width: 700px;
+      height: 481px;
+    }
+    .smallerFont {
+      font-size: 11px;
     }
   }
   @media screen and (max-width: 1200px) and(min-width: 800px) {

@@ -17,7 +17,7 @@ export default function SlopeIcon({ setIsSlope, isSlope, handleOnClick }) {
       <Icon
         src={isSlope ? "/markImgs/withoutSlope.png" : "/markImgs/Slope.png"} //경사 반영에 따른 이미지 변환
       />
-      <SlopeIconInfo>
+      <SlopeIconInfo className="smallerFont">
         {
           isSlope
             ? "경사 미반영 경로 보기"
@@ -49,4 +49,7 @@ const SlopeIconWrapper = styled.div`
 const SlopeIconInfo = styled.span`
   flex: none;
   margin-top: 10%;
+  text-align: center;
+  flex: none;
+  font-size: 14px;
 `;

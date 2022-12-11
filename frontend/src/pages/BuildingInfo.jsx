@@ -96,6 +96,9 @@ const Container = styled.section`
     *:not(footer > *) {
       font-size: 0.6rem;
     }
+    #icon {
+      display: none;
+    }
   }
   @media screen and (min-width: 601px) and (max-width: 900px) {
     flex-direction: column;

@@ -56,7 +56,7 @@ const Canvas = ({
 
   return (
     <div>
-      <StyledCanvas ref={canvasRef}></StyledCanvas>
+      <StyledCanvas ref={canvasRef} id="canvas"></StyledCanvas>
     </div>
   );
 };
