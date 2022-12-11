@@ -26,7 +26,7 @@
 
 
 #### ✤ 화면 설계도
-<img width="378" alt="스크린샷 2022-12-11 오후 12 39 03" src="https://user-images.githubusercontent.com/101785677/206885204-504e692e-00bf-4782-9059-a48d7e32de11.png">
+![image](https://user-images.githubusercontent.com/114053036/206920523-3b7f064e-c4c2-45ee-af04-eb23a0ee1f00.png)
 
 #### ✤ 파일 구조
 
