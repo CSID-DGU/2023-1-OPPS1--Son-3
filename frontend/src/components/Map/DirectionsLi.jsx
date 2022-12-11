@@ -6,7 +6,7 @@ export default function DirectionLi({
   appliedShortcut,
 }) {
   return (
-    <MapInfoListContainer>
+    <MapInfoListContainer id="DirectionList">
       <MapInfoList>
         {submittedDepart && submittedArrive
           ? appliedShortcut.current[submittedDepart][submittedArrive].map(

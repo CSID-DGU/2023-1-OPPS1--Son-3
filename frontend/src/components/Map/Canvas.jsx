@@ -17,8 +17,6 @@ const Canvas = ({
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
-    canvas.width = canvasWidth;
-    canvas.height = canvasHeight;
     contextRef.current = context;
     setCtx(context);
   }, [canvasWidth, canvasHeight]);
@@ -56,7 +54,7 @@ const Canvas = ({
 
   return (
     <div>
-      <StyledCanvas ref={canvasRef}></StyledCanvas>
+      <StyledCanvas id="canvas" ref={canvasRef}></StyledCanvas>
     </div>
   );
 };
@@ -64,6 +62,8 @@ const StyledCanvas = styled.canvas`
   background-image: url("/backgroundImgs/campus_map.png");
   background-repeat: no-repeat;
   background-size: cover;
+  width: 1000px;
+  height: 687.14px;
 `;
 
 export default Canvas;

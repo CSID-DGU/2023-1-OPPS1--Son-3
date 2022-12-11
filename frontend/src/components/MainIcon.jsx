@@ -6,6 +6,7 @@ export default function MainIcon() {
   const navigate = useNavigate();
   return (
     <Icon
+      id="icon"
       src="/markImgs/Logo.svg"
       onClick={() => {
         navigate("/mainPage"); //클릭 시, 메인 페이지로 이동

@@ -78,6 +78,84 @@ const Map = () => {
 export default Map;
 const Section = styled.section`
   display: flex;
+  @media screen and (max-width: 600px) {
+    header input {
+      padding: 1px;
+      width: 6rem;
+      text-align: center;
+      height: 30px;
+    }
+    *:not(footer > *) {
+      font-size: 0.8rem;
+    }
+    button {
+      width: 3rem;
+      height: 1.5rem;
+    }
+    flex-direction: column;
+    height: auto;
+    #icon {
+      display: none;
+    }
+    #DirectionList {
+      width: 100%;
+      margin: 0;
+      img {
+        width: 50%;
+      }
+    }
+  }
+  @media screen and (min-width: 601px) and (max-width: 900px) {
+    flex-direction: column;
+    height: auto;
+    #DirectionList {
+      width: 100%;
+      margin: 0;
+      width: auto;
+      #icon {
+        display: none;
+      }
+      img {
+        width: 40%;
+      }
+    }
+    *:not(footer > *) {
+      font-size: 1.2rem;
+    }
+    header > form {
+      flex-shrink: 1;
+      input {
+        padding: 2px;
+        width: 8rem;
+        height: 40px;
+      }
+    }
+    button {
+      width: 4rem;
+      height: 2rem;
+    }
+    #icon {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1200px) and(min-width: 800px) {
+    flex-direction: column;
+    height: auto;
+    #convenientList {
+      margin: 0;
+      width: auto;
+    }
+    header > form {
+      flex-shrink: 1;
+      input {
+        width: 140px;
+        height: 50px;
+      }
+    }
+    *:not(footer > *) {
+      font-size: 1.5rem;
+    }
+  }
 `;
 const MapContentContainer = styled.div`
   display: flex;
