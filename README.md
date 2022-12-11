@@ -9,7 +9,11 @@
 
 #
 
-<img src="https://img.shields.io/badge/License : MIT -E8E8E8?style=flat&TypeScript=white"> <img src="https://img.shields.io/badge/React 18.2.0 -61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/Python 3.8.8 -3776AB?style=flat&logo=Python&logoColor=white"/> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"/>  
+<img src="https://img.shields.io/badge/License : MIT -E8E8E8?style=flat&TypeScript=white"> <img src="https://img.shields.io/badge/macOS-000000?style=flat&logo=macos&logoColor=white"/>  <img src="https://img.shields.io/badge/Window-0078D6?style=flat&logo=windows&logoColor=white"/>  
+
+<img src="https://img.shields.io/badge/VScode -007ACC?style=flat&logo=Visual Studio Code&logoColor=white"/> <img src="https://img.shields.io/badge/React 18.2.0 -61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/Python 3.8.8 -3776AB?style=flat&logo=Python&logoColor=white"/>  <img src="https://img.shields.io/badge/Docker 20.10.21-2496ED?style=flat&logo=Docker&logoColor=white"/> 
+
+
 
 
 #### ✤ 프로젝트 목표 : 동국대 교내 시설의 상세정보를 담은 웹 개발
@@ -60,6 +64,8 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 ### 교내 편의시설 탭
 ###### 출발 건물 및 편의시설(무인발급기, 복사기등)을 입력시, 건물에서 부터 가까운 순서대로 리스트 출력 
 ![4v0ShgyqKJQ1V6Td2ash3HMj_bfou4gSDbCw8lBgueW2omJUZ-tkp9k6Kmaul0iE8mFhT5_7CUUwnWYLOKmgSKL_Lnl9N_vjwnwjqZ2T7PJ4iBBWyD94nZPqvZUX](https://user-images.githubusercontent.com/101785677/206397705-0860bf7c-7cc1-45c2-b1d3-76f55f09c931.png)
+
+###### ❃ 길찾기 버튼 누를시 다음과 같이 화면 전환
 
 #  
 
