@@ -26,7 +26,8 @@
 
 
 #### ✤ 화면 설계도
-<img width="378" alt="스크린샷 2022-12-11 오후 12 39 03" src="https://user-images.githubusercontent.com/101785677/206885204-504e692e-00bf-4782-9059-a48d7e32de11.png">
+![image](https://user-images.githubusercontent.com/114053036/206920731-2c794346-3a04-4849-ad0f-a9cf6ef14b4c.png)
+
 
 #### ✤ 파일 구조
 
@@ -41,6 +42,9 @@
 |src/components/Map|교내 경로 페이지를 구성하는 데 활용될 컴포넌트들|
 |src/components/MainPage|메인 페이지(홈)를 구성하는 데 활용될 컴포넌트들|
 |src/components/asset|컴포넌트로 만들어 사용할 .svg 파일|
+|backend/closeBuilding.py|출발 건물로부터 선택한 편의시설을 가까운 순으로 정렬하는 알고리즘|
+|backend/find_path.py|출발지에서 도착지까지의 경로 노드를 출력하는 알고리즘|
+|backend/find_shortcut.py|출발지에서 도착지까지의 지름길 정보를 출력하는 |
 
 
 
