@@ -5,7 +5,7 @@
 
 
 #### Team : You're webcome
-#### Team Leader : [문서연](https://github.com/seoyeun0106)(프론트엔드) , Team Member : [박수빈](https://github.com/P-subin) : 백엔드, [이지현](https://github.com/wlgus5704) : 서버
+#### Team Leader : [문서연](https://github.com/seoyeun0106)(프론트엔드) , Team Member : [박수빈](https://github.com/P-subin)(백엔드) , [이지현](https://github.com/wlgus5704)(서버, 웹디자인)
 
 #
 
