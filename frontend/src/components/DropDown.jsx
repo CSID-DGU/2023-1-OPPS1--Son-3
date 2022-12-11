@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 
-const DropDown = ({ isOpen, innerRef, setconvVal, data }) => {
+const DropDown = ({ isOpen, innerRef, setVal, data, top }) => {
   const handleInput = (e) => {
     //왜 value로는 안 먹는지.. ㅠㅠ
-    setconvVal(e.target.textContent);
+    if (setVal) setVal(e.target.textContent);
   };
   return (
-    <Dropdown ref={innerRef} isOpen={isOpen}>
+    <Dropdown ref={innerRef} isOpen={isOpen} top={top}>
       {data.map((item) => {
         return (
           <DropdownItem
@@ -24,10 +24,12 @@ const DropDown = ({ isOpen, innerRef, setconvVal, data }) => {
 const Dropdown = styled.ul`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  max-height: 60vh;
   position: absolute;
   width: 100%;
-  top: 23px;
+  top: ${(props) => `${props.top}px`};
   padding: 0;
   background-color: white;
   border: 2.5px solid black;
@@ -44,9 +46,11 @@ const Dropdown = styled.ul`
 `;
 const DropdownItem = styled.li`
   list-style: none;
+  flex: none;
   padding: 12px;
   &:hover {
     background-color: rgb(243, 202, 89);
   }
 `;
+
 export default DropDown;

@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   .Section{
     background-size: cover;
   background-repeat: no-repeat;
-  height: 820px;
+    height: 100%;
   width: 100vw;
   }
   *:not(footer):not(a){

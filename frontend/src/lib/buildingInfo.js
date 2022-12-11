@@ -15,7 +15,12 @@ const buildingInfo = [
     ]),
   },
 
+  { name: "계산관A" },
+  { name: "계산관B" },
+  { name: "고시반 기숙사" },
   { name: "과학관" },
+  { name: "기숙사" },
+  { name: "금강관" },
 
   {
     img: "/건물정보 이미지/다향관.jpg",
@@ -27,6 +32,9 @@ const buildingInfo = [
     ]),
   },
 
+  { name: "대운동장" },
+  { name: "동국백년비" },
+
   {
     img: "/건물정보 이미지/만해관.jpg",
     name: "만해관",
@@ -37,6 +45,9 @@ const buildingInfo = [
       ["운영시간", "학기중 09:00~17:00, 방학중 10:00~17:00"],
     ]),
   },
+
+  { name: "만해광장" },
+  { name: "만해시비" },
 
   {
     img: "/건물정보 이미지/명진관.jpg",
@@ -65,6 +76,9 @@ const buildingInfo = [
     ]),
   },
 
+  { name: "박물관" },
+  { name: "반야관" },
+
   {
     img: "/건물정보 이미지/법학관.jpg",
     name: "법학관",
@@ -76,6 +90,9 @@ const buildingInfo = [
       ["열람실", "법학/만해관 열람실 06:00-24:00 (학기중, 방학중 동일)"],
     ]),
   },
+
+  { name: "법학생활관" },
+  { name: "보현 보살코끼리상" },
 
   {
     img: "/건물정보 이미지/본관.jpg",
@@ -125,6 +142,9 @@ const buildingInfo = [
       ],
     ]),
   },
+
+  { name: "생활협동조합" },
+
   {
     img: "/건물정보 이미지/신공학관.jpg",
     name: "신공학관",
@@ -159,6 +179,10 @@ const buildingInfo = [
     ]),
   },
 
+  { name: "원흥별관" },
+  { name: "정각원" },
+  { name: "정문" },
+
   {
     img: "/건물정보 이미지/정보문화관.jpg",
     name: "정보문화관",
@@ -180,6 +204,9 @@ const buildingInfo = [
       ],
     ]),
   },
+
+  { name: "충무로 영상상센터" },
+  { name: "팔정도" },
 
   {
     img: "/건물정보 이미지/학림관.jpg",
@@ -226,5 +253,9 @@ const buildingInfo = [
       ["운영시간2", "학기중 09:00-21:30 / 방학중 10:00-17:00"],
     ]),
   },
+
+  { name: "혜화문" },
+  { name: "혜화별관" },
+  { name: "후문" },
 ];
 export default buildingInfo;

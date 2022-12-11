@@ -5,12 +5,14 @@ import MapImg from "../components/MapImg";
 import { conv } from "../lib/convenient";
 import convImages from "../lib/convImages";
 import PinPosition from "../lib/PinPosition";
-import CloseConvList from "../components/CloseConvs";
-import SerachNav from "../components/SearchNav";
+import CloseConvList from "../components/Convenient/CloseConvs";
+import SerachNav from "../components/Convenient/SearchNav";
 const Convenient = () => {
   const [arrivalData, setArrivalData] = useState([]);
   const [arrivalPinPosition, setArrivalPinPosition] = PinPosition([0, 0]);
   const [departurePinPosition, setdeparturePinPosition] = PinPosition([0, 0]);
+  const [departure, setDeparture] = useState("");
+  const [arrival, setArrival] = useState("");
   const showClose = (closeBuildings, arrival) => {
     const showDataArr = [];
     closeBuildings.map((building) => {
@@ -36,6 +38,8 @@ const Convenient = () => {
     //목표 건물
     let newDestination = destinations[0].split(" ")[0];
     setArrivalPinPosition(newDestination);
+    setArrival(newDestination);
+    setDeparture(departures);
   }
 
   return (
@@ -43,7 +47,7 @@ const Convenient = () => {
       <Section className="Section">
         <Pins>
           <PinWrapper>
-            <PinName>출발지</PinName>
+            <PinName>출발 건물</PinName>
             <Pin pinSrc={"/markImgs/MapMark.svg"}></Pin>
           </PinWrapper>
           <PinWrapper>
@@ -61,7 +65,11 @@ const Convenient = () => {
             convenient={true}
           ></MapImg>
         </SearchContainer>
-        <CloseConvList arrivalData={arrivalData}></CloseConvList>
+        <CloseConvList
+          arrivalData={arrivalData}
+          arrival={arrival}
+          departure={departure}
+        ></CloseConvList>
       </Section>
       <Footer></Footer>
     </>
@@ -76,7 +84,8 @@ const Section = styled.section`
   @media screen and (max-width: 600px) {
     header input {
       padding: 1px;
-      width: 4.5rem;
+      width: 6rem;
+      text-align: center;
       height: 30px;
     }
     *:not(footer > *) {
@@ -94,15 +103,20 @@ const Section = styled.section`
     #convenientList {
       margin: 0;
       width: auto;
+      img {
+        width: 50%;
+      }
     }
   }
-
   @media screen and (min-width: 601px) and (max-width: 900px) {
     flex-direction: column;
     height: auto;
     #convenientList {
       margin: 0;
       width: auto;
+      img {
+        width: 40%;
+      }
     }
     *:not(footer > *) {
       font-size: 1.2rem;

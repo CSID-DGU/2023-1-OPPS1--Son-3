@@ -2,7 +2,7 @@
 ### Main
 ![Main layout(Font modak)](https://user-images.githubusercontent.com/101785677/200844411-a0bdb617-4f04-44e5-82d2-0fe51a56c262.png)
 
-### Convenient facilities 
+### Convenient  
 ![Convenient facilities page layout](https://user-images.githubusercontent.com/101785677/200844482-3779093c-f65d-408a-9378-890d50d1afbb.png)
 
 ### Building Information
@@ -15,10 +15,6 @@
 ![Asset 30](https://user-images.githubusercontent.com/101785677/204771243-04fd3ecf-b8c5-4050-a487-4e7655fa8608.png)
 ![Asset 32](https://user-images.githubusercontent.com/101785677/204847754-5a403a9d-675b-45b5-a384-92f9b8904e8f.png)
 
-
-
 ### Map
+![Asset 34](https://user-images.githubusercontent.com/101785677/206680360-2be32be8-ac19-4bea-b9db-7e7fe9af740b.png)
 
-##### <수정전>
-![Map layout](https://user-images.githubusercontent.com/101785677/200844438-e0a2acf5-c115-4cb9-b83d-eef6aebb0724.png)
-![Map page2 layout](https://user-images.githubusercontent.com/101785677/200844454-ab5acff2-76eb-4e79-912d-29132503eeb3.png)
