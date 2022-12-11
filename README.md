@@ -32,9 +32,17 @@
 
 |폴더|내용|
 |------|---|
-|테스트1|테스트2|
-|테스트1|테스트2|
-|테스트1|테스트2|
+|public/|이미지, 아이콘과 같은 자료 포함 폴더|
+|src/pages|출력될 페이지|
+|src/lib|사용되는 데이터 및 라우터, 커스텀 훅등 import 해서 활용할 폴더|
+|src/components|page를 구성하는 데 활용될 컴포넌트들 다른 폴더에 들어있지 않으면 공용으로 사용되는 컴포넌트를 의미|
+|src/components/BuildingInfo|건물 정보 페이지를 구성하는 데 활용될 컴포넌트들|
+|src/components/Convenient|편의시설 검색 페이지를 구성하는 데 활용될 컴포넌트들|
+|src/components/Map|교내 경로 페이지를 구성하는 데 활용될 컴포넌트들|
+|src/components/MainPage|메인 페이지(홈)를 구성하는 데 활용될 컴포넌트들|
+|src/components/asset|컴포넌트로 만들어 사용할 .svg 파일|
+
+
 
 
 
@@ -65,7 +73,10 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 ###### 출발 건물 및 편의시설(무인발급기, 복사기등)을 입력시, 건물에서 부터 가까운 순서대로 리스트 출력 
 ![4v0ShgyqKJQ1V6Td2ash3HMj_bfou4gSDbCw8lBgueW2omJUZ-tkp9k6Kmaul0iE8mFhT5_7CUUwnWYLOKmgSKL_Lnl9N_vjwnwjqZ2T7PJ4iBBWyD94nZPqvZUX](https://user-images.githubusercontent.com/101785677/206397705-0860bf7c-7cc1-45c2-b1d3-76f55f09c931.png)
 
-###### ❃ 길찾기 버튼 누를시 다음과 같이 화면 전환
+###### ❃ 길찾기 버튼 누를시 다음과 같이 화면 전환, 검색 버튼을 누르거나 엔터 누를 시 경로 안내
+
+<img width="1440" alt="스크린샷 2022-12-11 오후 8 57 44" src="https://user-images.githubusercontent.com/92535912/206902666-6ea9c531-46f6-4465-91c1-bfcbf0426629.png">
+
 
 #  
 
