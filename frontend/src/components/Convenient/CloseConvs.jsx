@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Map_Icon } from "../../asset/Map_Icon.svg";
 import { Link } from "react-router-dom";
-export default function CloseConvList({ arrivalData }) {
+export default function CloseConvList({ arrivalData, arrival, departure }) {
   return (
     <Article id="convenientList">
       <h1>가까운 편의시설</h1>
@@ -17,7 +17,7 @@ export default function CloseConvList({ arrivalData }) {
         })}
       </ConvList>
       <Map_Icon_Container>
-        <Link to={"/map"}>
+        <Link to={"/map"} state={{ departure: departure, arrival: arrival }}>
           <Map_Icon width="50" height="50"></Map_Icon>
           <Map_Span>길찾기</Map_Span>
         </Link>

@@ -4,13 +4,25 @@ import DropDown from "../DropDown";
 import { buildings } from "../../lib/mapInfo.js";
 import useDetectClose from "../../lib/useDetectClose";
 import MainIcon from "../MainIcon";
+import { useEffect } from "react";
 export default function MapHeader({
   setArriveBuilding,
   setDepartBuilding,
   arriveBuilding,
   departBuilding,
   handleOnSubmit,
+  targetBuildings,
 }) {
+  //넘어온 데이터가 있을 때 받아오기
+  useEffect(() => {
+    if (targetBuildings) {
+      setArriveBuilding(targetBuildings.arrival);
+      setDepartBuilding(targetBuildings.departure);
+    }
+  }, [targetBuildings]);
+  //넘어온 데이터가 있을 때 value값 생성
+  const departure = targetBuildings ? targetBuildings.departure : "";
+  const arrival = targetBuildings ? targetBuildings.arrival : "";
   const departInput = useRef(null);
   const arriveInput = useRef(null);
   const [isOpen, setIsOpen] = useDetectClose(departInput, false);
@@ -34,14 +46,14 @@ export default function MapHeader({
               onClick={() => {
                 setIsOpen(!isOpen);
               }}
-              defaultValue={departBuilding}
+              value={departBuilding ? departBuilding : departure}
             />
             <DropDown
               data={buildings}
               innerRef={departInput}
               isOpen={isOpen}
-              setVal={setDepartBuilding}
               top={12}
+              setVal={setDepartBuilding}
             ></DropDown>
           </DropDownWrapper>
         </Div>
@@ -56,12 +68,12 @@ export default function MapHeader({
               onClick={() => {
                 setIsOpen2(!isOpen2);
               }}
-              defaultValue={arriveBuilding}
+              value={arriveBuilding ? arriveBuilding : arrival}
             />
             <DropDown
+              setVal={setArriveBuilding}
               data={buildings}
               innerRef={arriveInput}
-              setVal={setArriveBuilding}
               isOpen={isOpen2}
               top={12}
             ></DropDown>

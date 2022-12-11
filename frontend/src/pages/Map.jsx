@@ -10,6 +10,7 @@ import SlopShortCut from "../lib/shortcut/shortcut2.json";
 import DirectionLi from "../components/Map/DirectionsLi";
 import SlopeIcon from "../components/Map/SlopeIcon";
 import MapHeader from "../components/Map/MapHeader";
+import { useLocation } from "react-router-dom";
 const Map = () => {
   const [isStart, setIsStart] = useState(false);
   const [departBuilding, setDepartBuilding] = useState("");
@@ -19,6 +20,7 @@ const Map = () => {
   const appliedShortcut = useRef(null);
   const [submittedDepart, setSubmittedDepart] = useState(null);
   const [submittedArrive, setSubmittedArrive] = useState(null);
+  const targetBuildings = useLocation();
   const setPinPositions = () => {
     const arr = [];
     const data = isSlope ? pathSlopeData : pathData;
@@ -45,6 +47,7 @@ const Map = () => {
       <Section className="Section">
         <MapContentContainer>
           <MapHeader
+            targetBuildings={targetBuildings.state}
             arriveBuilding={arriveBuilding}
             setArriveBuilding={setArriveBuilding}
             departBuilding={departBuilding}

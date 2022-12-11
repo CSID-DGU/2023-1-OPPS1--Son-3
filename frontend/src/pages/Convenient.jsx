@@ -11,6 +11,8 @@ const Convenient = () => {
   const [arrivalData, setArrivalData] = useState([]);
   const [arrivalPinPosition, setArrivalPinPosition] = PinPosition([0, 0]);
   const [departurePinPosition, setdeparturePinPosition] = PinPosition([0, 0]);
+  const [departure, setDeparture] = useState("");
+  const [arrival, setArrival] = useState("");
   const showClose = (closeBuildings, arrival) => {
     const showDataArr = [];
     closeBuildings.map((building) => {
@@ -36,6 +38,8 @@ const Convenient = () => {
     //목표 건물
     let newDestination = destinations[0].split(" ")[0];
     setArrivalPinPosition(newDestination);
+    setArrival(newDestination);
+    setDeparture(departures);
   }
 
   return (
@@ -61,7 +65,11 @@ const Convenient = () => {
             convenient={true}
           ></MapImg>
         </SearchContainer>
-        <CloseConvList arrivalData={arrivalData}></CloseConvList>
+        <CloseConvList
+          arrivalData={arrivalData}
+          arrival={arrival}
+          departure={departure}
+        ></CloseConvList>
       </Section>
       <Footer></Footer>
     </>
