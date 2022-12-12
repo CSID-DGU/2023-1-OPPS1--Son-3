@@ -2,7 +2,12 @@ import React from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 import styled from "styled-components";
-export default function SlopeIcon({ setIsSlope, isSlope, handleOnClick }) {
+export default function SlopeIcon({
+  setIsSlope,
+  isSlope,
+  handleOnClick,
+  appliedShortcut,
+}) {
   const clicked = useRef(); //반영 안 했을 때를 위한 변수 선언
   useEffect(() => {
     if (clicked.current) handleOnClick(); //경사 버튼이 눌렸을 경우
@@ -10,6 +15,7 @@ export default function SlopeIcon({ setIsSlope, isSlope, handleOnClick }) {
   return (
     <SlopeIconWrapper
       onClick={(e) => {
+        if (appliedShortcut.current === null) return;
         clicked.current = true; //경사 버튼 눌림
         setIsSlope(!isSlope); //경사 반영/미 반영 으로 변환
       }}

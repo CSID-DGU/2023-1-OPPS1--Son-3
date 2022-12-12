@@ -66,6 +66,7 @@ const Map = () => {
             handleOnClick={handleOnClick}
             setIsSlope={setIsSlope}
             isSlope={isSlope}
+            appliedShortcut={appliedShortcut}
           />
         </MapContentContainer>
         <DirectionLi
