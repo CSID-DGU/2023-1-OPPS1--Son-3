@@ -54,6 +54,11 @@ const Map = () => {
             setDepartBuilding={setDepartBuilding}
             handleOnSubmit={handleOnSubmit}
           />
+          <h3>
+            현재 경사
+            <span>{isSlope ? " 반영" : " 미반영"} </span>
+            경로입니다.
+          </h3>
           <Canvas
             isStart={isStart}
             nodePositions={nodes}
