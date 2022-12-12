@@ -11,7 +11,9 @@
 
 <img src="https://img.shields.io/badge/License : MIT -E8E8E8?style=flat&TypeScript=white"> <img src="https://img.shields.io/badge/macOS-000000?style=flat&logo=macos&logoColor=white"/>  <img src="https://img.shields.io/badge/Window-0078D6?style=flat&logo=windows&logoColor=white"/>  
 
-<img src="https://img.shields.io/badge/VScode -007ACC?style=flat&logo=Visual Studio Code&logoColor=white"/> <img src="https://img.shields.io/badge/React 18.2.0 -61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/Python 3.8.8 -3776AB?style=flat&logo=Python&logoColor=white"/>  <img src="https://img.shields.io/badge/Docker 20.10.21-2496ED?style=flat&logo=Docker&logoColor=white"/> 
+<img src="https://img.shields.io/badge/VScode -007ACC?style=flat&logo=Visual Studio Code&logoColor=white"/> <img src="https://img.shields.io/badge/React 18.2.0 -61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/styled-components-2496ED?style=flat&logo=styled-components&logoColor=white"/>  <img src="https://img.shields.io/badge/Python 3.8.8 -3776AB?style=flat&logo=Python&logoColor=white"/>  <img src="https://img.shields.io/badge/Docker 20.10.21-2496ED?style=flat&logo=Docker&logoColor=white"/> 
+
+
 
 
 
