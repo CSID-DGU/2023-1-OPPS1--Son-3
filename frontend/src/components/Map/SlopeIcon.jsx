@@ -45,11 +45,11 @@ const Icon = styled.img`
 const SlopeIconWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  bottom: 4%;
+  bottom: 8%;
   position: absolute;
   align-items: center;
   right: 4%;
-  width: 12%;
+  width: 13%;
   cursor: pointer;
 `;
 const SlopeIconInfo = styled.span`

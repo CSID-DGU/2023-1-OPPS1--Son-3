@@ -61,7 +61,10 @@ const Map = () => {
             canvasHeight={687.14}
             color={isSlope ? "blue" : "red"}
           />
-          <Span>교내 경로를 알려주는 페이지입니다.</Span>
+          <Span>
+            교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 반영 및
+            미반영 경로를 볼 수 있습니다
+          </Span>
           <SlopeIcon
             handleOnClick={handleOnClick}
             setIsSlope={setIsSlope}
@@ -137,7 +140,7 @@ const Section = styled.section`
       }
     }
     *:not(footer > *) {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
     }
     header > form {
       flex-shrink: 1;
@@ -189,7 +192,7 @@ const MapContentContainer = styled.div`
   position: relative;
 `;
 const Span = styled.span`
-  font-size: 25px;
+  font-size: 17px;
   display: inline-block;
   margin: 10px;
   flex-shrink: 1;
