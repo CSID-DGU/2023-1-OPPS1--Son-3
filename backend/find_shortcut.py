@@ -1,3 +1,4 @@
+# 지도만 이용해서 알 수 없는 지름길 정보(제목, 이미지 주소, 설명)을 딕셔너리로 정리
 image_info = {"만해관1" : {"title":"만해관 문", "img" : "/건물경로 이미지/만해관_문.jpg", "info" : "팔정도 출발기준 : 법학관에서 정각원 방향으로 가는 중간위치에 만해관 쪽문 있음"},
     "만해관2" : {"title":"만해관 문", "img" : "/건물경로 이미지/만해관_문.jpg", "info" : "법학관과 만해관은 연결되어 있음"},
     "원흥관11" : {"title" : "원흥관 엘리베이터와 연결된 계단", "img" : "/건물경로 이미지/원흥관_엘베_계단.jpg", "info" : "원흥관 내부에서 건물안으로 쭉 걸어오면 계단있음"},
@@ -23,6 +24,7 @@ image_info = {"만해관1" : {"title":"만해관 문", "img" : "/건물경로 �
 
 import json
 
+# find_path로 정리한 경사를 반영하지 않은 그래프 경로 불러오기
 with open("./frontend/src/lib/path/path1.json", "r", encoding='UTF8') as f:
     path_data = json.load(f)
 
@@ -188,12 +190,14 @@ for start in dict_key:
         shortcuts[end] = shortcut
     shortcut_all[start] = shortcuts
 
+# 경사를 반영하지 않은 그래프의 지름길 정보를 shortcut1.json 으로 저장
 file_path1 = "./frontend/src/lib/shortcut/shortcut1.json"
 with open(file_path1, 'w', encoding='utf-8') as outfile:
     json.dump(shortcut_all, outfile, ensure_ascii=False, indent=4)
 
 
 
+# find_path로 정리한 경사를 반영한 그래프 경로 불러오기
 with open("./frontend/src/lib/path/path2.json", "r", encoding='UTF8') as f:
     path_data = json.load(f)
 
@@ -357,6 +361,27 @@ for start in dict_key:
         shortcuts[end] = shortcut
     shortcut_all2[start] = shortcuts
 
+# 경사를 반영한 그래프의 지름길 정보를 shortcut2.json 으로 저장
 file_path2 = "./frontend/src/lib/shortcut/shortcut2.json"
 with open(file_path2, 'w', encoding='utf-8') as outfile:
     json.dump(shortcut_all2, outfile, ensure_ascii=False, indent=4)
+
+'''
+출력형태
+{
+    출발지1: {
+        도착지1: [
+            [지름길 제목11, 지름길 사진11, 지름길 설명11],
+            [지름길 제목12, 지름길 사진12, 지름길 설명12],
+            ...
+        ],
+        도착지2: [
+            [지름길 제목21, 지름길 사진21, 지름길 설명21],
+            [지름길 제목22, 지름길 사진22, 지름길 설명22],
+            ...
+        ],
+        ...
+    },
+    ...
+}
+'''

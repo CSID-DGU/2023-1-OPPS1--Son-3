@@ -84,6 +84,7 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 <img width="1440" alt="스크린샷 2022-12-11 오후 8 57 44" src="https://user-images.githubusercontent.com/92535912/206902666-6ea9c531-46f6-4465-91c1-bfcbf0426629.png">
 
 
+
 #  
 
 ### 교내 건물 안내 탭
@@ -105,8 +106,66 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 
 #  
 
+### 알고리즘
+
+#### ✤ 다익스트라 알고리즘
+
+##### 최소 힙으로 구성된 우선순위 큐를 이용해 다익스트라 알고리즘 구현
+
+![동국대 지도 경로 (각 경로 간의 거리)](https://user-images.githubusercontent.com/114053036/207216776-4b5e2154-3751-40e6-8eec-3df912d2d6cc.jpg)
+
+
+##### ❃ 노드 = 건물 및 길목 (건물의 노드는 건물명으로, 길목의 노드는 알파벳으로 명명)
+##### ❃ 간선 = 길 (지름길 포함)
+##### ❃ 가중치 = 노드와 노드 사이 직선거리
+<br/><br/>
+
+
+#### ✤ 편의시설 정렬 알고리즘 : /backend/closeBuilding.py
+
+![image](https://user-images.githubusercontent.com/114053036/207217205-69646c9b-8213-401c-b377-3b1a7f572a6b.png)
+
+##### ❃ 각 건물의 편의시설 정보를 딕셔너리 형식으로 구성
+##### ❃ 새로운 편의시설 추가 및 기존 편의시설 삭제 시 위 딕셔너리만 수정 후 코드 실행
+
+![image](https://user-images.githubusercontent.com/114053036/207218670-44f84f69-15e7-4eee-8c45-d3156ea365cd.png)
+
+##### ❃ 다익스트라 알고리즘으로 건물들을 가까운 순으로 정렬
+##### ❃ 정렬된 건물 순으로 편의시설 나열
+##### ❃ /frontend/src/convenient.json 파일로 저장
+<br/><br/>
+
+
+#### ✤ 경로 보기 알고리즘 : /backend/find_path.py
+
+![image](https://user-images.githubusercontent.com/114053036/207219587-aa2db079-23ad-4b4b-933e-5e4f05f19858.png)
+##### ❃ 왼쪽 : 경사 반영 X 그래프 (가중치 = 노드 간 직선 거리)
+##### ❃ 오른쪽 : 경사 반영 O 그래프 (가중치 = 노드 간 직선 거리 * 경사도)
+
+![image](https://user-images.githubusercontent.com/114053036/207220053-ded24e31-e942-4eae-8e9f-a3134e8e8c84.png)
+##### ❃ 일부 건물에 대해 경사 반영 X 그래프와 경사 반영 O 그래프의 결과가 다름
+##### ❃ 왼쪽 : 경사 반영 X 그래프 (후문 -> 경영관에서 헐떡고개를 지나는 경로 안내)
+##### ❃ 오른쪽 : 경사 반영 O 그래프 (후문 -> 경영관에서 원흥관을 지나는 경로 안내)
+##### ❃ 경사 반영 X 그래프의 출력 결과는 /frontend/src/lib/path/path1.json 파일로, 경사 반영 O 그래프의 출력 결과는 /frontend/src/lib/path/path2.json 파일로 저장
+<br/><br/>
+
+
+#### ✤ 지름길 출력 알고리즘 : /backend/find_shortcut.py
+
+![image](https://user-images.githubusercontent.com/114053036/207220739-86c6cb98-0f9d-4c1b-9d7e-bed2ed8ead7b.png)
+##### ❃ 지도만 보고 알 수 없는 지름길 정보를 딕셔너리로 구성
+
+![image](https://user-images.githubusercontent.com/114053036/207220874-d2e4b8e6-4587-4173-9891-64ad7bd4ca6e.png)
+##### ❃ 지름길에 해당하는 노드를 지날 때 딕셔너리의 결과물이 출력
+##### ❃ 경사 반영 X 그래프의 출력 결과는 /frontend/src/lib/shortcut/shortcut1.json 파일로, 경사 반영 O 그래프의 출력 결과는 /frontend/src/lib/shortcut/shortcut2.json 파일로 저장
+
+
+
+#
+
 
 #### Attributes
+- 다익스트라 알고리즘 : https://www.fun-coding.org/Chapter20-shortest-live.html
 - Docker : https://hello-bryan.tistory.com/169
 - Images : Freepik
   - [Smile Image](https://kr.freepik.com/free-vector/colorful-emoji-set-design_12067944.htm)
