@@ -10,6 +10,7 @@ const DropDown = ({ isOpen, innerRef, setVal, data, top }) => {
       {data.map((item) => {
         return (
           <DropdownItem
+            key={item}
             onClick={(e) => {
               handleInput(e);
             }}

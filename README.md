@@ -9,9 +9,9 @@
 
 #
 
-<img src="https://img.shields.io/badge/License : MIT -E8E8E8?style=flat&TypeScript=white"> <img src="https://img.shields.io/badge/macOS-000000?style=flat&logo=macos&logoColor=white"/>  <img src="https://img.shields.io/badge/Window-0078D6?style=flat&logo=windows&logoColor=white"/>  
+<img src="https://img.shields.io/badge/License : MIT -E8E8E8?style=flat&TypeScript=white"> <img src="https://img.shields.io/badge/macOS-000000?style=flat&logo=macos&logoColor=white"/>  <img src="https://img.shields.io/badge/Window-0078D6?style=flat&logo=windows&logoColor=white"/>  <img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat&logo=ubuntu&logoColor=white"/>
 
-<img src="https://img.shields.io/badge/VScode -007ACC?style=flat&logo=Visual Studio Code&logoColor=white"/> <img src="https://img.shields.io/badge/React 18.2.0 -61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/styled-components-DB7093?style=flat&logo=styled-components&logoColor=white"/>  <img src="https://img.shields.io/badge/Python 3.8.8 -3776AB?style=flat&logo=Python&logoColor=white"/>  <img src="https://img.shields.io/badge/Docker 20.10.21-2496ED?style=flat&logo=Docker&logoColor=white"/> 
+<img src="https://img.shields.io/badge/VScode -007ACC?style=flat&logo=Visual Studio Code&logoColor=white"/> <img src="https://img.shields.io/badge/React 18.2.0 -61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/styled-components-DB7093?style=flat&logo=styled-components&logoColor=white"/>  <img src="https://img.shields.io/badge/Python 3.8.8 -3776AB?style=flat&logo=Python&logoColor=white"/>  <img src="https://img.shields.io/badge/Docker 20.10.21-2496ED?style=flat&logo=Docker&logoColor=white"/> <img src="https://img.shields.io/badge/ Docker License : Apache License 2.0  -E8E8E8?style=flat&TypeScript=white">
 
 
 
@@ -63,7 +63,7 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 
 - 검색창에 localhost:8300 으로 접속  
 
-#### ✤ [데모 영상]()
+#### ✤ [데모 영상](https://github.com/CSID-DGU/2022-2-OSSProj-You_are_webcome-9/blob/main/document/you_are_webcome_%EC%8B%9C%EC%97%B0%EC%98%81%EC%83%81.mp4)
   
 #  
    
@@ -77,11 +77,12 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
    
 ### 교내 편의시설 탭
 ###### 출발 건물 및 편의시설(무인발급기, 복사기등)을 입력시, 건물에서 부터 가까운 순서대로 리스트 출력 
-![4v0ShgyqKJQ1V6Td2ash3HMj_bfou4gSDbCw8lBgueW2omJUZ-tkp9k6Kmaul0iE8mFhT5_7CUUwnWYLOKmgSKL_Lnl9N_vjwnwjqZ2T7PJ4iBBWyD94nZPqvZUX](https://user-images.githubusercontent.com/101785677/206397705-0860bf7c-7cc1-45c2-b1d3-76f55f09c931.png)
+<img width="1419" alt="스크린샷 2022-12-13 오후 9 00 47" src="https://user-images.githubusercontent.com/101785677/207312416-6ea56862-7cb1-46e0-945b-4e55b6d3ec76.png">
 
-###### ❃ 길찾기 버튼 누를시 다음과 같이 화면 전환, 검색 버튼을 누르거나 엔터 누를 시 경로 안내
+###### ❃ 길찾기 버튼 누를시 다음과 같이 가까운 편의시설 1번째 항목의 건물로 화면 전환, 검색 버튼을 누르거나 엔터 누를 시 경로 안내
+![Dec-13-2022 21-02-46](https://user-images.githubusercontent.com/101785677/207312867-e2e5514a-485e-4aee-9ee2-1e36fced3e75.gif)
 
-<img width="1440" alt="스크린샷 2022-12-11 오후 8 57 44" src="https://user-images.githubusercontent.com/92535912/206902666-6ea9c531-46f6-4465-91c1-bfcbf0426629.png">
+
 
 
 
@@ -89,10 +90,11 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 
 ### 교내 건물 안내 탭
 ###### 교내 학사운영실, 카페등의 운영시간, 전화번호를 안내하는 탭
-<img width="1427" alt="스크린샷 2022-12-11 오후 1 01 50" src="https://user-images.githubusercontent.com/101785677/206885738-6accf1ad-7139-4aaa-afda-60c48728e638.png">
+<img width="1421" alt="스크린샷 2022-12-13 오후 9 05 07" src="https://user-images.githubusercontent.com/101785677/207313291-413de369-1466-4cc9-8e9f-eba873e96e2c.png">
+
 
 ###### ❃ 핀 위치이동 확인가능
-![Dec-11-2022 13-01-02](https://user-images.githubusercontent.com/101785677/206885723-d8eee27f-00c6-4cef-9225-9a8a241ed928.gif)
+![Dec-13-2022 21-04-16](https://user-images.githubusercontent.com/101785677/207313202-6dc56112-4f65-4fad-bdc9-4f0297c238f1.gif)
 
 
 
@@ -101,8 +103,10 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 ### 교내 경로 보기 탭
 ###### 교내 최단경로 및 오르막길 반영된 경로 표시 해주는 탭 (지름길 간단 사진 안내 포함)
 ###### 경사반영 아이콘에 따라 경로 달라짐
+![Dec-13-2022 21-39-27](https://user-images.githubusercontent.com/101785677/207320514-45916bbe-3c64-47c4-856d-c3bb3c9993c9.gif)
 
-![Dec-11-2022 13-06-35](https://user-images.githubusercontent.com/101785677/206885855-f4d20d2b-9f2a-45f1-affa-0d63222ebb6b.gif)
+
+
 
 #  
 
@@ -165,7 +169,7 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 
 
 #### Attributes
-- 다익스트라 알고리즘 : https://www.fun-coding.org/Chapter20-shortest-live.html
+- Dijkstra's algorithm : https://www.fun-coding.org/Chapter20-shortest-live.html
 - Docker : https://hello-bryan.tistory.com/169
 - Images : Freepik
   - [Smile Image](https://kr.freepik.com/free-vector/colorful-emoji-set-design_12067944.htm)

@@ -9,7 +9,7 @@ export default function CloseConvList({ arrivalData, arrival, departure }) {
       <ConvList>
         {arrivalData.map((data) => {
           return (
-            <div>
+            <div key={data.title}>
               <ConvTitle>{`<${data.title}>`}</ConvTitle>
               <ConvImg src={data.img}></ConvImg>
             </div>
