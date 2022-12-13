@@ -106,10 +106,6 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 
 #  
 
-
-
-#
-
 ### 알고리즘
 
 #### ✤ 다익스트라 알고리즘
@@ -122,7 +118,7 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 ##### ❃ 노드 = 건물 및 길목 (건물의 노드는 건물명으로, 길목의 노드는 알파벳으로 명명)
 ##### ❃ 간선 = 길 (지름길 포함)
 ##### ❃ 가중치 = 노드와 노드 사이 직선거리
-<br/>
+<br/><br/>
 
 
 #### ✤ 편의시설 정렬 알고리즘 : /backend/closeBuilding.py
@@ -137,7 +133,7 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 ##### ❃ 다익스트라 알고리즘으로 건물들을 가까운 순으로 정렬
 ##### ❃ 정렬된 건물 순으로 편의시설 나열
 ##### ❃ /frontend/src/convenient.json 파일로 저장
-<br/>
+<br/><br/>
 
 
 #### ✤ 경로 보기 알고리즘 : /backend/find_path.py
@@ -151,7 +147,7 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 ##### ❃ 왼쪽 : 경사 반영 X 그래프 (후문 -> 경영관에서 헐떡고개를 지나는 경로 안내)
 ##### ❃ 오른쪽 : 경사 반영 O 그래프 (후문 -> 경영관에서 원흥관을 지나는 경로 안내)
 ##### ❃ 경사 반영 X 그래프의 출력 결과는 /frontend/src/lib/path/path1.json 파일로, 경사 반영 O 그래프의 출력 결과는 /frontend/src/lib/path/path2.json 파일로 저장
-<br/>
+<br/><br/>
 
 
 #### ✤ 지름길 출력 알고리즘 : /backend/find_shortcut.py
