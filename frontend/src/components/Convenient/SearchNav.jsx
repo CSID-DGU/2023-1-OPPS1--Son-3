@@ -30,8 +30,11 @@ export default function SerachNav({ handleOnSubmit }) {
               onClick={() => {
                 setIsOpen2(!isOpen2);
               }}
+              onKeyPress={(e) => {
+                e.preventDefault();
+              }}
               autoComplete="off"
-              value={departVal}
+              defaultValue={departVal}
             />
             <DropDown
               innerRef={dropDownRef_depart}
@@ -51,8 +54,12 @@ export default function SerachNav({ handleOnSubmit }) {
               onClick={() => {
                 setIsOpen(!isOpen);
               }}
-              value={convVal}
+              defaultValue={convVal}
               autoComplete="off"
+              //키 사용 불가
+              onKeyPress={(e) => {
+                e.preventDefault();
+              }}
             />
             <DropDown
               innerRef={dropDownRef_conv}

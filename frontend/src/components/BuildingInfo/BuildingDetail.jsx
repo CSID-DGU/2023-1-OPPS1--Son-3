@@ -17,11 +17,11 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
         <Val>{detailPageContent.name}</Val>
       </InfosContainer>
       <div>
-        {[...info].map((item) => {
+        {[...info].map((item, index) => {
           const key = item[0];
           const val = item[1];
           return (
-            <InfosContainer key={item}>
+            <InfosContainer key={index}>
               <Key>{key}:</Key>
               <Val>{val}</Val>
             </InfosContainer>

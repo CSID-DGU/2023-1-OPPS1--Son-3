@@ -7,10 +7,10 @@ const DropDown = ({ isOpen, innerRef, setVal, data, top }) => {
   };
   return (
     <Dropdown ref={innerRef} isOpen={isOpen} top={top}>
-      {data.map((item) => {
+      {data.map((item, index) => {
         return (
           <DropdownItem
-            key={item}
+            key={index}
             onClick={(e) => {
               handleInput(e);
             }}

@@ -46,7 +46,10 @@ export default function MapHeader({
               onClick={() => {
                 setIsOpen(!isOpen);
               }}
-              value={departBuilding ? departBuilding : departure}
+              onKeyPress={(e) => {
+                e.preventDefault();
+              }}
+              defaultValue={departBuilding ? departBuilding : departure}
             />
             <DropDown
               data={buildings}
@@ -68,7 +71,10 @@ export default function MapHeader({
               onClick={() => {
                 setIsOpen2(!isOpen2);
               }}
-              value={arriveBuilding ? arriveBuilding : arrival}
+              onKeyPress={(e) => {
+                e.preventDefault();
+              }}
+              defaultValue={arriveBuilding ? arriveBuilding : arrival}
             />
             <DropDown
               setVal={setArriveBuilding}

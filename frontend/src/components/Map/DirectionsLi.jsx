@@ -10,9 +10,9 @@ export default function DirectionLi({
       <MapInfoList>
         {submittedDepart && submittedArrive
           ? appliedShortcut.current[submittedDepart][submittedArrive].map(
-              (item) => {
+              (item, index) => {
                 return (
-                  <MapInfo key={item}>
+                  <MapInfo key={index}>
                     <h3>{`<${item[0]}>`}</h3>
                     <div>
                       <MapInfoImg src={item[1]}></MapInfoImg>
