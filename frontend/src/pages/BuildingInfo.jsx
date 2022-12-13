@@ -6,6 +6,8 @@ import buildingInfo from "../lib/buildingInfo.js";
 import PinPosition from "../lib/PinPosition";
 import BuildingDetail from "../components/BuildingInfo/BuildingDetail";
 import MainIcon from "../components/MainIcon";
+
+//건물 정보 페이지
 export default function BuildingInfo() {
   const [buildingPosition, setBuildingPosition] = PinPosition([0, 0]);
   const [isDetailPage, setIsDetailPage] = useState(false);
@@ -72,6 +74,7 @@ export default function BuildingInfo() {
 }
 const Container = styled.section`
   display: flex;
+  // 반응형
   @media screen and (max-width: 600px) {
     flex-direction: column;
     height: auto;
