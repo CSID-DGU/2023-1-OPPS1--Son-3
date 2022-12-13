@@ -408,3 +408,35 @@ dict_convenient["혜화관"] = dict_convenient18
 file_path = "./frontend/src/convenient.json"
 with open(file_path, 'w', encoding='utf-8') as outfile:
     json.dump(dict_convenient, outfile, ensure_ascii=False, indent=4)
+
+
+'''
+출력형태
+{
+    출발 건물1: {
+        편의시설1: [
+            가까운 건물11,
+            가까운 건물12,
+            ...
+        ],
+        편의시설2: [
+            가까운 건물21,
+            가까운 건물22,
+            ...
+        ]
+    },
+    출발 건물2: {
+        편의시설1: [
+            가까운 건물11,
+            가까운 건물12,
+            ...
+        ],
+        편의시설2: [
+            가까운 건물21,
+            가까운 건물22,
+            ...
+        ]
+    },
+    ...
+}
+'''

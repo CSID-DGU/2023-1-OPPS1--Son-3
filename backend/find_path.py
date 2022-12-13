@@ -220,3 +220,20 @@ with open(file_path1, 'w', encoding='utf-8') as outfile:
 file_path2 = "./frontend/src/lib/path/path2.json"
 with open(file_path2, 'w', encoding='utf-8') as outfile:
     json.dump(path_all2, outfile, ensure_ascii=False, indent=4)
+
+'''
+출력형태
+{
+    출발지1: {
+        도착지11: [출발지1 ~ 도착지11 노드들],
+        도착지12: [출발지1 ~ 도착지12 노드들],
+        ...
+    },
+    출발지2: {
+        도착지21: [출발지2 ~ 도착지 21 노드들],
+        도착지22: [출발지2 ~ 도착지 22 노드들],
+        ...
+    },
+    ...
+}
+'''

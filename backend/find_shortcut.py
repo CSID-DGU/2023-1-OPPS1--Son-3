@@ -365,3 +365,23 @@ for start in dict_key:
 file_path2 = "./frontend/src/lib/shortcut/shortcut2.json"
 with open(file_path2, 'w', encoding='utf-8') as outfile:
     json.dump(shortcut_all2, outfile, ensure_ascii=False, indent=4)
+
+'''
+출력형태
+{
+    출발지1: {
+        도착지1: [
+            [지름길 제목11, 지름길 사진11, 지름길 설명11],
+            [지름길 제목12, 지름길 사진12, 지름길 설명12],
+            ...
+        ],
+        도착지2: [
+            [지름길 제목21, 지름길 사진21, 지름길 설명21],
+            [지름길 제목22, 지름길 사진22, 지름길 설명22],
+            ...
+        ],
+        ...
+    },
+    ...
+}
+'''
