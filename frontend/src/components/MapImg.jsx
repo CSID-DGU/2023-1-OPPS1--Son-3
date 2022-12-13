@@ -33,6 +33,9 @@ export default function MapImg({
 
 const MapMarkContainer = styled.div`
   position: absolute;
+  width: 20px;
+  left: ${(props) => props && `${props.PinX}px`};
+  top: ${(props) => props && `${props.PinY}px`};
   background-image: url("/Map_mark.svg");
   @media screen and (max-width: 600px) {
     width: 0.6607rem;

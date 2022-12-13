@@ -12,7 +12,7 @@ export default function DirectionLi({
           ? appliedShortcut.current[submittedDepart][submittedArrive].map(
               (item) => {
                 return (
-                  <MapInfo>
+                  <MapInfo key={item}>
                     <h3>{`<${item[0]}>`}</h3>
                     <div>
                       <MapInfoImg src={item[1]}></MapInfoImg>
