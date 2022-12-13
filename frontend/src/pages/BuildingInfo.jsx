@@ -41,6 +41,7 @@ export default function BuildingInfo() {
               {buildingInfo.map((building) => {
                 return (
                   <Building
+                    key={building.info}
                     onClick={() => {
                       if (building.info) {
                         setIsDetailPage(true);

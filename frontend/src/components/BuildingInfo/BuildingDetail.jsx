@@ -21,7 +21,7 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
           const key = item[0];
           const val = item[1];
           return (
-            <InfosContainer>
+            <InfosContainer key={item}>
               <Key>{key}:</Key>
               <Val>{val}</Val>
             </InfosContainer>
