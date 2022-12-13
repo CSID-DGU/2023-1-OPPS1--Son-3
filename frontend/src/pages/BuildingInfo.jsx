@@ -38,10 +38,10 @@ export default function BuildingInfo() {
               </Item>
             </Div>
             <BuildingContent className="content">
-              {buildingInfo.map((building) => {
+              {buildingInfo.map((building, index) => {
                 return (
                   <Building
-                    key={building.info}
+                    key={index}
                     onClick={() => {
                       if (building.info) {
                         setIsDetailPage(true);

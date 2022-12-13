@@ -63,7 +63,7 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 
 - 검색창에 localhost:8300 으로 접속  
 
-#### ✤ [데모 영상]()
+#### ✤ [데모 영상](https://www.youtube.com/watch?v=xfHOPofrT0U)
   
 #  
    
@@ -103,7 +103,8 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 ### 교내 경로 보기 탭
 ###### 교내 최단경로 및 오르막길 반영된 경로 표시 해주는 탭 (지름길 간단 사진 안내 포함)
 ###### 경사반영 아이콘에 따라 경로 달라짐
-![Dec-13-2022 21-07-41](https://user-images.githubusercontent.com/101785677/207313924-005b0ef6-309d-4997-9572-d17d5403036a.gif)
+![Dec-13-2022 21-39-27](https://user-images.githubusercontent.com/101785677/207320514-45916bbe-3c64-47c4-856d-c3bb3c9993c9.gif)
+
 
 
 
