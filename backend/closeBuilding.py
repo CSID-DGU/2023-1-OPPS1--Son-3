@@ -1,28 +1,31 @@
-# "Business01", "Science02", "Dahyang03", "Manhae04", "Myeongjin05", "Munhwa06", "Law07", "Main08", "SocialScience09", "Sanglokwon10", "NewEngineering11", "Wonheung12", "InformationEngineering13", "Library14", "Haklim15", "Student16", "Haksul17", "Hyehwa18"
-
 import heapq
 import json
 
-def dijkstra(graph, start):
-    distances = {node: float('inf') for node in graph}
-    distances[start] = 0
-    queue = []
-    heapq.heappush(queue, [distances[start], start])
+# 다익스트라 알고리즘 구현
+def dijkstra(graph, start):   # 그래프와 출발지 입력
+    distances = {node: float('inf') for node in graph}   # 거리 배열의 거리를 모두 inf로 초기화
+    distances[start] = 0   # 출발지의 거리 0으로 설정
+    queue = []   # 우선순위 큐 생성
+    heapq.heappush(queue, [distances[start], start])   # [거리, 노드] 형태로 우선순위 큐에 삽입
     while queue:
         current_distance, current_destination = heapq.heappop(queue)
         if distances[current_destination] < current_distance:
             continue
         for new_destination, new_distance in graph[current_destination].items():
             distance = current_distance + new_distance
-            if distance < distances[new_destination]:
-                distances[new_destination] = distance
-                heapq.heappush(queue, [distance, new_destination])
+            if distance < distances[new_destination]:   # (기존 거리 + 추가되는 거리) < (거리 배열의 거리) 인 경우
+                distances[new_destination] = distance   # 거리 배열의 거리를 (기존 거리 + 추가되는 거리)로 업데이트
+                heapq.heappush(queue, [distance, new_destination])   # 우선순위 큐에 삽입
     item = list(distances.items())
     new_item = []
     for i in range(len(item)):
-        new_item.append([item[i][1], item[i][0]])
+        new_item.append([item[i][1], item[i][0]])   # [가중치 합, 도착지] 형태로 리스트에 삽입
     return new_item
 
+# 동국대 지도를 그래프로 구현
+# 건물과 길목은 노드로 설정 (건물의 노드는 건물명, 길목의 노드는 알파벳으로 설정)
+# 길은 간선으로 설정
+# 가중치는 노드 간 직선거리 (네이버 지도로 측정)
 graph = {
     '경영관': {'문화관':11, '사회과학관':57, 'QQ':63},
     '과학관': {'D':1, 'B':5},
@@ -101,8 +104,10 @@ graph = {
     'YY': {'정보문화관':5, 'FF':5} 
 }
 
+# 각 건물을 출발지로 설정해 다익스트라 알고리즘 실행
+# A, B, ... 와 같은 길목의 노드는 출력되지 않게 설정
 ListBusiness01 = dijkstra(graph, "경영관")[:18]
-ListBusiness01.sort()
+ListBusiness01.sort()   # 가중치의 합이 작은 것부터 정렬 => 출발지로부터 가까운 순으로 건물 정렬
 ListScience02 = dijkstra(graph, "과학관")[:18]
 ListScience02.sort()
 ListDahyang03 = dijkstra(graph, "다향관")[:18]
@@ -138,6 +143,8 @@ ListHaksul17.sort()
 ListHyehwa18 = dijkstra(graph, "혜화관")[:18]
 ListHyehwa18.sort()
 
+# 각 건물의 편의시설 정보를 딕셔너리로 구현
+# 편의시설 추가 및 삭제는 아래 딕셔너리 수정하기
 Business01 = {"name":"경영관", "복사기":["경영관 1층"], "유인복사실":[], "열람실":["경영관 지하1층 비즈마루"], "atm":[], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":["경영관 야외 그루터기"], "매점":[]}
 Science02 = {"name":"과학관", "복사기":["과학관 1층"], "유인복사실":["과학관 야외 교재실"], "열람실":[], "atm":[], "증명서자동발급기":[], "제세동기":["과학관 1층"], "식당":[], "카페":[], "매점":[]}
 Dahyang03 = {"name":"다향관", "복사기":[], "유인복사실":[], "열람실":[], "atm":[], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":[], "매점":["다향관 1층"]}
@@ -162,17 +169,13 @@ ListBuilding = [ListBusiness01, ListScience02, ListDahyang03, ListManhae04, List
 ListBuilding_Convenient = [Business01, Science02, Dahyang03, Manhae04, Myeongjin05, Munhwa06, Law07, Main08, SocialScience09, Sanglokwon10, NewEngineering11, Wonheung12, InformationEngineering13, Library14, Haklim15, Student16, Haksul17, Hyehwa18]
 ListConvenient = ["복사기", "유인복사실", "열람실", "atm", "증명서자동발급기", "제세동기", "식당", "카페", "매점"]
 
-dict_convenient_all = {}
-
-
-
 dict_convenient = {}
 dict_convenient01 = {}
 for convenient in ListConvenient:
     List = []
-    for b in ListBusiness01:
+    for b in ListBusiness01:   # 경영관에서 가까운 순으로 정렬된 건물부터 시작
         for bc in ListBuilding_Convenient:
-            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:   # 해당 편의시설이 있다면 리스트에 추가
                 if len(List)<5:
                     List += bc.get(convenient)
                 else:
@@ -401,6 +404,39 @@ for convenient in ListConvenient:
     dict_convenient18[convenient] = List
 dict_convenient["혜화관"] = dict_convenient18
 
+# json 파일로 저장
 file_path = "./frontend/src/convenient.json"
 with open(file_path, 'w', encoding='utf-8') as outfile:
     json.dump(dict_convenient, outfile, ensure_ascii=False, indent=4)
+
+
+'''
+출력형태
+{
+    출발 건물1: {
+        편의시설1: [
+            가까운 건물11,
+            가까운 건물12,
+            ...
+        ],
+        편의시설2: [
+            가까운 건물21,
+            가까운 건물22,
+            ...
+        ]
+    },
+    출발 건물2: {
+        편의시설1: [
+            가까운 건물11,
+            가까운 건물12,
+            ...
+        ],
+        편의시설2: [
+            가까운 건물21,
+            가까운 건물22,
+            ...
+        ]
+    },
+    ...
+}
+'''

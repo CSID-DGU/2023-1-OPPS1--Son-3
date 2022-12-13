@@ -1,26 +1,24 @@
 import heapq
 import json
 
-def dijkstra(graph, first, last):
-    distance = {node:[float('inf'), first] for node in graph}
-    distance[first] = [0, first]
-    queue = []
-
-    heapq.heappush(queue, [distance[first][0], first])
-
+# 다익스트라 알고리즘 구현
+def dijkstra(graph, first, last):   # 그래프, 출발지, 도착지 입력
+    distance = {node:[float('inf'), first] for node in graph}   # 거리 배열의 거리를 모두 inf로 초기화
+    distance[first] = [0, first]   # 출발지의 거리 0으로 설정
+    queue = []   # 우선순위 큐 생성
+    heapq.heappush(queue, [distance[first][0], first])   # [거리, 노드] 형태로 우선순위 큐에 삽입
     while queue:
         current_distance, current_node = heapq.heappop(queue)
-
         if distance[current_node][0] < current_distance:
             continue
-
         for next_node, weight in graph[current_node].items():
             total_distance = current_distance + weight
+            if total_distance < distance[next_node][0]:   # (기존 거리 + 추가되는 거리) < (거리 배열의 거리) 인 경우
+                distance[next_node] = [total_distance, current_node]   # 거리 배열의 거리를 (기존 거리 + 추가되는 거리)로 업데이트
+                heapq.heappush(queue, [total_distance, next_node])   # 우선순위 큐에 삽입
 
-            if total_distance < distance[next_node][0]:
-                distance[next_node] = [total_distance, current_node]
-                heapq.heappush(queue, [total_distance, next_node])
-
+    # 출발지에서 도착지까지의 모든 노드 출력
+    # 도착지에서부터 역순으로 추적
     path = last
     path_output = []
     path_output.append(last)
@@ -28,9 +26,13 @@ def dijkstra(graph, first, last):
         path_output.append(distance[path][1])
         path = distance[path][1]
     path_output.append(first)
-    path_output.reverse()
+    path_output.reverse()   # 역순으로 출력되므로 reverse 하기
     return path_output
 
+# 경사를 반영하지 않은 동국대 지도를 graph1로 구현
+# 건물과 길목은 노드로 설정 (건물의 노드는 건물명, 길목의 노드는 알파벳으로 설정)
+# 길은 간선으로 설정
+# 가중치는 노드 간 직선거리 (네이버 지도로 측정)
 graph1 = {
     '경영관': {'문화관':11, '사회과학관':57, 'QQ':63},
     '과학관': {'D':1, 'B':5},
@@ -109,6 +111,10 @@ graph1 = {
     'YY': {'정보문화관':5, 'FF':5} 
 }
 
+# 경사를 반영한 동국대 지도를 graph2로 구현
+# 건물과 길목은 노드로 설정 (건물의 노드는 건물명, 길목의 노드는 알파벳으로 설정)
+# 길은 간선으로 설정
+# 가중치는 (노드 간 직선거리 * 경사도)
 graph2 = {
     '경영관': {'문화관':11, '사회과학관':57, 'QQ':63},
     '과학관': {'D':1, 'B':5},
@@ -189,6 +195,7 @@ graph2 = {
 
 node_list = ['경영관', '과학관', '다향관', '만해관', '명진관', '문화관', '법학관', '본관', '사회과학관', '상록원', '신공학관', '원흥관', '정보문화관', '중앙도서관', '학림관', '학생회관', '학술관', '혜화관', '혜화문', '대운동장', '체육관', '후문', '만해광장', '팔정도']
 
+# 경사를 반영하지 않은 그래프 다익스트라 알고리즘 실행
 path_all1 = {}
 for start in node_list:
     path_start = {}
@@ -196,6 +203,7 @@ for start in node_list:
       path_start[end] = dijkstra(graph1, start, end)
     path_all1[start] = path_start
 
+# 경사를 반영한 그래프 다익스트라 알고리즘 실행
 path_all2 = {}
 for start in node_list:
     path_start = {}
@@ -203,10 +211,29 @@ for start in node_list:
       path_start[end] = dijkstra(graph2, start, end)
     path_all2[start] = path_start
 
+# 경사를 반영하지 않은 그래프를 path1.json 파일로 저장
 file_path1 = "./frontend/src/lib/path/path1.json"
 with open(file_path1, 'w', encoding='utf-8') as outfile:
     json.dump(path_all1, outfile, ensure_ascii=False, indent=4)
 
+# 경사를 반영한 그래프를 path2.json 파일로 저장
 file_path2 = "./frontend/src/lib/path/path2.json"
 with open(file_path2, 'w', encoding='utf-8') as outfile:
     json.dump(path_all2, outfile, ensure_ascii=False, indent=4)
+
+'''
+출력형태
+{
+    출발지1: {
+        도착지11: [출발지1 ~ 도착지11 노드들],
+        도착지12: [출발지1 ~ 도착지12 노드들],
+        ...
+    },
+    출발지2: {
+        도착지21: [출발지2 ~ 도착지 21 노드들],
+        도착지22: [출발지2 ~ 도착지 22 노드들],
+        ...
+    },
+    ...
+}
+'''
