@@ -63,7 +63,7 @@ docker run -d -p 8300:80 wlgus5704/you_are_webcome:fin
 
 - 검색창에 localhost:8300 으로 접속  
 
-#### ✤ [데모 영상](https://github.com/CSID-DGU/2022-2-OSSProj-You_are_webcome-9/blob/main/document/you_are_webcome_%EC%8B%9C%EC%97%B0%EC%98%81%EC%83%81.mp4)
+#### ✤ [데모 영상](https://www.youtube.com/watch?v=xfHOPofrT0U)
   
 #  
    
