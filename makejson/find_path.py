@@ -30,6 +30,24 @@ def dijkstra(graph, first, last):   # 그래프, 출발지, 도착지 입력
     path_output.reverse()   # 역순으로 출력되므로 reverse 하기
     return path_output
 
+# 다익스트라 알고리즘2 구현
+def dijkstra2(graph, first, last):  # 그래프, 출발지, 도착지 입력
+    distance = {node: [float('inf'), first] for node in graph}  # 거리 배열의 거리를 모두 inf로 초기화
+    distance[first] = [0, first]  # 출발지의 거리 0으로 설정
+    queue = []  # 큐 생성
+    heapq.heappush(queue, [distance[first][0], first])  # [거리, 노드] 형태로 우선순위 큐에 삽입
+    while queue:
+        current_distance, current_node = heapq.heappop(queue)
+        if distance[current_node][0] < current_distance:
+            continue
+        for next_node, weight in graph[current_node].items():
+            total_distance = current_distance + weight
+            if total_distance < distance[next_node][0]:  # (기존 거리 + 추가되는 거리) < (거리 배열의 거리) 인 경우
+                distance[next_node] = [total_distance, current_node]  # 거리 배열의 거리를 (기존 거리 + 추가되는 거리)로 업데이트
+                heapq.heappush(queue, [total_distance, next_node])  # 우선순위 큐에 삽입
+
+    return distance[last][0] # 해당 경로의 가중치 합 반환
+
 # 경사를 반영하지 않은 동국대 지도를 graph1로 구현
 # 건물과 길목은 노드로 설정 (건물의 노드는 건물명, 길목의 노드는 알파벳으로 설정)
 # 길은 간선으로 설정
@@ -212,17 +230,43 @@ for start in node_list:
       path_start[end] = dijkstra(graph2, start, end)
     path_all2[start] = path_start
 
+# 경사를 반영하지 않은 그래프 다익스트라 알고리즘2 실행
+path_all3 = {}
+for start in node_list:
+    path_start = {}
+    for end in node_list:
+        path_start[end] = dijkstra2(graph1, start, end)
+    path_all3[start] = path_start
+
+# 경사를 반영한 그래프 다익스트라 알고리즘2 실행
+path_all4 = {}
+for start in node_list:
+    path_start = {}
+    for end in node_list:
+        path_start[end] = dijkstra2(graph2, start, end)
+    path_all4[start] = path_start
+
 # 경사를 반영하지 않은 그래프를 path1.json 파일로 저장
 parent_directory = os.path.abspath('..')
-file_path1 = os.path.join(parent_directory, "./2023-1-OPPS1-SonOfMidas-3/frontend/src/lib/path/path1.json")
+file_path1 = os.path.join(parent_directory, "./frontend/src/lib/path/path1.json")
 with open(file_path1, 'w', encoding='utf-8') as outfile:
     json.dump(path_all1, outfile, ensure_ascii=False, indent=4)
 
 # 경사를 반영한 그래프를 path2.json 파일로 저장
 parent_directory = os.path.abspath('..')
-file_path2 = os.path.join(parent_directory, "./2023-1-OPPS1-SonOfMidas-3/frontend/src/lib/path/path2.json")
+file_path2 = os.path.join(parent_directory, "./frontend/src/lib/path/path2.json")
 with open(file_path2, 'w', encoding='utf-8') as outfile:
     json.dump(path_all2, outfile, ensure_ascii=False, indent=4)
+
+# 경사를 반영하지 않은 그래프2를 path1_1.json 파일로 저장
+file_path3 = "path1_1.json"
+with open(file_path3, 'w', encoding='utf-8') as outfile:
+    json.dump(path_all3, outfile, ensure_ascii=False, indent=4)
+
+# 경사를 반영한 그래프2를 path2_1.json 파일로 저장
+file_path4 = "path2_1.json"
+with open(file_path4, 'w', encoding='utf-8') as outfile:
+    json.dump(path_all4, outfile, ensure_ascii=False, indent=4)
 
 '''
 출력형태
