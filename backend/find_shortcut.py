@@ -23,9 +23,12 @@ image_info = {"만해관1" : {"title":"만해관 문", "img" : "/건물경로 �
     "혜화관2" : {"title" : "혜화관 <-> 만해관", "img" : "/건물경로 이미지/혜화관_만해관.jpg", "info" : "만해관에서 직진해서 내려오면 혜화관4층이랑 연결되는 다리 있음"}}
 
 import json
+import os
 
 # find_path로 정리한 경사를 반영하지 않은 그래프 경로 불러오기
-with open("./frontend/src/lib/path/path1.json", "r", encoding='UTF8') as f:
+parent_directory = os.path.abspath('..')
+openfile = os.path.join(parent_directory, "./frontend/src/lib/path/path1.json")
+with open(openfile, "r", encoding='UTF8') as f:
     path_data = json.load(f)
 
 dict_key = list(path_data.keys())
@@ -191,14 +194,17 @@ for start in dict_key:
     shortcut_all[start] = shortcuts
 
 # 경사를 반영하지 않은 그래프의 지름길 정보를 shortcut1.json 으로 저장
-file_path1 = "./frontend/src/lib/shortcut/shortcut1.json"
+parent_directory = os.path.abspath('..')
+file_path1 = os.path.join(parent_directory, "./frontend/src/lib/shortcut/shortcut1.json")
 with open(file_path1, 'w', encoding='utf-8') as outfile:
     json.dump(shortcut_all, outfile, ensure_ascii=False, indent=4)
 
 
 
 # find_path로 정리한 경사를 반영한 그래프 경로 불러오기
-with open("./frontend/src/lib/path/path2.json", "r", encoding='UTF8') as f:
+parent_directory = os.path.abspath('..')
+openfile2 = os.path.join(parent_directory, "./frontend/src/lib/path/path2.json")
+with open(openfile2, "r", encoding='UTF8') as f:
     path_data = json.load(f)
 
 shortcut_all2 = {}
@@ -362,7 +368,8 @@ for start in dict_key:
     shortcut_all2[start] = shortcuts
 
 # 경사를 반영한 그래프의 지름길 정보를 shortcut2.json 으로 저장
-file_path2 = "./frontend/src/lib/shortcut/shortcut2.json"
+parent_directory = os.path.abspath('..')
+file_path2 = os.path.join(parent_directory, "./frontend/src/lib/shortcut/shortcut2.json")
 with open(file_path2, 'w', encoding='utf-8') as outfile:
     json.dump(shortcut_all2, outfile, ensure_ascii=False, indent=4)
 
