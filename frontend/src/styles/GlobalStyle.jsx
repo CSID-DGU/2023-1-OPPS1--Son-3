@@ -8,11 +8,15 @@ const GlobalStyle = createGlobalStyle`
   body{
     margin: 0;
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }
   .Section{
     background-size: cover;
-  background-repeat: no-repeat;
-    height: 100%;
-  width: 100vw;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
   }
   *:not(footer):not(a){
     font-family: "Jua", sans-serif;
