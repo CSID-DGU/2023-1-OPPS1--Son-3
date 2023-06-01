@@ -1,5 +1,6 @@
 import heapq
 import json
+import os
 
 # 다익스트라 알고리즘 구현
 def dijkstra(graph, start):   # 그래프와 출발지 입력
@@ -405,7 +406,8 @@ for convenient in ListConvenient:
 dict_convenient["혜화관"] = dict_convenient18
 
 # json 파일로 저장
-file_path = "./frontend/src/convenient.json"
+parent_directory = os.path.abspath('..')
+file_path = os.path.join(parent_directory, "./frontend/src/convenient.json")
 with open(file_path, 'w', encoding='utf-8') as outfile:
     json.dump(dict_convenient, outfile, ensure_ascii=False, indent=4)
 
