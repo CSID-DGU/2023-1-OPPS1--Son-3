@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf463394-ea90-41a1-803c-c283d6d8a259" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/lib/path/path1.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/lib/path/path1.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/lib/path/path2.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/lib/path/path2.json" afterDir="false" />
@@ -74,6 +75,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/2023_1_OPPS1_SonOfMidas_3$closeBuilding.coverage" NAME="closeBuilding Coverage Results" MODIFIED="1685516549079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/makejson" />
     <SUITE FILE_PATH="coverage/2023_1_OPPS1_SonOfMidas_3$find_shortcut.coverage" NAME="find_shortcut Coverage Results" MODIFIED="1685516542844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/makejson" />
-    <SUITE FILE_PATH="coverage/2023_1_OPPS1_SonOfMidas_3$find_path.coverage" NAME="find_path Coverage Results" MODIFIED="1685631553099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/makejson" />
+    <SUITE FILE_PATH="coverage/2023_1_OPPS1_SonOfMidas_3$find_path.coverage" NAME="find_path Coverage Results" MODIFIED="1685635720697" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/makejson" />
   </component>
 </project>
