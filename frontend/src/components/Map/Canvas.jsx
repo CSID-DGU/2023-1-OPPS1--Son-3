@@ -31,7 +31,7 @@ const Canvas = ({
     if (nodePositions.length !== 0) {
       let i = 1;
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-      const animation = setInterval(animate, 250);
+      const animation = setInterval(animate, 0);
       function animate() {
         const StartState = isStart;
         const [beforeNodeX, beforeNodeY] = rightPosition(nodePositions[i - 1]);
@@ -64,6 +64,8 @@ const StyledCanvas = styled.canvas`
   background-image: url("/backgroundImgs/campus_map.png");
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
+  height: auto;
 `;
 
 export default Canvas;

@@ -107,10 +107,10 @@ const Button = styled.button`
   background-color: rgb(243, 202, 89);
 `;
 const Input = styled.input`
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px;
   font-size: 20px;
-  border: 2.8px black solid;
+  border: 1px black solid;
 `;
 const DropDownWrapper = styled.div`
   position: relative;

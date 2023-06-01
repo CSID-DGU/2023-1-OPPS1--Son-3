@@ -100,7 +100,7 @@ const Section = styled.section`
   display: flex;
   height: 100vh;
   background-color: #FFFBEE; 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 800px) {
     header input {
       padding: 0px;
       width: 6rem;
@@ -125,10 +125,6 @@ const Section = styled.section`
     #icon {
       display: none;
     }
-    & #canvas {
-      width: 370px;
-      height: 254.24px;
-    }
     #DirectionList {
       width: 100%;
       margin: 0;
@@ -138,46 +134,6 @@ const Section = styled.section`
     }
     .smallerFont {
       font-size: 10px;
-    }
-  }
-  @media screen and (min-width: 601px) and (max-width: 900px) {
-    flex-direction: column;
-    height: auto;
-    #DirectionList {
-      width: 100%;
-      margin: 0;
-      width: auto;
-      #icon {
-        display: none;
-      }
-      img {
-        width: 40%;
-      }
-    }
-    *:not(footer > *) {
-      font-size: 0.9rem;
-    }
-    header > form {
-      flex-shrink: 1;
-      input {
-        padding: 2px;
-        width: 8rem;
-        height: 40px;
-      }
-    }
-    button {
-      width: 4rem;
-      height: 2rem;
-    }
-    #icon {
-      display: none;
-    }
-    & #canvas {
-      width: 700px;
-      height: 481px;
-    }
-    .smallerFont {
-      font-size: 11px;
     }
   }
   @media screen and (max-width: 1200px) and(min-width: 800px) {
@@ -204,6 +160,7 @@ const MapContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
+  justify-content: space-evenly;
   position: relative;
 `;
 const Span = styled.span`
@@ -212,6 +169,8 @@ const Span = styled.span`
   margin: 10px;
   flex-shrink: 1;
   flex: none;
+  word-break: keep-all;
+  text-align: center;
 `;
 const ButtonInfo = styled.div`
   position: absolute;

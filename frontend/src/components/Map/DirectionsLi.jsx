@@ -28,6 +28,7 @@ export default function DirectionLi({
   );
 }
 const MapInfoListContainer = styled.article`
+  flex-shrink: 0;
   height: calc(100vh - 175px);
   width: 300px;
   border-top-left-radius: 15px;

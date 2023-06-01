@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
   }
   *:not(footer):not(a){
-    font-family: "Jua", sans-serif;
+    font-family: "DONGGUK UNIVERSITY", sans-serif;
   }
   button{
     cursor: pointer;
