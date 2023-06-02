@@ -23,6 +23,13 @@ const Map = () => {
   const [submittedDepart, setSubmittedDepart] = useState(null);
   const [submittedArrive, setSubmittedArrive] = useState(null);
 
+  const [selectedData, setSelectedData] = useState({});
+  const [minValue, setMinValue] = useState(Number.POSITIVE_INFINITY);
+  const [minBuilding, setMinBuilding] = useState(null);
+  const [selectedDepart, setSelectedDepart] = useState(null);
+  const [selectedArrive, setSelectedArrive] = useState(null);
+  const [arr2, setArr2] = useState(null);
+
   const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 });
 
   const targetBuildings = useLocation();
@@ -40,12 +47,26 @@ const Map = () => {
     //넘겨받은 층수데이터를 이용해 해당 층수 출발일때 도착건물의 최단출입구를 구하기
 
     for (const buildingKey in sum_data) {
-      if (buildingKey.includes(departBuilding)) {
+      if (buildingKey.includes(departBuilding) && buildingKey.includes("층")) {
         selectedData[buildingKey] = {};
         const buildingData = sum_data[buildingKey];
         for (const key in buildingData) {
-          if (key.includes(arriveBuilding)) {
+          if (key.includes(arriveBuilding) && key.includes("층")) {
             selectedData[buildingKey][key] = buildingData[key];
+          } else {
+            selectedData[buildingKey][arriveBuilding] =
+              buildingData[arriveBuilding];
+          }
+        }
+      } else {
+        selectedData[departBuilding] = {};
+        const buildingData = sum_data[departBuilding];
+        for (const key in buildingData) {
+          if (key.includes(arriveBuilding) && key.includes("층")) {
+            selectedData[departBuilding][key] = buildingData[key];
+          } else {
+            selectedData[departBuilding][arriveBuilding] =
+              buildingData[arriveBuilding];
           }
         }
       }
@@ -65,28 +86,36 @@ const Map = () => {
         }
       }
     }
+    // console.log(selectedData);
+    // console.log(minValue);
+    // console.log(minbuilding);
+    // console.log(selectedDepart);
+    // console.log(selectedArrive);
 
-    console.log(selectedData);
-    console.log(minValue);
-    console.log(minbuilding);
-    console.log(selectedDepart);
-    console.log(selectedArrive);
+    setSelectedData(selectedData);
+    setMinValue(minValue);
+    setMinBuilding(minbuilding);
+    setSelectedDepart(selectedDepart);
+    setSelectedArrive(selectedArrive);
+
     // selectedData[selectedDepart][selectedArrive]((item) => {
     //   test.push(nodeData[item]);
     // });
 
     //To do
     //층 선택하면 층수 데이터에 맞는 최단 입구 경로 최단경로 보여주기
-
-    // selectedData[selectedDepart][selectedArrive].map((item) => {
-    //   arr.push(nodeData[item]);
-    // });
-
-    data[departBuilding][arriveBuilding].map((item) => {
+    const arr2 = [];
+    data[selectedDepart][selectedArrive].map((item) => {
       arr.push(nodeData[item]);
+      arr2.push(item);
     });
 
-    console.log(arr);
+    // data[departBuilding][arriveBuilding].map((item) => {
+    //   arr.push(nodeData[item]);
+    // });
+    setArr2(arr2);
+
+    console.log(arr2);
     setNodes([...arr]);
   };
 
@@ -150,17 +179,30 @@ const Map = () => {
             appliedShortcut={appliedShortcut}
           />
         </MapContentContainer>
-        <DirectionLi
+        {/* <DirectionLi
           submittedArrive={submittedArrive}
           submittedDepart={submittedDepart}
           appliedShortcut={appliedShortcut}
-        />
+        /> */}
         <FloorSelector>
           <FloorSelection>1층</FloorSelection>
           <FloorSelection>4층</FloorSelection>
           <FloorSelection>6층</FloorSelection>
         </FloorSelector>
       </Section>
+      <div>
+        {"층별 비교 : " + JSON.stringify(selectedData)}
+        <br />
+        {"최단 경로 : " + arr2}
+        <br />
+        {"sum : " + minValue}
+        <br />
+        {minBuilding}
+        <br />
+        {"최단경로 출발노드 : " + selectedDepart}
+        <br />
+        {"최단경로 도착노드 : " + selectedArrive}
+      </div>
       <Footer />
     </>
   );

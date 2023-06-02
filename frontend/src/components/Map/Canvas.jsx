@@ -49,7 +49,7 @@ const Canvas = ({
   useEffect(() => {
     if (clickPosition) {
       const { x, y } = clickPosition;
-      const [canvasX, canvasY] = [x - 310, y - 175];
+      const [canvasX, canvasY] = [x - 310 - 150, y - 175]; //테스트중이라 150은 오른쪽 박스 사라져서 추가로 빼준 좌표
       // const [canvasX, canvasY] = [x, y];
       setTimeout(() => {
         drawCircle([canvasX, canvasY], [canvasX, canvasY]);
