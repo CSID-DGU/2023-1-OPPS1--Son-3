@@ -6,12 +6,23 @@ import buildingInfo from "../lib/buildingInfo.js";
 import PinPosition from "../lib/PinPosition";
 import BuildingDetail from "../components/BuildingInfo/BuildingDetail";
 import MainIcon from "../components/MainIcon";
+import SerachNav from "../components/BuildingInfo/SearchNav";
 
 //건물 정보 페이지
 export default function BuildingInfo() {
+  const [buildingVal, setbuildingVal] = useState("");
   const [buildingPosition, setBuildingPosition] = PinPosition([0, 0]);
   const [isDetailPage, setIsDetailPage] = useState(false);
   const [detailPageContent, setDetailPageContent] = useState(null);
+
+  function handleOnSubmit(e) {
+    e.preventDefault();
+    const building_name = e.target[0].value;
+    // console.log(building_name);
+    setBuildingPosition(building_name);
+    setbuildingVal(building_name);
+  }
+
   return (
     <>
       <Container className="Section">
@@ -20,10 +31,14 @@ export default function BuildingInfo() {
           <div>
 
           </div>
-          <MapImg
-            arrivalPinX={buildingPosition[0]}
-            arrivalPinY={buildingPosition[1]}
-          ></MapImg>
+          {/* 검색창 */}
+          <SearchContainer>
+            <SerachNav></SerachNav>
+            <MapImg
+              arrivalPinX={buildingPosition[0]}
+              arrivalPinY={buildingPosition[1]}
+            ></MapImg>
+          </SearchContainer>
           <PageInfo>
             교내 건물을 알려주는 페이지입니다.
           </PageInfo>
@@ -210,4 +225,10 @@ const Building = styled.li`
   &:hover {
     background-color: rgb(247, 214, 123);
   }
+`;
+const SearchContainer = styled.article`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
