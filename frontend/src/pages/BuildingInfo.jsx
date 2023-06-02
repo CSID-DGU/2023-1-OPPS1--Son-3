@@ -72,6 +72,7 @@ export default function BuildingInfo() {
   );
 }
 const Container = styled.section`
+  background-color: #FFFBEE;
   display: flex;
   // 반응형
   @media screen and (max-width: 600px) {
