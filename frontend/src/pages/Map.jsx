@@ -160,6 +160,19 @@ const Map = () => {
             <span>{isSlope ? " 반영" : " 미반영"} </span>
             경로입니다.
           </h3>
+          <div style={{ position: "absolute", top: "100px", left: "100px" }}>
+            {"층별 비교 : " + JSON.stringify(selectedData)}
+            <br />
+            {"최단 경로 : " + arr2}
+            <br />
+            {"sum : " + minValue}
+            <br />
+            {minBuilding}
+            <br />
+            {"최단경로 출발노드 : " + selectedDepart}
+            <br />
+            {"최단경로 도착노드 : " + selectedArrive}
+          </div>
           <Canvas
             isStart={isStart}
             nodePositions={nodes}
@@ -190,19 +203,6 @@ const Map = () => {
           <FloorSelection>6층</FloorSelection>
         </FloorSelector>
       </Section>
-      <div>
-        {"층별 비교 : " + JSON.stringify(selectedData)}
-        <br />
-        {"최단 경로 : " + arr2}
-        <br />
-        {"sum : " + minValue}
-        <br />
-        {minBuilding}
-        <br />
-        {"최단경로 출발노드 : " + selectedDepart}
-        <br />
-        {"최단경로 도착노드 : " + selectedArrive}
-      </div>
       <Footer />
     </>
   );
