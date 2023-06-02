@@ -31,7 +31,7 @@ export default function BuildingInfo() {
         <Pins>
             <PinWrapper>
               <PinName>건물정보</PinName>
-              <Pin pinSrc={"/markImgs/MapMark2.svg"}></Pin>
+              <Pin pinSrc={"/markImgs/MapMark.svg"}></Pin>
             </PinWrapper>
           </Pins>
           {/* 검색창 */}
