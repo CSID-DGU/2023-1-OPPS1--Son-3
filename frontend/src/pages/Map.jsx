@@ -22,6 +22,9 @@ const Map = () => {
   const appliedShortcut = useRef(null);
   const [submittedDepart, setSubmittedDepart] = useState(null);
   const [submittedArrive, setSubmittedArrive] = useState(null);
+
+  const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 });
+
   const targetBuildings = useLocation();
   const setPinPositions = () => {
     const arr = [];
@@ -104,6 +107,9 @@ const Map = () => {
     var x = e.clientX;
     var y = e.clientY;
     console.log("마우스 클릭 좌표 - X: " + x + ", Y: " + y);
+    // Canvas(isStart, [x, y], 1000, 687.14, "red");
+    setClickPosition({ x, y });
+    // setNodes([x, y]);
   };
   return (
     <>
@@ -131,6 +137,7 @@ const Map = () => {
             canvasWidth={1000}
             canvasHeight={687.14}
             color={isSlope ? "blue" : "red"}
+            clickPosition={clickPosition}
           />
           <Span>
             교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 반영 및
@@ -162,7 +169,7 @@ export default Map;
 const Section = styled.section`
   display: flex;
   height: 100vh;
-  background-color: #FFFBEE; 
+  background-color: #fffbee;
   @media screen and (max-width: 800px) {
     header input {
       padding: 0px;
@@ -265,7 +272,7 @@ const FloorSelector = styled.div`
   top: 205px;
   right: 260px;
   z-index: 0px;
-`
+`;
 const FloorSelection = styled.div`
   border-radius: 50%;
   width: 80px;
@@ -286,7 +293,7 @@ const FloorSelection = styled.div`
   font-weight: 400;
   font-size: 20px;
   line-height: 23px;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
