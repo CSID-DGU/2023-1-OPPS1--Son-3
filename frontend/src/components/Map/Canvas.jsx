@@ -6,6 +6,7 @@ const Canvas = ({
   canvasHeight,
   nodePositions,
   color,
+  clickPosition,
 }) => {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
@@ -44,6 +45,24 @@ const Canvas = ({
       }
     }
   }, [isStart]);
+
+  useEffect(() => {
+    if (clickPosition) {
+      const { x, y } = clickPosition;
+      const [canvasX, canvasY] = [x - 310 - 150, y - 175]; //테스트중이라 150은 오른쪽 박스 사라져서 추가로 빼준 좌표
+      // const [canvasX, canvasY] = [x, y];
+      setTimeout(() => {
+        drawCircle([canvasX, canvasY], [canvasX, canvasY]);
+      }, 10);
+      console.log(
+        "node x : " +
+          (canvasX * 700) / canvasWidth +
+          "node y : " +
+          (canvasY * 481) / canvasHeight
+      );
+    }
+  }, [clickPosition]);
+
   const drawCircle = ([startX, startY], [endX, endY]) => {
     ctx.beginPath();
     ctx.strokeStyle = color;
