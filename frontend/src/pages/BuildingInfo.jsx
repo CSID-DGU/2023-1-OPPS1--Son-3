@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Footer from "../components/Footer";
-import MapImg from "../components/MapImg";
+import { MapImg2 } from "../components/MapImg";
 import buildingInfo from "../lib/buildingInfo.js";
 import PinPosition from "../lib/PinPosition";
 import BuildingDetail from "../components/BuildingInfo/BuildingDetail";
@@ -37,10 +37,10 @@ export default function BuildingInfo() {
           {/* 검색창 */}
           <SearchContainer>
             <SerachNav handleOnSubmit={handleOnSubmit}></SerachNav>
-            <MapImg
+            <MapImg2
               arrivalPinX={buildingPosition[0]}
               arrivalPinY={buildingPosition[1]}
-            ></MapImg>
+            ></MapImg2>
           </SearchContainer>
           <PageInfo>
             교내 건물을 알려주는 페이지입니다.
