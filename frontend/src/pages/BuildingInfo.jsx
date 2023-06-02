@@ -33,7 +33,7 @@ export default function BuildingInfo() {
           </div>
           {/* 검색창 */}
           <SearchContainer>
-            <SerachNav></SerachNav>
+            <SerachNav handleOnSubmit={handleOnSubmit}></SerachNav>
             <MapImg
               arrivalPinX={buildingPosition[0]}
               arrivalPinY={buildingPosition[1]}
