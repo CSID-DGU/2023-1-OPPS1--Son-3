@@ -247,28 +247,52 @@ for start in node_list:
     path_all4[start] = path_start
 
 # 경사를 반영하지 않은 그래프를 path1.json 파일로 저장
+file_path1 = "./frontend/src/lib/path/path1.json"
+with open(file_path1, 'w', encoding='utf-8') as outfile:
+    json.dump(path_all1, outfile, ensure_ascii=False, indent=4)
+
+"""
 parent_directory = os.path.abspath('..')
 file_path1 = os.path.join(parent_directory, "./frontend/src/lib/path/path1.json")
 with open(file_path1, 'w', encoding='utf-8') as outfile:
     json.dump(path_all1, outfile, ensure_ascii=False, indent=4)
+"""
 
 # 경사를 반영한 그래프를 path2.json 파일로 저장
+file_path2 = "./frontend/src/lib/path/path2.json"
+with open(file_path2, 'w', encoding='utf-8') as outfile:
+    json.dump(path_all2, outfile, ensure_ascii=False, indent=4)
+
+"""
 parent_directory = os.path.abspath('..')
 file_path2 = os.path.join(parent_directory, "./frontend/src/lib/path/path2.json")
 with open(file_path2, 'w', encoding='utf-8') as outfile:
     json.dump(path_all2, outfile, ensure_ascii=False, indent=4)
+"""
 
 # 경사를 반영하지 않은 그래프2를 path1_1.json 파일로 저장
+file_path3 = "./frontend/src/lib/path/path1_1.json"
+with open(file_path3, 'w', encoding='utf-8') as outfile:
+    json.dump(path_all3, outfile, ensure_ascii=False, indent=4)
+
+"""
 parent_directory = os.path.abspath('..')
 file_path3 = os.path.join(parent_directory, "./frontend/src/lib/path/path1_1.json")
 with open(file_path3, 'w', encoding='utf-8') as outfile:
     json.dump(path_all3, outfile, ensure_ascii=False, indent=4)
+"""
 
 # 경사를 반영한 그래프2를 path2_1.json 파일로 저장
+file_path4 = "./frontend/src/lib/path/path2_1.json"
+with open(file_path4, 'w', encoding='utf-8') as outfile:
+    json.dump(path_all4, outfile, ensure_ascii=False, indent=4)
+
+"""
 parent_directory = os.path.abspath('..')
 file_path4 = os.path.join(parent_directory, "./frontend/src/lib/path/path2_1.json")
 with open(file_path4, 'w', encoding='utf-8') as outfile:
     json.dump(path_all4, outfile, ensure_ascii=False, indent=4)
+"""
 
 '''
 출력형태
