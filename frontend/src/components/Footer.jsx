@@ -33,6 +33,7 @@ const Footer = () => {
 export default Footer;
 
 const Foot = styled.footer`
+  background-color: #FFFBEE;
   height: 180px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
