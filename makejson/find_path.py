@@ -243,7 +243,7 @@ path_all4 = {}
 for start in node_list:
     path_start = {}
     for end in node_list:
-        path_start[end] = dijkstra2(graph2, start, end)
+        path_start[end] = round(dijkstra2(graph2, start, end), 4)   #소수점 5번째 자리에서 반올림
     path_all4[start] = path_start
 
 # 경사를 반영하지 않은 그래프를 path1.json 파일로 저장
