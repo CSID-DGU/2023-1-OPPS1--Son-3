@@ -45,6 +45,9 @@ const Map = () => {
   return (
     <>
       <Section className="Section">
+        <ButtonInfo>
+          <b>건물 정보</b>
+        </ButtonInfo>
         <MapContentContainer>
           <MapHeader
             targetBuildings={targetBuildings.state}
@@ -82,6 +85,11 @@ const Map = () => {
           submittedDepart={submittedDepart}
           appliedShortcut={appliedShortcut}
         />
+        <FloorSelector>
+          <FloorSelection>1층</FloorSelection>
+          <FloorSelection>4층</FloorSelection>
+          <FloorSelection>6층</FloorSelection>
+        </FloorSelector>
       </Section>
       <Footer />
     </>
@@ -90,7 +98,9 @@ const Map = () => {
 export default Map;
 const Section = styled.section`
   display: flex;
-  @media screen and (max-width: 600px) {
+  height: 100vh;
+  background-color: #FFFBEE; 
+  @media screen and (max-width: 800px) {
     header input {
       padding: 0px;
       width: 6rem;
@@ -115,10 +125,6 @@ const Section = styled.section`
     #icon {
       display: none;
     }
-    & #canvas {
-      width: 370px;
-      height: 254.24px;
-    }
     #DirectionList {
       width: 100%;
       margin: 0;
@@ -128,46 +134,6 @@ const Section = styled.section`
     }
     .smallerFont {
       font-size: 10px;
-    }
-  }
-  @media screen and (min-width: 601px) and (max-width: 900px) {
-    flex-direction: column;
-    height: auto;
-    #DirectionList {
-      width: 100%;
-      margin: 0;
-      width: auto;
-      #icon {
-        display: none;
-      }
-      img {
-        width: 40%;
-      }
-    }
-    *:not(footer > *) {
-      font-size: 0.9rem;
-    }
-    header > form {
-      flex-shrink: 1;
-      input {
-        padding: 2px;
-        width: 8rem;
-        height: 40px;
-      }
-    }
-    button {
-      width: 4rem;
-      height: 2rem;
-    }
-    #icon {
-      display: none;
-    }
-    & #canvas {
-      width: 700px;
-      height: 481px;
-    }
-    .smallerFont {
-      font-size: 11px;
     }
   }
   @media screen and (max-width: 1200px) and(min-width: 800px) {
@@ -194,6 +160,7 @@ const MapContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
+  justify-content: space-evenly;
   position: relative;
 `;
 const Span = styled.span`
@@ -202,4 +169,61 @@ const Span = styled.span`
   margin: 10px;
   flex-shrink: 1;
   flex: none;
+  word-break: keep-all;
+  text-align: center;
+`;
+const ButtonInfo = styled.div`
+  position: absolute;
+  top: 56px;
+  right: 65px;
+  width: 110px;
+  height: 45px;
+  background-color: #ffd336;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+
+  font-family: "DONGGUK UNIVERSITY";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FloorSelector = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 205px;
+  right: 260px;
+  z-index: 0px;
+`
+const FloorSelection = styled.div`
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  :first-child {
+    background-color: #ffe68c;
+  }
+  :nth-child(2) {
+    background-color: #ffd79e;
+  }
+  :nth-child(3) {
+    background-color: #ffc59b;
+  }
+  cursor: pointer;
+
+  font-family: "DONGGUK UNIVERSITY";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

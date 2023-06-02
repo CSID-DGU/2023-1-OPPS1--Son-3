@@ -100,8 +100,8 @@ const Header = styled.header`
 const Form = styled.form`
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 20px;
+  justify-content: space-between;
+  gap: 5px;
 `;
 const Div = styled.div`
   padding: 10px;
@@ -109,26 +109,29 @@ const Div = styled.div`
   align-items: center;
 `;
 const Input = styled.input`
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 5px;
   width: 150px;
   font-size: 18px;
-  border: 2.8px black solid;
+  border: 2px black solid;
 `;
 
 const Button = styled.button`
-  border-radius: 15px;
-  font-size: 20px;
-  width: 80px;
-  height: 38px;
-  color: white;
-  background-color: black;
+  font-size: 18px;
+  font-weight: bold;
+  width: 58px;
+  height: 42px;
+  background: #ffd336;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  border: 0px;
 `;
 const DropDownWrapper = styled.div`
   position: relative;
 `;
 const Span = styled.span`
   font-size: 25px;
+  font-weight: bold;
   display: inline-block;
   margin: 10px;
   flex-shrink: 1;
