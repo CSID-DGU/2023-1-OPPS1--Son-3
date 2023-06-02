@@ -28,9 +28,12 @@ export default function BuildingInfo() {
       <Container className="Section">
         <MainIcon />
         <BuildingInfoContainer>
-          <div>
-
-          </div>
+        <Pins>
+            <PinWrapper>
+              <PinName>건물정보</PinName>
+              <Pin pinSrc={"/markImgs/MapMark2.svg"}></Pin>
+            </PinWrapper>
+          </Pins>
           {/* 검색창 */}
           <SearchContainer>
             <SerachNav handleOnSubmit={handleOnSubmit}></SerachNav>
@@ -231,4 +234,28 @@ const SearchContainer = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+//핀 정보
+const Pins = styled.div`
+  position: absolute;
+  top: 150px;
+  left: 15%;
+  z-index: 1;
+`;
+const PinWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: flex-end;
+`;
+const Pin = styled.div`
+  background-image: url(${(props) => `${props.pinSrc}`});
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 35px;
+  filter: drop-shadow(0px 3.84px 3.84px rgba(0, 0, 0, 0.25));
+`;
+const PinName = styled.p`
+  filter: drop-shadow(0px 3.84px 3.84px rgba(0, 0, 0, 0.25));
 `;
