@@ -3,7 +3,9 @@ import styled from "styled-components";
 import Canvas from "../components/Map/Canvas";
 import { nodeData } from "../lib/mapInfo.js";
 import pathData from "../lib/path/path1.json";
+import pathData_sum from "../lib/path/path1_1.json";
 import pathSlopeData from "../lib/path/path2.json";
+import pathSlopeData_sum from "../lib/path/path2_1.json";
 import Footer from "../components/Footer";
 import Shortcut from "../lib/shortcut/shortcut1.json";
 import SlopShortCut from "../lib/shortcut/shortcut2.json";
@@ -23,12 +25,68 @@ const Map = () => {
   const targetBuildings = useLocation();
   const setPinPositions = () => {
     const arr = [];
+    // const test = [];
     const data = isSlope ? pathSlopeData : pathData;
+    const sum_data = isSlope ? pathSlopeData_sum : pathData_sum;
+
+    const selectedData = {};
+    let selectedDepart = null;
+    let selectedArrive = null;
+
+    //To do
+    //넘겨받은 층수데이터를 이용해 해당 층수 출발일때 도착건물의 최단출입구를 구하기
+
+    for (const buildingKey in sum_data) {
+      if (buildingKey.includes(departBuilding)) {
+        selectedData[buildingKey] = {};
+        const buildingData = sum_data[buildingKey];
+        for (const key in buildingData) {
+          if (key.includes(arriveBuilding)) {
+            selectedData[buildingKey][key] = buildingData[key];
+          }
+        }
+      }
+    }
+
+    let minValue = Number.POSITIVE_INFINITY;
+    let minbuilding = null;
+
+    for (selectedDepart in selectedData) {
+      const startbuilding = selectedData[selectedDepart];
+      for (selectedArrive in startbuilding) {
+        const value = startbuilding[selectedArrive];
+        if (value < minValue) {
+          minValue = value;
+          minbuilding =
+            "최단경로 : " + selectedDepart + " 에서 " + selectedArrive;
+        }
+      }
+    }
+
+    console.log(selectedData);
+    console.log(minValue);
+    console.log(minbuilding);
+    console.log(selectedDepart);
+    console.log(selectedArrive);
+    // selectedData[selectedDepart][selectedArrive]((item) => {
+    //   test.push(nodeData[item]);
+    // });
+
+    //To do
+    //층 선택하면 층수 데이터에 맞는 최단 입구 경로 최단경로 보여주기
+
+    // selectedData[selectedDepart][selectedArrive].map((item) => {
+    //   arr.push(nodeData[item]);
+    // });
+
     data[departBuilding][arriveBuilding].map((item) => {
       arr.push(nodeData[item]);
     });
+
+    console.log(arr);
     setNodes([...arr]);
   };
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     setSubmittedDepart(departBuilding);
@@ -42,13 +100,18 @@ const Map = () => {
     setIsStart(!isStart);
     setPinPositions();
   };
+  const handleClick = (e) => {
+    var x = e.clientX;
+    var y = e.clientY;
+    console.log("마우스 클릭 좌표 - X: " + x + ", Y: " + y);
+  };
   return (
     <>
       <Section className="Section">
         <ButtonInfo>
           <b>건물 정보</b>
         </ButtonInfo>
-        <MapContentContainer>
+        <MapContentContainer onClick={handleClick}>
           <MapHeader
             targetBuildings={targetBuildings.state}
             arriveBuilding={arriveBuilding}
@@ -162,6 +225,7 @@ const MapContentContainer = styled.div`
   flex-grow: 1;
   justify-content: space-evenly;
   position: relative;
+  pointer-events: auto;
 `;
 const Span = styled.span`
   font-size: 17px;
