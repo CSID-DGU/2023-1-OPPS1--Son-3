@@ -435,7 +435,7 @@ for start in dict_key:
         shortcuts[end] = shortcut
     shortcut_all2[start] = shortcuts
 
-# 경사를 반영한 그래프의 지름길 정보를 shortcut2.json 으로 저장
+# 편한길 그래프의 지름길 정보를 shortcut2.json 으로 저장
 parent_directory = os.path.abspath('..')
 file_path2 = os.path.join(parent_directory, "./frontend/src/lib/shortcut/shortcut2.json")
 with open(file_path2, 'w', encoding='utf-8') as outfile:
