@@ -18,16 +18,14 @@ export default function BuildingInfo() {
         <MainIcon />
         <BuildingInfoContainer>
           <div>
-            <InfoIcon src="/markImgs/info_icon2.png"></InfoIcon>
-            표시가 있는 건물은 정보를 볼 수 있습니다.
+
           </div>
           <MapImg
             arrivalPinX={buildingPosition[0]}
             arrivalPinY={buildingPosition[1]}
           ></MapImg>
           <PageInfo>
-            해당 건물에 해당하는 열람실, 카페, 학사운영실의 운영시간, 전화번호를
-            안내하는 페이지입니다.
+            교내 건물을 알려주는 페이지입니다.
           </PageInfo>
         </BuildingInfoContainer>
         <Article>
