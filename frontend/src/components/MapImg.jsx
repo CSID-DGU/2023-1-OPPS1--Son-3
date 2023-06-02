@@ -31,6 +31,24 @@ export default function MapImg({
   );
 }
 
+export function MapImg2({ arrivalPinX, arrivalPinY, convenient }) {
+  return (
+    <ImgMarkingContainer>
+      <Img src="/backgroundImgs/campus_map.png"></Img>
+      {!(arrivalPinX + arrivalPinY === 0) && (
+        <MapMarkContainer
+          PinX={arrivalPinX}
+          PinY={arrivalPinY}
+          className="markContainer"
+        >
+          <img src="/markImgs/MapMark.svg" alt="" />
+        </MapMarkContainer>
+      )}
+    </ImgMarkingContainer>
+  );
+}
+
+
 const MapMarkContainer = styled.div`
   position: absolute;
   width: 20px;

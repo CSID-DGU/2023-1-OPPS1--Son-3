@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Footer from "../components/Footer";
-import MapImg from "../components/MapImg";
+import { MapImg2 } from "../components/MapImg";
 import buildingInfo from "../lib/buildingInfo.js";
 import PinPosition from "../lib/PinPosition";
 import BuildingDetail from "../components/BuildingInfo/BuildingDetail";
@@ -28,16 +28,19 @@ export default function BuildingInfo() {
       <Container className="Section">
         <MainIcon />
         <BuildingInfoContainer>
-          <div>
-
-          </div>
+        <Pins>
+            <PinWrapper>
+              <PinName>건물정보</PinName>
+              <Pin pinSrc={"/markImgs/MapMark.svg"}></Pin>
+            </PinWrapper>
+          </Pins>
           {/* 검색창 */}
           <SearchContainer>
-            <SerachNav></SerachNav>
-            <MapImg
+            <SerachNav handleOnSubmit={handleOnSubmit}></SerachNav>
+            <MapImg2
               arrivalPinX={buildingPosition[0]}
               arrivalPinY={buildingPosition[1]}
-            ></MapImg>
+            ></MapImg2>
           </SearchContainer>
           <PageInfo>
             교내 건물을 알려주는 페이지입니다.
@@ -231,4 +234,28 @@ const SearchContainer = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+//핀 정보
+const Pins = styled.div`
+  position: absolute;
+  top: 150px;
+  left: 15%;
+  z-index: 1;
+`;
+const PinWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: flex-end;
+`;
+const Pin = styled.div`
+  background-image: url(${(props) => `${props.pinSrc}`});
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 35px;
+  filter: drop-shadow(0px 3.84px 3.84px rgba(0, 0, 0, 0.25));
+`;
+const PinName = styled.p`
+  filter: drop-shadow(0px 3.84px 3.84px rgba(0, 0, 0, 0.25));
 `;

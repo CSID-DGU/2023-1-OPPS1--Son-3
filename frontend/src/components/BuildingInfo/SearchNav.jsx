@@ -5,14 +5,18 @@ import DropDown from "../DropDown";
 import useDetectClose from "../../lib/useDetectClose";
 import { buildings_info } from "../../lib/Data";
 import MainIcon from "../MainIcon";
-export default function SerachNav() {
+export default function SerachNav({handleOnSubmit}) {
   const dropDownRef_conv = useRef(null);
   const [buildingVal, setbuildingVal] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Header>
       <MainIcon></MainIcon>
-      <Form>
+      <Form
+        onSubmit={(e) => {
+          handleOnSubmit(e);
+        }}
+      >
         <Div>
           <Span>건물명</Span>
           <DropDownWrapper>
