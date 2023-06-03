@@ -26,6 +26,7 @@ def dijkstra(graph, start):   # 그래프와 출발지 입력
         new_item.append([item[i][1], item[i][0]])   # [가중치 합, 도착지] 형태로 리스트에 삽입
     return new_item
 
+# 본관, 혜화관, 원흥관 리스트에서 최소 값만 가지게 합치기
 def merge_lists(lists, key):
     merged_list = []
     for list in lists:
@@ -38,6 +39,27 @@ def merge_lists(lists, key):
                 merged_list.append(item)
     merged_list.sort(key=key)
     return merged_list[:22]
+
+# 층별로 나뉜 노드를 하나로 합치기
+def remove_floor(building_list):
+    wonheung_gwan = [item for item in building_list if '원흥관' in item[1]]
+    min_distance_wonheung_gwan = min(wonheung_gwan, key=lambda x: x[0])
+
+    building_list = [item for item in building_list if '원흥관' not in item[1]]
+    building_list.append([min_distance_wonheung_gwan[0], '원흥관'])
+
+    hyehwa_gwan = [item for item in building_list if '혜화관' in item[1]]
+    min_distance_hyehwa_gwan = min(hyehwa_gwan, key=lambda x: x[0])
+
+    building_list = [item for item in building_list if '혜화관' not in item[1]]
+    building_list.append([min_distance_hyehwa_gwan[0], '혜화관'])
+
+    bongwan = [item for item in building_list if '본관' in item[1]]
+    min_distance_bongwan = min(bongwan, key=lambda x: x[0])
+
+    building_list = [item for item in building_list if '본관' not in item[1]]
+    building_list.append([min_distance_bongwan[0], '본관'])
+    return building_list
 
 # 동국대 지도를 그래프로 구현
 # 건물과 길목은 노드로 설정 (건물의 노드는 건물명, 길목의 노드는 알파벳으로 설정)
@@ -153,41 +175,41 @@ RealHyehwa18 = merge_lists([RealHyehwa181, RealHyehwa184], lambda x: x[0])
 
 # 각 건물을 출발지로 설정해 다익스트라 알고리즘 실행
 # A, B, ... 와 같은 길목의 노드는 출력되지 않게 설정
-ListBusiness01 = dijkstra(graph, "경영관")[:18]
+ListBusiness01 = remove_floor(RealBusiness01)
 ListBusiness01.sort()   # 가중치의 합이 작은 것부터 정렬 => 출발지로부터 가까운 순으로 건물 정렬
-ListScience02 = dijkstra(graph, "과학관")[:18]
+ListScience02 = remove_floor(RealScience02)
 ListScience02.sort()
-ListDahyang03 = dijkstra(graph, "다향관")[:18]
+ListDahyang03 = remove_floor(RealDahyang03)
 ListDahyang03.sort()
-ListManhae04 = dijkstra(graph, "만해관")[:18]
+ListManhae04 = remove_floor(RealManhae04)
 ListManhae04.sort()
-ListMyeongjin05 = dijkstra(graph, "명진관")[:18]
+ListMyeongjin05 = remove_floor(RealMyeongjin05)
 ListMyeongjin05.sort()
-ListMunhwa06 = dijkstra(graph, "문화관")[:18]
+ListMunhwa06 = remove_floor(RealMunhwa06)
 ListMunhwa06.sort()
-ListLaw07 = dijkstra(graph, "법학관")[:18]
+ListLaw07 = remove_floor(RealLaw07)
 ListLaw07.sort()
-ListMain08 = dijkstra(graph, "본관")[:18]
+ListMain08 = remove_floor(RealMain08)
 ListMain08.sort()
-ListSocialScience09 = dijkstra(graph, "사회과학관")[:18]
+ListSocialScience09 = remove_floor(RealSocialScience09)
 ListSocialScience09.sort()
-ListSanglokwon10 = dijkstra(graph, "상록원")[:18]
+ListSanglokwon10 = remove_floor(RealSanglokwon10)
 ListSanglokwon10.sort()
-ListNewEngineering11 = dijkstra(graph, "신공학관")[:18]
+ListNewEngineering11 = remove_floor(RealNewEngineering11)
 ListNewEngineering11.sort()
-ListWonheung12 = dijkstra(graph, "원흥관")[:18]
+ListWonheung12 = remove_floor(RealWonheung12)
 ListWonheung12.sort()
-ListInformationEngineering13 = dijkstra(graph, "정보문화관")[:18]
+ListInformationEngineering13 = remove_floor(RealInformationEngineering13)
 ListInformationEngineering13.sort()
-ListLibrary14 = dijkstra(graph, "중앙도서관")[:18]
+ListLibrary14 = remove_floor(RealLibrary14)
 ListLibrary14.sort()
-ListHaklim15 = dijkstra(graph, "학림관")[:18]
+ListHaklim15 = remove_floor(RealHaklim15)
 ListHaklim15.sort()
-ListStudent16 = dijkstra(graph, "학생회관")[:18]
+ListStudent16 = remove_floor(RealStudent16)
 ListStudent16.sort()
-ListHaksul17 = dijkstra(graph, "학술관")[:18]
+ListHaksul17 = remove_floor(RealHaksul17)
 ListHaksul17.sort()
-ListHyehwa18 = dijkstra(graph, "혜화관")[:18]
+ListHyehwa18 = remove_floor(RealHyehwa18)
 ListHyehwa18.sort()
 
 # 각 건물의 편의시설 정보를 딕셔너리로 구현
