@@ -1,6 +1,9 @@
 import heapq
 import json
+
+"""
 import os
+"""
 
 # 다익스트라 알고리즘 구현
 def dijkstra(graph, start):   # 그래프와 출발지 입력
@@ -23,125 +26,190 @@ def dijkstra(graph, start):   # 그래프와 출발지 입력
         new_item.append([item[i][1], item[i][0]])   # [가중치 합, 도착지] 형태로 리스트에 삽입
     return new_item
 
+# 본관, 혜화관, 원흥관 리스트에서 최소 값만 가지게 합치기
+def merge_lists(lists, key):
+    merged_list = []
+    for list in lists:
+        for item in list:
+            if item[1] in [x[1] for x in merged_list]:
+                for i, val in enumerate(merged_list):
+                    if val[1] == item[1] and val[0] > item[0]:
+                        merged_list[i] = item
+            else:
+                merged_list.append(item)
+    merged_list.sort(key=key)
+    return merged_list[:22]
+
+# 층별로 나뉜 노드를 하나로 합치기
+def remove_floor(building_list):
+    wonheung_gwan = [item for item in building_list if '원흥관' in item[1]]
+    min_distance_wonheung_gwan = min(wonheung_gwan, key=lambda x: x[0])
+
+    building_list = [item for item in building_list if '원흥관' not in item[1]]
+    building_list.append([min_distance_wonheung_gwan[0], '원흥관'])
+
+    hyehwa_gwan = [item for item in building_list if '혜화관' in item[1]]
+    min_distance_hyehwa_gwan = min(hyehwa_gwan, key=lambda x: x[0])
+
+    building_list = [item for item in building_list if '혜화관' not in item[1]]
+    building_list.append([min_distance_hyehwa_gwan[0], '혜화관'])
+
+    bongwan = [item for item in building_list if '본관' in item[1]]
+    min_distance_bongwan = min(bongwan, key=lambda x: x[0])
+
+    building_list = [item for item in building_list if '본관' not in item[1]]
+    building_list.append([min_distance_bongwan[0], '본관'])
+    return building_list
+
 # 동국대 지도를 그래프로 구현
 # 건물과 길목은 노드로 설정 (건물의 노드는 건물명, 길목의 노드는 알파벳으로 설정)
 # 길은 간선으로 설정
 # 가중치는 노드 간 직선거리 (네이버 지도로 측정)
 graph = {
-    '경영관': {'문화관':11, '사회과학관':57, 'QQ':63},
-    '과학관': {'D':1, 'B':5},
-    '다향관': {'M':5, 'WW':1},
-    '만해관': {'법학관':43, '혜화관':54, 'F':33},
-    '명진관': {'D':37, 'G':32},
-    '문화관': {'경영관':11, '사회과학관':56, '학술관':15},
-    '법학관': {'만해관':43, 'P':4},
-    '본관': {'K':12, 'S':15},
-    '사회과학관': {'경영관':57, '문화관':56, 'PP':1, 'QQ':46},
-    '상록원': {'A':1, '대운동장':46},
-    '신공학관': {'KK':25},
-    '원흥관': {'Q':13, 'R':11, 'II':13},
-    '정보문화관': {'VV':5, 'YY':5},
-    '중앙도서관': {'H':12, 'Q':50},
-    '학림관': {'체육관':50, 'X':50, 'EE':55},
-    '학생회관': {'AA':5, 'BB':25},
-    '학술관': {'문화관':15},
-    '혜화관': {'만해관':54, 'OO':1},
-    '혜화문': {'PP':85, 'NN':72},
-    '대운동장': {'상록원':46, 'UU':12, 'TT':12},
-    '체육관': {'학림관':50, 'W':30},
-    '후문': {'EE':14},
-    '만해광장': {'XX':1},
-    '팔정도': {'F':49, 'P':39, 'O':49, 'N':39, 'L':49, 'K':39, 'J':49, 'G':39},
-    'A': {'B':31, '상록원':1},
-    'B': {'과학관':5, 'A':31, 'C':16},
-    'C': {'B':16, 'D':46, 'H':54},
-    'D': {'과학관':1, '명진관':37, 'C':46, 'E':43},
-    'E': {'D':43, 'F':61},
-    'F': {'E':61, 'G':38, '팔정도':49, 'P':29, '만해관':33, 'UU':110},
-    'G': {'명진관':32, 'F':38, '팔정도':39, 'J':38},
-    'H': {'C':54, '중앙도서관':12, 'I':16},
-    'I': {'H':16, 'J':14},
-    'J': {'I':14, 'Q':50, 'K':29, '팔정도':49, 'G':38},
-    'K': {'J':29, '본관':12, 'L':29, '팔정도':39},
-    'L': {'K':29, 'S':34, 'T':10, 'M':15, '팔정도':49},
-    'M': {'L':15, '다향관':5, 'N':23},
-    'N': {'팔정도':39, 'M':23, 'O':38},
-    'O': {'팔정도':49, 'N':38, 'LL':43, 'P':29},
-    'P': {'팔정도':39, 'O':29, '법학관':4, 'F':29},
-    'Q': {'R':56, 'J':50, '중앙도서관':50, 'KK':32, '원흥관':13},
-    'R': {'Q':56, '원흥관':11, 'JJ':36, 'S':30},
-    'S': {'본관':15, 'R':30, 'L':34},
-    'T': {'L':10, 'V':25, 'U':10},
-    'U': {'T':10, 'WW':10},
-    'V': {'T':25, 'XX':49, 'W':30},
-    'W': {'V':30, '체육관':30},
-    'X': {'학림관':50, 'Y':35},
-    'Y': {'X':35, 'Z':20},
-    'Z': {'Y':20, 'AA':26},
-    'AA': {'학생회관':5, 'Z':26, 'FF':28},
-    'BB': {'학생회관':25, 'CC':37},
-    'CC': {'BB':37, 'DD':50},
-    'DD': {'CC':50, 'EE':20},
-    'EE': {'학림관':55, 'DD':20, '후문':14},
-    'FF': {'YY':5, 'AA':28, 'GG':20},
-    'GG': {'FF':20, 'HH':35},
-    'HH': {'II':21, 'GG':35, 'JJ':35},
-    'II': {'원흥관':13, 'VV':20, 'HH':21},
-    'JJ': {'R':36, 'HH':35, 'XX':49},
-    'KK': {'신공학관':25, 'Q':32},
-    'LL': {'MM':41, 'O':43},
-    'MM': {'LL':41, 'NN':77},
-    'NN': {'OO':55, 'MM':77, '혜화문':72},
-    'OO': {'혜화관':1, 'NN':55, 'PP':46},
-    'PP': {'OO':46, '혜화문':85, '사회과학관':1},
-    'QQ': {'경영관':63, 'RR':77, '사회과학관':46},
-    'RR': {'QQ':77, 'SS':40},
-    'SS': {'RR':40, 'TT':28},
-    'TT': {'SS':28, '대운동장':12, 'UU':23},
-    'UU': {'대운동장':12, 'TT':23, 'F':110},
-    'VV': {'II':20, '정보문화관':5},
-    'WW': {'다향관':1, 'U':10},
-    'XX': {'만해광장':1, 'V':49, 'JJ':49},
-    'YY': {'정보문화관':5, 'FF':5} 
+    '경영관': {'사회과학관': 47, '문화관': 60, 'QQ': 80},
+    '과학관': {'B': 1, 'D': 1},
+    '다향관': {'L': 35, 'O': 37},
+    '만해관': {'F': 20, 'M': 15, '법학관': 38},
+    '명진관': {'D': 22, 'G': 17},
+    '문화관': {'U': 105, '사회과학관': 53, '경영관': 60, '학술관': 40, 'OO': 72},
+    '법학관': {'만해관': 38, 'P': 4, 'LL': 6},
+    '본관1층': {'본관3층': 66, 'Q': 23, 'R': 13},
+    '본관3층': {'본관1층': 66, 'J': 20, 'L': 10},
+    '사회과학관': {'문화관': 53, '경영관': 47, 'QQ': 50, 'PP': 29},
+    '상록원': {'A': 14, 'KK': 37},
+    '신공학관': {'Q': 32},
+    '원흥관1층': {'II': 18, '원흥관4층': 30, '원흥관6층': 44},
+    '원흥관4층': {'R': 17, '원흥관1층': 30, '원흥관6층': 15},
+    '원흥관6층': {'Q': 23, '원흥관4층': 15, '원흥관1층': 44},
+    '정보문화관': {'II': 11, 'FF': 8},
+    '중앙도서관': {'H': 12, 'Q': 50},
+    '학림관': {'EE': 75, 'Y': 70, '체육관': 32},
+    '학생회관': {'AA': 5, 'BB': 25},
+    '학술관': {'문화관': 40, 'U': 72},
+    '혜화관1층': {'혜화관4층': 26, 'PP': 20},
+    '혜화관4층': {'혜화관1층': 26, 'M': 35},
+    '혜화문': {'OO': 75, 'U': 43},
+    '대운동장': {'KK': 20},
+    '체육관': {'V': 97, '학림관': 32},
+    '후문': {'EE': 15},
+    '만해광장': {'W': 1, 'GG': 22},
+    '팔정도': {'G': 36, 'J': 50, 'K': 36, 'L': 50, 'N': 36, 'O': 52, 'P': 41, 'F': 56},
+    'A': {'B': 31, '상록원': 14},
+    'B': {'과학관': 1, 'C': 12, 'A': 31},
+    'C': {'B': 12, 'D': 50, 'H': 54},
+    'D': {'과학관': 1, '명진관': 22, 'C': 50, 'E': 37},
+    'E': {'D': 37, 'F': 57},
+    'F': {'X': 45, '만해관': 20, '팔정도': 56, 'P': 35, 'G': 45, 'E': 57},
+    'G': {'명진관': 17, '팔정도': 36, 'F': 45, 'J': 36},
+    'H': {'C': 54, 'I': 14, '중앙도서관': 12},
+    'I': {'H': 14, 'J': 14, 'Q': 50},
+    'J': {'K': 34, '팔정도': 50, 'G': 36, 'I': 14, '본관3층': 20},
+    'K': {'팔정도': 36, 'J': 34, 'L': 36},
+    'L': {'K': 36, '팔정도': 50, 'N': 34, '다향관': 35, 'T': 30, 'S': 37, '본관3층': 10},
+    'M': {'만해관': 15, 'Z': 40, 'MM': 48, '혜화관4층': 35},
+    'N': {'팔정도': 36, 'O': 36, 'L': 34},
+    'O': {'다향관': 37, 'N': 36, '팔정도': 52, 'P': 38, 'LL': 36},
+    'P': {'법학관': 4, 'O': 38, 'F': 35, '팔정도': 41},
+    'Q': {'신공학관': 32, '중앙도서관': 50, '본관1층': 23, '원흥관6층': 23, 'R': 73, 'I': 50},
+    'R': {'Q': 73, '본관1층': 13, 'S': 24, 'JJ': 21, '원흥관4층': 17},
+    'S': {'L': 37, 'R': 24, 'JJ': 30},
+    'T': {'L': 30, 'V': 32},
+    'U': {'학술관': 72, '문화관': 105, '혜화문': 43},
+    'V': {'체육관': 97, 'T': 32, 'W': 31},
+    'W': {'만해광장': 1, 'JJ': 18, 'V': 31},  # 만해광장 앞
+    'X': {'F': 45, 'Z': 34, 'KK': 40},
+    'Y': {'AA': 30, '학림관': 70},
+    'Z': {'X': 34, 'M': 40},
+    'AA': {'학생회관': 5, 'FF': 30, 'Y': 30},
+    'BB': {'학생회관': 25, 'CC': 20},
+    'CC': {'BB': 20, 'DD': 50},
+    'DD': {'CC': 50, 'EE': 20},
+    'EE': {'학림관': 75, 'DD': 20, '후문': 15},
+    'FF': {'정보문화관': 8, 'GG': 23, 'AA': 30},
+    'GG': {'만해광장': 22, 'HH': 11, 'FF': 23},
+    'HH': {'GG': 11, 'JJ': 65, 'II': 30},
+    'II': {'HH': 30, '원흥관1층': 18, '정보문화관': 11},
+    'JJ': {'R': 21, 'S': 30, 'W': 18, 'HH': 65},
+    'KK': {'대운동장': 20, 'X': 40, 'SS': 43, '상록원': 37},
+    'LL': {'법학관': 6, 'O': 36, 'MM': 47},
+    'MM': {'M': 48, 'NN': 33, 'LL': 47},
+    'NN': {'MM': 33, 'OO': 52},
+    'OO': {'PP': 53, '문화관': 72, '혜화문': 75, 'NN': 52},
+    'PP': {'QQ': 70, '사회과학관': 29, 'OO': 53, '혜화관1층': 20},
+    'QQ': {'사회과학관': 50, 'PP': 70, 'RR': 70, '경영관': 80},
+    'RR': {'SS': 27, 'QQ': 70},
+    'SS': {'KK': 43, 'RR': 27}
 }
+
+RealBusiness01 = dijkstra(graph, "경영관")[:22]
+RealScience02 = dijkstra(graph, "과학관")[:22]
+RealDahyang03 = dijkstra(graph, "다향관")[:22]
+RealManhae04 = dijkstra(graph, "만해관")[:22]
+RealMyeongjin05 = dijkstra(graph, "명진관")[:22]
+RealMunhwa06 = dijkstra(graph, "문화관")[:22]
+RealLaw07 = dijkstra(graph, "법학관")[:22]
+RealMain081 = dijkstra(graph, "본관1층")[:22]
+RealMain083 = dijkstra(graph, "본관3층")[:22]
+RealSocialScience09 = dijkstra(graph, "사회과학관")[:22]
+RealSanglokwon10 = dijkstra(graph, "상록원")[:22]
+RealNewEngineering11 = dijkstra(graph, "신공학관")[:22]
+RealWonheung121 = dijkstra(graph, "원흥관1층")[:22]
+RealWonheung124 = dijkstra(graph, "원흥관4층")[:22]
+RealWonheung126 = dijkstra(graph, "원흥관6층")[:22]
+RealInformationEngineering13 = dijkstra(graph, "정보문화관")[:22]
+RealLibrary14 = dijkstra(graph, "중앙도서관")[:22]
+RealHaklim15 = dijkstra(graph, "학림관")[:22]
+RealStudent16 = dijkstra(graph, "학생회관")[:22]
+RealHaksul17 = dijkstra(graph, "학술관")[:22]
+RealHyehwa181 = dijkstra(graph, "혜화관1층")[:22]
+RealHyehwa184 = dijkstra(graph, "혜화관4층")[:22]
+
+# 본관 합치기
+RealMain08 = merge_lists([RealMain081, RealMain083], lambda x: x[0])
+
+# 원흥관 합치기
+RealWonheung12 = merge_lists([RealWonheung121, RealWonheung124, RealWonheung126], lambda x: x[0])
+
+# 혜화관 합치기
+RealHyehwa18 = merge_lists([RealHyehwa181, RealHyehwa184], lambda x: x[0])
 
 # 각 건물을 출발지로 설정해 다익스트라 알고리즘 실행
 # A, B, ... 와 같은 길목의 노드는 출력되지 않게 설정
-ListBusiness01 = dijkstra(graph, "경영관")[:18]
+ListBusiness01 = remove_floor(RealBusiness01)
 ListBusiness01.sort()   # 가중치의 합이 작은 것부터 정렬 => 출발지로부터 가까운 순으로 건물 정렬
-ListScience02 = dijkstra(graph, "과학관")[:18]
+ListScience02 = remove_floor(RealScience02)
 ListScience02.sort()
-ListDahyang03 = dijkstra(graph, "다향관")[:18]
+ListDahyang03 = remove_floor(RealDahyang03)
 ListDahyang03.sort()
-ListManhae04 = dijkstra(graph, "만해관")[:18]
+ListManhae04 = remove_floor(RealManhae04)
 ListManhae04.sort()
-ListMyeongjin05 = dijkstra(graph, "명진관")[:18]
+ListMyeongjin05 = remove_floor(RealMyeongjin05)
 ListMyeongjin05.sort()
-ListMunhwa06 = dijkstra(graph, "문화관")[:18]
+ListMunhwa06 = remove_floor(RealMunhwa06)
 ListMunhwa06.sort()
-ListLaw07 = dijkstra(graph, "법학관")[:18]
+ListLaw07 = remove_floor(RealLaw07)
 ListLaw07.sort()
-ListMain08 = dijkstra(graph, "본관")[:18]
+ListMain08 = remove_floor(RealMain08)
 ListMain08.sort()
-ListSocialScience09 = dijkstra(graph, "사회과학관")[:18]
+ListSocialScience09 = remove_floor(RealSocialScience09)
 ListSocialScience09.sort()
-ListSanglokwon10 = dijkstra(graph, "상록원")[:18]
+ListSanglokwon10 = remove_floor(RealSanglokwon10)
 ListSanglokwon10.sort()
-ListNewEngineering11 = dijkstra(graph, "신공학관")[:18]
+ListNewEngineering11 = remove_floor(RealNewEngineering11)
 ListNewEngineering11.sort()
-ListWonheung12 = dijkstra(graph, "원흥관")[:18]
+ListWonheung12 = remove_floor(RealWonheung12)
 ListWonheung12.sort()
-ListInformationEngineering13 = dijkstra(graph, "정보문화관")[:18]
+ListInformationEngineering13 = remove_floor(RealInformationEngineering13)
 ListInformationEngineering13.sort()
-ListLibrary14 = dijkstra(graph, "중앙도서관")[:18]
+ListLibrary14 = remove_floor(RealLibrary14)
 ListLibrary14.sort()
-ListHaklim15 = dijkstra(graph, "학림관")[:18]
+ListHaklim15 = remove_floor(RealHaklim15)
 ListHaklim15.sort()
-ListStudent16 = dijkstra(graph, "학생회관")[:18]
+ListStudent16 = remove_floor(RealStudent16)
 ListStudent16.sort()
-ListHaksul17 = dijkstra(graph, "학술관")[:18]
+ListHaksul17 = remove_floor(RealHaksul17)
 ListHaksul17.sort()
-ListHyehwa18 = dijkstra(graph, "혜화관")[:18]
+ListHyehwa18 = remove_floor(RealHyehwa18)
 ListHyehwa18.sort()
 
 # 각 건물의 편의시설 정보를 딕셔너리로 구현
@@ -169,6 +237,22 @@ ListBuildingName = ["경영관", "과학관", "다향관", "만해관", "명진�
 ListBuilding = [ListBusiness01, ListScience02, ListDahyang03, ListManhae04, ListMyeongjin05, ListMunhwa06, ListLaw07, ListMain08, ListSocialScience09, ListSanglokwon10, ListNewEngineering11, ListWonheung12, ListInformationEngineering13, ListLibrary14, ListHaklim15, ListStudent16, ListHaksul17, ListHyehwa18]
 ListBuilding_Convenient = [Business01, Science02, Dahyang03, Manhae04, Myeongjin05, Munhwa06, Law07, Main08, SocialScience09, Sanglokwon10, NewEngineering11, Wonheung12, InformationEngineering13, Library14, Haklim15, Student16, Haksul17, Hyehwa18]
 ListConvenient = ["복사기", "유인복사실", "열람실", "atm", "증명서자동발급기", "제세동기", "식당", "카페", "매점"]
+
+
+#건물별 편의시설 json파일 제작
+dict_eachconvenient = {}
+for building in ListBuilding_Convenient:
+    building_name = building["name"]
+    dict_eachconvenient[building_name] = {}
+    for facility in ListConvenient:
+        if building[facility]:
+            dict_eachconvenient[building_name][facility] = building[facility]
+
+#건물별 편의시설 json파일 저장
+file_path = "./frontend/src/eachconvenient.json"
+with open(file_path, 'w', encoding='utf-8') as outfile:
+    json.dump(dict_eachconvenient, outfile, ensure_ascii=False, indent=4)
+
 
 dict_convenient = {}
 dict_convenient01 = {}
@@ -406,11 +490,17 @@ for convenient in ListConvenient:
 dict_convenient["혜화관"] = dict_convenient18
 
 # json 파일로 저장
+
+file_path = "./frontend/src/convenient.json"
+with open(file_path, 'w', encoding='utf-8') as outfile:
+    json.dump(dict_convenient, outfile, ensure_ascii=False, indent=4)
+
+"""
 parent_directory = os.path.abspath('..')
 file_path = os.path.join(parent_directory, "./frontend/src/convenient.json")
 with open(file_path, 'w', encoding='utf-8') as outfile:
     json.dump(dict_convenient, outfile, ensure_ascii=False, indent=4)
-
+"""
 
 '''
 출력형태
