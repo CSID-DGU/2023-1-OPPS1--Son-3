@@ -1,6 +1,9 @@
 import heapq
 import json
+
+"""
 import os
+"""
 
 # 다익스트라 알고리즘 구현
 def dijkstra(graph, start):   # 그래프와 출발지 입력
@@ -169,6 +172,22 @@ ListBuildingName = ["경영관", "과학관", "다향관", "만해관", "명진�
 ListBuilding = [ListBusiness01, ListScience02, ListDahyang03, ListManhae04, ListMyeongjin05, ListMunhwa06, ListLaw07, ListMain08, ListSocialScience09, ListSanglokwon10, ListNewEngineering11, ListWonheung12, ListInformationEngineering13, ListLibrary14, ListHaklim15, ListStudent16, ListHaksul17, ListHyehwa18]
 ListBuilding_Convenient = [Business01, Science02, Dahyang03, Manhae04, Myeongjin05, Munhwa06, Law07, Main08, SocialScience09, Sanglokwon10, NewEngineering11, Wonheung12, InformationEngineering13, Library14, Haklim15, Student16, Haksul17, Hyehwa18]
 ListConvenient = ["복사기", "유인복사실", "열람실", "atm", "증명서자동발급기", "제세동기", "식당", "카페", "매점"]
+
+
+#건물별 편의시설 json파일 제작
+dict_eachconvenient = {}
+for building in ListBuilding_Convenient:
+    building_name = building["name"]
+    dict_eachconvenient[building_name] = {}
+    for facility in ListConvenient:
+        if building[facility]:
+            dict_eachconvenient[building_name][facility] = building[facility]
+
+#건물별 편의시설 json파일 저장
+file_path = "./frontend/src/eachconvenient.json"
+with open(file_path, 'w', encoding='utf-8') as outfile:
+    json.dump(dict_eachconvenient, outfile, ensure_ascii=False, indent=4)
+
 
 dict_convenient = {}
 dict_convenient01 = {}
@@ -406,11 +425,17 @@ for convenient in ListConvenient:
 dict_convenient["혜화관"] = dict_convenient18
 
 # json 파일로 저장
+
+file_path = "./frontend/src/convenient.json"
+with open(file_path, 'w', encoding='utf-8') as outfile:
+    json.dump(dict_convenient, outfile, ensure_ascii=False, indent=4)
+
+"""
 parent_directory = os.path.abspath('..')
 file_path = os.path.join(parent_directory, "./frontend/src/convenient.json")
 with open(file_path, 'w', encoding='utf-8') as outfile:
     json.dump(dict_convenient, outfile, ensure_ascii=False, indent=4)
-
+"""
 
 '''
 출력형태
