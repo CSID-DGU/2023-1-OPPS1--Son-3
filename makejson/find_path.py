@@ -9,7 +9,7 @@ import os
 def dijkstra(graph, first, last):  # 그래프, 출발지, 도착지 입력
     distance = {node: [float('inf'), first] for node in graph}  # 거리 배열의 거리를 모두 inf로 초기화
     distance[first] = [0, first]  # 출발지의 거리 0으로 설정
-    queue = []  # 우선순위 큐 생성
+    queue = []  # 큐 생성
     heapq.heappush(queue, [distance[first][0], first])  # [거리, 노드] 형태로 우선순위 큐에 삽입
     while queue:
         current_distance, current_node = heapq.heappop(queue)
@@ -108,7 +108,7 @@ graph1 = {
     'T': {'L': 30, 'V': 32},
     'U': {'학술관': 72, '문화관': 105, '혜화문': 43},
     'V': {'체육관': 97, 'T': 32, 'W': 31},
-    'W': {'만해광장': 1, 'JJ': 18, 'V': 31},  # 만해광장 앞
+    'W': {'만해광장': 1, 'JJ': 18, 'V': 31},
     'X': {'F': 45, 'Z': 34, 'KK': 40},
     'Y': {'AA': 30, '학림관': 70},
     'Z': {'X': 34, 'M': 40},
