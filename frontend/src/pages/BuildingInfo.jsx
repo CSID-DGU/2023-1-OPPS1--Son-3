@@ -21,6 +21,14 @@ export default function BuildingInfo() {
     // console.log(building_name);
     setBuildingPosition(building_name);
     setbuildingVal(building_name);
+    {
+      buildingInfo.map((building, index) => {
+        if (building.info && building.name === building_name) {
+          setIsDetailPage(true);
+          setDetailPageContent(building);
+        }
+      });
+    }
   }
 
   return (
@@ -28,7 +36,7 @@ export default function BuildingInfo() {
       <Container className="Section">
         <MainIcon />
         <BuildingInfoContainer>
-        <Pins>
+          <Pins>
             <PinWrapper>
               <PinName>건물정보</PinName>
               <Pin pinSrc={"/markImgs/MapMark.svg"}></Pin>
@@ -42,9 +50,7 @@ export default function BuildingInfo() {
               arrivalPinY={buildingPosition[1]}
             ></MapImg2>
           </SearchContainer>
-          <PageInfo>
-            교내 건물을 알려주는 페이지입니다.
-          </PageInfo>
+          <PageInfo>교내 건물을 알려주는 페이지입니다.</PageInfo>
         </BuildingInfoContainer>
         <Article>
           <Section>
