@@ -14,6 +14,7 @@ export default function BuildingInfo() {
   const [buildingPosition, setBuildingPosition] = PinPosition([0, 0]);
   const [isDetailPage, setIsDetailPage] = useState(false);
   const [detailPageContent, setDetailPageContent] = useState(null);
+  const [activeTab, setActiveTab] = useState("건물정보"); // 탭 만들기
 
   function handleOnSubmit(e) {
     e.preventDefault();
@@ -29,6 +30,11 @@ export default function BuildingInfo() {
         }
       });
     }
+  }
+
+  // 탭 만들기
+  function handleTabChange(tab) {
+    setActiveTab(tab);
   }
 
   return (
@@ -57,19 +63,27 @@ export default function BuildingInfo() {
             <InfoWrapper>
               <Tab>
                 <Div>
-                  <Item className="selected">
+                  <Item
+                    className={activeTab === "편의시설" ? "selected" : "notSelected"}
+                    onClick={() => {
+                      handleTabChange("편의시설");
+                    }}
+                  >
                     <BuildingTag>편의시설</BuildingTag>
                   </Item>
                 </Div>
                 <Div2>
-                  <Item2 className="selected">
+                  <Item2
+                    className={activeTab === "건물정보" ? "selected" : "notSelected"}
+                    onClick={() => {
+                      handleTabChange("건물정보");
+                    }}
+                  >
                     <BuildingTag>건물정보</BuildingTag>
                   </Item2>
                 </Div2>
               </Tab>
-              <BuildingContent className="content">
-
-              </BuildingContent>
+              <BuildingContent className={activeTab === "건물정보" ? "color1" : "color2"}></BuildingContent>
             </InfoWrapper>
             {isDetailPage && (
               <BuildingDetail
@@ -163,6 +177,10 @@ const Div = styled.div`
     background-color: #FFD336;
     box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
   }
+  .notSelected {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), #D4B752;
+    box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
+  }
 `;
 const Div2 = styled.div`
   height: 5vh;
@@ -172,6 +190,10 @@ const Div2 = styled.div`
   .selected {
     background-color: #FFC370;
     box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
+  }
+  .notSelected {
+    background: #C3914B;
+    box-shadow: 0px 3.84px 3.84px rgba(0, 0, 0, 0.25);
   }
 `;
 const Item = styled.div`
@@ -213,6 +235,13 @@ const BuildingContent = styled.ul`
   height: 80vh;
   width: 300px;
   overflow-y: scroll;
+  &.color1 {
+    background-color: #FFC370;
+  }
+  
+  &.color2 {
+    background-color: #FFD336;
+  }
 `;
 const BuildingName = styled.span`
   list-style-type: unset;
