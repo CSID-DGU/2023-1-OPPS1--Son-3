@@ -1,9 +1,6 @@
 import heapq
 import json
-
-"""
 import os
-"""
 
 # 다익스트라 알고리즘 구현
 def dijkstra(graph, first, last):  # 그래프, 출발지, 도착지 입력
@@ -52,7 +49,7 @@ def dijkstra2(graph, first, last):  # 그래프, 출발지, 도착지 입력
 
     return distance[last][0]  # 해당 경로의 가중치 합 반환
 
-# 경사를 반영한 동국대 지도를 graph2로 구현
+# 편한길로 다니는 동국대 지도를 graph2로 구현
 # 건물과 길목은 노드로 설정 (건물의 노드는 건물명, 길목의 노드는 알파벳으로 설정)
 # 길은 간선으로 설정
 # 가중치는 (노드 간 경로를 지날 때 칼로리 소모량, 소수점 5번째에서 반올림)
@@ -135,7 +132,7 @@ graph2 = {
 
 node_list = ['경영관', '과학관', '다향관', '만해관', '명진관', '문화관', '법학관', '본관1층', '본관3층', '사회과학관', '상록원', '신공학관', '원흥관1층', '원흥관4층', '원흥관6층', '정보문화관', '중앙도서관', '학림관', '학생회관', '학술관', '혜화관1층', '혜화관4층', '혜화문', '대운동장', '체육관', '후문', '만해광장', '팔정도']
 
-# 경사를 반영한 그래프 다익스트라 알고리즘 실행
+# 편한길 그래프 다익스트라 알고리즘 실행
 path_all2 = {}
 for start in node_list:
     path_start = {}
@@ -143,7 +140,7 @@ for start in node_list:
         path_start[end] = dijkstra(graph2, start, end)
     path_all2[start] = path_start
 
-# 경사를 반영한 그래프 다익스트라 알고리즘2 실행
+# 편한길 그래프 다익스트라 알고리즘2 실행
 path_all4 = {}
 for start in node_list:
     path_start = {}
@@ -151,29 +148,25 @@ for start in node_list:
         path_start[end] = round(dijkstra2(graph2, start, end), 4)   #소수점 5번째 자리에서 반올림
     path_all4[start] = path_start
 
-# 경사를 반영한 그래프를 path2.json 파일로 저장
+# 편한길 그래프를 path2.json 파일로 저장
 file_path2 = "./frontend/src/lib/path/path2.json"
 with open(file_path2, 'w', encoding='utf-8') as outfile:
     json.dump(path_all2, outfile, ensure_ascii=False, indent=4)
 
-"""
-parent_directory = os.path.abspath('..')
-file_path2 = os.path.join(parent_directory, "./frontend/src/lib/path/path2.json")
-with open(file_path2, 'w', encoding='utf-8') as outfile:
-    json.dump(path_all2, outfile, ensure_ascii=False, indent=4)
-"""
+# parent_directory = os.path.abspath('..')
+# file_path2 = os.path.join(parent_directory, "./frontend/src/lib/path/path2.json")
+# with open(file_path2, 'w', encoding='utf-8') as outfile:
+#     json.dump(path_all2, outfile, ensure_ascii=False, indent=4)
 
-# 경사를 반영한 그래프2를 path2_1.json 파일로 저장
+# 편한길 그래프2를 path2_1.json 파일로 저장
 file_path4 = "./frontend/src/lib/path/path2_1.json"
 with open(file_path4, 'w', encoding='utf-8') as outfile:
     json.dump(path_all4, outfile, ensure_ascii=False, indent=4)
 
-"""
-parent_directory = os.path.abspath('..')
-file_path4 = os.path.join(parent_directory, "./frontend/src/lib/path/path2_1.json")
-with open(file_path4, 'w', encoding='utf-8') as outfile:
-    json.dump(path_all4, outfile, ensure_ascii=False, indent=4)
-"""
+# parent_directory = os.path.abspath('..')
+# file_path4 = os.path.join(parent_directory, "./frontend/src/lib/path/path2_1.json")
+# with open(file_path4, 'w', encoding='utf-8') as outfile:
+#     json.dump(path_all4, outfile, ensure_ascii=False, indent=4)
 
 '''
 출력형태
