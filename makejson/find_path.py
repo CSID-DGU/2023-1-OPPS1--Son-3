@@ -53,7 +53,7 @@ def dijkstra2(graph, first, last):  # 그래프, 출발지, 도착지 입력
     return distance[last][0]  # 해당 경로의 가중치 합 반환
 
 
-# 경사를 반영하지 않은 동국대 지도를 graph1로 구현
+# 빠른길로 다니는 동국대 지도를 graph1로 구현
 # 건물과 길목은 노드로 설정 (건물의 노드는 건물명, 길목의 노드는 알파벳으로 설정)
 # 길은 간선으로 설정
 # 가중치는 노드 간 직선거리 (네이버 지도로 측정)
@@ -135,7 +135,7 @@ graph1 = {
 
 node_list = ['경영관', '과학관', '다향관', '만해관', '명진관', '문화관', '법학관', '본관1층', '본관3층', '사회과학관', '상록원', '신공학관', '원흥관1층', '원흥관4층', '원흥관6층', '정보문화관', '중앙도서관', '학림관', '학생회관', '학술관', '혜화관1층', '혜화관4층', '혜화문', '대운동장', '체육관', '후문', '만해광장', '팔정도']
 
-# 경사를 반영하지 않은 그래프 다익스트라 알고리즘 실행
+# 빠른길 그래프 다익스트라 알고리즘 실행
 path_all1 = {}
 for start in node_list:
     path_start = {}
@@ -143,7 +143,7 @@ for start in node_list:
         path_start[end] = dijkstra(graph1, start, end)
     path_all1[start] = path_start
 
-# 경사를 반영하지 않은 그래프 다익스트라 알고리즘2 실행
+# 빠른길 그래프 다익스트라 알고리즘2 실행
 path_all3 = {}
 for start in node_list:
     path_start = {}
@@ -151,7 +151,7 @@ for start in node_list:
         path_start[end] = dijkstra2(graph1, start, end)
     path_all3[start] = path_start
 
-# 경사를 반영하지 않은 그래프를 path1.json 파일로 저장
+# 빠른길 그래프를 path1.json 파일로 저장
 file_path1 = "./frontend/src/lib/path/path1.json"
 with open(file_path1, 'w', encoding='utf-8') as outfile:
     json.dump(path_all1, outfile, ensure_ascii=False, indent=4)
@@ -163,7 +163,7 @@ with open(file_path1, 'w', encoding='utf-8') as outfile:
     json.dump(path_all1, outfile, ensure_ascii=False, indent=4)
 """
 
-# 경사를 반영하지 않은 그래프2를 path1_1.json 파일로 저장
+# 빠른길 그래프2를 path1_1.json 파일로 저장
 file_path3 = "./frontend/src/lib/path/path1_1.json"
 with open(file_path3, 'w', encoding='utf-8') as outfile:
     json.dump(path_all3, outfile, ensure_ascii=False, indent=4)
