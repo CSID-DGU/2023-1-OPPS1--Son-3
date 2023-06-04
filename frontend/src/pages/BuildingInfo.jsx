@@ -60,27 +60,7 @@ export default function BuildingInfo() {
               </Item>
             </Div>
             <BuildingContent className="content">
-              {buildingInfo.map((building, index) => {
-                return (
-                  <Building
-                    key={index}
-                    onClick={() => {
-                      if (building.info) {
-                        setIsDetailPage(true);
-                        setDetailPageContent(building);
-                      }
-                    }}
-                    onMouseOver={() => {
-                      setBuildingPosition(building.name);
-                    }}
-                  >
-                    <BuildingName>{building.name}</BuildingName>
-                    {building.info ? (
-                      <InfoIcon src="/markImgs/info_icon2.png"></InfoIcon>
-                    ) : null}
-                  </Building>
-                );
-              })}
+
             </BuildingContent>
             {isDetailPage && (
               <BuildingDetail
