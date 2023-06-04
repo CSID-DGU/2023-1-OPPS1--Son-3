@@ -54,12 +54,23 @@ export default function BuildingInfo() {
         </BuildingInfoContainer>
         <Article>
           <Section>
-            <Div>
+            <InfoWrapper>
+              <Tab>
+                <Div>
+                  <Item className="selected">
+                    <BuildingTag>편의시설</BuildingTag>
+                  </Item>
+                </Div>
+                <Div2>
+                  <Item2 className="selected">
+                    <BuildingTag>건물정보</BuildingTag>
+                  </Item2>
+                </Div2>
+              </Tab>
+              <BuildingContent className="content">
 
-            </Div>
-            <BuildingContent className="content">
-
-            </BuildingContent>
+              </BuildingContent>
+            </InfoWrapper>
             {isDetailPage && (
               <BuildingDetail
                 detailPageContent={detailPageContent}
@@ -134,28 +145,61 @@ const Article = styled.article`
 const Section = styled.section`
   display: flex;
 `;
+const InfoWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 100px;
+`
+const Tab = styled.div`
+  display: flex;
+`;
 const Div = styled.div`
-  height: 15vh;
+  height: 5vh;
   display: flex;
   margin-top: 12px;
   flex-direction: column;
   .selected {
-    background-color: rgb(247, 214, 123);
+    background-color: #FFD336;
+    box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
+  }
+`;
+const Div2 = styled.div`
+  height: 5vh;
+  display: flex;
+  margin-top: 12px;
+  flex-direction: column;
+  .selected {
+    background-color: #FFC370;
+    box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
   }
 `;
 const Item = styled.div`
-  width: 40px;
-  border: 3px black solid;
+  width: 100px;
   border-right: 0px;
   border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
   flex-grow: 1;
   writing-mode: vertical-lr;
   text-align: center;
   span {
     display: inline-block;
-    padding: 3px;
-    font-size: 23px;
+    padding: 10px;
+    font-size: 15px;
+  }
+`;
+const Item2 = styled.div`
+  width: 100px;
+  border-right: 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  flex-grow: 1;
+  writing-mode: vertical-lr;
+  text-align: center;
+  span {
+    display: inline-block;
+    padding: 10px;
+    font-size: 15px;
   }
 `;
 const BuildingContent = styled.ul`
@@ -164,7 +208,6 @@ const BuildingContent = styled.ul`
   box-shadow: 0px 3.84px 3.84px rgba(0, 0, 0, 0.25);
   padding: 0;
   margin: 0;
-  margin-top: 100px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   height: 80vh;
