@@ -14,6 +14,7 @@ export default function BuildingInfo() {
   const [buildingPosition, setBuildingPosition] = PinPosition([0, 0]);
   const [isDetailPage, setIsDetailPage] = useState(false);
   const [detailPageContent, setDetailPageContent] = useState(null);
+  const [activeTab, setActiveTab] = useState("건물정보"); // 탭 만들기
 
   function handleOnSubmit(e) {
     e.preventDefault();
@@ -21,6 +22,19 @@ export default function BuildingInfo() {
     // console.log(building_name);
     setBuildingPosition(building_name);
     setbuildingVal(building_name);
+    {
+      buildingInfo.map((building, index) => {
+        if (building.info && building.name === building_name) {
+          setIsDetailPage(true);
+          setDetailPageContent(building);
+        }
+      });
+    }
+  }
+
+  // 탭 만들기
+  function handleTabChange(tab) {
+    setActiveTab(tab);
   }
 
   return (
@@ -28,7 +42,7 @@ export default function BuildingInfo() {
       <Container className="Section">
         <MainIcon />
         <BuildingInfoContainer>
-        <Pins>
+          <Pins>
             <PinWrapper>
               <PinName>건물정보</PinName>
               <Pin pinSrc={"/markImgs/MapMark.svg"}></Pin>
@@ -42,40 +56,35 @@ export default function BuildingInfo() {
               arrivalPinY={buildingPosition[1]}
             ></MapImg2>
           </SearchContainer>
-          <PageInfo>
-            교내 건물을 알려주는 페이지입니다.
-          </PageInfo>
+          <PageInfo>교내 건물을 알려주는 페이지입니다.</PageInfo>
         </BuildingInfoContainer>
         <Article>
           <Section>
-            <Div>
-              <Item className="selected">
-                <BuildingTag>건물명</BuildingTag>
-              </Item>
-            </Div>
-            <BuildingContent className="content">
-              {buildingInfo.map((building, index) => {
-                return (
-                  <Building
-                    key={index}
+            <InfoWrapper>
+              <Tab>
+                <Div>
+                  <Item
+                    className={activeTab === "편의시설" ? "selected" : "notSelected"}
                     onClick={() => {
-                      if (building.info) {
-                        setIsDetailPage(true);
-                        setDetailPageContent(building);
-                      }
-                    }}
-                    onMouseOver={() => {
-                      setBuildingPosition(building.name);
+                      handleTabChange("편의시설");
                     }}
                   >
-                    <BuildingName>{building.name}</BuildingName>
-                    {building.info ? (
-                      <InfoIcon src="/markImgs/info_icon2.png"></InfoIcon>
-                    ) : null}
-                  </Building>
-                );
-              })}
-            </BuildingContent>
+                    <BuildingTag>편의시설</BuildingTag>
+                  </Item>
+                </Div>
+                <Div2>
+                  <Item2
+                    className={activeTab === "건물정보" ? "selected" : "notSelected"}
+                    onClick={() => {
+                      handleTabChange("건물정보");
+                    }}
+                  >
+                    <BuildingTag>건물정보</BuildingTag>
+                  </Item2>
+                </Div2>
+              </Tab>
+              <BuildingContent className={activeTab === "건물정보" ? "color1" : "color2"}></BuildingContent>
+            </InfoWrapper>
             {isDetailPage && (
               <BuildingDetail
                 detailPageContent={detailPageContent}
@@ -150,40 +159,89 @@ const Article = styled.article`
 const Section = styled.section`
   display: flex;
 `;
+const InfoWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 100px;
+`
+const Tab = styled.div`
+  display: flex;
+`;
 const Div = styled.div`
-  height: 15vh;
+  height: 5vh;
   display: flex;
   margin-top: 12px;
   flex-direction: column;
   .selected {
-    background-color: rgb(247, 214, 123);
+    background-color: #FFD336;
+    box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
+  }
+  .notSelected {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), #D4B752;
+    box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
+  }
+`;
+const Div2 = styled.div`
+  height: 5vh;
+  display: flex;
+  margin-top: 12px;
+  flex-direction: column;
+  .selected {
+    background-color: #FFC370;
+    box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
+  }
+  .notSelected {
+    background: #C3914B;
+    box-shadow: 0px 3.84px 3.84px rgba(0, 0, 0, 0.25);
   }
 `;
 const Item = styled.div`
-  width: 40px;
-  border: 3px black solid;
+  width: 100px;
   border-right: 0px;
   border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
   flex-grow: 1;
   writing-mode: vertical-lr;
   text-align: center;
   span {
     display: inline-block;
-    padding: 3px;
-    font-size: 23px;
+    padding: 10px;
+    font-size: 15px;
+  }
+`;
+const Item2 = styled.div`
+  width: 100px;
+  border-right: 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  flex-grow: 1;
+  writing-mode: vertical-lr;
+  text-align: center;
+  span {
+    display: inline-block;
+    padding: 10px;
+    font-size: 15px;
   }
 `;
 const BuildingContent = styled.ul`
   text-align: center;
-  border: 3px black solid;
+  background-color: #FFC370;
+  box-shadow: 0px 3.84px 3.84px rgba(0, 0, 0, 0.25);
   padding: 0;
   margin: 0;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
-  height: 100vh;
+  height: 80vh;
   width: 300px;
   overflow-y: scroll;
+  &.color1 {
+    background-color: #FFC370;
+  }
+  
+  &.color2 {
+    background-color: #FFD336;
+  }
 `;
 const BuildingName = styled.span`
   list-style-type: unset;
