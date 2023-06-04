@@ -55,9 +55,7 @@ export default function BuildingInfo() {
         <Article>
           <Section>
             <Div>
-              <Item className="selected">
-                <BuildingTag>건물명</BuildingTag>
-              </Item>
+
             </Div>
             <BuildingContent className="content">
 
@@ -162,12 +160,14 @@ const Item = styled.div`
 `;
 const BuildingContent = styled.ul`
   text-align: center;
-  border: 3px black solid;
+  background-color: #FFC370;
+  box-shadow: 0px 3.84px 3.84px rgba(0, 0, 0, 0.25);
   padding: 0;
   margin: 0;
+  margin-top: 100px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
-  height: 100vh;
+  height: 80vh;
   width: 300px;
   overflow-y: scroll;
 `;
