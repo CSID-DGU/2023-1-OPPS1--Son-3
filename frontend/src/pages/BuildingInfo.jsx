@@ -27,6 +27,10 @@ export default function BuildingInfo() {
         if (building.info && building.name === building_name) {
           setIsDetailPage(true);
           setDetailPageContent(building);
+
+          if (activeTab === "편의시설") {
+            setIsDetailPage(false);
+          }
         }
       });
     }
@@ -64,9 +68,12 @@ export default function BuildingInfo() {
               <Tab>
                 <Div>
                   <Item
-                    className={activeTab === "편의시설" ? "selected" : "notSelected"}
+                    className={
+                      activeTab === "편의시설" ? "selected" : "notSelected"
+                    }
                     onClick={() => {
                       handleTabChange("편의시설");
+                      setIsDetailPage(false);
                     }}
                   >
                     <BuildingTag>편의시설</BuildingTag>
@@ -74,16 +81,25 @@ export default function BuildingInfo() {
                 </Div>
                 <Div2>
                   <Item2
-                    className={activeTab === "건물정보" ? "selected" : "notSelected"}
+                    className={
+                      activeTab === "건물정보" ? "selected" : "notSelected"
+                    }
                     onClick={() => {
                       handleTabChange("건물정보");
+                      if (buildingVal) {
+                        setIsDetailPage(true);
+                      } else {
+                        setIsDetailPage(false);
+                      }
                     }}
                   >
                     <BuildingTag>건물정보</BuildingTag>
                   </Item2>
                 </Div2>
               </Tab>
-              <BuildingContent className={activeTab === "건물정보" ? "color1" : "color2"}></BuildingContent>
+              <BuildingContent
+                className={activeTab === "건물정보" ? "color1" : "color2"}
+              ></BuildingContent>
             </InfoWrapper>
             {isDetailPage && (
               <BuildingDetail
