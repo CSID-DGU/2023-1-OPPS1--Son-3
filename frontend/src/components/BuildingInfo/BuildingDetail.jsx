@@ -36,13 +36,11 @@ const BuildingContainer = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
-  top: 40%;
-  left: 43%;
-  width: 50%;
-  border: 0.1875rem black solid;
-  transform: translate(-50%, -50%);
+  top: 20%;
+  right: 0%;
+  width: 19%;
+  height: 80%;
   border-radius: 15px;
-  background-color: #ffffffe8;
   padding: 10px;
 `;
 const CloseDetailPage = styled.span`
