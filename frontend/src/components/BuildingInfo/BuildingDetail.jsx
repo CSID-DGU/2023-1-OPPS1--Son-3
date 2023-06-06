@@ -36,13 +36,6 @@ const BuildingContainer = styled.div`
   border-radius: 15px;
   padding: 10px;
 `;
-const CloseDetailPage = styled.span`
-  padding: 5px;
-  cursor: pointer;
-  position: absolute;
-  right: 5px;
-  top: 5px;
-`;
 const InfosContainer = styled.div`
   display: flex;
   gap: 3px;
