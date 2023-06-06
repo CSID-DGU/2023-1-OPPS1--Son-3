@@ -4,13 +4,6 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
   const info = detailPageContent.info;
   return (
     <BuildingContainer className="detailPage">
-      <CloseDetailPage
-        onClick={() => {
-          setIsDetailPage(false);
-        }}
-      >
-        X
-      </CloseDetailPage>
       <Img src={detailPageContent.img}></Img>
       <InfosContainer>
         <Key>건물명:</Key>
