@@ -4,13 +4,6 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
   const info = detailPageContent.info;
   return (
     <BuildingContainer className="detailPage">
-      <CloseDetailPage
-        onClick={() => {
-          setIsDetailPage(false);
-        }}
-      >
-        X
-      </CloseDetailPage>
       <Img src={detailPageContent.img}></Img>
       <InfosContainer>
         <Key>건물명:</Key>
@@ -43,22 +36,16 @@ const BuildingContainer = styled.div`
   border-radius: 15px;
   padding: 10px;
 `;
-const CloseDetailPage = styled.span`
-  padding: 5px;
-  cursor: pointer;
-  position: absolute;
-  right: 5px;
-  top: 5px;
-`;
 const InfosContainer = styled.div`
   display: flex;
   gap: 3px;
+  font-size: 14px;
   &:not(:last-child) {
     margin-bottom: 7px;
   }
 `;
 const Img = styled.img`
-  width: 50%;
+  width: 80%;
   text-align: center;
   margin: 10px auto;
   border-radius: 5px;
@@ -66,8 +53,8 @@ const Img = styled.img`
 `;
 const Key = styled.p`
   letter-spacing: 1.5px;
-  color: rgb(240, 203, 109);
-  text-shadow: -1.5px 0 black, 0 1.5px black, 1px 0 black, 0 -1px black;
+  color: black;
+  font-weight: bold;
   align-self: flex-start;
   flex: none;
   margin: 0;
