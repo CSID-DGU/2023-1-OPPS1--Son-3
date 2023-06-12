@@ -155,11 +155,6 @@ const Map = () => {
             setDepartBuilding={setDepartBuilding}
             handleOnSubmit={handleOnSubmit}
           />
-          <h3>
-            현재 경사
-            <span>{isSlope ? " 반영" : " 미반영"} </span>
-            경로입니다.
-          </h3>
           <div style={{ position: "absolute", top: "100px", left: "100px" }}>
             {"층별 비교 : " + JSON.stringify(selectedData)}
             <br />
@@ -173,18 +168,27 @@ const Map = () => {
             <br />
             {"최단경로 도착노드 : " + selectedArrive}
           </div>
-          <Canvas
-            isStart={isStart}
-            nodePositions={nodes}
-            canvasWidth={1000}
-            canvasHeight={687.14}
-            color={isSlope ? "blue" : "red"}
-            clickPosition={clickPosition}
-          />
-          <Span>
-            교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 반영 및
-            미반영 경로를 볼 수 있습니다
-          </Span>
+          <MapCanvasContainer>
+            <MapH3>
+              현재 경사
+              <span>{isSlope ? " 반영" : " 미반영"} </span>
+              경로입니다.
+            </MapH3>
+            <Canvas
+              isStart={isStart}
+              nodePositions={nodes}
+              canvasWidth={1000}
+              canvasHeight={687.14}
+              // canvasWidth={796.99}
+              // canvasHeight={548.16}
+              color={isSlope ? "blue" : "red"}
+              clickPosition={clickPosition}
+            />
+            <Span>
+              교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 반영 및
+              미반영 경로를 볼 수 있습니다
+            </Span>
+          </MapCanvasContainer>
           <SlopeIcon
             handleOnClick={handleOnClick}
             setIsSlope={setIsSlope}
@@ -192,16 +196,18 @@ const Map = () => {
             appliedShortcut={appliedShortcut}
           />
         </MapContentContainer>
-        {/* <DirectionLi
-          submittedArrive={submittedArrive}
-          submittedDepart={submittedDepart}
-          appliedShortcut={appliedShortcut}
-        /> */}
-        <FloorSelector>
-          <FloorSelection>1층</FloorSelection>
-          <FloorSelection>4층</FloorSelection>
-          <FloorSelection>6층</FloorSelection>
-        </FloorSelector>
+        <MapArticleContainer>
+          <DirectionLi
+            submittedArrive={submittedArrive}
+            submittedDepart={submittedDepart}
+            appliedShortcut={appliedShortcut}
+          />
+          <FloorSelector>
+            <FloorSelection>1층</FloorSelection>
+            <FloorSelection>4층</FloorSelection>
+            <FloorSelection>6층</FloorSelection>
+          </FloorSelector>
+        </MapArticleContainer>
       </Section>
       <Footer />
     </>
@@ -269,21 +275,43 @@ const Section = styled.section`
 `;
 const MapContentContainer = styled.div`
   display: flex;
+  gap: 1vh;
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
-  justify-content: space-evenly;
   position: relative;
   pointer-events: auto;
 `;
+const MapCanvasContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  @media screen and (min-width: 800px) {
+    height: 100vh;
+    padding-right: 10vw;
+    padding-left: 10vw;
+  }
+  @media screen and (max-width: 800px) {
+    
+  }
+`;
+const MapH3 = styled.h3`
+  position: absolute;
+  top: 0;
+`;
 const Span = styled.span`
   font-size: 17px;
-  display: inline-block;
+  /* display: inline-block; */
   margin: 10px;
-  flex-shrink: 1;
-  flex: none;
+  /* flex-shrink: 1; */
+  /* flex: none; */
   word-break: keep-all;
   text-align: center;
+  position: absolute;
+  bottom: 20px;
 `;
 const ButtonInfo = styled.div`
   position: absolute;
@@ -307,13 +335,20 @@ const ButtonInfo = styled.div`
   align-items: center;
 `;
 
+const MapArticleContainer = styled.div`
+  position: relative;
+  flex-shrink: 0;
+  height: calc(100vh - 175px);
+  width: 300px;
+  align-self: flex-end;
+`;
 const FloorSelector = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 205px;
-  right: 260px;
-  z-index: 0px;
+  top: 20px;
+  left: -45px;
+  z-index: 0;
 `;
 const FloorSelection = styled.div`
   border-radius: 50%;
@@ -332,11 +367,10 @@ const FloorSelection = styled.div`
 
   font-family: "DONGGUK UNIVERSITY";
   font-style: normal;
-  font-weight: 400;
+  font-weight: bold;
   font-size: 20px;
-  line-height: 23px;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-left: 12px;
 `;
