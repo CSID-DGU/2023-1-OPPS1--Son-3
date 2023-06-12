@@ -135,5 +135,4 @@ const Span = styled.span`
   display: inline-block;
   margin: 10px;
   flex-shrink: 1;
-  flex: none;
 `;

@@ -35,7 +35,12 @@ const MapInfoListContainer = styled.article`
   overflow-y: scroll;
   background: #ffc370;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 30px 0px 0px 30px;
+  @media screen and (max-width: 800px) {
+    border-radius: 40px 0px 0px 0px;
+  }
+  @media screen and (min-width: 801px) {
+    border-radius: 40px 0px 0px 40px;
+  }
   ::-webkit-scrollbar {
     display: none;
   }

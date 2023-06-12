@@ -219,11 +219,12 @@ const Section = styled.section`
   height: 100vh;
   background-color: #fffbee;
   @media screen and (max-width: 800px) {
+    flex-direction: column;
     header input {
       padding: 0px;
       width: 6rem;
       text-align: center;
-      height: 30px;
+      height: 2em;
     }
     *:not(footer > *) {
       font-size: 0.8rem;
@@ -238,13 +239,10 @@ const Section = styled.section`
     form > div {
       padding: 5px;
     }
-    flex-direction: column;
-    height: auto;
     #icon {
       display: none;
     }
     #DirectionList {
-      width: 100%;
       margin: 0;
       img {
         width: 50%;
@@ -253,8 +251,11 @@ const Section = styled.section`
     .smallerFont {
       font-size: 10px;
     }
+    #canvas {
+      max-height: 285px;
+    }
   }
-  @media screen and (max-width: 1200px) and(min-width: 800px) {
+  @media screen and (max-width: 1200px) and(min-width: 801px) {
     flex-direction: column;
     height: auto;
     #convenientList {
@@ -278,9 +279,11 @@ const MapContentContainer = styled.div`
   gap: 1vh;
   flex-direction: column;
   align-items: center;
-  flex-grow: 1;
   position: relative;
   pointer-events: auto;
+  @media screen and (min-width: 801px) {
+    flex-grow: 1;
+  }
 `;
 const MapCanvasContainer = styled.div`
   position: relative;
@@ -289,13 +292,13 @@ const MapCanvasContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: auto;
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 801px) {
     height: 100vh;
     padding-right: 10vw;
     padding-left: 10vw;
   }
   @media screen and (max-width: 800px) {
-    
+    padding-bottom: 3.5em;
   }
 `;
 const MapH3 = styled.h3`
@@ -316,9 +319,9 @@ const Span = styled.span`
 const ButtonInfo = styled.div`
   position: absolute;
   top: 56px;
-  right: 65px;
-  width: 110px;
-  height: 45px;
+  right: 5vw;
+  width: 6em;
+  height: 2.5em;
   background-color: #ffd336;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -337,23 +340,36 @@ const ButtonInfo = styled.div`
 
 const MapArticleContainer = styled.div`
   position: relative;
-  flex-shrink: 0;
-  height: calc(100vh - 175px);
-  width: 300px;
-  align-self: flex-end;
+  @media screen and (min-width: 801px) {
+    flex-shrink: 0;
+    height: calc(100vh - 175px);
+    width: 300px;
+    align-self: flex-end;
+  }
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
 `;
 const FloorSelector = styled.div`
   position: absolute;
   display: flex;
-  flex-direction: column;
-  top: 20px;
-  left: -45px;
   z-index: 0;
+  @media screen and (min-width: 801px) {
+    flex-direction: column;
+    top: 20px;
+    left: -45px;
+  }
+  @media screen and (max-width: 800px) {
+    top: -25px;
+    left: 35px;
+  }
 `;
 const FloorSelection = styled.div`
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 4.2em;
+  height: 4.2em;
   :first-child {
     background-color: #ffe68c;
   }
@@ -371,6 +387,12 @@ const FloorSelection = styled.div`
   font-size: 20px;
 
   display: flex;
-  align-items: center;
-  padding-left: 12px;
+  @media screen and (min-width: 801px) {
+    align-items: center;
+    padding-left: 0.6em;
+  }
+  @media screen and (max-width: 800px) {
+    justify-content: center;
+    padding-top: 0.6em;
+  }
 `;
