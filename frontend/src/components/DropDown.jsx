@@ -27,7 +27,7 @@ const Dropdown = styled.ul`
   flex-direction: column;
   justify-content: flex-start;
   overflow-y: scroll;
-  max-height: 60vh;
+  max-height: 30em;
   position: absolute;
   width: 100%;
   top: ${(props) => `${props.top}px`};
@@ -48,7 +48,7 @@ const Dropdown = styled.ul`
 const DropdownItem = styled.li`
   list-style: none;
   flex: none;
-  padding: 12px;
+  padding: 0.75em;
   &:hover {
     background-color: rgb(243, 202, 89);
   }

@@ -143,7 +143,7 @@ const Map = () => {
   return (
     <>
       <Section className="Section">
-        <ButtonInfo>
+        <ButtonInfo onClick={() => window.location.href = '/buildingInfo'}>
           <b>건물 정보</b>
         </ButtonInfo>
         <MapContentContainer onClick={handleClick}>
@@ -222,12 +222,13 @@ const Section = styled.section`
     flex-direction: column;
     header input {
       padding: 0px;
-      width: 6rem;
+      width: 5rem;
       text-align: center;
       height: 2em;
     }
     *:not(footer > *) {
-      font-size: 0.8rem;
+      font-size: 0.65rem;
+      /* font-size: 0.8rem; */
     }
     button {
       width: 3rem;
@@ -292,6 +293,7 @@ const MapCanvasContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: auto;
+  min-width: 370px;
   @media screen and (min-width: 801px) {
     height: 100vh;
     padding-right: 10vw;
