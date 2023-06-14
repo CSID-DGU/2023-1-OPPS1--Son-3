@@ -7,6 +7,8 @@ import PinPosition from "../lib/PinPosition";
 import BuildingDetail from "../components/BuildingInfo/BuildingDetail";
 import MainIcon from "../components/MainIcon";
 import SerachNav from "../components/BuildingInfo/SearchNav";
+import infoConv from "../lib/eachconvenient.js"
+import BuildingDetailConv from "../components/BuildingInfo/BuildingDetailConv";
 
 //건물 정보 페이지
 export default function BuildingInfo() {
@@ -15,7 +17,8 @@ export default function BuildingInfo() {
   const [isDetailPage, setIsDetailPage] = useState(false);
   const [detailPageContent, setDetailPageContent] = useState(null);
   const [activeTab, setActiveTab] = useState("건물정보"); // 탭 만들기
-
+  const [isDetailPageConv, setIsDetailPageConv] = useState(false); // 편의시설
+  const [detailPageContentConv, setDetailPageContentConv] = useState(null); // 편의시설
   function handleOnSubmit(e) {
     e.preventDefault();
     const building_name = e.target[0].value;
@@ -34,6 +37,20 @@ export default function BuildingInfo() {
         }
       });
     }
+
+    const infoConvKeys = Object.keys(infoConv);
+    infoConvKeys.map((key) => {
+      if (key === building_name) {
+        setIsDetailPageConv(true);
+        setDetailPageContentConv(infoConv[key]);
+        if (activeTab === "편의시설") {
+          setIsDetailPageConv(true);
+          // setIsDetailPage(false);
+        } else {
+          setIsDetailPageConv(false);        
+        }
+      }
+    });
   }
 
   // 탭 만들기
@@ -105,6 +122,12 @@ export default function BuildingInfo() {
               <BuildingDetail
                 detailPageContent={detailPageContent}
                 setIsDetailPage={setIsDetailPage}
+              />
+            )}
+            {isDetailPageConv && (
+              <BuildingDetailConv
+                detailPageContentConv={detailPageContentConv}
+                setIsDetailPageConv={setIsDetailPageConv}
               />
             )}
           </Section>
