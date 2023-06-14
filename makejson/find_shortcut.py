@@ -22,17 +22,17 @@ image_info = {
     "학림관" : {"title" : "헐떡고개", "img" : "/건물경로 이미지/헐떡고개.jpg", "info" : "팔정도 <-> 학림관 및 체육관으로 가는 가장 빠른 길"},
     "혜화관1" : {"title" : "혜화관 <-> 만해관", "img" : "/건물경로 이미지/혜화관_만해관.jpg", "info" : "혜화관 4층에 내려 매점 옆에 밖으로 나가는 길이 만해관과 이어짐"},
     "혜화관2" : {"title" : "혜화관 <-> 만해관", "img" : "/건물경로 이미지/혜화관_만해관.jpg", "info" : "만해관에서 직진해서 내려오면 혜화관4층이랑 연결되는 다리 있음"},
-    "학림관11" : {},
-    "학림관12" : {},
-    "학림관2" : {},
-    "만해광장1" : {},
-    "만해광장2" : {},
-    "본관1" : {},
-    "본관2" : {},
-    "법학관1" : {},
-    "법학관2" : {},
-    "문화관1" : {},
-    "문화관2" : {}
+    "학림관2" : {"title" : "학림관 지하 입구", "img" : "/건물경로 이미지/학림관_지하_입구.jpg", "info" : "지하 1층으로 들어가면 엘리베이터를 탈 수 있음"},
+    "학림관31" : {"title" : "학림관 엘리베이터", "img" : "/건물경로 이미지/학림관_엘레베이터_1층.jpg", "info" : "지하 1층부터 4층까지 있음, 엘리베이터로 올라갈 수 있음"},
+    "학림관32" : {"title" : "학림관 엘리베이터", "img" : "/건물경로 이미지/학림관_엘레베이터_1층.jpg", "info" : "지하 1층부터 4층까지 있음, 지하로 내려가면 후문으로 나갈 수 있음"},
+    "만해광장1" : {"title" : "만해광장 <-> 학생회관", "img" : "/건물경로 이미지/만해광장_학생회관.jpg", "info" : "만해광장에서 안쪽으로 들어가면 학생회관 방향으로 내려가는 계단 있음"},
+    "만해광장2" : {"title" : "만해광장 <-> 학생회관", "img" : "/건물경로 이미지/학생회관_만해광장.jpg", "info" : "학생회관에서 올라가다가 옆을 보면 만해광장으로 올라갈 수 있는 계단 있음"},
+    "본관11" : {"title" : "본관1층 <-> 본관3층", "img" : "/건물경로 이미지/본관_엘레베이터.jpg", "info" : "1층에서 엘리베이터를 타고 3층으로 갈 수 있음"},
+    "본관12" : {"title" : "본관3층 <-> 본관1층", "img" : "/건물경로 이미지/본관_엘레베이터.jpg", "info" : "3층에서 엘리베이터를 타고 1층으로 갈 수 있음"},
+    "법학관1" : {"title" : "법학관 옆문", "img" : "/건물경로 이미지/법학관_옆문.jpg", "info" : "이 문을 열고 올라가면 법학관 1층으로 들어갈 수 있음"},
+    "법학관2" : {"title" : "법학관 지하 출구", "img" : "/건물경로 이미지/법학관_지하_출구.jpg", "info" : "이 문을 내려가면 법학관 측면으로 나갈 수 있음"},
+    "문화관1" : {"title" : "사회과학관 외부 엘리베이터", "img" : "/건물경로 이미지/사회과학관_외부_엘리베이터.jpg", "info" : "문화관 1층으로 나가서 안쪽으로 쭉 들어가면 외부 엘리베이터를 타고 사회과학관으로 올라갈 수 있음"},
+    "문화관2" : {"title" : "문화관 연결 통로", "img" : "/건물경로 이미지/문화관_경영관_연결통로.jpg", "info" : "문화관 3층에서 사회과학관/경영관으로 이어지는 연결통로가 있음"}
               }
 
 import json
@@ -232,6 +232,72 @@ for start in dict_key:
                 sc.append(image_info["혜화관2"]["info"])
                 shortcut.append(sc)
             
+            # 후문 -> 학림관
+            elif path_data[start][end][i-1]=="후문" and path_data[start][end][i]=="학림관":
+                sc.append(image_info["학림관2"]["title"])
+                sc.append(image_info["학림관2"]["img"])
+                sc.append(image_info["학림관2"]["info"])
+                shortcut.append(sc)
+                sc = []
+                sc.append(image_info["학림관31"]["title"])
+                sc.append(image_info["학림관31"]["img"])
+                sc.append(image_info["학림관31"]["info"])
+                shortcut.append(sc)
+
+            # 학림관 -> 후문
+            elif path_data[start][end][i-1]=="학림관" and path_data[start][end][i]=="후문":
+                sc.append(image_info["학림관32"]["title"])
+                sc.append(image_info["학림관32"]["img"])
+                sc.append(image_info["학림관32"]["info"])
+                shortcut.append(sc)
+
+            # 만해광장 -> GG
+            elif path_data[start][end][i-1]=="만해광장" and path_data[start][end][i]=="GG":
+                sc.append(image_info["만해광장1"]["title"])
+                sc.append(image_info["만해광장1"]["img"])
+                sc.append(image_info["만해광장1"]["info"])
+                shortcut.append(sc)
+
+            # GG -> 만해광장
+            elif path_data[start][end][i-1]=="GG" and path_data[start][end][i]=="만해광장":
+                sc.append(image_info["만해광장2"]["title"])
+                sc.append(image_info["만해광장2"]["img"])
+                sc.append(image_info["만해광장2"]["info"])
+                shortcut.append(sc)
+
+            # 본관1층 -> 본관3층
+            elif path_data[start][end][i-1]=="본관1층" and path_data[start][end][i]=="본관3층":
+                sc.append(image_info["본관11"]["title"])
+                sc.append(image_info["본관11"]["img"])
+                sc.append(image_info["본관11"]["info"])
+                shortcut.append(sc)
+
+            # 본관3층 -> 본관1층
+            elif path_data[start][end][i-1]=="본관3층" and path_data[start][end][i]=="본관1층":
+                sc.append(image_info["본관12"]["title"])
+                sc.append(image_info["본관12"]["img"])
+                sc.append(image_info["본관12"]["info"])
+                shortcut.append(sc)
+
+            # 문화관 -> 사회과학관
+            elif path_data[start][end][i-1]=="문화관" and path_data[start][end][i]=="사회과학관":
+                sc.append(image_info["문화관1"]["title"])
+                sc.append(image_info["문화관1"]["img"])
+                sc.append(image_info["문화관1"]["info"])
+                shortcut.append(sc)
+                sc = []
+                sc.append(image_info["문화관2"]["title"])
+                sc.append(image_info["문화관2"]["img"])
+                sc.append(image_info["문화관2"]["info"])
+                shortcut.append(sc)
+
+            # 문화관 -> 경영관
+            elif path_data[start][end][i-1]=="문화관" and path_data[start][end][i]=="경영관":
+                sc.append(image_info["문화관2"]["title"])
+                sc.append(image_info["문화관2"]["img"])
+                sc.append(image_info["문화관2"]["info"])
+                shortcut.append(sc)
+
             else:
                 continue
 
@@ -261,21 +327,21 @@ for start in dict_key:
             sc = []
 
             # F -> 만해관
-            if path_data[start][end][i - 1] == "F" and path_data[start][end][i] == "만해관":
+            if path_data[start][end][i-1]=="F" and path_data[start][end][i]=="만해관":
                 sc.append(image_info["만해관1"]["title"])
                 sc.append(image_info["만해관1"]["img"])
                 sc.append(image_info["만해관1"]["info"])
                 shortcut.append(sc)
-
+            
             # 만해관 -> F
-            if path_data[start][end][i - 1] == "만해관" and path_data[start][end][i] == "F":
+            if path_data[start][end][i-1]=="만해관" and path_data[start][end][i]=="F":
                 sc.append(image_info["만해관2"]["title"])
                 sc.append(image_info["만해관2"]["img"])
                 sc.append(image_info["만해관2"]["info"])
                 shortcut.append(sc)
 
             # II -> 원흥관1층
-            elif path_data[start][end][i - 1] == "II" and path_data[start][end][i] == "원흥관1층":
+            elif path_data[start][end][i-1]=="II" and path_data[start][end][i]=="원흥관1층":
                 sc.append(image_info["원흥관11"]["title"])
                 sc.append(image_info["원흥관11"]["img"])
                 sc.append(image_info["원흥관11"]["info"])
@@ -329,9 +395,9 @@ for start in dict_key:
                 sc.append(image_info["원흥관22"]["img"])
                 sc.append(image_info["원흥관22"]["info"])
                 shortcut.append(sc)
-
+            
             # 원흥관6층 -> Q
-            elif path_data[start][end][i - 1] == "원흥관6층" and path_data[start][end][i] == "Q":
+            elif path_data[start][end][i-1]=="원흥관6층" and path_data[start][end][i]=="Q":
                 sc.append(image_info["원흥관31"]["title"])
                 sc.append(image_info["원흥관31"]["img"])
                 sc.append(image_info["원흥관31"]["info"])
@@ -343,7 +409,7 @@ for start in dict_key:
                 shortcut.append(sc)
 
             # Q -> 원흥관6층
-            elif path_data[start][end][i - 1] == "Q" and path_data[start][end][i] == "원흥관6층":
+            elif path_data[start][end][i-1]=="Q" and path_data[start][end][i]=="원흥관6층":
                 sc.append(image_info["원흥관42"]["title"])
                 sc.append(image_info["원흥관42"]["img"])
                 sc.append(image_info["원흥관42"]["info"])
@@ -353,91 +419,155 @@ for start in dict_key:
                 sc.append(image_info["원흥관32"]["img"])
                 sc.append(image_info["원흥관32"]["info"])
                 shortcut.append(sc)
-
+            
             # 중앙도서관 <-> Q
-            elif (path_data[start][end][i - 1] == "중앙도서관" and path_data[start][end][i] == "Q") or (
-                    path_data[start][end][i - 1] == "Q" and path_data[start][end][i] == "중앙도서관"):
+            elif (path_data[start][end][i-1]=="중앙도서관" and path_data[start][end][i]=="Q") or (path_data[start][end][i-1]=="Q" and path_data[start][end][i]=="중앙도서관"):
                 sc.append(image_info["중앙도서관"]["title"])
                 sc.append(image_info["중앙도서관"]["img"])
                 sc.append(image_info["중앙도서관"]["info"])
                 shortcut.append(sc)
 
             # 경영관 -> 문화관
-            elif path_data[start][end][i - 1] == "경영관" and path_data[start][end][i] == "문화관":
+            elif path_data[start][end][i-1]=="경영관" and path_data[start][end][i]=="문화관":
                 sc.append(image_info["경영관1"]["title"])
                 sc.append(image_info["경영관1"]["img"])
                 sc.append(image_info["경영관1"]["info"])
                 shortcut.append(sc)
-
+            
             # 문화관 -> 경영관
-            elif path_data[start][end][i - 1] == "문화관" and path_data[start][end][i] == "경영관":
+            elif path_data[start][end][i-1]=="문화관" and path_data[start][end][i]=="경영관":
                 sc.append(image_info["경영관2"]["title"])
                 sc.append(image_info["경영관2"]["img"])
                 sc.append(image_info["경영관2"]["info"])
                 shortcut.append(sc)
 
             # B -> 과학관
-            elif path_data[start][end][i - 1] == "B" and path_data[start][end][i] == "과학관":
+            elif path_data[start][end][i-1]=="B" and path_data[start][end][i]=="과학관":
                 sc.append(image_info["과학관1"]["title"])
                 sc.append(image_info["과학관1"]["img"])
                 sc.append(image_info["과학관1"]["info"])
                 shortcut.append(sc)
-
+            
             # 과학관 -> B
-            elif path_data[start][end][i - 1] == "과학관" and path_data[start][end][i] == "B":
+            elif path_data[start][end][i-1]=="과학관" and path_data[start][end][i]=="B":
                 sc.append(image_info["과학관2"]["title"])
                 sc.append(image_info["과학관2"]["img"])
                 sc.append(image_info["과학관2"]["info"])
                 shortcut.append(sc)
 
             # 문화관 -> 사회과학관
-            elif path_data[start][end][i - 1] == "문화관" and path_data[start][end][i] == "사회과학관":
+            elif path_data[start][end][i-1]=="문화관" and path_data[start][end][i]=="사회과학관":
                 sc.append(image_info["사회과학관1"]["title"])
                 sc.append(image_info["사회과학관1"]["img"])
                 sc.append(image_info["사회과학관1"]["info"])
                 shortcut.append(sc)
-
+            
             # 사회과학관 -> 문화관
-            elif path_data[start][end][i - 1] == "사회과학관" and path_data[start][end][i] == "문화관":
+            elif path_data[start][end][i-1]=="사회과학관" and path_data[start][end][i]=="문화관":
                 sc.append(image_info["사회과학관2"]["title"])
                 sc.append(image_info["사회과학관2"]["img"])
                 sc.append(image_info["사회과학관2"]["info"])
                 shortcut.append(sc)
 
             # 상록원 -> 대운동장
-            elif path_data[start][end][i - 1] == "상록원" and path_data[start][end][i] == "대운동장":
+            elif path_data[start][end][i-1]=="상록원" and path_data[start][end][i]=="대운동장":
                 sc.append(image_info["상록원1"]["title"])
                 sc.append(image_info["상록원1"]["img"])
                 sc.append(image_info["상록원1"]["info"])
                 shortcut.append(sc)
-
+            
             # 대운동장 -> 상록원
-            elif path_data[start][end][i - 1] == "대운동장" and path_data[start][end][i] == "상록원":
+            elif path_data[start][end][i-1]=="대운동장" and path_data[start][end][i]=="상록원":
                 sc.append(image_info["상록원2"]["title"])
                 sc.append(image_info["상록원2"]["img"])
                 sc.append(image_info["상록원2"]["info"])
                 shortcut.append(sc)
 
             # 체육관 <-> W
-            elif (path_data[start][end][i - 1] == "체육관" and path_data[start][end][i] == "W") or (
-                    path_data[start][end][i - 1] == "W" and path_data[start][end][i] == "체육관"):
+            elif (path_data[start][end][i-1]=="체육관" and path_data[start][end][i]=="W") or (path_data[start][end][i-1]=="W" and path_data[start][end][i]=="체육관"):
                 sc.append(image_info["학림관"]["title"])
                 sc.append(image_info["학림관"]["img"])
                 sc.append(image_info["학림관"]["info"])
                 shortcut.append(sc)
 
             # 혜화관4층 -> 만해관
-            elif path_data[start][end][i - 1] == "혜화관4층" and path_data[start][end][i] == "만해관":
+            elif path_data[start][end][i-1]=="혜화관4층" and path_data[start][end][i]=="만해관":
                 sc.append(image_info["혜화관1"]["title"])
                 sc.append(image_info["혜화관1"]["img"])
                 sc.append(image_info["혜화관1"]["info"])
                 shortcut.append(sc)
-
+            
             # 만해관 -> 혜화관4층
-            elif path_data[start][end][i - 1] == "만해관" and path_data[start][end][i] == "혜화관4층":
+            elif path_data[start][end][i-1]=="만해관" and path_data[start][end][i]=="혜화관4층":
                 sc.append(image_info["혜화관2"]["title"])
                 sc.append(image_info["혜화관2"]["img"])
                 sc.append(image_info["혜화관2"]["info"])
+                shortcut.append(sc)
+            
+            # 후문 -> 학림관
+            elif path_data[start][end][i-1]=="후문" and path_data[start][end][i]=="학림관":
+                sc.append(image_info["학림관2"]["title"])
+                sc.append(image_info["학림관2"]["img"])
+                sc.append(image_info["학림관2"]["info"])
+                shortcut.append(sc)
+                sc = []
+                sc.append(image_info["학림관31"]["title"])
+                sc.append(image_info["학림관31"]["img"])
+                sc.append(image_info["학림관31"]["info"])
+                shortcut.append(sc)
+
+            # 학림관 -> 후문
+            elif path_data[start][end][i-1]=="학림관" and path_data[start][end][i]=="후문":
+                sc.append(image_info["학림관32"]["title"])
+                sc.append(image_info["학림관32"]["img"])
+                sc.append(image_info["학림관32"]["info"])
+                shortcut.append(sc)
+
+            # 만해광장 -> GG
+            elif path_data[start][end][i-1]=="만해광장" and path_data[start][end][i]=="GG":
+                sc.append(image_info["만해광장1"]["title"])
+                sc.append(image_info["만해광장1"]["img"])
+                sc.append(image_info["만해광장1"]["info"])
+                shortcut.append(sc)
+
+            # GG -> 만해광장
+            elif path_data[start][end][i-1]=="GG" and path_data[start][end][i]=="만해광장":
+                sc.append(image_info["만해광장2"]["title"])
+                sc.append(image_info["만해광장2"]["img"])
+                sc.append(image_info["만해광장2"]["info"])
+                shortcut.append(sc)
+
+            # 본관1층 -> 본관3층
+            elif path_data[start][end][i-1]=="본관1층" and path_data[start][end][i]=="본관3층":
+                sc.append(image_info["본관11"]["title"])
+                sc.append(image_info["본관11"]["img"])
+                sc.append(image_info["본관11"]["info"])
+                shortcut.append(sc)
+
+            # 본관3층 -> 본관1층
+            elif path_data[start][end][i-1]=="본관3층" and path_data[start][end][i]=="본관1층":
+                sc.append(image_info["본관12"]["title"])
+                sc.append(image_info["본관12"]["img"])
+                sc.append(image_info["본관12"]["info"])
+                shortcut.append(sc)
+
+            # 문화관 -> 사회과학관
+            elif path_data[start][end][i-1]=="문화관" and path_data[start][end][i]=="사회과학관":
+                sc.append(image_info["문화관1"]["title"])
+                sc.append(image_info["문화관1"]["img"])
+                sc.append(image_info["문화관1"]["info"])
+                shortcut.append(sc)
+                sc = []
+                sc.append(image_info["문화관2"]["title"])
+                sc.append(image_info["문화관2"]["img"])
+                sc.append(image_info["문화관2"]["info"])
+                shortcut.append(sc)
+
+            # 문화관 -> 경영관
+            elif path_data[start][end][i-1]=="문화관" and path_data[start][end][i]=="경영관":
+                sc.append(image_info["문화관2"]["title"])
+                sc.append(image_info["문화관2"]["img"])
+                sc.append(image_info["문화관2"]["info"])
                 shortcut.append(sc)
 
             else:
