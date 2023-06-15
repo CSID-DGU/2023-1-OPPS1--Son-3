@@ -13,6 +13,7 @@ import DirectionLi from "../components/Map/DirectionsLi";
 import SlopeIcon from "../components/Map/SlopeIcon";
 import MapHeader from "../components/Map/MapHeader";
 import { useLocation } from "react-router-dom";
+
 const Map = () => {
   const [isStart, setIsStart] = useState(false);
   const [departBuilding, setDepartBuilding] = useState("");
@@ -116,18 +117,18 @@ const Map = () => {
 
     //To do
     //층 선택하면 층수 데이터에 맞는 최단 입구 경로 최단경로 보여주기
-    const arr2 = [];
+    // const arr2 = [];
     data[minDepart][minArrive].map((item) => {
       arr.push(nodeData[item]);
-      arr2.push(item);
+      // arr2.push(item);
     });
 
     // data[departBuilding][arriveBuilding].map((item) => {
     //   arr.push(nodeData[item]);
     // });
-    setArr2(arr2);
+    // setArr2(arr2);
 
-    console.log(arr2);
+    // console.log(arr2);
     setNodes([...arr]);
   };
 
@@ -169,16 +170,16 @@ const Map = () => {
     setSubmittedDepart(minDepart);
     setSubmittedArrive(minArrive);
     const arr = [];
-    const arr2 = [];
+    // const arr2 = [];
     const data = isSlope ? pathSlopeData : pathData;
     data[buildingKey][minArrive].map((item) => {
       arr.push(nodeData[item]);
-      arr2.push(item);
+      // arr2.push(item);
     });
   
-    setArr2(arr2);
+    // setArr2(arr2);
   
-    console.log(arr2);
+    // console.log(arr2);
   
     setNodes([...arr]);
     setIsStart(!isStart);
@@ -198,7 +199,7 @@ const Map = () => {
             setDepartBuilding={setDepartBuilding}
             handleOnSubmit={handleOnSubmit}
           />
-          <div style={{ position: "absolute", top: "100px", left: "100px" }}>
+          {/* <div style={{ position: "absolute", top: "100px", left: "100px" }}>
             {"층별 비교 : " + JSON.stringify(selectedData)}
             <br />
             {"최단 경로 : " + arr2}
@@ -210,8 +211,18 @@ const Map = () => {
             {"최단경로 출발노드 : " + minDepart}
             <br />
             {"최단경로 도착노드 : " + minArrive}
-          </div>
+          </div> */}
           <MapCanvasContainer>
+            <Pins>
+              <PinWrapper>
+                <PinName>출발 건물</PinName>
+                <Pin pinSrc={"/markImgs/MapMark.svg"}></Pin>
+              </PinWrapper>
+              <PinWrapper>
+                <PinName>도착 건물</PinName>
+                <Pin pinSrc={"/markImgs/MapMark2.svg"}></Pin>
+              </PinWrapper>
+            </Pins>
             <MapH3>
               현재 경사
               <span>{isSlope ? " 반영" : " 미반영"} </span>
@@ -480,3 +491,30 @@ const FloorSelection = styled.div`
     padding-top: 0.6em;
   }
 `;
+
+//핀 정보
+const Pins = styled.div`
+  position: absolute;
+  top: 120px;
+  left: 15%;
+  z-index: 1;
+  display: flex; /* 추가 */
+  flex-direction: row; /* 추가 */
+  align-items: center; /* 추가 */
+`;
+
+const PinWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: flex-end;
+`;
+const Pin = styled.div`
+  background-image: url(${(props) => `${props.pinSrc}`});
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 35px;
+  margin-right: 10px;
+`;
+const PinName = styled.p``;
