@@ -7,9 +7,8 @@ import PinPosition from "../lib/PinPosition";
 import BuildingDetail from "../components/BuildingInfo/BuildingDetail";
 import MainIcon from "../components/MainIcon";
 import SerachNav from "../components/BuildingInfo/SearchNav";
-import infoConv from "../lib/eachconvenient.js"
 import BuildingDetailConv from "../components/BuildingInfo/BuildingDetailConv";
-
+import infoConv from "../lib/eachconvenient.js"
 //건물 정보 페이지
 export default function BuildingInfo() {
   const [buildingVal, setbuildingVal] = useState("");
@@ -25,18 +24,27 @@ export default function BuildingInfo() {
     // console.log(building_name);
     setBuildingPosition(building_name);
     setbuildingVal(building_name);
-    {
-      buildingInfo.map((building, index) => {
-        if (building.info && building.name === building_name) {
-          setIsDetailPage(true);
-          setDetailPageContent(building);
+    let hasBuildingInfo = false;
 
-          if (activeTab === "편의시설") {
-            setIsDetailPage(false);
-          }
+    buildingInfo.forEach((building) => {
+      if (building.info && building.name === building_name) {
+        setIsDetailPage(true);
+        setDetailPageContent(building);
+        hasBuildingInfo = true;
+  
+        if (activeTab === "편의시설") {
+          setIsDetailPage(false);
         }
-      });
+      }
+    });
+  
+    if (!hasBuildingInfo) {
+      setIsDetailPage(true);
+      setDetailPageContent(null);
+      console.log("X");
+      // Show "건물정보가 없습니다" message here
     }
+
 
     const infoConvKeys = Object.keys(infoConv);
     infoConvKeys.map((key) => {
@@ -45,6 +53,7 @@ export default function BuildingInfo() {
         setDetailPageContentConv(infoConv[key]);
         if (activeTab === "편의시설") {
           setIsDetailPageConv(true);
+          setIsDetailPage(false);
           // setIsDetailPage(false);
         } else {
           setIsDetailPageConv(false);        
@@ -90,7 +99,11 @@ export default function BuildingInfo() {
                     }
                     onClick={() => {
                       handleTabChange("편의시설");
-                      setIsDetailPage(false);
+                      if (buildingVal) {
+                        setIsDetailPageConv(true);
+                      } else {
+                        setIsDetailPageConv(false);
+                      }
                     }}
                   >
                     <BuildingTag>편의시설</BuildingTag>

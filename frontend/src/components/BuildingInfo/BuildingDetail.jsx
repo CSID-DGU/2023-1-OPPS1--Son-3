@@ -1,6 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
+  if (!detailPageContent) {
+    return (
+      <BuildingContainer className="detailPage">
+      <InfosContainer>
+        <Key>건물정보가 존재하지 않습니다</Key>
+      </InfosContainer>
+    </BuildingContainer>
+    )  // Display "X" when detailPageContent is null
+  }
+  
   const info = detailPageContent.info;
   return (
     <BuildingContainer className="detailPage">
