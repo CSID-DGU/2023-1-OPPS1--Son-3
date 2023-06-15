@@ -21,10 +21,10 @@ export default function BuildingDetailConv({ setIsDetailPageConv, detailPageCont
           <Val key={index}>
             <b>{key}</b>
             {info[key].map((item, subIndex) => (
-              <div key={subIndex}>
+              <Div key={subIndex}>
                 {item.location}
                 <Img src={item.img}></Img>
-              </div>
+              </Div>
             ))}
           </Val>
         ))}
@@ -68,3 +68,8 @@ const Val = styled.p`
   margin: 0;
   white-space: pre-wrap;
 `;
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+`

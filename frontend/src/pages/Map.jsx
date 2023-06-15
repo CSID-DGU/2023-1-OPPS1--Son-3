@@ -163,9 +163,6 @@ const Map = () => {
   return (
     <>
       <Section className="Section">
-        <ButtonInfo onClick={() => window.location.href = '/buildingInfo'}>
-          <b>건물 정보</b>
-        </ButtonInfo>
         <MapContentContainer onClick={handleClick}>
           <MapHeader
             targetBuildings={targetBuildings.state}
@@ -231,6 +228,9 @@ const Map = () => {
             )}
           </FloorSelector>
         </MapArticleContainer>
+        <ButtonInfo onClick={() => window.location.href = '/buildingInfo'}>
+          <b>건물 정보</b>
+        </ButtonInfo>
       </Section>
       <Footer />
     </>

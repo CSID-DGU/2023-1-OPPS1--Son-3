@@ -80,9 +80,6 @@ export default function BuildingInfo() {
     <>
       <Container className="Section">
         <BuildingInfoContainer>
-          <ButtonInfo onClick={() => (window.location.href = "/Map")}>
-            <b>길찾기</b>
-          </ButtonInfo>
           <Pins>
             <PinWrapper>
               <PinName>건물정보</PinName>
@@ -139,7 +136,9 @@ export default function BuildingInfo() {
               </Div2>
             </Tab>
             <BuildingContent
-              className={activeTab === "건물정보" ? "color1" : "color2"}
+              className={`buildingContent ${
+                activeTab === "건물정보" ? "color1" : "color2"
+              }`}
             >
               {activeTab === "건물정보" && isDetailPage && (
                 <BuildingDetail
@@ -156,6 +155,12 @@ export default function BuildingInfo() {
             </BuildingContent>
           </InfoWrapper>
         </Article>
+        <ButtonPath
+          onClick={() => (window.location.href = "/Map")}
+          className="buttonPath"
+        >
+          <b>길찾기</b>
+        </ButtonPath>
       </Container>
       <Footer />
     </>
@@ -168,9 +173,12 @@ const Container = styled.section`
   // 반응형
   @media screen and (max-width: 600px) {
     flex-direction: column;
-    height: auto;
+    height: 100vh;
+    section {
+      height: calc(100vh - 341px);
+    }
     article {
-      flex-grow: 1;
+      width: 100%;
       margin-left: 0;
       .content {
         flex-grow: 1;
@@ -179,23 +187,29 @@ const Container = styled.section`
           width: 3%;
         }
       }
+      .buildingContent {
+        width: 100%;
+        padding: 0 10vw;
+      }
     }
     .detailPage {
       top: 130px;
       left: 50%;
     }
-    .selected {
+    /* .selected {
       display: none;
-    }
+    } */
     *:not(footer > *) {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
     }
     #icon {
       display: none;
     }
+    .buttonPath {
+      top: 70px;
+    }
   }
   @media screen and (min-width: 601px) and (max-width: 900px) {
-    flex-direction: column;
     height: auto;
     *:not(footer > *) {
       font-size: 0.9rem;
@@ -328,6 +342,7 @@ const BuildingInfoContainer = styled.div`
   gap: 1vh;
   flex-direction: column;
   align-items: center;
+  position: relative;
   @media screen and (min-width: 801px) {
     flex-grow: 1;
   }
@@ -339,8 +354,12 @@ const InfoIcon = styled.img`
   margin: 0 2px;
 `;
 const PageInfo = styled.p`
+  margin: 0;
   position: absolute;
-  bottom: 10px;
+  @media screen and (min-width: 601px) {
+    bottom: 10px;
+  }
+  bottom: 0;
 `;
 const Building = styled.li`
   display: flex;
@@ -384,7 +403,7 @@ const Pin = styled.div`
 const PinName = styled.p`
   filter: drop-shadow(0px 3.84px 3.84px rgba(0, 0, 0, 0.25));
 `;
-const ButtonInfo = styled.div`
+const ButtonPath = styled.div`
   position: absolute;
   top: 40px;
   right: 5vw;
