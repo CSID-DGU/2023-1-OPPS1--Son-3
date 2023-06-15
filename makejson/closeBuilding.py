@@ -240,7 +240,6 @@ Haksul17 = {"name":"학술관", "복사기":["학술관 1층"], "유인복사실
 Hyehwa18 = {"name":"혜화관", "복사기":["혜화관 1층"], "유인복사실":[], "열람실":["혜화관 1층 라운지"], "atm":["혜화관 1층 국민"], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":["혜화관 1층 무인카페", "혜화관 야외 카페ing", ], "매점":["혜화관 4층"]}
 
 ListBuildingName = ["경영관", "과학관", "다향관", "만해관", "명진관", "문화관", "법학관", "본관", "사회과학관", "상록원", "신공학관", "원흥관", "정보문화관", "중앙도서관", "학림관", "학생회관", "학술관", "혜화관", "혜화문", "대운동장"]
-ListBuilding = [ListBusiness01, ListScience02, ListDahyang03, ListManhae04, ListMyeongjin05, ListMunhwa06, ListLaw07, ListMain08, ListSocialScience09, ListSanglokwon10, ListNewEngineering11, ListWonheung12, ListInformationEngineering13, ListLibrary14, ListHaklim15, ListStudent16, ListHaksul17, ListHyehwa18]
 ListBuilding_Convenient = [Business01, Science02, Dahyang03, Manhae04, Myeongjin05, Munhwa06, Law07, Main08, SocialScience09, Sanglokwon10, NewEngineering11, Wonheung12, InformationEngineering13, Library14, Haklim15, Student16, Haksul17, Hyehwa18]
 ListConvenient = ["복사기", "유인복사실", "열람실", "atm", "증명서자동발급기", "제세동기", "식당", "카페", "매점"]
 
