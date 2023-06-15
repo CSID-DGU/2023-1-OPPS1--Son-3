@@ -74,7 +74,10 @@ const Map = () => {
 
     let minValue = Number.POSITIVE_INFINITY;
     let minbuilding = null;
+    let minDepart = null;
+    let minArrive = null;
 
+    //sumdata에서 최단경로 계산
     for (selectedDepart in selectedData) {
       const startbuilding = selectedData[selectedDepart];
       for (selectedArrive in startbuilding) {
@@ -83,6 +86,8 @@ const Map = () => {
           minValue = value;
           minbuilding =
             "최단경로 : " + selectedDepart + " 에서 " + selectedArrive;
+          minDepart = selectedDepart
+          minArrive = selectedArrive
         }
       }
     }
@@ -97,6 +102,8 @@ const Map = () => {
     setMinBuilding(minbuilding);
     setSelectedDepart(selectedDepart);
     setSelectedArrive(selectedArrive);
+    setSubmittedDepart(minDepart);
+    setSubmittedArrive(minArrive);
 
     // selectedData[selectedDepart][selectedArrive]((item) => {
     //   test.push(nodeData[item]);
@@ -105,7 +112,7 @@ const Map = () => {
     //To do
     //층 선택하면 층수 데이터에 맞는 최단 입구 경로 최단경로 보여주기
     const arr2 = [];
-    data[selectedDepart][selectedArrive].map((item) => {
+    data[minDepart][minArrive].map((item) => {
       arr.push(nodeData[item]);
       arr2.push(item);
     });
@@ -117,6 +124,19 @@ const Map = () => {
 
     console.log(arr2);
     setNodes([...arr]);
+  };
+
+  //FloorSelection 컴포넌트 map으로 출력(출입구별)
+  const FloorSelector = () => {
+    const buildingKeys = Object.keys(selectedData);
+  
+    return (
+      <>
+        {buildingKeys.map((buildingKey) => (
+          <FloorSelection >{buildingKey}</FloorSelection>
+        ))}
+      </>
+    );
   };
 
   const handleOnSubmit = (e) => {
@@ -202,11 +222,7 @@ const Map = () => {
             submittedDepart={submittedDepart}
             appliedShortcut={appliedShortcut}
           />
-          <FloorSelector>
-            <FloorSelection>1층</FloorSelection>
-            <FloorSelection>4층</FloorSelection>
-            <FloorSelection>6층</FloorSelection>
-          </FloorSelector>
+          <FloorSelector />
         </MapArticleContainer>
       </Section>
       <Footer />
