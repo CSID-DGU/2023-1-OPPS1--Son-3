@@ -165,6 +165,7 @@ RealHyehwa181 = dijkstra(graph, "혜화관1층")[:28]
 RealHyehwa184 = dijkstra(graph, "혜화관4층")[:28]
 RealHyehwadoor19 = dijkstra(graph, "혜화문")[:28]
 RealPlayground20 = dijkstra(graph, "대운동장")[:28]
+RealGym21 = dijkstra(graph, "체육관")[:28]
 
 # 본관 합치기
 RealMain08 = merge_lists([RealMain081, RealMain083], lambda x: x[0])
@@ -215,8 +216,10 @@ ListHyehwa18 = remove_floor(RealHyehwa18)
 ListHyehwa18.sort()
 ListHyehwadoor19 = remove_floor(RealHyehwadoor19)
 ListHyehwadoor19.sort()
-ListPlayground = remove_floor(RealPlayground20)
-ListPlayground.sort()
+ListPlayground20 = remove_floor(RealPlayground20)
+ListPlayground20.sort()
+ListGym21 = remove_floor(RealGym21)
+ListGym21.sort()
 
 # 각 건물의 편의시설 정보를 딕셔너리로 구현
 # 편의시설 추가 및 삭제는 아래 딕셔너리 수정하기
@@ -509,7 +512,20 @@ dict_convenient["혜화문"] = dict_convenient19
 dict_convenient20 = {}
 for convenient in ListConvenient:
     List = []
-    for b in ListPlayground:
+    for b in ListPlayground20:
+        for bc in ListBuilding_Convenient:
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                if len(List)<5:
+                    List += bc.get(convenient)
+                else:
+                    break
+    dict_convenient20[convenient] = List
+dict_convenient["대운동장"] = dict_convenient20
+
+dict_convenient20 = {}
+for convenient in ListConvenient:
+    List = []
+    for b in ListPlayground20:
         for bc in ListBuilding_Convenient:
             if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
                 if len(List)<5:
