@@ -18,15 +18,11 @@ const DropDown = ({ isOpen, innerRef, setVal, data, data2, top }) => {
   // 이름순 선택
   const selectdataName = () => {
     setSelectedOption(data);
-    if (setVal) setVal(null);
   };
 
   // 번호순 선택
   const selectdataNum = () => {
     setSelectedOption(data2);
-    if (setVal && selectedOption) {
-      setVal(null);
-    }
   };
 
   const sort = selectedOption || data;
@@ -88,7 +84,7 @@ const ButtonWrap = styled.div`
   padding: 0.75em;
   justify-content: space-around;
 `;
-const Button = styled.button`
+const Button = styled.div`
   display: flex;
   border: none;
   background-color: transparent;
