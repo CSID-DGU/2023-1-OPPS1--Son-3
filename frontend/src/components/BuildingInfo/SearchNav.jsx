@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { useNavigate } from "react-router-dom";
 import DropDown from "../BuildingInfo/DropDown";
 import useDetectClose from "../../lib/useDetectClose";
@@ -77,8 +77,8 @@ const Button = styled.button`
   align-self: center;
   font-weight: bold;
   font-size: 20px;
-  width: 70px;
-  height: 45px;
+  width: 3.5em;
+  height: 2.5em;
   background: #FFD336;
   box-shadow: 0px 3.84px 3.84px rgba(0, 0, 0, 0.25);
   border-radius: 9.6px;

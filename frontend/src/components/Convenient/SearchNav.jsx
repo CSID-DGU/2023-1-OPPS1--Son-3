@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { useNavigate } from "react-router-dom";
 import DropDown from "../DropDown";
 import useDetectClose from "../../lib/useDetectClose";

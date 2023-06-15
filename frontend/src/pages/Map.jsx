@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Canvas from "../components/Map/Canvas";
 import { nodeData } from "../lib/mapInfo.js";
 import pathData from "../lib/path/path1.json";
@@ -163,9 +163,6 @@ const Map = () => {
   return (
     <>
       <Section className="Section">
-        <ButtonInfo onClick={() => window.location.href = '/buildingInfo'}>
-          <b>건물 정보</b>
-        </ButtonInfo>
         <MapContentContainer onClick={handleClick}>
           <MapHeader
             targetBuildings={targetBuildings.state}
@@ -231,6 +228,9 @@ const Map = () => {
             )}
           </FloorSelector>
         </MapArticleContainer>
+        <ButtonInfo onClick={() => window.location.href = '/buildingInfo'}>
+          <b>건물 정보</b>
+        </ButtonInfo>
       </Section>
       <Footer />
     </>

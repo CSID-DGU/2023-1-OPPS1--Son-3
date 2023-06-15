@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Footer from "../components/Footer";
 import MapImg from "../components/MapImg";
 import { conv } from "../lib/convenient";

@@ -1,11 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 export default function BuildingDetailConv({ setIsDetailPageConv, detailPageContentConv}) {
   if (!detailPageContentConv) {
     return (
       <BuildingContainer className="detailPage">
       <InfosContainer>
-        <Key>편의시설이 존재하지 않습니다</Key>
+        <Key style={{ width: "100%", marginTop: "15px" }}>편의시설이 존재하지 않습니다</Key>
       </InfosContainer>
     </BuildingContainer>
     )  // Display "X" when detailPageContent is null
@@ -17,15 +17,14 @@ export default function BuildingDetailConv({ setIsDetailPageConv, detailPageCont
     
     <BuildingContainer className="detailPage">
       <InfosContainer>
-        <Key>편의시설</Key>
         {Object.keys(info).map((key, index) => (
           <Val key={index}>
-            {key}
+            <b>{key}</b>
             {info[key].map((item, subIndex) => (
-              <div key={subIndex}>
+              <Div key={subIndex}>
                 {item.location}
                 <Img src={item.img}></Img>
-              </div>
+              </Div>
             ))}
           </Val>
         ))}
@@ -34,20 +33,17 @@ export default function BuildingDetailConv({ setIsDetailPageConv, detailPageCont
   );
 }
 const BuildingContainer = styled.div`
-  position: absolute;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  top: 20%;
-  right: 0%;
-  width: 19%;
-  height: 80%;
+  width: 100%;
   border-radius: 15px;
   padding: 10px;
 `;
 const InfosContainer = styled.div`
   display: flex;
-  gap: 3px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
   font-size: 14px;
   &:not(:last-child) {
     margin-bottom: 7px;
@@ -64,12 +60,16 @@ const Key = styled.p`
   letter-spacing: 1.5px;
   color: black;
   font-weight: bold;
-  align-self: flex-start;
+  /* align-self: flex-start; */
   flex: none;
   margin: 0;
 `;
 const Val = styled.p`
   margin: 0;
   white-space: pre-wrap;
-  text-align: start;
 `;
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+`

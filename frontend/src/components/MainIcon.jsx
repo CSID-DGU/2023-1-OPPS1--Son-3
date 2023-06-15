@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 //모든 필요한 페이지에 사용될 메인 아이콘
 export default function MainIcon() {
   const navigate = useNavigate();
@@ -15,9 +15,10 @@ export default function MainIcon() {
   );
 }
 const Icon = styled.img`
-  height: 60px;
+  width: 135px;
+  height: auto;
   cursor: pointer;
   position: absolute;
   left: 15px;
-  top: 5px;
+  /* top: 5px; */
 `;

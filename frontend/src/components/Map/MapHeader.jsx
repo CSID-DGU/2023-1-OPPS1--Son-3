@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import DropDown from "../DropDown";
 import { buildings } from "../../lib/mapInfo.js";
 import useDetectClose from "../../lib/useDetectClose";
