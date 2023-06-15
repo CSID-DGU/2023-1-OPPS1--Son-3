@@ -82,6 +82,9 @@ export default function BuildingInfo() {
       <Container className="Section">
         <MainIcon />
         <BuildingInfoContainer>
+        <ButtonInfo onClick={() => window.location.href = '/Map'}>
+          <b>길찾기</b>
+        </ButtonInfo>
           <Pins>
             <PinWrapper>
               <PinName>건물정보</PinName>
@@ -380,4 +383,25 @@ const Pin = styled.div`
 `;
 const PinName = styled.p`
   filter: drop-shadow(0px 3.84px 3.84px rgba(0, 0, 0, 0.25));
+`;
+const ButtonInfo = styled.div`
+  position: absolute;
+  top: 40px;
+  right: 5vw;
+  width: 6em;
+  height: 2.5em;
+  background-color: #ffd336;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+
+  font-family: "DONGGUK UNIVERSITY";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
