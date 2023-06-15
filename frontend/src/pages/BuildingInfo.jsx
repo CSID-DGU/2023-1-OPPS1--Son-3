@@ -317,6 +317,7 @@ const BuildingName = styled.span`
 `;
 const BuildingTag = styled.span`
   letter-spacing: 3px;
+  font-weight: bold;
 `;
 const Icon = styled.img`
   width: 10%;
