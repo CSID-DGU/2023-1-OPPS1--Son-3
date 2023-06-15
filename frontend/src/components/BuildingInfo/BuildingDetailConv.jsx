@@ -1,9 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 export default function BuildingDetailConv({ setIsDetailPageConv, detailPageContentConv}) {
+  if (!detailPageContentConv) {
+    return (
+      <BuildingContainer className="detailPage">
+      <InfosContainer>
+        <Key>편의시설이 존재하지 않습니다</Key>
+      </InfosContainer>
+    </BuildingContainer>
+    )  // Display "X" when detailPageContent is null
+  }
+  
+  
   const info = detailPageContentConv;
-
   return (
+    
     <BuildingContainer className="detailPage">
       <InfosContainer>
         <Key>편의시설 Test</Key>
