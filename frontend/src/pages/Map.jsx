@@ -127,17 +127,17 @@ const Map = () => {
   };
 
   //FloorSelection 컴포넌트 map으로 출력(출입구별)
-  const FloorSelector = () => {
-    const buildingKeys = Object.keys(selectedData);
+  // const FloorSelector = () => {
+  //   const buildingKeys = Object.keys(selectedData);
   
-    return (
-      <>
-        {buildingKeys.map((buildingKey) => (
-          <FloorSelection >{buildingKey}</FloorSelection>
-        ))}
-      </>
-    );
-  };
+  //   return (
+  //     <>
+  //       {buildingKeys.map((buildingKey) => (
+  //         <FloorSelection >{buildingKey}</FloorSelection>
+  //       ))}
+  //     </>
+  //   );
+  // };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -222,7 +222,11 @@ const Map = () => {
             submittedDepart={submittedDepart}
             appliedShortcut={appliedShortcut}
           />
-          <FloorSelector />
+          <FloorSelector>
+            {Object.keys(selectedData).map((buildingKey) => (
+              <FloorSelection>{buildingKey}</FloorSelection>
+            ))}
+          </FloorSelector>
         </MapArticleContainer>
       </Section>
       <Footer />
