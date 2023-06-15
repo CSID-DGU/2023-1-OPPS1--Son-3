@@ -101,6 +101,7 @@ export default function BuildingInfo() {
                       handleTabChange("편의시설");
                       if (buildingVal) {
                         setIsDetailPageConv(true);
+                        setIsDetailPage(false);
                       } else {
                         setIsDetailPageConv(false);
                       }
@@ -118,6 +119,7 @@ export default function BuildingInfo() {
                       handleTabChange("건물정보");
                       if (buildingVal) {
                         setIsDetailPage(true);
+                        setIsDetailPageConv(false);
                       } else {
                         setIsDetailPage(false);
                       }
