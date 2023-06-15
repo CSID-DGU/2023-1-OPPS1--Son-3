@@ -247,14 +247,43 @@ const Map = () => {
           />
           <FloorSelector>
             {Object.keys(selectedData).map((buildingKey) => {
-              //여러층으로 입구가 나뉘면서, 입구가 아닌 건물이름 노드는 생략
-              if (Object.keys(selectedData).length > 1 && !buildingKey.includes("층")) {
+              //여러층으로 입구가 나뉘면서, 층수 있는 입구가 아닌 건물이름 노드는 생략
+              //주석처리된 부분은 입구가 안나뉘는경우도 출력하도록 하는부분(아래 slice없애야함)
+              // if (Object.keys(selectedData).length > 1 && !buildingKey.includes("층")) {
+              //------------------------
+          // 출입구 없는건물 버튼 건물이름으로 생성하는버전
+
+          // <FloorSelector>
+          //   {Object.keys(selectedData).map((buildingKey) => {
+          //     //여러층으로 입구가 나뉘면서, 입구가 아닌 건물이름 노드는 생략
+          //     if (Object.keys(selectedData).length > 1 && !buildingKey.includes("층")) {
+          //       return null;
+          //     }
+          //     else {
+          //       if(buildingKey.includes("층")){
+          //         return (
+          //           <FloorSelection onClick={() => selectFloor(buildingKey)}>
+          //             {buildingKey.slice(-2)}
+          //           </FloorSelection>
+          //         );
+          //       }
+          //       else{
+          //         return (
+          //           <FloorSelection onClick={() => selectFloor(buildingKey)}>
+          //             {buildingKey}
+          //           </FloorSelection>
+          //         );
+          //       }
+          //     }
+          //   })}
+          // </FloorSelector>
+              if (!buildingKey.includes("층")) {
                 return null;
               }
               else {
                 return (
                   <FloorSelection onClick={() => selectFloor(buildingKey)}>
-                    {buildingKey}
+                    {buildingKey.slice(-2)}
                   </FloorSelection>
                 );
               }
