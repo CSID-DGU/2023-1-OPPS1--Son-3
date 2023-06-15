@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Canvas from "../components/Map/Canvas";
 import { nodeData } from "../lib/mapInfo.js";
 import pathData from "../lib/path/path1.json";

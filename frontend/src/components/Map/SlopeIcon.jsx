@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 export default function SlopeIcon({
   setIsSlope,
   isSlope,

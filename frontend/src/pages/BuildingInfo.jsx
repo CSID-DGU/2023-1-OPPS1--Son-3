@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Footer from "../components/Footer";
 import { MapImg2 } from "../components/MapImg";
 import buildingInfo from "../lib/buildingInfo.js";
@@ -8,7 +8,7 @@ import BuildingDetail from "../components/BuildingInfo/BuildingDetail";
 import MainIcon from "../components/MainIcon";
 import SerachNav from "../components/BuildingInfo/SearchNav";
 import BuildingDetailConv from "../components/BuildingInfo/BuildingDetailConv";
-import infoConv from "../lib/eachconvenient.js"
+import infoConv from "../lib/eachconvenient.js";
 //건물 정보 페이지
 export default function BuildingInfo() {
   const [buildingVal, setbuildingVal] = useState("");
@@ -31,20 +31,19 @@ export default function BuildingInfo() {
         setIsDetailPage(true);
         setDetailPageContent(building);
         hasBuildingInfo = true;
-  
+
         if (activeTab === "편의시설") {
           setIsDetailPage(false);
         }
       }
     });
-  
+
     if (!hasBuildingInfo) {
       setIsDetailPage(true);
       setDetailPageContent(null);
       console.log("X");
       // Show "건물정보가 없습니다" message here
     }
-
 
     let hasBuildingConv = false;
     const infoConvKeys = Object.keys(infoConv);
@@ -59,7 +58,7 @@ export default function BuildingInfo() {
           setIsDetailPage(false);
           // setIsDetailPage(false);
         } else {
-          setIsDetailPageConv(false);        
+          setIsDetailPageConv(false);
         }
       }
     });
@@ -81,9 +80,9 @@ export default function BuildingInfo() {
     <>
       <Container className="Section">
         <BuildingInfoContainer>
-        <ButtonInfo onClick={() => window.location.href = '/Map'}>
-          <b>길찾기</b>
-        </ButtonInfo>
+          <ButtonInfo onClick={() => (window.location.href = "/Map")}>
+            <b>길찾기</b>
+          </ButtonInfo>
           <Pins>
             <PinWrapper>
               <PinName>건물정보</PinName>
@@ -165,7 +164,7 @@ export default function BuildingInfo() {
   );
 }
 const Container = styled.section`
-  background-color: #FFFBEE;
+  background-color: #fffbee;
   display: flex;
   // 반응형
   @media screen and (max-width: 600px) {
@@ -230,7 +229,7 @@ const InfoWrapper = styled.section`
   flex-direction: column;
   align-items: flex-end;
   margin-top: 100px;
-`
+`;
 const Tab = styled.div`
   display: flex;
 `;
@@ -240,11 +239,12 @@ const Div = styled.div`
   margin-top: 12px;
   flex-direction: column;
   .selected {
-    background-color: #FFD336;
+    background-color: #ffd336;
     box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
   }
   .notSelected {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), #D4B752;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+      #d4b752;
     box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
   }
 `;
@@ -254,11 +254,11 @@ const Div2 = styled.div`
   margin-top: 12px;
   flex-direction: column;
   .selected {
-    background-color: #FFC370;
+    background-color: #ffc370;
     box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
   }
   .notSelected {
-    background: #C3914B;
+    background: #c3914b;
     box-shadow: 0px 3.84px 3.84px rgba(0, 0, 0, 0.25);
   }
 `;
@@ -292,7 +292,7 @@ const Item2 = styled.div`
 `;
 const BuildingContent = styled.ul`
   text-align: center;
-  background-color: #FFC370;
+  background-color: #ffc370;
   box-shadow: 0px 3.84px 3.84px rgba(0, 0, 0, 0.25);
   padding: 0;
   margin: 0;
@@ -302,11 +302,11 @@ const BuildingContent = styled.ul`
   width: 300px;
   overflow-y: scroll;
   &.color1 {
-    background-color: #FFC370;
+    background-color: #ffc370;
   }
-  
+
   &.color2 {
-    background-color: #FFD336;
+    background-color: #ffd336;
   }
 `;
 const BuildingName = styled.span`
