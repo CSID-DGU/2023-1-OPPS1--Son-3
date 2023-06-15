@@ -4,13 +4,13 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
   if (!detailPageContent) {
     return (
       <BuildingContainer className="detailPage">
-      <InfosContainer>
-        <Key>건물정보가 존재하지 않습니다</Key>
-      </InfosContainer>
-    </BuildingContainer>
-    )  // Display "X" when detailPageContent is null
+        <InfosContainer>
+          <Key style={{ width: "100%", marginTop: "15px" }}>건물정보가 존재하지 않습니다</Key>
+        </InfosContainer>
+      </BuildingContainer>
+    ); // Display "X" when detailPageContent is null
   }
-  
+
   const info = detailPageContent.info;
   return (
     <BuildingContainer className="detailPage">
@@ -35,14 +35,7 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
   );
 }
 const BuildingContainer = styled.div`
-  position: absolute;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  top: 20%;
-  right: 0%;
-  width: 19%;
-  height: 80%;
+  width: 100%;
   border-radius: 15px;
   padding: 10px;
 `;

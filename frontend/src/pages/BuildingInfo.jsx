@@ -89,83 +89,82 @@ export default function BuildingInfo() {
               <Pin pinSrc={"/markImgs/MapMark.svg"}></Pin>
             </PinWrapper>
           </Pins>
-          {/* 검색창 */}
+          <SerachNav handleOnSubmit={handleOnSubmit}></SerachNav>
           <SearchContainer>
-            <SerachNav handleOnSubmit={handleOnSubmit}></SerachNav>
             <MapImg2
               arrivalPinX={buildingPosition[0]}
               arrivalPinY={buildingPosition[1]}
-            ></MapImg2>
+            />
           </SearchContainer>
           <PageInfo>교내 건물을 알려주는 페이지입니다.</PageInfo>
         </BuildingInfoContainer>
         <Article>
-          <Section>
-            <InfoWrapper>
-              <Tab>
-                <Div>
-                  <Item
-                    className={
-                      activeTab === "편의시설" ? "selected" : "notSelected"
+          <InfoWrapper>
+            <Tab>
+              <Div>
+                <Item
+                  className={
+                    activeTab === "편의시설" ? "selected" : "notSelected"
+                  }
+                  onClick={() => {
+                    handleTabChange("편의시설");
+                    if (buildingVal) {
+                      setIsDetailPageConv(true);
+                      setIsDetailPage(false);
+                    } else {
+                      setIsDetailPageConv(false);
                     }
-                    onClick={() => {
-                      handleTabChange("편의시설");
-                      if (buildingVal) {
-                        setIsDetailPageConv(true);
-                        setIsDetailPage(false);
-                      } else {
-                        setIsDetailPageConv(false);
-                      }
-                    }}
-                  >
-                    <BuildingTag>편의시설</BuildingTag>
-                  </Item>
-                </Div>
-                <Div2>
-                  <Item2
-                    className={
-                      activeTab === "건물정보" ? "selected" : "notSelected"
+                  }}
+                >
+                  <BuildingTag>편의시설</BuildingTag>
+                </Item>
+              </Div>
+              <Div2>
+                <Item2
+                  className={
+                    activeTab === "건물정보" ? "selected" : "notSelected"
+                  }
+                  onClick={() => {
+                    handleTabChange("건물정보");
+                    if (buildingVal) {
+                      setIsDetailPage(true);
+                      setIsDetailPageConv(false);
+                    } else {
+                      setIsDetailPage(false);
                     }
-                    onClick={() => {
-                      handleTabChange("건물정보");
-                      if (buildingVal) {
-                        setIsDetailPage(true);
-                        setIsDetailPageConv(false);
-                      } else {
-                        setIsDetailPage(false);
-                      }
-                    }}
-                  >
-                    <BuildingTag>건물정보</BuildingTag>
-                  </Item2>
-                </Div2>
-              </Tab>
-              <BuildingContent
-                className={activeTab === "건물정보" ? "color1" : "color2"}
-              ></BuildingContent>
-            </InfoWrapper>
-            {activeTab === "건물정보" && isDetailPage && (
-              <BuildingDetail
-                detailPageContent={detailPageContent}
-                setIsDetailPage={setIsDetailPage}
-              />
-            )}
-            {activeTab === "편의시설" && isDetailPageConv && (
-              <BuildingDetailConv
-                detailPageContentConv={detailPageContentConv}
-                setIsDetailPageConv={setIsDetailPageConv}
-              />
-            )}
-          </Section>
+                  }}
+                >
+                  <BuildingTag>건물정보</BuildingTag>
+                </Item2>
+              </Div2>
+            </Tab>
+            <BuildingContent
+              className={activeTab === "건물정보" ? "color1" : "color2"}
+            >
+              {activeTab === "건물정보" && isDetailPage && (
+                <BuildingDetail
+                  detailPageContent={detailPageContent}
+                  setIsDetailPage={setIsDetailPage}
+                />
+              )}
+              {activeTab === "편의시설" && isDetailPageConv && (
+                <BuildingDetailConv
+                  detailPageContentConv={detailPageContentConv}
+                  setIsDetailPageConv={setIsDetailPageConv}
+                />
+              )}
+            </BuildingContent>
+          </InfoWrapper>
         </Article>
       </Container>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 }
 const Container = styled.section`
   background-color: #fffbee;
   display: flex;
+  width: 100vw;
   // 반응형
   @media screen and (max-width: 600px) {
     flex-direction: column;
@@ -219,19 +218,18 @@ const Container = styled.section`
   }
 `;
 const Article = styled.article`
-  margin-left: auto;
-`;
-const Section = styled.section`
-  display: flex;
+  height: calc(100vh - 150px);
+  align-self: flex-end;
 `;
 const InfoWrapper = styled.section`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: 100px;
 `;
 const Tab = styled.div`
   display: flex;
+  cursor: pointer;
 `;
 const Div = styled.div`
   height: 5vh;
@@ -298,13 +296,12 @@ const BuildingContent = styled.ul`
   margin: 0;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
-  height: 80vh;
+  height: 100%;
   width: 300px;
   overflow-y: scroll;
   &.color1 {
     background-color: #ffc370;
   }
-
   &.color2 {
     background-color: #ffd336;
   }
@@ -328,11 +325,13 @@ const Icon = styled.img`
 `;
 const BuildingInfoContainer = styled.div`
   display: flex;
+  gap: 1vh;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  flex-grow: 1;
+  @media screen and (min-width: 801px) {
+    flex-grow: 1;
+  }
+  flex-shrink: 1;
 `;
 const InfoIcon = styled.img`
   width: 7%;
@@ -340,7 +339,8 @@ const InfoIcon = styled.img`
   margin: 0 2px;
 `;
 const PageInfo = styled.p`
-  margin: 0 10px;
+  position: absolute;
+  bottom: 10px;
 `;
 const Building = styled.li`
   display: flex;
@@ -355,10 +355,10 @@ const Building = styled.li`
   }
 `;
 const SearchContainer = styled.article`
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 `;
 //핀 정보
 const Pins = styled.div`
