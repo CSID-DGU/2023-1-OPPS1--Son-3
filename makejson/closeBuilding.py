@@ -168,6 +168,7 @@ RealPlayground20 = dijkstra(graph, "대운동장")[:28]
 RealGym21 = dijkstra(graph, "체육관")[:28]
 RealBackdoor22 = dijkstra(graph, "후문")[:28]
 RealManhaePlaza23 = dijkstra(graph, "만해광장")[:28]
+RealEight24 = dijkstra(graph, "팔정도")[:28]
 
 # 본관 합치기
 RealMain08 = merge_lists([RealMain081, RealMain083], lambda x: x[0])
@@ -226,6 +227,8 @@ ListBackdoor22 = remove_floor(RealBackdoor22)
 ListBackdoor22.sort()
 ListManhaePlaza23 = remove_floor(RealManhaePlaza23)
 ListManhaePlaza23.sort()
+ListEight24 = remove_floor(RealEight24)
+ListEight24.sort()
 
 # 각 건물의 편의시설 정보를 딕셔너리로 구현
 # 편의시설 추가 및 삭제는 아래 딕셔너리 수정하기
@@ -566,6 +569,19 @@ for convenient in ListConvenient:
                     break
     dict_convenient23[convenient] = List
 dict_convenient["만해광장"] = dict_convenient23
+
+dict_convenient24 = {}
+for convenient in ListConvenient:
+    List = []
+    for b in ListEight24:
+        for bc in ListBuilding_Convenient:
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                if len(List)<5:
+                    List += bc.get(convenient)
+                else:
+                    break
+    dict_convenient24[convenient] = List
+dict_convenient["팔정도"] = dict_convenient24
 
 # json 파일로 저장
 
