@@ -38,7 +38,7 @@ def merge_lists(lists, key):
             else:
                 merged_list.append(item)
     merged_list.sort(key=key)
-    return merged_list[:22]
+    return merged_list[:28]
 
 # 층별로 나뉜 노드를 하나로 합치기
 def remove_floor(building_list):
@@ -141,28 +141,34 @@ graph = {
     'SS': {'KK': 33, 'RR': 27}
 }
 
-RealBusiness01 = dijkstra(graph, "경영관")[:22]
-RealScience02 = dijkstra(graph, "과학관")[:22]
-RealDahyang03 = dijkstra(graph, "다향관")[:22]
-RealManhae04 = dijkstra(graph, "만해관")[:22]
-RealMyeongjin05 = dijkstra(graph, "명진관")[:22]
-RealMunhwa06 = dijkstra(graph, "문화관")[:22]
-RealLaw07 = dijkstra(graph, "법학관")[:22]
-RealMain081 = dijkstra(graph, "본관1층")[:22]
-RealMain083 = dijkstra(graph, "본관3층")[:22]
-RealSocialScience09 = dijkstra(graph, "사회과학관")[:22]
-RealSanglokwon10 = dijkstra(graph, "상록원")[:22]
-RealNewEngineering11 = dijkstra(graph, "신공학관")[:22]
-RealWonheung121 = dijkstra(graph, "원흥관1층")[:22]
-RealWonheung124 = dijkstra(graph, "원흥관4층")[:22]
-RealWonheung126 = dijkstra(graph, "원흥관6층")[:22]
-RealInformationEngineering13 = dijkstra(graph, "정보문화관")[:22]
-RealLibrary14 = dijkstra(graph, "중앙도서관")[:22]
-RealHaklim15 = dijkstra(graph, "학림관")[:22]
-RealStudent16 = dijkstra(graph, "학생회관")[:22]
-RealHaksul17 = dijkstra(graph, "학술관")[:22]
-RealHyehwa181 = dijkstra(graph, "혜화관1층")[:22]
-RealHyehwa184 = dijkstra(graph, "혜화관4층")[:22]
+RealBusiness01 = dijkstra(graph, "경영관")[:28]
+RealScience02 = dijkstra(graph, "과학관")[:28]
+RealDahyang03 = dijkstra(graph, "다향관")[:28]
+RealManhae04 = dijkstra(graph, "만해관")[:28]
+RealMyeongjin05 = dijkstra(graph, "명진관")[:28]
+RealMunhwa06 = dijkstra(graph, "문화관")[:28]
+RealLaw07 = dijkstra(graph, "법학관")[:28]
+RealMain081 = dijkstra(graph, "본관1층")[:28]
+RealMain083 = dijkstra(graph, "본관3층")[:28]
+RealSocialScience09 = dijkstra(graph, "사회과학관")[:28]
+RealSanglokwon10 = dijkstra(graph, "상록원")[:28]
+RealNewEngineering11 = dijkstra(graph, "신공학관")[:28]
+RealWonheung121 = dijkstra(graph, "원흥관1층")[:28]
+RealWonheung124 = dijkstra(graph, "원흥관4층")[:28]
+RealWonheung126 = dijkstra(graph, "원흥관6층")[:28]
+RealInformationEngineering13 = dijkstra(graph, "정보문화관")[:28]
+RealLibrary14 = dijkstra(graph, "중앙도서관")[:28]
+RealHaklim15 = dijkstra(graph, "학림관")[:28]
+RealStudent16 = dijkstra(graph, "학생회관")[:28]
+RealHaksul17 = dijkstra(graph, "학술관")[:28]
+RealHyehwa181 = dijkstra(graph, "혜화관1층")[:28]
+RealHyehwa184 = dijkstra(graph, "혜화관4층")[:28]
+RealHyehwadoor19 = dijkstra(graph, "혜화문")[:28]
+RealPlayground20 = dijkstra(graph, "대운동장")[:28]
+RealGym21 = dijkstra(graph, "체육관")[:28]
+RealBackdoor22 = dijkstra(graph, "후문")[:28]
+RealManhaePlaza23 = dijkstra(graph, "만해광장")[:28]
+RealEight24 = dijkstra(graph, "팔정도")[:28]
 
 # 본관 합치기
 RealMain08 = merge_lists([RealMain081, RealMain083], lambda x: x[0])
@@ -211,6 +217,18 @@ ListHaksul17 = remove_floor(RealHaksul17)
 ListHaksul17.sort()
 ListHyehwa18 = remove_floor(RealHyehwa18)
 ListHyehwa18.sort()
+ListHyehwadoor19 = remove_floor(RealHyehwadoor19)
+ListHyehwadoor19.sort()
+ListPlayground20 = remove_floor(RealPlayground20)
+ListPlayground20.sort()
+ListGym21 = remove_floor(RealGym21)
+ListGym21.sort()
+ListBackdoor22 = remove_floor(RealBackdoor22)
+ListBackdoor22.sort()
+ListManhaePlaza23 = remove_floor(RealManhaePlaza23)
+ListManhaePlaza23.sort()
+ListEight24 = remove_floor(RealEight24)
+ListEight24.sort()
 
 # 각 건물의 편의시설 정보를 딕셔너리로 구현
 # 편의시설 추가 및 삭제는 아래 딕셔너리 수정하기
@@ -233,8 +251,6 @@ Student16 = {"name":"학생회관", "복사기":["학생회관 1층"], "유인�
 Haksul17 = {"name":"학술관", "복사기":["학술관 1층"], "유인복사실":[], "열람실":[], "atm":[], "증명서자동발급기":[], "제세동기":[], "식당":["학술관 지하1층 가든쿡"], "카페":["학술관 지하1층 두리터"], "매점":[]}
 Hyehwa18 = {"name":"혜화관", "복사기":["혜화관 1층"], "유인복사실":[], "열람실":["혜화관 1층 라운지"], "atm":["혜화관 1층 국민"], "증명서자동발급기":[], "제세동기":[], "식당":[], "카페":["혜화관 1층 무인카페", "혜화관 야외 카페ing", ], "매점":["혜화관 4층"]}
 
-ListBuildingName = ["경영관", "과학관", "다향관", "만해관", "명진관", "문화관", "법학관", "본관", "사회과학관", "상록원", "신공학관", "원흥관", "정보문화관", "중앙도서관", "학림관", "학생회관", "학술관", "혜화관"]
-ListBuilding = [ListBusiness01, ListScience02, ListDahyang03, ListManhae04, ListMyeongjin05, ListMunhwa06, ListLaw07, ListMain08, ListSocialScience09, ListSanglokwon10, ListNewEngineering11, ListWonheung12, ListInformationEngineering13, ListLibrary14, ListHaklim15, ListStudent16, ListHaksul17, ListHyehwa18]
 ListBuilding_Convenient = [Business01, Science02, Dahyang03, Manhae04, Myeongjin05, Munhwa06, Law07, Main08, SocialScience09, Sanglokwon10, NewEngineering11, Wonheung12, InformationEngineering13, Library14, Haklim15, Student16, Haksul17, Hyehwa18]
 ListConvenient = ["복사기", "유인복사실", "열람실", "atm", "증명서자동발급기", "제세동기", "식당", "카페", "매점"]
 
@@ -488,6 +504,84 @@ for convenient in ListConvenient:
                     break
     dict_convenient18[convenient] = List
 dict_convenient["혜화관"] = dict_convenient18
+
+dict_convenient19 = {}
+for convenient in ListConvenient:
+    List = []
+    for b in ListHyehwadoor19:
+        for bc in ListBuilding_Convenient:
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                if len(List)<5:
+                    List += bc.get(convenient)
+                else:
+                    break
+    dict_convenient19[convenient] = List
+dict_convenient["혜화문"] = dict_convenient19
+
+dict_convenient20 = {}
+for convenient in ListConvenient:
+    List = []
+    for b in ListPlayground20:
+        for bc in ListBuilding_Convenient:
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                if len(List)<5:
+                    List += bc.get(convenient)
+                else:
+                    break
+    dict_convenient20[convenient] = List
+dict_convenient["대운동장"] = dict_convenient20
+
+dict_convenient21 = {}
+for convenient in ListConvenient:
+    List = []
+    for b in ListGym21:
+        for bc in ListBuilding_Convenient:
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                if len(List)<5:
+                    List += bc.get(convenient)
+                else:
+                    break
+    dict_convenient21[convenient] = List
+dict_convenient["체육관"] = dict_convenient21
+
+dict_convenient22 = {}
+for convenient in ListConvenient:
+    List = []
+    for b in ListBackdoor22:
+        for bc in ListBuilding_Convenient:
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                if len(List)<5:
+                    List += bc.get(convenient)
+                else:
+                    break
+    dict_convenient22[convenient] = List
+dict_convenient["후문"] = dict_convenient22
+
+dict_convenient23 = {}
+for convenient in ListConvenient:
+    List = []
+    for b in ListManhaePlaza23:
+        for bc in ListBuilding_Convenient:
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                if len(List)<5:
+                    List += bc.get(convenient)
+                else:
+                    break
+    dict_convenient23[convenient] = List
+dict_convenient["만해광장"] = dict_convenient23
+
+dict_convenient24 = {}
+for convenient in ListConvenient:
+    List = []
+    for b in ListEight24:
+        for bc in ListBuilding_Convenient:
+            if b[1] == bc.get("name") and len(bc.get(convenient))!=0:
+                if len(List)<5:
+                    List += bc.get(convenient)
+                else:
+                    break
+    dict_convenient24[convenient] = List
+dict_convenient["팔정도"] = dict_convenient24
 
 # json 파일로 저장
 
