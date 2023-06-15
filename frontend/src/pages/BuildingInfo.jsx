@@ -149,7 +149,7 @@ export default function BuildingInfo() {
                 setIsDetailPage={setIsDetailPage}
               />
             )}
-            {isDetailPageConv && (
+            {activeTab === "편의시설" && isDetailPageConv && (
               <BuildingDetailConv
                 detailPageContentConv={detailPageContentConv}
                 setIsDetailPageConv={setIsDetailPageConv}
