@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import DropDown from "../DropDown";
+import DropDown from "../BuildingInfo/DropDown";
 import useDetectClose from "../../lib/useDetectClose";
-import { buildings_info } from "../../lib/Data";
+import { buildings_info, buildings_info_num } from "../../lib/Data";
 import MainIcon from "../MainIcon";
 export default function SerachNav({handleOnSubmit}) {
   const dropDownRef_conv = useRef(null);
@@ -39,6 +39,7 @@ export default function SerachNav({handleOnSubmit}) {
               isOpen={isOpen}
               setVal={setbuildingVal}
               data={buildings_info}
+              data2={buildings_info_num}
               top={23}
             ></DropDown>
           </DropDownWrapper>

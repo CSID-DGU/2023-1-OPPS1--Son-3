@@ -46,11 +46,14 @@ export default function BuildingInfo() {
     }
 
 
+    let hasBuildingConv = false;
     const infoConvKeys = Object.keys(infoConv);
     infoConvKeys.map((key) => {
       if (key === building_name) {
         setIsDetailPageConv(true);
         setDetailPageContentConv(infoConv[key]);
+        hasBuildingConv = true;
+
         if (activeTab === "편의시설") {
           setIsDetailPageConv(true);
           setIsDetailPage(false);
@@ -60,6 +63,13 @@ export default function BuildingInfo() {
         }
       }
     });
+
+    if (!hasBuildingConv) {
+      setIsDetailPageConv(true);
+      setDetailPageContentConv(null);
+      console.log("X");
+      // Show "건물정보가 없습니다" message here
+    }
   }
 
   // 탭 만들기
@@ -139,7 +149,7 @@ export default function BuildingInfo() {
                 setIsDetailPage={setIsDetailPage}
               />
             )}
-            {isDetailPageConv && (
+            {activeTab === "편의시설" && isDetailPageConv && (
               <BuildingDetailConv
                 detailPageContentConv={detailPageContentConv}
                 setIsDetailPageConv={setIsDetailPageConv}
