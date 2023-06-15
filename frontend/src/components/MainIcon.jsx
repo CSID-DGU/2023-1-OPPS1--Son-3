@@ -15,9 +15,10 @@ export default function MainIcon() {
   );
 }
 const Icon = styled.img`
-  height: 60px;
+  width: 135px;
+  height: auto;
   cursor: pointer;
   position: absolute;
   left: 15px;
-  top: 5px;
+  /* top: 5px; */
 `;

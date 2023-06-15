@@ -80,7 +80,6 @@ export default function BuildingInfo() {
   return (
     <>
       <Container className="Section">
-        <MainIcon />
         <BuildingInfoContainer>
         <ButtonInfo onClick={() => window.location.href = '/Map'}>
           <b>길찾기</b>
