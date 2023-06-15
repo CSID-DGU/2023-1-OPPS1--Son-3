@@ -3,9 +3,16 @@ import styled, { css } from "styled-components";
 
 const DropDown = ({ isOpen, innerRef, setVal, data, data2, top }) => {
   const [selectedOption, setSelectedOption] = useState(null);
-  
+
   const handleInput = (e) => {
-    if (setVal) setVal(e.target.textContent);
+    let value = e.target.textContent;
+
+    if (!isNaN(value[0]))
+    {
+      value = value.substring(value.indexOf(". ") + 2)
+    }
+
+    if (setVal) setVal(value);
   };
 
   // 이름순 선택
