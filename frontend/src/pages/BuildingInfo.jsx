@@ -133,7 +133,7 @@ export default function BuildingInfo() {
                 className={activeTab === "건물정보" ? "color1" : "color2"}
               ></BuildingContent>
             </InfoWrapper>
-            {isDetailPage && (
+            {activeTab === "건물정보" && isDetailPage && (
               <BuildingDetail
                 detailPageContent={detailPageContent}
                 setIsDetailPage={setIsDetailPage}
