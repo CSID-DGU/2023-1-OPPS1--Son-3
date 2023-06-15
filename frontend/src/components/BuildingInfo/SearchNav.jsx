@@ -62,6 +62,7 @@ const Form = styled.form`
   flex-shrink: 0;
 `;
 const Span = styled.span`
+  font-weight: bold;
   margin: 10px;
   display: inline-block;
   font-size: 25px;
@@ -73,12 +74,15 @@ const Div = styled.div`
   align-items: center;
 `;
 const Button = styled.button`
-  border-radius: 15px;
   align-self: center;
+  font-weight: bold;
   font-size: 20px;
   width: 70px;
   height: 45px;
-  background-color: rgb(243, 202, 89);
+  background: #FFD336;
+  box-shadow: 0px 3.84px 3.84px rgba(0, 0, 0, 0.25);
+  border-radius: 9.6px;
+  border: 0;
 `;
 const Input = styled.input`
   border-radius: 15px;
