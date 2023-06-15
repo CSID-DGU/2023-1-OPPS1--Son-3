@@ -17,7 +17,7 @@ export default function BuildingDetailConv({ setIsDetailPageConv, detailPageCont
     
     <BuildingContainer className="detailPage">
       <InfosContainer>
-        <Key>편의시설 Test</Key>
+        <Key>편의시설</Key>
         {Object.keys(info).map((key, index) => (
           <Val key={index}>
             {key}
