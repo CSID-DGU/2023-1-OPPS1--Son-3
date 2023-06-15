@@ -46,6 +46,7 @@ const Canvas = ({
     }
   }, [isStart]);
 
+  //clickposistion값이 변화함에따라 좌표찍기
   useEffect(() => {
     if (clickPosition) {
       const { x, y } = clickPosition;

@@ -13,6 +13,7 @@ import DirectionLi from "../components/Map/DirectionsLi";
 import SlopeIcon from "../components/Map/SlopeIcon";
 import MapHeader from "../components/Map/MapHeader";
 import { useLocation } from "react-router-dom";
+
 const Map = () => {
   const [isStart, setIsStart] = useState(false);
   const [departBuilding, setDepartBuilding] = useState("");
@@ -24,10 +25,11 @@ const Map = () => {
   const [submittedArrive, setSubmittedArrive] = useState(null);
 
   const [selectedData, setSelectedData] = useState({});
+  // const [routeData, setSelectedData] = useState({});
   const [minValue, setMinValue] = useState(Number.POSITIVE_INFINITY);
   const [minBuilding, setMinBuilding] = useState(null);
-  const [selectedDepart, setSelectedDepart] = useState(null);
-  const [selectedArrive, setSelectedArrive] = useState(null);
+  const [minDepart, setMinDepart] = useState(null);
+  const [minArrive, setMinArrive] = useState(null);
   const [arr2, setArr2] = useState(null);
 
   const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 });
@@ -40,8 +42,8 @@ const Map = () => {
     const sum_data = isSlope ? pathSlopeData_sum : pathData_sum;
 
     const selectedData = {};
-    let selectedDepart = null;
-    let selectedArrive = null;
+    // let selectedDepart = null;
+    // let selectedArrive = null;
 
     //To do
     //넘겨받은 층수데이터를 이용해 해당 층수 출발일때 도착건물의 최단출입구를 구하기
@@ -73,19 +75,19 @@ const Map = () => {
     }
 
     let minValue = Number.POSITIVE_INFINITY;
-    let minbuilding = null;
+    let minRoute = null;
     let minDepart = null;
     let minArrive = null;
 
     //sumdata에서 최단경로 계산
-    for (selectedDepart in selectedData) {
+    for (const selectedDepart in selectedData) {
       const startbuilding = selectedData[selectedDepart];
-      for (selectedArrive in startbuilding) {
+      for (const selectedArrive in startbuilding) {
         const value = startbuilding[selectedArrive];
         if (value < minValue) {
           minValue = value;
-          minbuilding =
-            "최단경로 : " + selectedDepart + " 에서 " + selectedArrive;
+          // minRoute =
+          //   "최단경로 : " + selectedDepart + " 에서 " + selectedArrive;
           minDepart = selectedDepart
           minArrive = selectedArrive
         }
@@ -96,14 +98,18 @@ const Map = () => {
     // console.log(minbuilding);
     // console.log(selectedDepart);
     // console.log(selectedArrive);
+    minRoute = "최단경로 : " + minDepart + " 에서 " + minArrive;
 
     setSelectedData(selectedData);
     setMinValue(minValue);
-    setMinBuilding(minbuilding);
-    setSelectedDepart(selectedDepart);
-    setSelectedArrive(selectedArrive);
+    setMinBuilding(minRoute);
+    // setSelectedDepart(selectedDepart);
+    // setSelectedArrive(selectedArrive);
+    //directionsli에서 사용할 submitt data(층수별로 바뀜)
     setSubmittedDepart(minDepart);
     setSubmittedArrive(minArrive);
+    setMinDepart(minDepart);
+    setMinArrive(minArrive);
 
     // selectedData[selectedDepart][selectedArrive]((item) => {
     //   test.push(nodeData[item]);
@@ -111,18 +117,18 @@ const Map = () => {
 
     //To do
     //층 선택하면 층수 데이터에 맞는 최단 입구 경로 최단경로 보여주기
-    const arr2 = [];
+    // const arr2 = [];
     data[minDepart][minArrive].map((item) => {
       arr.push(nodeData[item]);
-      arr2.push(item);
+      // arr2.push(item);
     });
 
     // data[departBuilding][arriveBuilding].map((item) => {
     //   arr.push(nodeData[item]);
     // });
-    setArr2(arr2);
+    // setArr2(arr2);
 
-    console.log(arr2);
+    // console.log(arr2);
     setNodes([...arr]);
   };
 
@@ -160,6 +166,24 @@ const Map = () => {
     setClickPosition({ x, y });
     // setNodes([x, y]);
   };
+  const selectFloor = (buildingKey) => {
+    setSubmittedDepart(minDepart);
+    setSubmittedArrive(minArrive);
+    const arr = [];
+    // const arr2 = [];
+    const data = isSlope ? pathSlopeData : pathData;
+    data[buildingKey][minArrive].map((item) => {
+      arr.push(nodeData[item]);
+      // arr2.push(item);
+    });
+  
+    // setArr2(arr2);
+  
+    // console.log(arr2);
+  
+    setNodes([...arr]);
+    setIsStart(!isStart);
+  };
   return (
     <>
       <Section className="Section">
@@ -172,7 +196,7 @@ const Map = () => {
             setDepartBuilding={setDepartBuilding}
             handleOnSubmit={handleOnSubmit}
           />
-          <div style={{ position: "absolute", top: "100px", left: "100px" }}>
+          {/* <div style={{ position: "absolute", top: "100px", left: "100px" }}>
             {"층별 비교 : " + JSON.stringify(selectedData)}
             <br />
             {"최단 경로 : " + arr2}
@@ -181,11 +205,21 @@ const Map = () => {
             <br />
             {minBuilding}
             <br />
-            {"최단경로 출발노드 : " + selectedDepart}
+            {"최단경로 출발노드 : " + minDepart}
             <br />
-            {"최단경로 도착노드 : " + selectedArrive}
-          </div>
+            {"최단경로 도착노드 : " + minArrive}
+          </div> */}
           <MapCanvasContainer>
+            <Pins>
+              <PinWrapper>
+                <PinName>출발 건물</PinName>
+                <Pin pinSrc={"/markImgs/MapMark.svg"}></Pin>
+              </PinWrapper>
+              <PinWrapper>
+                <PinName>도착 건물</PinName>
+                <Pin pinSrc={"/markImgs/MapMark2.svg"}></Pin>
+              </PinWrapper>
+            </Pins>
             <MapH3>
               현재 경사
               <span>{isSlope ? " 반영" : " 미반영"} </span>
@@ -220,12 +254,48 @@ const Map = () => {
             appliedShortcut={appliedShortcut}
           />
           <FloorSelector>
-            {Object.keys(selectedData).map((buildingKey) =>
-            //deparbuilding말고 submitteddepart 사용하면 선택한것만 고를수있음
-              buildingKey !== departBuilding ? (
-                <FloorSelection key={buildingKey}>{buildingKey}</FloorSelection>
-              ) : null
-            )}
+            {Object.keys(selectedData).map((buildingKey) => {
+              //여러층으로 입구가 나뉘면서, 층수 있는 입구가 아닌 건물이름 노드는 생략
+              //주석처리된 부분은 입구가 안나뉘는경우도 출력하도록 하는부분(아래 slice없애야함)
+              // if (Object.keys(selectedData).length > 1 && !buildingKey.includes("층")) {
+              //------------------------
+          // 출입구 없는건물 버튼 건물이름으로 생성하는버전
+
+          // <FloorSelector>
+          //   {Object.keys(selectedData).map((buildingKey) => {
+          //     //여러층으로 입구가 나뉘면서, 입구가 아닌 건물이름 노드는 생략
+          //     if (Object.keys(selectedData).length > 1 && !buildingKey.includes("층")) {
+          //       return null;
+          //     }
+          //     else {
+          //       if(buildingKey.includes("층")){
+          //         return (
+          //           <FloorSelection onClick={() => selectFloor(buildingKey)}>
+          //             {buildingKey.slice(-2)}
+          //           </FloorSelection>
+          //         );
+          //       }
+          //       else{
+          //         return (
+          //           <FloorSelection onClick={() => selectFloor(buildingKey)}>
+          //             {buildingKey}
+          //           </FloorSelection>
+          //         );
+          //       }
+          //     }
+          //   })}
+          // </FloorSelector>
+              if (!buildingKey.includes("층")) {
+                return null;
+              }
+              else {
+                return (
+                  <FloorSelection onClick={() => selectFloor(buildingKey)}>
+                    {buildingKey.slice(-2)}
+                  </FloorSelection>
+                );
+              }
+            })}
           </FloorSelector>
         </MapArticleContainer>
         <ButtonInfo onClick={() => window.location.href = '/buildingInfo'}>
@@ -421,3 +491,30 @@ const FloorSelection = styled.div`
     padding-top: 0.6em;
   }
 `;
+
+//핀 정보
+const Pins = styled.div`
+  position: absolute;
+  top: 120px;
+  left: 15%;
+  z-index: 1;
+  display: flex; /* 추가 */
+  flex-direction: row; /* 추가 */
+  align-items: center; /* 추가 */
+`;
+
+const PinWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: flex-end;
+`;
+const Pin = styled.div`
+  background-image: url(${(props) => `${props.pinSrc}`});
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 35px;
+  margin-right: 10px;
+`;
+const PinName = styled.p``;
