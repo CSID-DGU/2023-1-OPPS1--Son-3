@@ -7,7 +7,17 @@ export default function BuildingDetailConv({ setIsDetailPageConv, detailPageCont
     <BuildingContainer className="detailPage">
       <InfosContainer>
         <Key>편의시설 Test</Key>
-
+        {Object.keys(info).map((key, index) => (
+          <Val key={index}>
+            {key}
+            {info[key].map((item, subIndex) => (
+              <div key={subIndex}>
+                {item.location}
+                <Img src={item.img}></Img>
+              </div>
+            ))}
+          </Val>
+        ))}
       </InfosContainer>
     </BuildingContainer>
   );
