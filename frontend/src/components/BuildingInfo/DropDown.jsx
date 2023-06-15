@@ -1,20 +1,38 @@
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-const DropDown = ({ isOpen, innerRef, setVal, data, top }) => {
+const DropDown = ({ isOpen, innerRef, setVal, data, data2, top }) => {
+  const [selectedOption, setSelectedOption] = useState(null);
+  
   const handleInput = (e) => {
     if (setVal) setVal(e.target.textContent);
   };
 
+  // 이름순 선택
+  const selectdataName = () => {
+    setSelectedOption(data);
+    if (setVal) setVal(null);
+  };
+
+  // 번호순 선택
+  const selectdataNum = () => {
+    setSelectedOption(data2);
+    if (setVal && selectedOption) {
+      setVal(null);
+    }
+  };
+
+  const sort = selectedOption || data;
+
   return (
     <Dropdown ref={innerRef} isOpen={isOpen} top={top}>
       <ButtonWrap>
-        <Button>이름순</Button>
-        <Button>번호순</Button>
+        <Button onClick={selectdataName}>이름순</Button>
+        <Button onClick={selectdataNum}>번호순</Button>
       </ButtonWrap>
-      {data.map((item, index) => {
+      {sort.map((item, index) => {
         return (
           <DropdownItem
-          
             key={index}
             onClick={(e) => {
               handleInput(e);
@@ -58,7 +76,7 @@ const DropdownItem = styled.li`
     background-color: rgb(243, 202, 89);
   }
 `;
-const ButtonWrap =styled.div`
+const ButtonWrap = styled.div`
   display: flex;
   padding: 0.75em;
   justify-content: space-around;
@@ -70,7 +88,7 @@ const Button = styled.button`
   font-size: 14px;
   color: inherit;
   cursor: pointer;
-    &:hover {
+  &:hover {
     font-weight: bold;
   }
 `;
