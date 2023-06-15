@@ -223,9 +223,12 @@ const Map = () => {
             appliedShortcut={appliedShortcut}
           />
           <FloorSelector>
-            {Object.keys(selectedData).map((buildingKey) => (
-              <FloorSelection>{buildingKey}</FloorSelection>
-            ))}
+            {Object.keys(selectedData).map((buildingKey) =>
+            //deparbuilding말고 submitteddepart 사용하면 선택한것만 고를수있음
+              buildingKey !== departBuilding ? (
+                <FloorSelection key={buildingKey}>{buildingKey}</FloorSelection>
+              ) : null
+            )}
           </FloorSelector>
         </MapArticleContainer>
       </Section>
