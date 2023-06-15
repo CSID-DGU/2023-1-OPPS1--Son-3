@@ -112,7 +112,7 @@ const Map = () => {
     //To do
     //층 선택하면 층수 데이터에 맞는 최단 입구 경로 최단경로 보여주기
     const arr2 = [];
-    data[selectedDepart][selectedArrive].map((item) => {
+    data[minDepart][minArrive].map((item) => {
       arr.push(nodeData[item]);
       arr2.push(item);
     });
