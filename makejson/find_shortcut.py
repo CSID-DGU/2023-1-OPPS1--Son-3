@@ -11,8 +11,8 @@ image_info = {
     "원흥관32" : {"title" : "원흥관 6층 통로", "img" : "/건물경로 이미지/원흥관_6층통로.jpg", "info" : "외부 통로 안으로 들어와서 직진 후 왼쪽 꺾어서 오른쪽 보면 엘리베이터 있음"},
     "원흥관42" : {"title" : "원흥관 <-> 신공학관", "img" : "/건물경로 이미지/원흥관_연결통로.jpg", "info" : "신공학관에서 원흥관을 잇는 외부 통로 있음"},
     "중앙도서관" : {"title" : "중앙도서관 뒷문", "img" : "/건물경로 이미지/중앙도서관_뒷문.jpg", "info" : "중앙도서관 정문 외에도 신공학관으로 가는길 사이에 쪽문 있음"},
-    "경영관1" : {"title" : "경영관 <-> 문화관", "img" : "/건물경로 이미지/경영관_문화관.jpg", "info" : "경영관 2층에서 문화관과 이어지는 통로 있음"},
-    "경영관2" : {"title" : "문화관 <-> 경영관", "img" : "/건물경로 이미지/경영관_문화관.jpg", "info" : "문화관 4층에서 경영관 2층과 이어지는 통로 있음"},
+    "경영관1" : {"title" : "경영관 <-> 문화관", "img" : "/건물경로 이미지/문화관_경영관.jpg", "info" : "경영관 2층에서 문화관 3층과 이어지는 통로 있음"},
+    "경영관2" : {"title" : "문화관 <-> 경영관", "img" : "/건물경로 이미지/경영관_문화관.jpg", "info" : "문화관 3층에서 경영관 2층과 이어지는 통로 있음"},
     "과학관1" : {"title" : "과학관 옆문", "img" : "/건물경로 이미지/과학관_옆문.jpg", "info" : "상록원 입구에서 쭉 직진 후, 오른쪽 문"},
     "과학관2" : {"title" : "과학관 옆문", "img" : "/건물경로 이미지/과학관_옆문.jpg", "info" : "과학관 쪽문으로 나와서 왼쪽방향 앞 건물이 상록원"},
     "사회과학관1" : {"title" : "사회과학관 엘리베이터", "img" : "/건물경로 이미지/사회과학관_엘베.JPEG", "info" : "쿱스켓(매점)방향으로 나오면 사과관 및 경영관으로 가는 엘베 있음"},
@@ -32,7 +32,7 @@ image_info = {
     "법학관1" : {"title" : "법학관 옆문", "img" : "/건물경로 이미지/법학관_옆문.jpg", "info" : "이 문을 열고 올라가면 법학관 1층으로 들어갈 수 있음"},
     "법학관2" : {"title" : "법학관 지하 출구", "img" : "/건물경로 이미지/법학관_지하_출구.jpg", "info" : "이 문을 내려가면 법학관 측면으로 나갈 수 있음"},
     "문화관1" : {"title" : "사회과학관 외부 엘리베이터", "img" : "/건물경로 이미지/사회과학관_외부_엘리베이터.jpg", "info" : "문화관 1층으로 나가서 안쪽으로 쭉 들어가면 외부 엘리베이터를 타고 사회과학관으로 올라갈 수 있음"},
-    "문화관2" : {"title" : "문화관 연결 통로", "img" : "/건물경로 이미지/문화관_경영관_연결통로.jpg", "info" : "문화관 3층에서 사회과학관/경영관으로 이어지는 연결통로가 있음"}
+    "문화관2" : {"title" : "문화관 연결 통로", "img" : "/건물경로 이미지/경영관_문화관.jpg", "info" : "문화관 3층에서 경영관 2층과 이어지는 통로를 통해 사회과학관으로 갈 수 있음"}
               }
 
 import json
@@ -189,6 +189,11 @@ for start in dict_key:
                 sc.append(image_info["사회과학관1"]["img"])
                 sc.append(image_info["사회과학관1"]["info"])
                 shortcut.append(sc)
+                sc = []
+                sc.append(image_info["문화관2"]["title"])
+                sc.append(image_info["문화관2"]["img"])
+                sc.append(image_info["문화관2"]["info"])
+                shortcut.append(sc)
             
             # 사회과학관 -> 문화관
             elif path_data[start][end][i-1]=="사회과학관" and path_data[start][end][i]=="문화관":
@@ -196,6 +201,12 @@ for start in dict_key:
                 sc.append(image_info["사회과학관2"]["img"])
                 sc.append(image_info["사회과학관2"]["info"])
                 shortcut.append(sc)
+                sc = []
+                sc.append(image_info["경영관1"]["title"])
+                sc.append(image_info["경영관1"]["img"])
+                sc.append(image_info["경영관1"]["info"])
+                shortcut.append(sc)
+                
 
             # 상록원 -> 대운동장
             elif path_data[start][end][i-1]=="상록원" and path_data[start][end][i]=="대운동장":
@@ -277,25 +288,6 @@ for start in dict_key:
                 sc.append(image_info["본관12"]["title"])
                 sc.append(image_info["본관12"]["img"])
                 sc.append(image_info["본관12"]["info"])
-                shortcut.append(sc)
-
-            # 문화관 -> 사회과학관
-            elif path_data[start][end][i-1]=="문화관" and path_data[start][end][i]=="사회과학관":
-                sc.append(image_info["문화관1"]["title"])
-                sc.append(image_info["문화관1"]["img"])
-                sc.append(image_info["문화관1"]["info"])
-                shortcut.append(sc)
-                sc = []
-                sc.append(image_info["문화관2"]["title"])
-                sc.append(image_info["문화관2"]["img"])
-                sc.append(image_info["문화관2"]["info"])
-                shortcut.append(sc)
-
-            # 문화관 -> 경영관
-            elif path_data[start][end][i-1]=="문화관" and path_data[start][end][i]=="경영관":
-                sc.append(image_info["문화관2"]["title"])
-                sc.append(image_info["문화관2"]["img"])
-                sc.append(image_info["문화관2"]["info"])
                 shortcut.append(sc)
 
             else:
@@ -459,6 +451,11 @@ for start in dict_key:
                 sc.append(image_info["사회과학관1"]["img"])
                 sc.append(image_info["사회과학관1"]["info"])
                 shortcut.append(sc)
+                sc = []
+                sc.append(image_info["문화관2"]["title"])
+                sc.append(image_info["문화관2"]["img"])
+                sc.append(image_info["문화관2"]["info"])
+                shortcut.append(sc)
             
             # 사회과학관 -> 문화관
             elif path_data[start][end][i-1]=="사회과학관" and path_data[start][end][i]=="문화관":
@@ -466,6 +463,12 @@ for start in dict_key:
                 sc.append(image_info["사회과학관2"]["img"])
                 sc.append(image_info["사회과학관2"]["info"])
                 shortcut.append(sc)
+                sc = []
+                sc.append(image_info["경영관1"]["title"])
+                sc.append(image_info["경영관1"]["img"])
+                sc.append(image_info["경영관1"]["info"])
+                shortcut.append(sc)
+                
 
             # 상록원 -> 대운동장
             elif path_data[start][end][i-1]=="상록원" and path_data[start][end][i]=="대운동장":
@@ -547,25 +550,6 @@ for start in dict_key:
                 sc.append(image_info["본관12"]["title"])
                 sc.append(image_info["본관12"]["img"])
                 sc.append(image_info["본관12"]["info"])
-                shortcut.append(sc)
-
-            # 문화관 -> 사회과학관
-            elif path_data[start][end][i-1]=="문화관" and path_data[start][end][i]=="사회과학관":
-                sc.append(image_info["문화관1"]["title"])
-                sc.append(image_info["문화관1"]["img"])
-                sc.append(image_info["문화관1"]["info"])
-                shortcut.append(sc)
-                sc = []
-                sc.append(image_info["문화관2"]["title"])
-                sc.append(image_info["문화관2"]["img"])
-                sc.append(image_info["문화관2"]["info"])
-                shortcut.append(sc)
-
-            # 문화관 -> 경영관
-            elif path_data[start][end][i-1]=="문화관" and path_data[start][end][i]=="경영관":
-                sc.append(image_info["문화관2"]["title"])
-                sc.append(image_info["문화관2"]["img"])
-                sc.append(image_info["문화관2"]["info"])
                 shortcut.append(sc)
 
             else:
