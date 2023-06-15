@@ -7,7 +7,8 @@ import PinPosition from "../lib/PinPosition";
 import BuildingDetail from "../components/BuildingInfo/BuildingDetail";
 import MainIcon from "../components/MainIcon";
 import SerachNav from "../components/BuildingInfo/SearchNav";
-
+import BuildingDetailConv from "../components/BuildingInfo/BuildingDetailConv";
+import infoConv from "../lib/eachconvenient.js"
 //건물 정보 페이지
 export default function BuildingInfo() {
   const [buildingVal, setbuildingVal] = useState("");
@@ -15,25 +16,50 @@ export default function BuildingInfo() {
   const [isDetailPage, setIsDetailPage] = useState(false);
   const [detailPageContent, setDetailPageContent] = useState(null);
   const [activeTab, setActiveTab] = useState("건물정보"); // 탭 만들기
-
+  const [isDetailPageConv, setIsDetailPageConv] = useState(false); // 편의시설
+  const [detailPageContentConv, setDetailPageContentConv] = useState(null); // 편의시설
   function handleOnSubmit(e) {
     e.preventDefault();
     const building_name = e.target[0].value;
     // console.log(building_name);
     setBuildingPosition(building_name);
     setbuildingVal(building_name);
-    {
-      buildingInfo.map((building, index) => {
-        if (building.info && building.name === building_name) {
-          setIsDetailPage(true);
-          setDetailPageContent(building);
+    let hasBuildingInfo = false;
 
-          if (activeTab === "편의시설") {
-            setIsDetailPage(false);
-          }
+    buildingInfo.forEach((building) => {
+      if (building.info && building.name === building_name) {
+        setIsDetailPage(true);
+        setDetailPageContent(building);
+        hasBuildingInfo = true;
+  
+        if (activeTab === "편의시설") {
+          setIsDetailPage(false);
         }
-      });
+      }
+    });
+  
+    if (!hasBuildingInfo) {
+      setIsDetailPage(true);
+      setDetailPageContent(null);
+      console.log("X");
+      // Show "건물정보가 없습니다" message here
     }
+
+
+    const infoConvKeys = Object.keys(infoConv);
+    infoConvKeys.map((key) => {
+      if (key === building_name) {
+        setIsDetailPageConv(true);
+        setDetailPageContentConv(infoConv[key]);
+        if (activeTab === "편의시설") {
+          setIsDetailPageConv(true);
+          setIsDetailPage(false);
+          // setIsDetailPage(false);
+        } else {
+          setIsDetailPageConv(false);        
+        }
+      }
+    });
   }
 
   // 탭 만들기
@@ -73,7 +99,12 @@ export default function BuildingInfo() {
                     }
                     onClick={() => {
                       handleTabChange("편의시설");
-                      setIsDetailPage(false);
+                      if (buildingVal) {
+                        setIsDetailPageConv(true);
+                        setIsDetailPage(false);
+                      } else {
+                        setIsDetailPageConv(false);
+                      }
                     }}
                   >
                     <BuildingTag>편의시설</BuildingTag>
@@ -88,6 +119,7 @@ export default function BuildingInfo() {
                       handleTabChange("건물정보");
                       if (buildingVal) {
                         setIsDetailPage(true);
+                        setIsDetailPageConv(false);
                       } else {
                         setIsDetailPage(false);
                       }
@@ -101,10 +133,16 @@ export default function BuildingInfo() {
                 className={activeTab === "건물정보" ? "color1" : "color2"}
               ></BuildingContent>
             </InfoWrapper>
-            {isDetailPage && (
+            {activeTab === "건물정보" && isDetailPage && (
               <BuildingDetail
                 detailPageContent={detailPageContent}
                 setIsDetailPage={setIsDetailPage}
+              />
+            )}
+            {isDetailPageConv && (
+              <BuildingDetailConv
+                detailPageContentConv={detailPageContentConv}
+                setIsDetailPageConv={setIsDetailPageConv}
               />
             )}
           </Section>

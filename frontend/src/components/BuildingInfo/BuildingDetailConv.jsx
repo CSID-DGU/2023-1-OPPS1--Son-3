@@ -1,36 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
-  if (!detailPageContent) {
-    return (
-      <BuildingContainer className="detailPage">
-      <InfosContainer>
-        <Key>건물정보가 존재하지 않습니다</Key>
-      </InfosContainer>
-    </BuildingContainer>
-    )  // Display "X" when detailPageContent is null
-  }
-  
-  const info = detailPageContent.info;
+export default function BuildingDetailConv({ setIsDetailPageConv, detailPageContentConv}) {
+  const info = detailPageContentConv;
+
   return (
     <BuildingContainer className="detailPage">
-      <Img src={detailPageContent.img}></Img>
       <InfosContainer>
-        <Key>건물명:</Key>
-        <Val>{detailPageContent.name}</Val>
+        <Key>편의시설 Test</Key>
+
       </InfosContainer>
-      <div>
-        {[...info].map((item, index) => {
-          const key = item[0];
-          const val = item[1];
-          return (
-            <InfosContainer key={index}>
-              <Key>{key}:</Key>
-              <Val>{val}</Val>
-            </InfosContainer>
-          );
-        })}
-      </div>
     </BuildingContainer>
   );
 }
