@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { useNavigate } from "react-router-dom";
 import DropDown from "../BuildingInfo/DropDown";
 import useDetectClose from "../../lib/useDetectClose";
@@ -43,7 +43,7 @@ export default function SearchNav({ handleOnSubmit }) {
               data={buildings_info}
               data2={buildings_info_num}
               top={23}
-            ></DropDown>
+            />
             <Input
               type="text"
               name="buildingInput"

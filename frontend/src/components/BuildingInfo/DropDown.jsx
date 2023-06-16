@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 
 const DropDown = ({ isOpen, innerRef, setVal, data, data2, top }) => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -36,13 +36,12 @@ const DropDown = ({ isOpen, innerRef, setVal, data, data2, top }) => {
 
   return (
     <Dropdown ref={innerRef} isOpen={isOpen} top={top}>
-
-        <SearchInput
-          type="text"
-          value={searchValue}
-          onChange={handleInputChange}
-          placeholder="검색"
-        />
+      <SearchInput
+        type="text"
+        value={searchValue}
+        onChange={handleInputChange}
+        placeholder="검색"
+      />
 
       <ButtonWrap>
         <Button onClick={selectdataName}>이름순</Button>
@@ -68,7 +67,7 @@ const DropDown = ({ isOpen, innerRef, setVal, data, data2, top }) => {
 };
 
 const Dropdown = styled.ul`
-  margin-top: 0px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
