@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import { useNavigate } from "react-router-dom";
 import DropDown from "../BuildingInfo/DropDown";
@@ -26,8 +26,13 @@ export default function SearchNav({ handleOnSubmit }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    setIsOpen(false);
     handleOnSubmit(e);
   };
+
+  useEffect(() => {
+    dropDownRef_conv.current.focus();
+  }, [isOpen])
 
   return (
     <Header>
@@ -43,8 +48,10 @@ export default function SearchNav({ handleOnSubmit }) {
               data={buildings_info}
               data2={buildings_info_num}
               top={23}
+              onChange={handleInputChange}
             />
             <Input
+              readOnly
               type="text"
               name="buildingInput"
               placeholder="검색"
@@ -108,6 +115,7 @@ const Input = styled.input`
   padding: 10px;
   font-size: 20px;
   border: 2.8px black solid;
+  z-index: 0;
 `;
 
 const DropDownWrapper = styled.div`

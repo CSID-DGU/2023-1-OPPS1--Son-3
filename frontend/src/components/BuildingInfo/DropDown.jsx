@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components/macro";
 
-const DropDown = ({ isOpen, innerRef, setVal, data, data2, top }) => {
+const DropDown = ({ isOpen, innerRef, setVal, data, data2, top, onChange }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [searchValue, setSearchValue] = useState("");
 
@@ -19,6 +19,7 @@ const DropDown = ({ isOpen, innerRef, setVal, data, data2, top }) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setSearchValue(value);
+    onChange(e);
   };
 
   const selectdataName = () => {
@@ -35,19 +36,18 @@ const DropDown = ({ isOpen, innerRef, setVal, data, data2, top }) => {
   );
 
   return (
-    <Dropdown ref={innerRef} isOpen={isOpen} top={top}>
+    <Dropdown isOpen={isOpen} top={top}>
       <SearchInput
+        ref={innerRef}
         type="text"
         value={searchValue}
         onChange={handleInputChange}
         placeholder="검색"
       />
-
       <ButtonWrap>
         <Button onClick={selectdataName}>이름순</Button>
         <Button onClick={selectdataNum}>번호순</Button>
       </ButtonWrap>
-
       <DropdownItemList>
         {filteredData.map((item, index) => {
           return (
@@ -67,7 +67,7 @@ const DropDown = ({ isOpen, innerRef, setVal, data, data2, top }) => {
 };
 
 const Dropdown = styled.ul`
-  margin-top: 50px;
+  margin-top: 0px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
