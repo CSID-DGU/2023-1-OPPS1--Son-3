@@ -171,7 +171,7 @@ const Container = styled.section`
   display: flex;
   width: 100vw;
   // 반응형
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 600px) {
     flex-direction: column;
     height: 100vh;
     section {
@@ -282,8 +282,6 @@ const Item = styled.div`
   flex-grow: 1;
   writing-mode: vertical-lr;
   text-align: center;
-  display: flex;
-  align-items: center;
   span {
     display: inline-block;
     padding: 10px;
@@ -298,8 +296,6 @@ const Item2 = styled.div`
   flex-grow: 1;
   writing-mode: vertical-lr;
   text-align: center;
-  display: flex;
-  align-items: center;
   span {
     display: inline-block;
     padding: 10px;
@@ -330,9 +326,6 @@ const BuildingName = styled.span`
   font-size: 1.25rem;
 `;
 const BuildingTag = styled.span`
-  display: center;
-  align-items: center;
-  justify-content: center;
   letter-spacing: 3px;
   font-weight: bold;
 `;
@@ -411,7 +404,7 @@ const PinName = styled.p`
   filter: drop-shadow(0px 3.84px 3.84px rgba(0, 0, 0, 0.25));
 `;
 const ButtonPath = styled.div`
-  position: fixed;
+  position: absolute;
   top: 40px;
   right: 5vw;
   width: 6em;

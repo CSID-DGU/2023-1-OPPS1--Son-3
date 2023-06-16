@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 
-const DropDown = ({ isOpen, innerRef, setVal, data, data2, top, onChange }) => {
+const DropDown = ({ isOpen, innerRef, setVal, data, data2, top }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [searchValue, setSearchValue] = useState("");
 
@@ -19,7 +19,6 @@ const DropDown = ({ isOpen, innerRef, setVal, data, data2, top, onChange }) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setSearchValue(value);
-    onChange(e);
   };
 
   const selectdataName = () => {
@@ -36,18 +35,20 @@ const DropDown = ({ isOpen, innerRef, setVal, data, data2, top, onChange }) => {
   );
 
   return (
-    <Dropdown isOpen={isOpen} top={top}>
-      <SearchInput
-        ref={innerRef}
-        type="text"
-        value={searchValue}
-        onChange={handleInputChange}
-        placeholder="검색"
-      />
+    <Dropdown ref={innerRef} isOpen={isOpen} top={top}>
+
+        <SearchInput
+          type="text"
+          value={searchValue}
+          onChange={handleInputChange}
+          placeholder="검색"
+        />
+
       <ButtonWrap>
         <Button onClick={selectdataName}>이름순</Button>
         <Button onClick={selectdataNum}>번호순</Button>
       </ButtonWrap>
+
       <DropdownItemList>
         {filteredData.map((item, index) => {
           return (
