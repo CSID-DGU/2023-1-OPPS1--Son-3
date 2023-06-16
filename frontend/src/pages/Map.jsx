@@ -237,7 +237,7 @@ const Map = () => {
             />
             <Span>
               교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 반영 및
-              미반영 경로를 볼 수 있습니다
+              미반영 경로를 볼 수 있습니다.
             </Span>
           </MapCanvasContainer>
           <SlopeIcon
@@ -412,7 +412,7 @@ const Span = styled.span`
   bottom: 20px;
 `;
 const ButtonInfo = styled.div`
-  position: absolute;
+  position: fixed;
   top: 56px;
   right: 5vw;
   width: 6em;

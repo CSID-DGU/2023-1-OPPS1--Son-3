@@ -171,7 +171,7 @@ const Container = styled.section`
   display: flex;
   width: 100vw;
   // 반응형
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 800px) {
     flex-direction: column;
     height: 100vh;
     section {
@@ -411,7 +411,7 @@ const PinName = styled.p`
   filter: drop-shadow(0px 3.84px 3.84px rgba(0, 0, 0, 0.25));
 `;
 const ButtonPath = styled.div`
-  position: absolute;
+  position: fixed;
   top: 40px;
   right: 5vw;
   width: 6em;
