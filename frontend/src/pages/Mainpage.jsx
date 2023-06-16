@@ -3,7 +3,7 @@ import NavBar from "../components/MainPage/Nav";
 import Footer from "../components/Footer";
 
 const Section = styled.section`
-  background-image: url("/backgroundImgs/배경.png");
+  background-image: url("/backgroundImgs/MainBackground.png");
 `;
 const MainPageContainer = styled.div`
   height: 100vh;

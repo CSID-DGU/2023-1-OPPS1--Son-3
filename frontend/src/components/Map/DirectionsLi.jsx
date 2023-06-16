@@ -55,7 +55,7 @@ const MapInfo = styled.li`
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 10px;
 `;
 const MapInfoImg = styled.img`
   width: 80%;
