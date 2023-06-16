@@ -16,12 +16,12 @@ export default function MainIcon() {
 }
 
 const Icon = styled.img`
-  top: 10px;
-  width: 200px;
+  top: 20px;
+  width: 225px;
   height: auto;
   cursor: pointer;
   position: absolute;
-  left: 20px;
+  left: 30px;
 
   @media screen and (max-width: 800px) {
     top: 5px;
