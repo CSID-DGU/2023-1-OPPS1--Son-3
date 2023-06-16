@@ -16,8 +16,11 @@ import { useLocation } from "react-router-dom";
 
 const Map = () => {
   const [isStart, setIsStart] = useState(false);
+  const [isConv, setIsConv] = useState(false);
   const [departBuilding, setDepartBuilding] = useState("");
   const [arriveBuilding, setArriveBuilding] = useState("");
+  const [convVal, setconvVal] = useState("");
+  
   const [nodes, setNodes] = useState([]);
   const [isSlope, setIsSlope] = useState(true);
   const appliedShortcut = useRef(null);
@@ -195,6 +198,8 @@ const Map = () => {
             departBuilding={departBuilding}
             setDepartBuilding={setDepartBuilding}
             handleOnSubmit={handleOnSubmit}
+            setconvVal = {setconvVal}
+            convVal = {convVal}
           />
           {/* <div style={{ position: "absolute", top: "100px", left: "100px" }}>
             {"층별 비교 : " + JSON.stringify(selectedData)}

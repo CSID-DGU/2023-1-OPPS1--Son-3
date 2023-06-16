@@ -5,11 +5,16 @@ import { buildings } from "../../lib/mapInfo.js";
 import useDetectClose from "../../lib/useDetectClose";
 import MainIcon from "../MainIcon";
 import { useEffect } from "react";
+
+import { convenients } from "../../lib/Data";
+
 export default function MapHeader({
   setArriveBuilding,
   setDepartBuilding,
+  setconvVal,
   arriveBuilding,
   departBuilding,
+  convVal,
   handleOnSubmit,
   targetBuildings,
 }) {
@@ -18,15 +23,19 @@ export default function MapHeader({
     if (targetBuildings) {
       setArriveBuilding(targetBuildings.arrival);
       setDepartBuilding(targetBuildings.departure);
+      setconvVal(targetBuildings.convVal);
     }
   }, [targetBuildings]);
   //넘어온 데이터가 있을 때 value값 생성
   const departure = targetBuildings ? targetBuildings.departure : "";
   const arrival = targetBuildings ? targetBuildings.arrival : "";
+  const conv = targetBuildings ? targetBuildings.convval : "";
   const departInput = useRef(null);
   const arriveInput = useRef(null);
+  const convInput = useRef(null);
   const [isOpen, setIsOpen] = useDetectClose(departInput, false);
   const [isOpen2, setIsOpen2] = useDetectClose(arriveInput, false);
+  const [isOpen3, setIsOpen3] = useDetectClose(convInput, false);
   return (
     <Header>
       <MainIcon></MainIcon>
@@ -81,6 +90,28 @@ export default function MapHeader({
               data={buildings}
               innerRef={arriveInput}
               isOpen={isOpen2}
+              top={12}
+            ></DropDown>
+          </DropDownWrapper>
+        </Div>
+        <Div>
+          <Span>편의시설</Span>
+          <DropDownWrapper>
+            <Input
+              type="text"
+              name="convInput"
+              defaultValue={convVal}
+              autoComplete="off"
+              onClick={() => {
+                setIsOpen3(!isOpen3);
+              }}
+              innerRef={convInput}
+            />
+            <DropDown
+              innerRef={convInput}
+              isOpen={isOpen3}
+              setVal={setconvVal}
+              data={convenients}
               top={12}
             ></DropDown>
           </DropDownWrapper>

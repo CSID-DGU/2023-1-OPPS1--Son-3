@@ -34,12 +34,18 @@ const Convenient = () => {
     //가장 가까운 건물명 알아내는 알고리즘
     const destinations = conv[departures][arrivals];
     showClose(destinations, arrivals);
+    //arrivaldata가 설정되고(이미지 경로, 위치(ex 원흥관 3층))
     setdeparturePinPosition(departures);
+    //departurepinposition을 설정(mapimg컴포넌트에서 사용)
+    //pinposition함수에서 departure의 핀 좌표와 핀좌표 설정 함수 반환
     //목표 건물
     let newDestination = destinations[0].split(" ")[0];
     setArrivalPinPosition(newDestination);
+    //동일하게 arrivalPinPosition 설정(좌표)
     setArrival(newDestination);
+    //층빼고 이름만 arrvial로 설정
     setDeparture(departures);
+    //출발건물 departure설정
   }
 
   return (
