@@ -27,7 +27,7 @@ const Dropdown = styled.ul`
   flex-direction: column;
   justify-content: flex-start;
   overflow-y: scroll;
-  max-height: 30em;
+  max-height: 60vh;
   position: absolute;
   width: 100%;
   top: ${(props) => `${props.top}px`};
@@ -40,15 +40,15 @@ const Dropdown = styled.ul`
   z-index: 1;
   cursor: pointer;
   ${(props) =>
-    !props.isOpen &&
+    props.isOpen &&
     css`
-      visibility: hidden;
+      visibility: visible;
     `}
 `;
 const DropdownItem = styled.li`
   list-style: none;
   flex: none;
-  padding: 0.75em;
+  padding: 12px;
   &:hover {
     background-color: rgb(243, 202, 89);
   }

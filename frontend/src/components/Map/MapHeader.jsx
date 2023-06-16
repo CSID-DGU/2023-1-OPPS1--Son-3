@@ -118,6 +118,7 @@ const Header = styled.header`
   height: 75px;
   width: fill-available;
   justify-content: center;
+  z-index: 1;
 `;
 
 const Form = styled.form`
@@ -158,6 +159,7 @@ const Button = styled.button`
 
 const DropDownWrapper = styled.div`
   position: relative;
+  z-index: 1;
 `;
 
 const Span = styled.span`
