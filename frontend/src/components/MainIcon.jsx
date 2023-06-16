@@ -7,7 +7,7 @@ export default function MainIcon() {
   return (
     <Icon
       id="icon"
-      src="/markImgs/Logo.png"
+      src="/markImgs/로고.png"
       onClick={() => {
         navigate("/mainPage"); //클릭 시, 메인 페이지로 이동
       }}
