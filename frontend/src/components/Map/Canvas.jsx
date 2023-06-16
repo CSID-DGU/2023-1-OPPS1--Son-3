@@ -1,16 +1,63 @@
 import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components/macro";
-const Canvas = ({
+import styled, { css } from "styled-components/macro";
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+
+  @media screen and (max-width: 800px) {
+    width: 87%;
+    height: 87%;
+  }
+`;
+
+const Canvas = styled.canvas`
+  background-image: url("/backgroundImgs/map.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left top; /* 기본 위치 (상단 왼쪽) */
+  max-width: 100%;
+  max-height: 100%;
+  transform: translateY(90px);
+
+  @media screen and (max-width: 800px) {
+    background-position: center; /* 모바일에서 가운데 정렬 */
+    width: 90%;
+    height: 90%;
+    transform: translateY(-25px);
+  }
+  width: 150%;
+  height: 150%;
+
+  ${(props) =>
+    props.isMobile &&
+    css`
+      width: 170% !important;
+      height: 170% !important;
+    `}
+`;
+
+const StyledContainer = ({ children }) => {
+  return <Container>{children}</Container>;
+};
+
+const StyledCanvas = ({ canvasRef, isMobile }) => {
+  return <Canvas ref={canvasRef} id="canvas" isMobile={isMobile} />;
+};
+
+export default function MapCanvas({
   isStart,
   canvasWidth,
   canvasHeight,
   nodePositions,
   color,
   clickPosition,
-}) => {
+}) {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
   const [ctx, setCtx] = useState();
+  const [isMobile, setIsMobile] = useState(false);
+
   const rightPosition = ([x, y]) => {
     return [(canvasWidth / 700) * x, (canvasHeight / 481) * y];
   };
@@ -23,11 +70,26 @@ const Canvas = ({
     contextRef.current = context;
     setCtx(context);
   }, [canvasWidth, canvasHeight]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 800);
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const state = useRef(null);
   const getState = () => {
     return isStart;
   };
   state.current = getState;
+
   useEffect(() => {
     if (nodePositions.length !== 0) {
       let i = 1;
@@ -44,14 +106,12 @@ const Canvas = ({
           clearInterval(animation); // continue until criteria
       }
     }
-  }, [isStart]);
+  }, [isStart, ctx, nodePositions]);
 
-  //clickposistion값이 변화함에따라 좌표찍기
   useEffect(() => {
     if (clickPosition) {
       const { x, y } = clickPosition;
       const [canvasX, canvasY] = [x - 310, y - 165];
-      // const [canvasX, canvasY] = [x, y];
       setTimeout(() => {
         drawCircle([canvasX, canvasY], [canvasX, canvasY]);
       }, 10);
@@ -62,7 +122,7 @@ const Canvas = ({
           (canvasY * 481) / canvasHeight
       );
     }
-  }, [clickPosition]);
+  }, [clickPosition, canvasWidth, canvasHeight]);
 
   const drawCircle = ([startX, startY], [endX, endY]) => {
     ctx.beginPath();
@@ -75,17 +135,8 @@ const Canvas = ({
   };
 
   return (
-    <div>
-      <StyledCanvas ref={canvasRef} id="canvas"></StyledCanvas>
-    </div>
+    <StyledContainer>
+      <StyledCanvas canvasRef={canvasRef} isMobile={isMobile} />
+    </StyledContainer>
   );
-};
-const StyledCanvas = styled.canvas`
-  background-image: url("/backgroundImgs/campus_map.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: auto;
-`;
-
-export default Canvas;
+}

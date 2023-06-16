@@ -1,24 +1,31 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components/macro";
-//모든 필요한 페이지에 사용될 메인 아이콘
+
 export default function MainIcon() {
   const navigate = useNavigate();
   return (
     <Icon
-      id="icon"
-      src="/markImgs/Logo.png"
+      src="/markImgs/로고.png"
+      alt="로고"
       onClick={() => {
-        navigate("/mainPage"); //클릭 시, 메인 페이지로 이동
+        navigate("/mainPage");
       }}
-    ></Icon>
+    />
   );
 }
+
 const Icon = styled.img`
-  width: 135px;
+  top: 10px;
+  width: 200px;
   height: auto;
   cursor: pointer;
   position: absolute;
-  left: 15px;
-  /* top: 5px; */
+  left: 20px;
+
+  @media screen and (max-width: 800px) {
+    top: 5px;
+    width: 130px;
+    max-width: 200px;
+  }
 `;

@@ -26,8 +26,8 @@ export default function SlopeIcon({
       <SlopeIconInfo className="smallerFont">
         {
           isSlope
-            ? "경사 미반영 경로 보기"
-            : "경사 반영 경로 보기" /*경사 반영에 따른 문구 변환*/
+            ? "빠른 경로 보기"
+            : "편한 반영 경로 보기" /*경사 반영에 따른 문구 변환*/
         }
       </SlopeIconInfo>
     </SlopeIconWrapper>
@@ -35,7 +35,7 @@ export default function SlopeIcon({
 }
 //스타일
 const Icon = styled.img`
-  width: 70%;
+  width: 50%;
   border-radius: 50%;
   &:hover {
     box-shadow: 0px 0px 2px 2px #e0dfdf;
@@ -51,7 +51,7 @@ const SlopeIconWrapper = styled.div`
   width: 13%;
   cursor: pointer;
   @media screen and (max-width: 800px) {
-    bottom: 15%;
+    bottom: 150%;
   }
   @media screen and (min-width: 801px) {
     bottom: 8%;

@@ -7,34 +7,36 @@ export default function MapImg({
   convenient,
 }) {
   return (
-    <ImgMarkingContainer>
-      <Img src="/backgroundImgs/campus_map.png"></Img>
-      {!(arrivalPinX + arrivalPinY === 0) && (
-        <MapMarkContainer
-          PinX={arrivalPinX}
-          PinY={arrivalPinY}
-          className="markContainer"
-        >
-          <img src="/markImgs/MapMark2.svg" alt="" />
-        </MapMarkContainer>
-      )}
-      {!(departurePinX + departurePinY === 0) && convenient && (
-        <MapMarkContainer
-          PinX={departurePinX}
-          PinY={departurePinY}
-          className="markContainer"
-        >
-          <img src="/markImgs/MapMark.svg" alt="" />
-        </MapMarkContainer>
-      )}
-    </ImgMarkingContainer>
+    <StyledCanvas>
+      <ImgMarkingContainer>
+        <Img src="/backgroundImgs/map.png"></Img>
+        {!(arrivalPinX + arrivalPinY === 0) && (
+          <MapMarkContainer
+            PinX={arrivalPinX}
+            PinY={arrivalPinY}
+            className="markContainer"
+          >
+            <img src="/markImgs/MapMark2.svg" alt="" />
+          </MapMarkContainer>
+        )}
+        {!(departurePinX + departurePinY === 0) && convenient && (
+          <MapMarkContainer
+            PinX={departurePinX}
+            PinY={departurePinY}
+            className="markContainer"
+          >
+            <img src="/markImgs/MapMark.svg" alt="" />
+          </MapMarkContainer>
+        )}
+      </ImgMarkingContainer>
+    </StyledCanvas>
   );
 }
 
 export function MapImg2({ arrivalPinX, arrivalPinY, convenient }) {
   return (
     <ImgMarkingContainer>
-      <Img src="/backgroundImgs/campus_map.png"></Img>
+      <Img src="/backgroundImgs/map.png"></Img>
       {!(arrivalPinX + arrivalPinY === 0) && (
         <MapMarkContainer
           PinX={arrivalPinX}
@@ -47,7 +49,6 @@ export function MapImg2({ arrivalPinX, arrivalPinY, convenient }) {
     </ImgMarkingContainer>
   );
 }
-
 
 const MapMarkContainer = styled.div`
   position: absolute;
@@ -78,4 +79,14 @@ const Img = styled.img`
 const ImgMarkingContainer = styled.div`
   position: relative;
   margin: 0 auto;
+`;
+const StyledCanvas = styled.canvas`
+  background-image: url("/backgroundImgs/map.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 80%;
+  height: 80%;
+  //top: -200px;
+  //transform: translate(-120px, -200px);
 `;

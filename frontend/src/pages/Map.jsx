@@ -91,8 +91,8 @@ const Map = () => {
           minValue = value;
           // minRoute =
           //   "최단경로 : " + selectedDepart + " 에서 " + selectedArrive;
-          minDepart = selectedDepart
-          minArrive = selectedArrive
+          minDepart = selectedDepart;
+          minArrive = selectedArrive;
         }
       }
     }
@@ -101,7 +101,7 @@ const Map = () => {
     // console.log(minbuilding);
     // console.log(selectedDepart);
     // console.log(selectedArrive);
-    minRoute = "최단경로 : " + minDepart + " 에서 " + minArrive;
+    minRoute = "빠른경로 : " + minDepart + " 에서 " + minArrive;
 
     setSelectedData(selectedData);
     setMinValue(minValue);
@@ -138,7 +138,7 @@ const Map = () => {
   //FloorSelection 컴포넌트 map으로 출력(출입구별)
   // const FloorSelector = () => {
   //   const buildingKeys = Object.keys(selectedData);
-  
+
   //   return (
   //     <>
   //       {buildingKeys.map((buildingKey) => (
@@ -179,11 +179,11 @@ const Map = () => {
       arr.push(nodeData[item]);
       // arr2.push(item);
     });
-  
+
     // setArr2(arr2);
-  
+
     // console.log(arr2);
-  
+
     setNodes([...arr]);
     setIsStart(!isStart);
   };
@@ -226,8 +226,8 @@ const Map = () => {
               </PinWrapper>
             </Pins>
             <MapH3>
-              현재 경사
-              <span>{isSlope ? " 반영" : " 미반영"} </span>
+              현재
+              <span>{isSlope ? " 빠른" : " 편한"} </span>
               경로입니다.
             </MapH3>
             <Canvas
@@ -241,8 +241,10 @@ const Map = () => {
               clickPosition={clickPosition}
             />
             <Span>
-              교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 반영 및
-              미반영 경로를 볼 수 있습니다
+
+              교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 빠른/
+              편한 경로를 볼 수 있습니다
+
             </Span>
           </MapCanvasContainer>
           <SlopeIcon
@@ -264,36 +266,35 @@ const Map = () => {
               //주석처리된 부분은 입구가 안나뉘는경우도 출력하도록 하는부분(아래 slice없애야함)
               // if (Object.keys(selectedData).length > 1 && !buildingKey.includes("층")) {
               //------------------------
-          // 출입구 없는건물 버튼 건물이름으로 생성하는버전
+              // 출입구 없는건물 버튼 건물이름으로 생성하는버전
 
-          // <FloorSelector>
-          //   {Object.keys(selectedData).map((buildingKey) => {
-          //     //여러층으로 입구가 나뉘면서, 입구가 아닌 건물이름 노드는 생략
-          //     if (Object.keys(selectedData).length > 1 && !buildingKey.includes("층")) {
-          //       return null;
-          //     }
-          //     else {
-          //       if(buildingKey.includes("층")){
-          //         return (
-          //           <FloorSelection onClick={() => selectFloor(buildingKey)}>
-          //             {buildingKey.slice(-2)}
-          //           </FloorSelection>
-          //         );
-          //       }
-          //       else{
-          //         return (
-          //           <FloorSelection onClick={() => selectFloor(buildingKey)}>
-          //             {buildingKey}
-          //           </FloorSelection>
-          //         );
-          //       }
-          //     }
-          //   })}
-          // </FloorSelector>
+              // <FloorSelector>
+              //   {Object.keys(selectedData).map((buildingKey) => {
+              //     //여러층으로 입구가 나뉘면서, 입구가 아닌 건물이름 노드는 생략
+              //     if (Object.keys(selectedData).length > 1 && !buildingKey.includes("층")) {
+              //       return null;
+              //     }
+              //     else {
+              //       if(buildingKey.includes("층")){
+              //         return (
+              //           <FloorSelection onClick={() => selectFloor(buildingKey)}>
+              //             {buildingKey.slice(-2)}
+              //           </FloorSelection>
+              //         );
+              //       }
+              //       else{
+              //         return (
+              //           <FloorSelection onClick={() => selectFloor(buildingKey)}>
+              //             {buildingKey}
+              //           </FloorSelection>
+              //         );
+              //       }
+              //     }
+              //   })}
+              // </FloorSelector>
               if (!buildingKey.includes("층")) {
                 return null;
-              }
-              else {
+              } else {
                 return (
                   <FloorSelection onClick={() => selectFloor(buildingKey)}>
                     {buildingKey.slice(-2)}
@@ -303,7 +304,7 @@ const Map = () => {
             })}
           </FloorSelector>
         </MapArticleContainer>
-        <ButtonInfo onClick={() => window.location.href = '/buildingInfo'}>
+        <ButtonInfo onClick={() => (window.location.href = "/buildingInfo")}>
           <b>건물 정보</b>
         </ButtonInfo>
       </Section>
@@ -402,8 +403,8 @@ const MapCanvasContainer = styled.div`
   }
 `;
 const MapH3 = styled.h3`
-  position: absolute;
-  top: 0;
+  position: relative;
+  top: 100px;
 `;
 const Span = styled.span`
   font-size: 17px;
@@ -414,10 +415,10 @@ const Span = styled.span`
   word-break: keep-all;
   text-align: center;
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
 `;
 const ButtonInfo = styled.div`
-  position: absolute;
+  position: fixed;
   top: 56px;
   right: 5vw;
   width: 6em;
