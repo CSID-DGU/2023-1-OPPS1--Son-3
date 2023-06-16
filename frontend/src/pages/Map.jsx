@@ -388,6 +388,7 @@ const MapCanvasContainer = styled.div`
   justify-content: center;
   width: auto;
   min-width: 370px;
+  z-index: 0;
   @media screen and (min-width: 801px) {
     height: 100vh;
     padding-right: 10vw;
