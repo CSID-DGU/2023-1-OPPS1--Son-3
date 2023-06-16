@@ -282,6 +282,8 @@ const Item = styled.div`
   flex-grow: 1;
   writing-mode: vertical-lr;
   text-align: center;
+  display: flex;
+  align-items: center;
   span {
     display: inline-block;
     padding: 10px;
@@ -296,6 +298,8 @@ const Item2 = styled.div`
   flex-grow: 1;
   writing-mode: vertical-lr;
   text-align: center;
+  display: flex;
+  align-items: center;
   span {
     display: inline-block;
     padding: 10px;
@@ -326,6 +330,9 @@ const BuildingName = styled.span`
   font-size: 1.25rem;
 `;
 const BuildingTag = styled.span`
+  display: center;
+  align-items: center;
+  justify-content: center;
   letter-spacing: 3px;
   font-weight: bold;
 `;
