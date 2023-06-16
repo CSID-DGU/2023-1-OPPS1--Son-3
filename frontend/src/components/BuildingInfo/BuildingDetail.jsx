@@ -5,10 +5,13 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
     return (
       <BuildingContainer className="detailPage">
         <InfosContainer>
-          <Key style={{ width: "100%", marginTop: "15px", textAlign: "center" }}>건물정보가 존재하지 않습니다.</Key>
+          <Key style={{ width: "100%", marginTop: "15px" }}>
+            건물정보가 존재하지 않습니다
+          </Key>
         </InfosContainer>
       </BuildingContainer>
-    ); // Display "X" when detailPageContent is null
+    );
+    // Display "X" when detailPageContent is null
   }
 
   const info = detailPageContent.info;
