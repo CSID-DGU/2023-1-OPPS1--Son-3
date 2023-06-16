@@ -98,7 +98,7 @@ const Map = () => {
     // console.log(minbuilding);
     // console.log(selectedDepart);
     // console.log(selectedArrive);
-    minRoute = "최단경로 : " + minDepart + " 에서 " + minArrive;
+    minRoute = "빠른경로 : " + minDepart + " 에서 " + minArrive;
 
     setSelectedData(selectedData);
     setMinValue(minValue);
@@ -408,7 +408,7 @@ const Span = styled.span`
   word-break: keep-all;
   text-align: center;
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
 `;
 const ButtonInfo = styled.div`
   position: absolute;

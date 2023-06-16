@@ -15,17 +15,17 @@ const Canvas = styled.canvas`
   background-image: url("/backgroundImgs/map.png");
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: left top; /* 수정: 상단 정렬로 변경 */
+  background-position: left top; /* 기본 위치 (상단 왼쪽) */
   max-width: 100%;
   max-height: 100%;
+  transform: translateY(90px);
 
   @media screen and (max-width: 800px) {
+    background-position: center; /* 모바일에서 가운데 정렬 */
     width: 90%;
     height: 90%;
-    top: -30px;
-    transform: none;
+    transform: translateY(-25px);
   }
-
   width: 150%;
   height: 150%;
 
