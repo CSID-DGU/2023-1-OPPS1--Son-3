@@ -22,6 +22,7 @@ const DropDown = ({ isOpen, innerRef, setVal, data, top }) => {
     </Dropdown>
   );
 };
+
 const Dropdown = styled.ul`
   display: flex;
   flex-direction: column;
@@ -30,7 +31,7 @@ const Dropdown = styled.ul`
   max-height: 60vh;
   position: absolute;
   width: 100%;
-  top: ${(props) => `${props.top}px`};
+  top: 80px;
   padding: 0;
   background-color: white;
   border: 2.5px solid black;
@@ -40,9 +41,9 @@ const Dropdown = styled.ul`
   z-index: 1;
   cursor: pointer;
   ${(props) =>
-    !props.isOpen &&
+    props.isOpen &&
     css`
-      visibility: hidden;
+      visibility: visible;
     `}
 `;
 const DropdownItem = styled.li`
