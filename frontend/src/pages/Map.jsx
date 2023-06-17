@@ -271,7 +271,9 @@ const Map = () => {
     }
     else{
       setSubmittedDepart(departBuilding);
+      setdeparturePinPosition(departBuilding);
       setSubmittedArrive(arriveBuilding);
+      setArrivalPinPosition(arriveBuilding);
       appliedShortcut.current = isSlope ? SlopShortCut : Shortcut;
       setPinPositions();
       setIsStart(!isStart);
@@ -392,15 +394,15 @@ const Map = () => {
           </FloorSelector>
         </MapArticleContainer>
         
-        {/* <SearchContainer>
-          <MapImg
-            arrivalPinX={arrivalPinPosition[0]}
-            arrivalPinY={arrivalPinPosition[1]}
-            departurePinX={departurePinPosition[0]}
-            departurePinY={departurePinPosition[1]}
-            convenient={true}
-          ></MapImg>
-        </SearchContainer> */}
+        {/* <SearchContainer> */}
+        <MapImg
+          arrivalPinX={arrivalPinPosition[0]}
+          arrivalPinY={arrivalPinPosition[1]}
+          departurePinX={departurePinPosition[0]}
+          departurePinY={departurePinPosition[1]}
+          convenient={true}
+        ></MapImg>
+        {/* </SearchContainer> */}
 
         <ButtonInfo onClick={() => (window.location.href = "/buildingInfo")}>
           <b>건물 정보</b>
@@ -626,9 +628,9 @@ const PinName = styled.p``;
 
 
 
-const SearchContainer = styled.article`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+// const SearchContainer = styled.article`
+//   flex-grow: 1;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// `;
