@@ -40,9 +40,9 @@ const Dropdown = styled.ul`
   z-index: 1;
   cursor: pointer;
   ${(props) =>
-    props.isOpen &&
+    !props.isOpen &&
     css`
-      visibility: visible;
+      visibility: hidden;
     `}
 `;
 const DropdownItem = styled.li`
