@@ -64,7 +64,7 @@ export default function MapHeader({
             <Input
               type="text"
               name="departInput"
-              Ref={departInput}
+              innerRef={departInput}
               autoComplete="off"
               onClick={() => {
                 setIsOpen(!isOpen);
@@ -76,7 +76,7 @@ export default function MapHeader({
             />
             <DropDown
               data={buildings}
-              Ref={departInput}
+              innerRef={departInput}
               isOpen={isOpen}
               top={12}
               setVal={setDepartBuilding}
@@ -92,7 +92,7 @@ export default function MapHeader({
             <Input
               type="text"
               name={toggleName}
-              Ref={arriveInput}
+              innerRef={arriveInput}
               autoComplete="off"
               onClick={() => {
                 setIsOpen2(!isOpen2);
@@ -105,7 +105,7 @@ export default function MapHeader({
             <DropDown
               setVal={toggleSetVal}
               data={toggleData}
-              Ref={arriveInput}
+              innerRef={arriveInput}
               isOpen={isOpen2}
               top={12}
             ></DropDown>
