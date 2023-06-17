@@ -8,14 +8,15 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/mainPage" />}></Route>
-        <Route path="/mainPage" element={<MainPage></MainPage>}></Route>
+        <Route path="/" element={<Navigate to="/map" />}></Route>
+        {/* <Route path="/" element={<Navigate to="/mainPage" />}></Route> */}
+        {/* <Route path="/mainPage" element={<MainPage></MainPage>}></Route> */}
         <Route path="/map" element={<Map></Map>} />
         <Route
           path="/buildingInfo"
           element={<BuildingInfo></BuildingInfo>}
         ></Route>
-        <Route path="/convenient" element={<Convenient></Convenient>} />
+        {/* <Route path="/convenient" element={<Convenient></Convenient>} /> */}
       </Routes>
     </BrowserRouter>
   );
