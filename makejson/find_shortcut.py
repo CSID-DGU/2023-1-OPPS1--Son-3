@@ -243,8 +243,8 @@ for start in dict_key:
                 sc.append(image_info["혜화관2"]["info"])
                 shortcut.append(sc)
             
-            # 후문 -> 학림관
-            elif path_data[start][end][i-1]=="후문" and path_data[start][end][i]=="학림관":
+            # EE -> 학림관
+            elif path_data[start][end][i-1]=="EE" and path_data[start][end][i]=="학림관":
                 sc.append(image_info["학림관2"]["title"])
                 sc.append(image_info["학림관2"]["img"])
                 sc.append(image_info["학림관2"]["info"])
@@ -255,8 +255,8 @@ for start in dict_key:
                 sc.append(image_info["학림관31"]["info"])
                 shortcut.append(sc)
 
-            # 학림관 -> 후문
-            elif path_data[start][end][i-1]=="학림관" and path_data[start][end][i]=="후문":
+            # 학림관 -> EE
+            elif path_data[start][end][i-1]=="학림관" and path_data[start][end][i]=="EE":
                 sc.append(image_info["학림관32"]["title"])
                 sc.append(image_info["학림관32"]["img"])
                 sc.append(image_info["학림관32"]["info"])
@@ -288,6 +288,20 @@ for start in dict_key:
                 sc.append(image_info["본관12"]["title"])
                 sc.append(image_info["본관12"]["img"])
                 sc.append(image_info["본관12"]["info"])
+                shortcut.append(sc)
+            
+            # LL -> 법학관
+            elif path_data[start][end][i-1]=="LL" and path_data[start][end][i]=="법학관":
+                sc.append(image_info["법학관1"]["title"])
+                sc.append(image_info["법학관1"]["img"])
+                sc.append(image_info["법학관1"]["info"])
+                shortcut.append(sc)
+
+            # 법학관 -> LL
+            elif path_data[start][end][i-1]=="법학관" and path_data[start][end][i]=="LL":
+                sc.append(image_info["법학관2"]["title"])
+                sc.append(image_info["법학관2"]["img"])
+                sc.append(image_info["법학관2"]["info"])
                 shortcut.append(sc)
 
             else:
@@ -505,8 +519,8 @@ for start in dict_key:
                 sc.append(image_info["혜화관2"]["info"])
                 shortcut.append(sc)
             
-            # 후문 -> 학림관
-            elif path_data[start][end][i-1]=="후문" and path_data[start][end][i]=="학림관":
+            # EE -> 학림관
+            elif path_data[start][end][i-1]=="EE" and path_data[start][end][i]=="학림관":
                 sc.append(image_info["학림관2"]["title"])
                 sc.append(image_info["학림관2"]["img"])
                 sc.append(image_info["학림관2"]["info"])
@@ -517,8 +531,8 @@ for start in dict_key:
                 sc.append(image_info["학림관31"]["info"])
                 shortcut.append(sc)
 
-            # 학림관 -> 후문
-            elif path_data[start][end][i-1]=="학림관" and path_data[start][end][i]=="후문":
+            # 학림관 -> EE
+            elif path_data[start][end][i-1]=="학림관" and path_data[start][end][i]=="EE":
                 sc.append(image_info["학림관32"]["title"])
                 sc.append(image_info["학림관32"]["img"])
                 sc.append(image_info["학림관32"]["info"])
@@ -550,6 +564,20 @@ for start in dict_key:
                 sc.append(image_info["본관12"]["title"])
                 sc.append(image_info["본관12"]["img"])
                 sc.append(image_info["본관12"]["info"])
+                shortcut.append(sc)
+            
+            # LL -> 법학관
+            elif path_data[start][end][i-1]=="LL" and path_data[start][end][i]=="법학관":
+                sc.append(image_info["법학관1"]["title"])
+                sc.append(image_info["법학관1"]["img"])
+                sc.append(image_info["법학관1"]["info"])
+                shortcut.append(sc)
+
+            # 법학관 -> LL
+            elif path_data[start][end][i-1]=="법학관" and path_data[start][end][i]=="LL":
+                sc.append(image_info["법학관2"]["title"])
+                sc.append(image_info["법학관2"]["img"])
+                sc.append(image_info["법학관2"]["info"])
                 shortcut.append(sc)
 
             else:
