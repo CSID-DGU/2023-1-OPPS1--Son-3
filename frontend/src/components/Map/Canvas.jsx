@@ -59,7 +59,7 @@ export default function MapCanvas({
   const [isMobile, setIsMobile] = useState(false);
 
   const rightPosition = ([x, y]) => {
-    return [(canvasWidth / 700) * x, (canvasHeight / 481) * y];
+    return [(canvasWidth / 981) * x, (canvasHeight / 532) * y];
   };
 
   useEffect(() => {
@@ -111,15 +111,16 @@ export default function MapCanvas({
   useEffect(() => {
     if (clickPosition) {
       const { x, y } = clickPosition;
-      const [canvasX, canvasY] = [x - 310, y - 165];
+      // const [canvasX, canvasY] = [x - 310, y - 165];//192 235로 맞추면 150퍼에서 맞음
+      const [canvasX, canvasY] = [x - 192, y - 235];
       setTimeout(() => {
         drawCircle([canvasX, canvasY], [canvasX, canvasY]);
       }, 10);
       console.log(
         "node x : " +
-          (canvasX * 700) / canvasWidth +
+          (canvasX * 981) / canvasWidth +
           "node y : " +
-          (canvasY * 481) / canvasHeight
+          (canvasY * 532) / canvasHeight
       );
     }
   }, [clickPosition, canvasWidth, canvasHeight]);

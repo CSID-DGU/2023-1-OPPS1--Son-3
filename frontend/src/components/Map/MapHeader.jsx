@@ -7,6 +7,7 @@ import MainIcon from "../MainIcon";
 import { useEffect } from "react";
 import toggleButtonImage from "./토글_교내경로.png"; // Replace with the actual path to your toggle button image
 import toggleButtonImage2 from "./토글_편의시설.png"; // Replace with the actual path to your second toggle button image
+import { convenients } from "../../lib/Data";
 
 export default function MapHeader({
   setArriveBuilding,
@@ -15,6 +16,8 @@ export default function MapHeader({
   departBuilding,
   handleOnSubmit,
   targetBuildings,
+  toggleButton,
+  setToggleButton,
 }) {
   // Check for incoming data and set values accordingly
   useEffect(() => {
@@ -30,7 +33,7 @@ export default function MapHeader({
   const arriveInput = useRef(null);
   const [isOpen, setIsOpen] = useDetectClose(departInput, false);
   const [isOpen2, setIsOpen2] = useDetectClose(arriveInput, false);
-  const [toggleButton, setToggleButton] = useState(false);
+  // const [toggleButton, setToggleButton] = useState(false);
 
   const handleToggleButton = () => {
     setToggleButton(!toggleButton);
@@ -41,6 +44,11 @@ export default function MapHeader({
     : toggleButtonImage;
   const toggleButtonAltText = toggleButton ? "토글 버튼" : "편의시설 버튼";
   const destinationText = toggleButton ? "편의시설" : "도착지";
+  const toggleName = toggleButton ? "convInput" : "arriveInput" 
+  const [convVal, setconvVal] = useState("");
+  const toggleDefaultValue = toggleButton ? (convVal) : (arriveBuilding || arrival)
+  const toggleSetVal = toggleButton ? setconvVal : setArriveBuilding
+  const toggleData = toggleButton ? convenients : buildings
 
   return (
     <Header>
@@ -83,7 +91,7 @@ export default function MapHeader({
           <DropDownWrapper>
             <Input
               type="text"
-              name="arriveInput"
+              name={toggleName}
               innerRef={arriveInput}
               autoComplete="off"
               onClick={() => {
@@ -92,11 +100,11 @@ export default function MapHeader({
               onKeyPress={(e) => {
                 e.preventDefault();
               }}
-              defaultValue={arriveBuilding || arrival}
+              defaultValue={toggleDefaultValue}
             />
             <DropDown
-              setVal={setArriveBuilding}
-              data={buildings}
+              setVal={toggleSetVal}
+              data={toggleData}
               innerRef={arriveInput}
               isOpen={isOpen2}
               top={12}
