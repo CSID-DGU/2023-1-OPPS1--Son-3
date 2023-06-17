@@ -127,11 +127,6 @@ const Map = () => {
         }
       }
     }
-    // console.log(selectedData);
-    // console.log(minValue);
-    // console.log(minbuilding);
-    // console.log(selectedDepart);
-    // console.log(selectedArrive);
     minRoute = "빠른경로 : " + minDepart + " 에서 " + minArrive;
 
     setSelectedData(selectedData);
@@ -145,39 +140,101 @@ const Map = () => {
     setMinDepart(minDepart);
     setMinArrive(minArrive);
 
-    // selectedData[selectedDepart][selectedArrive]((item) => {
-    //   test.push(nodeData[item]);
-    // });
 
-    //To do
-    //층 선택하면 층수 데이터에 맞는 최단 입구 경로 최단경로 보여주기
     // const arr2 = [];
     data[minDepart][minArrive].map((item) => {
       arr.push(nodeData[item]);
       // arr2.push(item);
     });
 
-    // data[departBuilding][arriveBuilding].map((item) => {
-    //   arr.push(nodeData[item]);
-    // });
-    // setArr2(arr2);
-
-    // console.log(arr2);
     setNodes([...arr]);
   };
 
-  //FloorSelection 컴포넌트 map으로 출력(출입구별)
-  // const FloorSelector = () => {
-  //   const buildingKeys = Object.keys(selectedData);
+  
+  const setPinPositions2 = (departures,newDestination) => {
+    const arr = [];
+    // const test = [];
+    const data = isSlope ? pathSlopeData : pathData;
+    const sum_data = isSlope ? pathSlopeData_sum : pathData_sum;
 
-  //   return (
-  //     <>
-  //       {buildingKeys.map((buildingKey) => (
-  //         <FloorSelection >{buildingKey}</FloorSelection>
-  //       ))}
-  //     </>
-  //   );
-  // };
+    const selectedData = {};
+    // let selectedDepart = null;
+    // let selectedArrive = null;
+
+    //To do
+    //넘겨받은 층수데이터를 이용해 해당 층수 출발일때 도착건물의 최단출입구를 구하기
+
+    for (const buildingKey in sum_data) {
+      if (buildingKey.includes(departures) && buildingKey.includes("층")) {
+        selectedData[buildingKey] = {};
+        const buildingData = sum_data[buildingKey];
+        for (const key in buildingData) {
+          if (key.includes(newDestination) && key.includes("층")) {
+            selectedData[buildingKey][key] = buildingData[key];
+          } else {
+            selectedData[buildingKey][newDestination] =
+              buildingData[newDestination];
+          }
+        }
+      } else {
+        selectedData[departures] = {};
+        const buildingData = sum_data[departures];
+        for (const key in buildingData) {
+          if (key.includes(newDestination) && key.includes("층")) {
+            selectedData[departures][key] = buildingData[key];
+          } else {
+            selectedData[departures][newDestination] =
+              buildingData[newDestination];
+          }
+        }
+      }
+    }
+
+    let minValue = Number.POSITIVE_INFINITY;
+    let minRoute = null;
+    let minDepart = null;
+    let minArrive = null;
+
+    //sumdata에서 최단경로 계산
+    for (const selectedDepart in selectedData) {
+      const startbuilding = selectedData[selectedDepart];
+      for (const selectedArrive in startbuilding) {
+        const value = startbuilding[selectedArrive];
+        if (value < minValue) {
+          minValue = value;
+          // minRoute =
+          //   "최단경로 : " + selectedDepart + " 에서 " + selectedArrive;
+          minDepart = selectedDepart;
+          minArrive = selectedArrive;
+        }
+      }
+    }
+    minRoute = "빠른경로 : " + minDepart + " 에서 " + minArrive;
+
+    setSelectedData(selectedData);
+    setMinValue(minValue);
+    setMinBuilding(minRoute);
+    // setSelectedDepart(selectedDepart);
+    // setSelectedArrive(selectedArrive);
+    //directionsli에서 사용할 submitt data(층수별로 바뀜)
+    setSubmittedDepart(minDepart);
+    setSubmittedArrive(minArrive);
+    setMinDepart(minDepart);
+    setMinArrive(minArrive);
+
+
+    // const arr2 = [];
+    data[minDepart][minArrive].map((item) => {
+      arr.push(nodeData[item]);
+      // arr2.push(item);
+    });
+
+    setNodes([...arr]);
+  };
+
+
+
+
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -199,13 +256,25 @@ const Map = () => {
       setArrivalPinPosition(newDestination);
       setArrival(newDestination);
       setDeparture(departures);
+      //submmitteddata가 반영아 안됨?
+      // setSubmittedDepart(departures);
+      // setSubmittedArrive(newDestination);
+      setDepartBuilding(departures);
+      setArriveBuilding(newDestination);
+      console.log(departures);
+      console.log(newDestination);
+      console.log(departBuilding);
+      console.log(arriveBuilding);
+      appliedShortcut.current = isSlope ? SlopShortCut : Shortcut;
+      setPinPositions2(departures,newDestination);
+      setIsStart(!isStart);
     }
     else{
       setSubmittedDepart(departBuilding);
       setSubmittedArrive(arriveBuilding);
       appliedShortcut.current = isSlope ? SlopShortCut : Shortcut;
-      setIsStart(!isStart);
       setPinPositions();
+      setIsStart(!isStart);
     }
   };
   const handleOnClick = () => {
@@ -253,19 +322,6 @@ const Map = () => {
             setToggleButton = {setToggleButton}
             toggleButton = {toggleButton}
           />
-          {/* <div style={{ position: "absolute", top: "100px", left: "100px" }}>
-            {"층별 비교 : " + JSON.stringify(selectedData)}
-            <br />
-            {"최단 경로 : " + arr2}
-            <br />
-            {"sum : " + minValue}
-            <br />
-            {minBuilding}
-            <br />
-            {"최단경로 출발노드 : " + minDepart}
-            <br />
-            {"최단경로 도착노드 : " + minArrive}
-          </div> */}
           <MapCanvasContainer>
             <Pins>
               <PinWrapper>
@@ -323,36 +379,6 @@ const Map = () => {
         )}
           <FloorSelector>
             {Object.keys(selectedData).map((buildingKey) => {
-              //여러층으로 입구가 나뉘면서, 층수 있는 입구가 아닌 건물이름 노드는 생략
-              //주석처리된 부분은 입구가 안나뉘는경우도 출력하도록 하는부분(아래 slice없애야함)
-              // if (Object.keys(selectedData).length > 1 && !buildingKey.includes("층")) {
-              //------------------------
-              // 출입구 없는건물 버튼 건물이름으로 생성하는버전
-
-              // <FloorSelector>
-              //   {Object.keys(selectedData).map((buildingKey) => {
-              //     //여러층으로 입구가 나뉘면서, 입구가 아닌 건물이름 노드는 생략
-              //     if (Object.keys(selectedData).length > 1 && !buildingKey.includes("층")) {
-              //       return null;
-              //     }
-              //     else {
-              //       if(buildingKey.includes("층")){
-              //         return (
-              //           <FloorSelection onClick={() => selectFloor(buildingKey)}>
-              //             {buildingKey.slice(-2)}
-              //           </FloorSelection>
-              //         );
-              //       }
-              //       else{
-              //         return (
-              //           <FloorSelection onClick={() => selectFloor(buildingKey)}>
-              //             {buildingKey}
-              //           </FloorSelection>
-              //         );
-              //       }
-              //     }
-              //   })}
-              // </FloorSelector>
               if (!buildingKey.includes("층")) {
                 return null;
               } else {
