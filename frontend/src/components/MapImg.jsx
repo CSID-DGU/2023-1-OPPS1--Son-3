@@ -7,9 +7,10 @@ export default function MapImg({
   convenient,
 }) {
   return (
-    <StyledCanvas>
-      <ImgMarkingContainer>
-        <Img src="/backgroundImgs/map.png"></Img>
+    // <StyledCanvas>
+      // <ImgMarkingContainer>
+      <>
+        {/* <Img src="/backgroundImgs/map.png"></Img> */}
         {!(arrivalPinX + arrivalPinY === 0) && (
           <MapMarkContainer
             PinX={arrivalPinX}
@@ -28,8 +29,9 @@ export default function MapImg({
             <img src="/markImgs/MapMark.svg" alt="" />
           </MapMarkContainer>
         )}
-      </ImgMarkingContainer>
-    </StyledCanvas>
+        </>
+      // </ImgMarkingContainer>
+    // </StyledCanvas>
   );
 }
 
@@ -81,7 +83,7 @@ const ImgMarkingContainer = styled.div`
   margin: 0 auto;
 `;
 const StyledCanvas = styled.canvas`
-  background-image: url("/backgroundImgs/map.png");
+  /* background-image: url("/backgroundImgs/map.png"); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
