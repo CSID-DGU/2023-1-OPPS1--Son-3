@@ -31,16 +31,9 @@ export default function MapHeader({
   const [isOpen, setIsOpen] = useDetectClose(departInput, false);
   const [isOpen2, setIsOpen2] = useDetectClose(arriveInput, false);
   const [toggleButton, setToggleButton] = useState(false);
-  const [toggleButton2, setToggleButton2] = useState(false);
 
   const handleToggleButton = () => {
     setToggleButton(!toggleButton);
-    setToggleButton2(false);
-  };
-
-  const handleToggleButton2 = () => {
-    setToggleButton2(!toggleButton2);
-    setToggleButton(false);
   };
 
   const toggleButtonImageSrc = toggleButton
@@ -51,15 +44,19 @@ export default function MapHeader({
 
   return (
     <Header>
-      <MainIcon isMobile={true} />
-      <Form onSubmit={handleOnSubmit}>
+      <MainIcon/>
+      <Form
+        onSubmit={(e) => {
+          handleOnSubmit(e);
+        }}
+      >
         <Div>
           <Span>출발지</Span>
           <DropDownWrapper>
             <Input
               type="text"
               name="departInput"
-              ref={departInput}
+              innerRef={departInput}
               autoComplete="off"
               onClick={() => {
                 setIsOpen(!isOpen);
@@ -71,11 +68,11 @@ export default function MapHeader({
             />
             <DropDown
               data={buildings}
-              ref={departInput}
+              innerRef={departInput}
               isOpen={isOpen}
               top={12}
               setVal={setDepartBuilding}
-            />
+            ></DropDown>
           </DropDownWrapper>
         </Div>
         <Div>
@@ -87,7 +84,7 @@ export default function MapHeader({
             <Input
               type="text"
               name="arriveInput"
-              ref={arriveInput}
+              innerRef={arriveInput}
               autoComplete="off"
               onClick={() => {
                 setIsOpen2(!isOpen2);
@@ -100,10 +97,10 @@ export default function MapHeader({
             <DropDown
               setVal={setArriveBuilding}
               data={buildings}
-              ref={arriveInput}
-              isOpen={isOpen2 && toggleButton}
+              innerRef={arriveInput}
+              isOpen={isOpen2}
               top={12}
-            />
+            ></DropDown>
           </DropDownWrapper>
         </Div>
         <Button>검색</Button>
