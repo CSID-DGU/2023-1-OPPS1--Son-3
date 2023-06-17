@@ -9,7 +9,7 @@ export default function MainIcon() {
       src="/markImgs/로고.png"
       alt="로고"
       onClick={() => {
-        navigate("/mainPage");
+        navigate("/map");
       }}
     />
   );
