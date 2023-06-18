@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import MainPage from "../pages/Mainpage";
+// import MainPage from "../pages/Mainpage";
 import Map from "../pages/Map";
-import Convenient from "../pages/Convenient";
+// import Convenient from "../pages/Convenient";
 import BuildingInfo from "../pages/BuildingInfo";
 
 function Router() {

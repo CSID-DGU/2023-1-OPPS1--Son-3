@@ -6,7 +6,6 @@ import pathData from "../lib/path/path1.json";
 import pathData_sum from "../lib/path/path1_1.json";
 import pathSlopeData from "../lib/path/path2.json";
 import pathSlopeData_sum from "../lib/path/path2_1.json";
-import Footer from "../components/Footer";
 import Shortcut from "../lib/shortcut/shortcut1.json";
 import SlopShortCut from "../lib/shortcut/shortcut2.json";
 import DirectionLi from "../components/Map/DirectionsLi";
@@ -17,7 +16,7 @@ import { conv } from "../lib/convenient";
 import convImages from "../lib/convImages";
 import { PinPosition2 } from "../lib/PinPosition";
 import CloseConvList from "../components/Convenient/CloseConvs";
-import MapImg from "../components/MapImg";
+// import MapImg from "../components/MapImg";
 import MainIcon from "../components/MainIcon";
 
 const Map = () => {
@@ -34,7 +33,6 @@ const Map = () => {
   const [isSelected, setIsSelected] = useState(null);
 
   const [selectedData, setSelectedData] = useState({});
-  // const [routeData, setSelectedData] = useState({});
   const [minValue, setMinValue] = useState(Number.POSITIVE_INFINITY);
   const [minBuilding, setMinBuilding] = useState(null);
   const [minDepart, setMinDepart] = useState(null);
@@ -69,13 +67,10 @@ const Map = () => {
 
   const setPinPositions = () => {
     const arr = [];
-    // const test = [];
     const data = isSlope ? pathSlopeData : pathData;
     const sum_data = isSlope ? pathSlopeData_sum : pathData_sum;
 
     const selectedData = {};
-    // let selectedDepart = null;
-    // let selectedArrive = null;
 
     //To do
     //넘겨받은 층수데이터를 이용해 해당 층수 출발일때 도착건물의 최단출입구를 구하기
@@ -118,8 +113,6 @@ const Map = () => {
         const value = startbuilding[selectedArrive];
         if (value < minValue) {
           minValue = value;
-          // minRoute =
-          //   "최단경로 : " + selectedDepart + " 에서 " + selectedArrive;
           minDepart = selectedDepart;
           minArrive = selectedArrive;
         }
@@ -130,18 +123,14 @@ const Map = () => {
     setSelectedData(selectedData);
     setMinValue(minValue);
     setMinBuilding(minRoute);
-    // setSelectedDepart(selectedDepart);
-    // setSelectedArrive(selectedArrive);
     //directionsli에서 사용할 submitt data(층수별로 바뀜)
     setSubmittedDepart(minDepart);
     setSubmittedArrive(minArrive);
     setMinDepart(minDepart);
     setMinArrive(minArrive);
 
-    // const arr2 = [];
     data[minDepart][minArrive].map((item) => {
       arr.push(nodeData[item]);
-      // arr2.push(item);
     });
 
     setNodes([...arr]);
@@ -149,13 +138,10 @@ const Map = () => {
 
   const setPinPositions2 = (departures, newDestination) => {
     const arr = [];
-    // const test = [];
     const data = isSlope ? pathSlopeData : pathData;
     const sum_data = isSlope ? pathSlopeData_sum : pathData_sum;
 
     const selectedData = {};
-    // let selectedDepart = null;
-    // let selectedArrive = null;
 
     //To do
     //넘겨받은 층수데이터를 이용해 해당 층수 출발일때 도착건물의 최단출입구를 구하기
@@ -198,8 +184,6 @@ const Map = () => {
         const value = startbuilding[selectedArrive];
         if (value < minValue) {
           minValue = value;
-          // minRoute =
-          //   "최단경로 : " + selectedDepart + " 에서 " + selectedArrive;
           minDepart = selectedDepart;
           minArrive = selectedArrive;
         }
@@ -210,18 +194,14 @@ const Map = () => {
     setSelectedData(selectedData);
     setMinValue(minValue);
     setMinBuilding(minRoute);
-    // setSelectedDepart(selectedDepart);
-    // setSelectedArrive(selectedArrive);
     //directionsli에서 사용할 submitt data(층수별로 바뀜)
     setSubmittedDepart(minDepart);
     setSubmittedArrive(minArrive);
     setMinDepart(minDepart);
     setMinArrive(minArrive);
 
-    // const arr2 = [];
     data[minDepart][minArrive].map((item) => {
       arr.push(nodeData[item]);
-      // arr2.push(item);
     });
 
     setNodes([...arr]);
@@ -233,23 +213,15 @@ const Map = () => {
       const departures = e.target[0].value.replaceAll(" ", "");
       const arrivals = e.target[2].value.replaceAll(" ", "");
       //가장 가까운 건물명 알아내는 알고리즘
-      // console.log(e.target[0].value);
-      // console.log(e.target[1].value);
-      // console.log(e.target[2].value);
       const destinations = conv[departures][arrivals];
-      // console.log(destinations);
       showClose(destinations, arrivals);
       //setArrivaldata하는함수 destinations의 건물마다 이미지랑  건물이름 튜플로 저장
-      // console.log(arrivalData);
       setdeparturePinPosition(departures);
       //목표 건물
       let newDestination = destinations[0].split(" ")[0];
       setArrivalPinPosition(newDestination);
       setArrival(newDestination);
       setDeparture(departures);
-      //submmitteddata가 반영아 안됨?
-      // setSubmittedDepart(departures);
-      // setSubmittedArrive(newDestination);
       setDepartBuilding(departures);
       setArriveBuilding(newDestination);
       console.log(departures);
@@ -278,24 +250,16 @@ const Map = () => {
     var x = e.clientX;
     var y = e.clientY;
     console.log("마우스 클릭 좌표 - X: " + x + ", Y: " + y);
-    // Canvas(isStart, [x, y], 1000, 687.14, "red");
     setClickPosition({ x, y });
-    // setNodes([x, y]);
   };
   const selectFloor = (buildingKey, index) => {
     setSubmittedDepart(minDepart);
     setSubmittedArrive(minArrive);
     const arr = [];
-    // const arr2 = [];
     const data = isSlope ? pathSlopeData : pathData;
     data[buildingKey][minArrive].map((item) => {
       arr.push(nodeData[item]);
-      // arr2.push(item);
     });
-
-    // setArr2(arr2);
-
-    // console.log(arr2);
 
     setNodes([...arr]);
     setIsSelected(index);
@@ -346,14 +310,10 @@ const Map = () => {
               <Canvas
                 isStart={isStart}
                 nodePositions={nodes}
-                // canvasWidth={1236}
-                // canvasHeight={853}
                 canvasWidth={981}
                 canvasHeight={532}
                 color={isSlope ? "blue" : "red"}
                 clickPosition={clickPosition}
-                // arrivalPinPosition={arrivalPinPosition}
-                // departurePinPosition={departurePinPosition}
               />
             <Span>
               교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 빠른/
@@ -387,7 +347,7 @@ const Map = () => {
                   ? "0px 0px 3.84px rgba(0, 0, 0, 0.25)"
                   : "box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25)",
               }}
-              onClick={(prev) => setToggleButton(false)}
+              onClick={() => setToggleButton(false)}
             >
               경로안내
             </Tab_child2>
@@ -430,7 +390,6 @@ const Map = () => {
           </FloorSelector>
         </MapArticleContainer>
       </Section>
-      {/* <Footer /> */}
     </div>
   );
 };
