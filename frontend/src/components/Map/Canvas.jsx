@@ -29,7 +29,6 @@ const Canvas = styled.canvas`
     background-position: center; /* 모바일에서 가운데 정렬 */
     width: 90%;
     height: 90%;
-    transform: translateY(-25px);
   }
 `;
 
