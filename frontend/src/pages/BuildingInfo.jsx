@@ -255,8 +255,7 @@ const Div = styled.div`
     box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
   }
   .notSelected {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-      #d4b752;
+    background:#d4b752;
     box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
   }
 `;

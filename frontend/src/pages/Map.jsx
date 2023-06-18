@@ -362,12 +362,32 @@ const Map = () => {
           />
         </MapContentContainer>
         <MapArticleContainer>
+          <Tab>
+            <Tab_child1
+              style={{
+                backgroundColor: toggleButton ? "#ffd336" : "#d4b752",
+                boxShadow: toggleButton ? "0px 0px 3.84px rgba(0, 0, 0, 0.25)" : "0px 0px 3.84px rgba(0, 0, 0, 0.25)",
+              }}
+              onClick={() => setToggleButton(true)}
+            >
+              편의시설
+            </Tab_child1>
+            <Tab_child2
+              style={{
+                backgroundColor: toggleButton ? "#c3914b" : "#ffc370",
+                boxShadow: toggleButton ? "0px 0px 3.84px rgba(0, 0, 0, 0.25)" : "box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25)",
+              }}
+              onClick={(prev) => setToggleButton(false)}
+            >
+              경로안내
+            </Tab_child2>
+          </Tab>
           {toggleButton ? (
             <CloseConvList
               arrivalData={arrivalData}
               arrival={arrival}
               departure={departure}
-            ></CloseConvList>
+            />
           ) : (
             <DirectionLi
               submittedArrive={submittedArrive}
@@ -389,7 +409,6 @@ const Map = () => {
             })}
           </FloorSelector>
         </MapArticleContainer>
-
         <ButtonInfo onClick={() => (window.location.href = "/buildingInfo")}>
           <b>건물 정보</b>
         </ButtonInfo>
@@ -429,6 +448,12 @@ const Section = styled.section`
       display: none;
     }
     #DirectionList {
+      margin: 0;
+      img {
+        width: 50%;
+      }
+    }
+    #convenientList {
       margin: 0;
       img {
         width: 50%;
@@ -541,6 +566,50 @@ const MapArticleContainer = styled.div`
     overflow-y: auto;
   }
 `;
+const Tab = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(calc(-100% + 1px));
+  display: flex;
+  cursor: pointer;
+  font-weight: bold;
+`;
+const Tab_child1 = styled.div`
+  height: 5vh;
+  width: 100px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 3px;
+  .selected {
+    background-color: #ffd336;
+    box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
+  }
+  .notSelected {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+      #d4b752;
+    box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
+  }
+`
+const Tab_child2 = styled.div`
+  height: 5vh;
+  width: 100px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 3px;
+  .selected {
+    background-color: #ffc370;
+    box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
+  }
+  .notSelected {
+    background: #c3914b;
+    box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
+  }
+`
 const FloorSelector = styled.div`
   position: absolute;
   display: flex;
