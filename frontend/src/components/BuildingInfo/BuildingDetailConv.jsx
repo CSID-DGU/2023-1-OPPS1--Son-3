@@ -5,7 +5,7 @@ export default function BuildingDetailConv({ setIsDetailPageConv, detailPageCont
     return (
       <BuildingContainer className="detailPage">
       <InfosContainer>
-        <Key style={{ width: "100%", marginTop: "15px" }}>편의시설이 존재하지 않습니다</Key>
+        <Key style={{ width: "100%", marginTop: "15px" }}>편의시설이 존재하지 않습니다.</Key>
       </InfosContainer>
     </BuildingContainer>
     )  // Display "X" when detailPageContent is null
