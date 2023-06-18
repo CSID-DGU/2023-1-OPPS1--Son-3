@@ -3,7 +3,6 @@ import styled from "styled-components/macro";
 import DropDown from "../DropDown";
 import { buildings } from "../../lib/mapInfo.js";
 import useDetectClose from "../../lib/useDetectClose";
-import MainIcon from "../MainIcon";
 import { useEffect } from "react";
 import toggleButtonImage from "./토글_교내경로.png"; // Replace with the actual path to your toggle button image
 import toggleButtonImage2 from "./토글_편의시설.png"; // Replace with the actual path to your second toggle button image
@@ -53,7 +52,6 @@ export default function MapHeader({
 
   return (
     <Header>
-      <MainIcon/>
       <Form
         onSubmit={(e) => {
           handleOnSubmit(e);
@@ -124,7 +122,7 @@ const Header = styled.header`
   height: 75px;
   width: fill-available;
   justify-content: center;
-  z-index: 1;
+  z-index: 3;
 `;
 
 const Form = styled.form`
@@ -137,17 +135,16 @@ const Form = styled.form`
 const Div = styled.div`
   padding: 10px;
   display: flex;
-  align-items: flex-center;
+  align-items: center;
+  position: relative;
 `;
 
 const Input = styled.input`
   border-radius: 10px;
   padding: 8px;
-  width: 150px;
+  width: 10em;
   font-size: 18px;
   border: 2px black solid;
-  position: relative;
-  top: 65px;
 `;
 
 const Button = styled.button`
@@ -159,8 +156,6 @@ const Button = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   border: 0px;
-  position: relative;
-  top: 65px;
 `;
 
 const DropDownWrapper = styled.div`
@@ -174,18 +169,17 @@ const Span = styled.span`
   display: inline-block;
   margin: 10px;
   flex-shrink: 1;
-  position: relative;
-  top: 65px;
+  width: 4.5em;
+  text-align: end;
 `;
 
 const ToggleButton = styled.button`
+  position: absolute;
+  left: 4em;
+  transform: translateY(-103%);
   img {
     object-fit: contain;
     width: 80px;
-    position: absolute;
-    top: 45px;
-    transform: translateX(-85px);
-
     @media screen and (max-width: 800px) {
       width: 40px;
       top: 70px;

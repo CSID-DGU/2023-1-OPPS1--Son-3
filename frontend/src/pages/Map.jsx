@@ -18,6 +18,7 @@ import convImages from "../lib/convImages";
 import { PinPosition2 } from "../lib/PinPosition";
 import CloseConvList from "../components/Convenient/CloseConvs";
 import MapImg from "../components/MapImg";
+import MainIcon from "../components/MainIcon";
 
 const Map = () => {
   const [isStart, setIsStart] = useState(false);
@@ -297,19 +298,30 @@ const Map = () => {
     setIsStart(!isStart);
   };
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <TopHeader>
+        <MainIcon />
+        <ButtonInfo onClick={() => (window.location.href = "/buildingInfo")}>
+          <b>건물 정보</b>
+        </ButtonInfo>
+      </TopHeader>
+      <MapHeader
+        targetBuildings={targetBuildings.state}
+        arriveBuilding={arriveBuilding}
+        setArriveBuilding={setArriveBuilding}
+        departBuilding={departBuilding}
+        setDepartBuilding={setDepartBuilding}
+        handleOnSubmit={handleOnSubmit}
+        setToggleButton={setToggleButton}
+        toggleButton={toggleButton}
+      />
       <Section className="Section">
         <MapContentContainer onClick={handleClick}>
-          <MapHeader
-            targetBuildings={targetBuildings.state}
-            arriveBuilding={arriveBuilding}
-            setArriveBuilding={setArriveBuilding}
-            departBuilding={departBuilding}
-            setDepartBuilding={setDepartBuilding}
-            handleOnSubmit={handleOnSubmit}
-            setToggleButton={setToggleButton}
-            toggleButton={toggleButton}
-          />
           <MapCanvasContainer>
             <Pins>
               <PinWrapper>
@@ -326,7 +338,6 @@ const Map = () => {
               <span>{isSlope ? " 편한" : " 빠른"} </span>
               경로입니다.
             </MapH3>
-            <CanvasContainer>
               <Canvas
                 isStart={isStart}
                 nodePositions={nodes}
@@ -339,16 +350,6 @@ const Map = () => {
                 // arrivalPinPosition={arrivalPinPosition}
                 // departurePinPosition={departurePinPosition}
               />
-              {/* <SearchContainer>
-                <MapImg
-                  arrivalPinX={arrivalPinPosition[0]}
-                  arrivalPinY={arrivalPinPosition[1]}
-                  departurePinX={departurePinPosition[0]}
-                  departurePinY={departurePinPosition[1]}
-                  convenient={true}
-                ></MapImg>
-              </SearchContainer> */}
-            </CanvasContainer>
             <Span>
               교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 빠른/
               편한 경로를 볼 수 있습니다.
@@ -366,7 +367,9 @@ const Map = () => {
             <Tab_child1
               style={{
                 backgroundColor: toggleButton ? "#ffd336" : "#d4b752",
-                boxShadow: toggleButton ? "0px 0px 3.84px rgba(0, 0, 0, 0.25)" : "0px 0px 3.84px rgba(0, 0, 0, 0.25)",
+                boxShadow: toggleButton
+                  ? "0px 0px 3.84px rgba(0, 0, 0, 0.25)"
+                  : "0px 0px 3.84px rgba(0, 0, 0, 0.25)",
               }}
               onClick={() => setToggleButton(true)}
             >
@@ -375,7 +378,9 @@ const Map = () => {
             <Tab_child2
               style={{
                 backgroundColor: toggleButton ? "#c3914b" : "#ffc370",
-                boxShadow: toggleButton ? "0px 0px 3.84px rgba(0, 0, 0, 0.25)" : "box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25)",
+                boxShadow: toggleButton
+                  ? "0px 0px 3.84px rgba(0, 0, 0, 0.25)"
+                  : "box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25)",
               }}
               onClick={(prev) => setToggleButton(false)}
             >
@@ -409,19 +414,15 @@ const Map = () => {
             })}
           </FloorSelector>
         </MapArticleContainer>
-        <ButtonInfo onClick={() => (window.location.href = "/buildingInfo")}>
-          <b>건물 정보</b>
-        </ButtonInfo>
       </Section>
       {/* <Footer /> */}
-    </>
+    </div>
   );
 };
 export default Map;
 const Section = styled.section`
   display: flex;
-  height: 100vh;
-  background-color: #fffbee;
+  height: calc(100vh - 125px);
   @media screen and (max-width: 800px) {
     flex-direction: column;
     header input {
@@ -487,6 +488,15 @@ const Section = styled.section`
     }
   }
 `;
+const TopHeader = styled.div`
+  width: 100vw;
+  align-items: flex-start;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 5vw 0 5vw;
+`;
 const MapContentContainer = styled.div`
   display: flex;
   gap: 1vh;
@@ -503,21 +513,23 @@ const MapCanvasContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   width: auto;
+  height: 100%;
   min-width: 370px;
   z-index: 0;
   @media screen and (min-width: 801px) {
-    height: 100vh;
-    padding-right: 10vw;
+    padding-right: 7vw;
     padding-left: 10vw;
   }
   @media screen and (max-width: 800px) {
     padding-bottom: 3.5em;
   }
 `;
-const MapH3 = styled.h3`
+const MapH3 = styled.span`
   position: relative;
+  font-size: 1.17em;
+  font-weight: bold;
 `;
 const Span = styled.span`
   font-size: 17px;
@@ -527,13 +539,8 @@ const Span = styled.span`
   /* flex: none; */
   word-break: keep-all;
   text-align: center;
-  position: absolute;
-  bottom: 30px;
 `;
 const ButtonInfo = styled.div`
-  position: fixed;
-  top: 56px;
-  right: 5vw;
   width: 6em;
   height: 2.5em;
   background-color: #ffd336;
@@ -658,8 +665,8 @@ const FloorSelection = styled.div`
 //핀 정보
 const Pins = styled.div`
   position: absolute;
-  top: 120px;
-  left: 15%;
+  top: 15%;
+  left: 10%;
   z-index: 1;
   display: flex; /* 추가 */
   flex-direction: row; /* 추가 */
@@ -681,15 +688,6 @@ const Pin = styled.div`
   margin-right: 10px;
 `;
 const PinName = styled.p``;
-
-const SearchContainer = styled.article`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-
 const CanvasContainer = styled.div`
   position: relative;
   width: 100%;

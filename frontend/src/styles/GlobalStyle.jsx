@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     margin: 0;
+    background-color: #fffbee;
   }
   ::-webkit-scrollbar {
     display: none;
@@ -14,8 +15,6 @@ const GlobalStyle = createGlobalStyle`
   .Section{
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
     position: relative;
   }
   *:not(footer):not(a){

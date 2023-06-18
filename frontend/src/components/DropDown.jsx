@@ -28,13 +28,13 @@ const Dropdown = styled.ul`
   flex-direction: column;
   justify-content: flex-start;
   overflow-y: scroll;
-  max-height: 60vh;
+  max-height: 30em;
   position: absolute;
+  top: 1em;
   width: 100%;
-  top: 80px;
   padding: 0;
   background-color: white;
-  border: 2.5px solid black;
+  border: 2px solid black;
   border-end-end-radius: 10px;
   border-bottom-left-radius: 10px;
   border-top: unset;
