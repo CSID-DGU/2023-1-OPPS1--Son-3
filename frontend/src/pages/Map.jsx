@@ -29,6 +29,9 @@ const Map = () => {
   const [submittedDepart, setSubmittedDepart] = useState(null);
   const [submittedArrive, setSubmittedArrive] = useState(null);
 
+  
+  const [isSelected, setIsSelected] = useState(null);
+
   const [selectedData, setSelectedData] = useState({});
   // const [routeData, setSelectedData] = useState({});
   const [minValue, setMinValue] = useState(Number.POSITIVE_INFINITY);
@@ -278,7 +281,7 @@ const Map = () => {
     setClickPosition({ x, y });
     // setNodes([x, y]);
   };
-  const selectFloor = (buildingKey) => {
+  const selectFloor = (buildingKey, index) => {
     setSubmittedDepart(minDepart);
     setSubmittedArrive(minArrive);
     const arr = [];
@@ -294,7 +297,9 @@ const Map = () => {
     // console.log(arr2);
 
     setNodes([...arr]);
+    setIsSelected(index);
     setIsStart(!isStart);
+    
   };
   return (
     <>
@@ -376,12 +381,22 @@ const Map = () => {
             />
           )}
           <FloorSelector>
-            {Object.keys(selectedData).map((buildingKey) => {
+            {Object.keys(selectedData).map((buildingKey,index) => {
               if (!buildingKey.includes("층")) {
                 return null;
               } else {
                 return (
-                  <FloorSelection onClick={() => selectFloor(buildingKey)}>
+                  <FloorSelection 
+                    onClick={() => {
+                      selectFloor(buildingKey, index);
+                    }
+                  }
+                    style={{
+                      fontWeight : index === isSelected ? "bold" : "normal",
+                      color : index === isSelected ? "red" : "black"
+                      }
+                    }
+                  >
                     {buildingKey.slice(-2)}
                   </FloorSelection>
                 );
@@ -559,6 +574,9 @@ const FloorSelection = styled.div`
   border-radius: 50%;
   width: 4.2em;
   height: 4.2em;
+
+  
+
   :first-child {
     background-color: #ffe68c;
   }
