@@ -22,11 +22,13 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
         <Key>건물명</Key>
         <Val>{detailPageContent.name}</Val>
       </InfosContainer>
-      <div style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "0.3em",        
-      }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.3em",
+        }}
+      >
         {[...info].map((item, index) => {
           const key = item[0];
           const val = item[1];
@@ -50,7 +52,7 @@ const InfosContainer = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 1em;
-  font-size: 14px;
+  font-size: 15px;
   &:not(:last-child) {
     margin-bottom: 7px;
   }
