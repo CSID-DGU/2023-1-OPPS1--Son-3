@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components/macro";
+import MapImg from "../../components/MapImg";
+
+
 
 const Container = styled.div`
   /* width: 100%;
@@ -52,6 +55,8 @@ export default function MapCanvas({
   nodePositions,
   color,
   clickPosition,
+  // arrivalPinPosition,
+  // departurePinPosition,
 }) {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
@@ -102,8 +107,15 @@ export default function MapCanvas({
         drawCircle([beforeNodeX, beforeNodeY], [rightNodeX, rightNodeY]);
 
         i++;
-        if (i >= nodePositions.length || StartState !== state.current())
+        if (i >= nodePositions.length || StartState !== state.current()){
           clearInterval(animation); // continue until criteria
+          drawEnd([rightNodeX, rightNodeY], [rightNodeX, rightNodeY]);
+
+        }
+        else if(i===2) {
+          drawStart([beforeNodeX, beforeNodeY], [beforeNodeX, beforeNodeY]);
+        }
+          
       }
     }
   }, [isStart, ctx, nodePositions]);
@@ -111,7 +123,7 @@ export default function MapCanvas({
   useEffect(() => {
     if (clickPosition) {
       const { x, y } = clickPosition;
-      const [canvasX, canvasY] = [x - 320, y - 275];//192 235로 맞추면 150퍼에서 맞음
+      const [canvasX, canvasY] = [x - 127, y - 170];//192 235로 맞추면 150퍼에서 맞음
       // const [canvasX, canvasY] = [x - 192, y - 235];
       setTimeout(() => {
         drawCircle([canvasX, canvasY], [canvasX, canvasY]);
@@ -129,6 +141,28 @@ export default function MapCanvas({
     ctx.beginPath();
     ctx.strokeStyle = color;
     ctx.lineWidth = 6;
+    ctx.lineCap = "round";
+    ctx.moveTo(startX, startY);
+    ctx.quadraticCurveTo(startX, startY, endX, endY);
+    ctx.stroke();
+  };
+
+  
+  const drawEnd = ([startX, startY], [endX, endY]) => {
+    ctx.beginPath();
+    ctx.strokeStyle = "orange";
+    ctx.lineWidth = 20;
+    ctx.lineCap = "round";
+    ctx.moveTo(startX, startY);
+    ctx.quadraticCurveTo(startX, startY, endX, endY);
+    ctx.stroke();
+  };
+
+  
+  const drawStart = ([startX, startY], [endX, endY]) => {
+    ctx.beginPath();
+    ctx.strokeStyle = "yellow";
+    ctx.lineWidth = 20;
     ctx.lineCap = "round";
     ctx.moveTo(startX, startY);
     ctx.quadraticCurveTo(startX, startY, endX, endY);

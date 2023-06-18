@@ -7,7 +7,7 @@ import MainIcon from "../MainIcon";
 import { useEffect } from "react";
 import toggleButtonImage from "./토글_교내경로.png"; // Replace with the actual path to your toggle button image
 import toggleButtonImage2 from "./토글_편의시설.png"; // Replace with the actual path to your second toggle button image
-import { convenients } from "../../lib/Data";
+import { convenients , buildings as buildings2} from "../../lib/Data";
 
 export default function MapHeader({
   setArriveBuilding,
@@ -49,6 +49,7 @@ export default function MapHeader({
   const toggleDefaultValue = toggleButton ? (convVal) : (arriveBuilding || arrival)
   const toggleSetVal = toggleButton ? setconvVal : setArriveBuilding
   const toggleData = toggleButton ? convenients : buildings
+  const toggleDropdown = toggleButton ?  buildings2 : buildings
 
   return (
     <Header>
@@ -75,7 +76,7 @@ export default function MapHeader({
               defaultValue={departBuilding || departure}
             />
             <DropDown
-              data={buildings}
+              data={toggleDropdown}
               innerRef={departInput}
               isOpen={isOpen}
               top={12}
