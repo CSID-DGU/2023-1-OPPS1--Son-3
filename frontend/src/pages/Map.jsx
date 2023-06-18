@@ -408,7 +408,7 @@ const Map = () => {
           <b>건물 정보</b>
         </ButtonInfo>
       </Section>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
