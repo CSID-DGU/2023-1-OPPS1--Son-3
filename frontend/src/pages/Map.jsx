@@ -19,8 +19,6 @@ import { PinPosition2 } from "../lib/PinPosition";
 import CloseConvList from "../components/Convenient/CloseConvs";
 import MapImg from "../components/MapImg";
 
-
-
 const Map = () => {
   const [isStart, setIsStart] = useState(false);
   const [departBuilding, setDepartBuilding] = useState("");
@@ -45,7 +43,6 @@ const Map = () => {
 
   const targetBuildings = useLocation();
 
-  
   const showClose = (closeBuildings, arrival) => {
     const showDataArr = [];
     closeBuildings.map((building) => {
@@ -59,15 +56,12 @@ const Map = () => {
     });
     setArrivalData(showDataArr);
   };
-  
   const [arrivalPinPosition, setArrivalPinPosition] = PinPosition2([0, 0]);
   const [departurePinPosition, setdeparturePinPosition] = PinPosition2([0, 0]);
   const [departure, setDeparture] = useState("");
   const [arrival, setArrival] = useState("");
   const [arrivalData, setArrivalData] = useState([]);
   //이미지랑 건물 몇층어딘지 보여주기용
-
-
 
   const setPinPositions = () => {
     const arr = [];
@@ -140,7 +134,6 @@ const Map = () => {
     setMinDepart(minDepart);
     setMinArrive(minArrive);
 
-
     // const arr2 = [];
     data[minDepart][minArrive].map((item) => {
       arr.push(nodeData[item]);
@@ -150,8 +143,7 @@ const Map = () => {
     setNodes([...arr]);
   };
 
-  
-  const setPinPositions2 = (departures,newDestination) => {
+  const setPinPositions2 = (departures, newDestination) => {
     const arr = [];
     // const test = [];
     const data = isSlope ? pathSlopeData : pathData;
@@ -222,7 +214,6 @@ const Map = () => {
     setMinDepart(minDepart);
     setMinArrive(minArrive);
 
-
     // const arr2 = [];
     data[minDepart][minArrive].map((item) => {
       arr.push(nodeData[item]);
@@ -232,13 +223,9 @@ const Map = () => {
     setNodes([...arr]);
   };
 
-
-
-
-
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    if(toggleButton){
+    if (toggleButton) {
       const departures = e.target[0].value.replaceAll(" ", "");
       const arrivals = e.target[2].value.replaceAll(" ", "");
       //가장 가까운 건물명 알아내는 알고리즘
@@ -266,10 +253,9 @@ const Map = () => {
       console.log(departBuilding);
       console.log(arriveBuilding);
       appliedShortcut.current = isSlope ? SlopShortCut : Shortcut;
-      setPinPositions2(departures,newDestination);
+      setPinPositions2(departures, newDestination);
       setIsStart(!isStart);
-    }
-    else{
+    } else {
       setSubmittedDepart(departBuilding);
       setdeparturePinPosition(departBuilding);
       setSubmittedArrive(arriveBuilding);
@@ -321,8 +307,8 @@ const Map = () => {
             departBuilding={departBuilding}
             setDepartBuilding={setDepartBuilding}
             handleOnSubmit={handleOnSubmit}
-            setToggleButton = {setToggleButton}
-            toggleButton = {toggleButton}
+            setToggleButton={setToggleButton}
+            toggleButton={toggleButton}
           />
           <MapCanvasContainer>
             <Pins>
@@ -337,7 +323,7 @@ const Map = () => {
             </Pins>
             <MapH3>
               현재
-              <span>{isSlope ? " 빠른" : " 편한"} </span>
+              <span>{isSlope ? " 편한" : " 빠른"} </span>
               경로입니다.
             </MapH3>
             <CanvasContainer>
@@ -364,10 +350,8 @@ const Map = () => {
               </SearchContainer> */}
             </CanvasContainer>
             <Span>
-
               교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 빠른/
               편한 경로를 볼 수 있습니다.
-
             </Span>
           </MapCanvasContainer>
           <SlopeIcon
@@ -378,20 +362,19 @@ const Map = () => {
           />
         </MapContentContainer>
         <MapArticleContainer>
-        {toggleButton ? (
-          <CloseConvList
-            arrivalData={arrivalData}
-            arrival={arrival}
-            departure={departure}
-          ></CloseConvList>
-        ):
-        (
-          <DirectionLi
-            submittedArrive={submittedArrive}
-            submittedDepart={submittedDepart}
-            appliedShortcut={appliedShortcut}
-          />
-        )}
+          {toggleButton ? (
+            <CloseConvList
+              arrivalData={arrivalData}
+              arrival={arrival}
+              departure={departure}
+            ></CloseConvList>
+          ) : (
+            <DirectionLi
+              submittedArrive={submittedArrive}
+              submittedDepart={submittedDepart}
+              appliedShortcut={appliedShortcut}
+            />
+          )}
           <FloorSelector>
             {Object.keys(selectedData).map((buildingKey) => {
               if (!buildingKey.includes("층")) {
@@ -510,7 +493,6 @@ const MapCanvasContainer = styled.div`
 `;
 const MapH3 = styled.h3`
   position: relative;
-  top: 100px;
 `;
 const Span = styled.span`
   font-size: 17px;
@@ -630,8 +612,6 @@ const Pin = styled.div`
   margin-right: 10px;
 `;
 const PinName = styled.p``;
-
-
 
 const SearchContainer = styled.article`
   flex-grow: 1;

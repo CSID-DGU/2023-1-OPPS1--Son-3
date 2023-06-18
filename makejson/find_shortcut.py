@@ -22,6 +22,8 @@ image_info = {
     "학림관" : {"title" : "헐떡고개", "img" : "/건물경로 이미지/헐떡고개.jpg", "info" : "팔정도 <-> 학림관 및 체육관으로 가는 가장 빠른 길"},
     "혜화관1" : {"title" : "혜화관 <-> 만해관", "img" : "/건물경로 이미지/혜화관_만해관.jpg", "info" : "혜화관 4층에 내려 매점 옆에 밖으로 나가는 길이 만해관과 이어짐"},
     "혜화관2" : {"title" : "혜화관 <-> 만해관", "img" : "/건물경로 이미지/혜화관_만해관.jpg", "info" : "만해관에서 직진해서 내려오면 혜화관4층이랑 연결되는 다리 있음"},
+    "혜화관31" : {"title" : "혜화관 엘리베이터", "img" : "/건물경로 이미지/혜화관_엘리베이터_1층.jpg", "info" : "혜화관 엘리베이터는 1층부터 7층까지 있음, 4층에서 만해관과 이어지는 다리 있음"},
+    "혜화관32" : {"title" : "혜화관 엘리베이터", "img" : "/건물경로 이미지/혜화관_엘리베이터_4층.jpg", "info" : "만해관 쪽에서 들어가서 오른쪽으로 엘리베이터 있음, 1층에서 사회과학관 쪽으로 나갈 수 있음"},
     "학림관2" : {"title" : "학림관 지하 입구", "img" : "/건물경로 이미지/학림관_지하_입구.jpg", "info" : "지하 1층으로 들어가면 엘리베이터를 탈 수 있음"},
     "학림관31" : {"title" : "학림관 엘리베이터", "img" : "/건물경로 이미지/학림관_엘레베이터_1층.jpg", "info" : "지하 1층부터 4층까지 있음, 엘리베이터로 올라갈 수 있음"},
     "학림관32" : {"title" : "학림관 엘리베이터", "img" : "/건물경로 이미지/학림관_엘레베이터_1층.jpg", "info" : "지하 1층부터 4층까지 있음, 지하로 내려가면 후문으로 나갈 수 있음"},
@@ -30,7 +32,7 @@ image_info = {
     "본관11" : {"title" : "본관1층 <-> 본관3층", "img" : "/건물경로 이미지/본관_엘레베이터.jpg", "info" : "1층에서 엘리베이터를 타고 3층으로 갈 수 있음"},
     "본관12" : {"title" : "본관3층 <-> 본관1층", "img" : "/건물경로 이미지/본관_엘레베이터.jpg", "info" : "3층에서 엘리베이터를 타고 1층으로 갈 수 있음"},
     "법학관1" : {"title" : "법학관 옆문", "img" : "/건물경로 이미지/법학관_옆문.jpg", "info" : "이 문을 열고 올라가면 법학관 1층으로 들어갈 수 있음"},
-    "법학관2" : {"title" : "법학관 지하 출구", "img" : "/건물경로 이미지/법학관_지하_출구.jpg", "info" : "이 문을 내려가면 법학관 측면으로 나갈 수 있음"},
+    "법학관2" : {"title" : "법학관 지하 출구", "img" : "/건물경로 이미지/법학관_지하_출구.jpg", "info" : "이 문을 열고 내려가면 법학관 측면으로 나갈 수 있음"},
     "문화관1" : {"title" : "사회과학관 외부 엘리베이터", "img" : "/건물경로 이미지/사회과학관_외부_엘리베이터.jpg", "info" : "문화관 1층으로 나가서 안쪽으로 쭉 들어가면 외부 엘리베이터를 타고 사회과학관으로 올라갈 수 있음"},
     "문화관2" : {"title" : "문화관 연결 통로", "img" : "/건물경로 이미지/경영관_문화관.jpg", "info" : "문화관 3층에서 경영관 2층과 이어지는 통로를 통해 사회과학관으로 갈 수 있음"}
               }
@@ -227,6 +229,20 @@ for start in dict_key:
                 sc.append(image_info["학림관"]["title"])
                 sc.append(image_info["학림관"]["img"])
                 sc.append(image_info["학림관"]["info"])
+                shortcut.append(sc)
+
+            # 혜화관1층 -> 혜화관4층
+            elif path_data[start][end][i-1]=="혜화관1층" and path_data[start][end][i]=="혜화관4층":
+                sc.append(image_info["혜화관31"]["title"])
+                sc.append(image_info["혜화관31"]["img"])
+                sc.append(image_info["혜화관31"]["info"])
+                shortcut.append(sc)
+
+            # 혜화관4층 -> 혜화관1층
+            elif path_data[start][end][i-1]=="혜화관4층" and path_data[start][end][i]=="혜화관1층":
+                sc.append(image_info["혜화관32"]["title"])
+                sc.append(image_info["혜화관32"]["img"])
+                sc.append(image_info["혜화관32"]["info"])
                 shortcut.append(sc)
 
             # 혜화관4층 -> 만해관
@@ -503,6 +519,20 @@ for start in dict_key:
                 sc.append(image_info["학림관"]["title"])
                 sc.append(image_info["학림관"]["img"])
                 sc.append(image_info["학림관"]["info"])
+                shortcut.append(sc)
+
+            # 혜화관1층 -> 혜화관4층
+            elif path_data[start][end][i-1]=="혜화관1층" and path_data[start][end][i]=="혜화관4층":
+                sc.append(image_info["혜화관31"]["title"])
+                sc.append(image_info["혜화관31"]["img"])
+                sc.append(image_info["혜화관31"]["info"])
+                shortcut.append(sc)
+
+            # 혜화관4층 -> 혜화관1층
+            elif path_data[start][end][i-1]=="혜화관4층" and path_data[start][end][i]=="혜화관1층":
+                sc.append(image_info["혜화관32"]["title"])
+                sc.append(image_info["혜화관32"]["img"])
+                sc.append(image_info["혜화관32"]["info"])
                 shortcut.append(sc)
 
             # 혜화관4층 -> 만해관
