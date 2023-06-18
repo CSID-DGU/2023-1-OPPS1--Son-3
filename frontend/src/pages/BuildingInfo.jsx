@@ -72,7 +72,19 @@ export default function BuildingInfo() {
   }
 
   return (
-    <>
+    <Body>
+      <Headers>
+        <TopHeader>
+          <MainIcon />
+          <ButtonPath
+            onClick={() => (window.location.href = "/Map")}
+            className="buttonPath"
+          >
+            <b>길찾기</b>
+          </ButtonPath>
+        </TopHeader>
+        <SerachNav handleOnSubmit={handleOnSubmit} />
+      </Headers>
       <Container className="Section">
         <BuildingInfoContainer>
           <Pins>
@@ -81,7 +93,6 @@ export default function BuildingInfo() {
               <Pin pinSrc={"/markImgs/MapMark.svg"}></Pin>
             </PinWrapper>
           </Pins>
-          <SerachNav handleOnSubmit={handleOnSubmit}></SerachNav>
           <SearchContainer>
             <MapImg2
               arrivalPinX={buildingPosition[0]}
@@ -150,21 +161,60 @@ export default function BuildingInfo() {
             </BuildingContent>
           </InfoWrapper>
         </Article>
-        <ButtonPath
-          onClick={() => (window.location.href = "/Map")}
-          className="buttonPath"
-        >
-          <b>길찾기</b>
-        </ButtonPath>
       </Container>
       {/* <Footer /> */}
-    </>
+    </Body>
   );
 }
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+`;
+const Headers = styled.div`
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+`;
+const TopHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 5px 5vw;
+`;
+const ButtonPath = styled.div`
+  width: 6em;
+  height: 2.5em;
+  background-color: #ffd336;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+
+  font-family: "DONGGUK UNIVERSITY";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Container = styled.section`
   background-color: #fffbee;
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
   display: flex;
   width: 100vw;
+  flex-grow: 1;
+  /* min-height: calc(100vh - ); */
   // 반응형
   @media screen and (max-width: 800px) {
     flex-direction: column;
@@ -227,7 +277,7 @@ const Container = styled.section`
   }
 `;
 const Article = styled.article`
-  height: calc(100vh - 150px);
+  height: calc(100vh - 130px);
   align-self: flex-end;
 `;
 const InfoWrapper = styled.section`
@@ -250,7 +300,7 @@ const Div = styled.div`
     box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
   }
   .notSelected {
-    background:#d4b752;
+    background: #d4b752;
     box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
   }
 `;
@@ -383,8 +433,8 @@ const SearchContainer = styled.article`
 //핀 정보
 const Pins = styled.div`
   position: absolute;
-  top: 150px;
-  left: 15%;
+  top: 120px;
+  left: 12%;
   z-index: 1;
 `;
 const PinWrapper = styled.div`
@@ -403,25 +453,4 @@ const Pin = styled.div`
 `;
 const PinName = styled.p`
   filter: drop-shadow(0px 3.84px 3.84px rgba(0, 0, 0, 0.25));
-`;
-const ButtonPath = styled.div`
-  position: fixed;
-  top: 40px;
-  right: 5vw;
-  width: 6em;
-  height: 2.5em;
-  background-color: #ffd336;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  cursor: pointer;
-
-  font-family: "DONGGUK UNIVERSITY";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 21px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;

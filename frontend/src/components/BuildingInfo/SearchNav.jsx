@@ -36,7 +36,6 @@ export default function SearchNav({ handleOnSubmit }) {
 
   return (
     <Header>
-      <MainIcon></MainIcon>
       <Form onSubmit={handleFormSubmit}>
         <Div>
           <Span>건물명</Span>
@@ -75,7 +74,6 @@ const Header = styled.header`
   align-items: center;
   justify-content: center;
   height: 65px;
-  margin-top: 15px;
 `;
 
 const Form = styled.form`
