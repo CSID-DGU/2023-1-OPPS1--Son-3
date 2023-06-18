@@ -76,7 +76,8 @@ export default function MapHeader({
               defaultValue={departBuilding || departure}
             />
             <DropDown
-              data={toggleDropdown}
+              // data={toggleDropdown}
+              data={buildings}
               innerRef={departInput}
               isOpen={isOpen}
               top={12}

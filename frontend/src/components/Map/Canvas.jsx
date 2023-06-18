@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components/macro";
-import MapImg from "../../components/MapImg";
+// import MapImg from "../../components/MapImg";
 
 
 
@@ -107,13 +107,17 @@ export default function MapCanvas({
         drawCircle([beforeNodeX, beforeNodeY], [rightNodeX, rightNodeY]);
 
         i++;
-        if (i >= nodePositions.length || StartState !== state.current()){
+        if(i===2) {
+          drawStart([beforeNodeX, beforeNodeY], [beforeNodeX, beforeNodeY]);
+          // console.log("first");
+        }
+        else if(i === 3 && JSON.stringify(nodePositions[i-3]) === JSON.stringify(nodePositions[i-2])){
+          drawStart([beforeNodeX, beforeNodeY], [beforeNodeX, beforeNodeY]);
+          // console.log("second");
+        }
+        else if (i >= nodePositions.length || StartState !== state.current()){
           clearInterval(animation); // continue until criteria
           drawEnd([rightNodeX, rightNodeY], [rightNodeX, rightNodeY]);
-
-        }
-        else if(i===2) {
-          drawStart([beforeNodeX, beforeNodeY], [beforeNodeX, beforeNodeY]);
         }
           
       }
