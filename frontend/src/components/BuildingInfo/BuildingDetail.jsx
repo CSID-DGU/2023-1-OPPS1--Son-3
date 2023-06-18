@@ -11,7 +11,6 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
         </InfosContainer>
       </BuildingContainer>
     );
-    // Display "X" when detailPageContent is null
   }
 
   const info = detailPageContent.info;

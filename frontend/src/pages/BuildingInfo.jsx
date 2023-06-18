@@ -41,8 +41,6 @@ export default function BuildingInfo() {
     if (!hasBuildingInfo) {
       setIsDetailPage(true);
       setDetailPageContent(null);
-      console.log("X");
-      // Show "건물정보가 없습니다" message here
     }
 
     let hasBuildingConv = false;
@@ -56,7 +54,6 @@ export default function BuildingInfo() {
         if (activeTab === "편의시설") {
           setIsDetailPageConv(true);
           setIsDetailPage(false);
-          // setIsDetailPage(false);
         } else {
           setIsDetailPageConv(false);
         }
@@ -66,8 +63,6 @@ export default function BuildingInfo() {
     if (!hasBuildingConv) {
       setIsDetailPageConv(true);
       setDetailPageContentConv(null);
-      console.log("X");
-      // Show "건물정보가 없습니다" message here
     }
   }
 
