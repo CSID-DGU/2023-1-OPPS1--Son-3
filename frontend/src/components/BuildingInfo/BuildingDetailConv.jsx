@@ -8,12 +8,12 @@ export default function BuildingDetailConv({
     return (
       <BuildingContainer className="detailPage">
         <InfosContainer>
-          <Key style={{ width: "100%", marginTop: "15px" }}>
+          <Key>
             편의시설이 존재하지 않습니다.
           </Key>
         </InfosContainer>
       </BuildingContainer>
-    ); // Display "X" when detailPageContent is null
+    );
   }
 
   const info = detailPageContentConv;
@@ -66,6 +66,8 @@ const Key = styled.p`
   /* align-self: flex-start; */
   flex: none;
   margin: 0;
+  width: 100%;
+  margin-top: 15px;
 `;
 const Val = styled.p`
   margin: 0;
