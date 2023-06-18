@@ -31,13 +31,6 @@ const Canvas = styled.canvas`
     height: 90%;
     transform: translateY(-25px);
   }
-
-  ${(props) =>
-    props.isMobile &&
-    css`
-      width: 170% !important;
-      height: 170% !important;
-    `}
 `;
 
 const StyledContainer = ({ children }) => {

@@ -303,12 +303,7 @@ const Map = () => {
     
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <Body>
       <TopHeader>
         <MainIcon />
         <ButtonInfo onClick={() => (window.location.href = "/buildingInfo")}>
@@ -431,10 +426,21 @@ const Map = () => {
         </MapArticleContainer>
       </Section>
       {/* <Footer /> */}
-    </div>
+    </Body>
   );
 };
 export default Map;
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 800px) {
+    * {
+      /* font-size: 0.65rem; */
+      font-size: 0.8rem;
+    }
+  }
+`;
 const Section = styled.section`
   display: flex;
   height: calc(100vh - 125px);
@@ -445,10 +451,6 @@ const Section = styled.section`
       width: 5rem;
       text-align: center;
       height: 2em;
-    }
-    *:not(footer > *) {
-      font-size: 0.65rem;
-      /* font-size: 0.8rem; */
     }
     button {
       width: 3rem;
@@ -466,13 +468,13 @@ const Section = styled.section`
     #DirectionList {
       margin: 0;
       img {
-        width: 50%;
+        width: 240px;
       }
     }
     #convenientList {
       margin: 0;
       img {
-        width: 50%;
+        width: 240px;
       }
     }
     .smallerFont {
@@ -487,10 +489,6 @@ const Section = styled.section`
   @media screen and (max-width: 1200px) and(min-width: 801px) {
     flex-direction: column;
     height: auto;
-    #convenientList {
-      margin: 0;
-      width: auto;
-    }
     header > form {
       flex-shrink: 1;
       input {
@@ -538,7 +536,6 @@ const MapCanvasContainer = styled.div`
     padding-left: 10vw;
   }
   @media screen and (max-width: 800px) {
-    padding-bottom: 3.5em;
   }
 `;
 const MapH3 = styled.span`
@@ -547,7 +544,6 @@ const MapH3 = styled.span`
   font-weight: bold;
 `;
 const Span = styled.span`
-  font-size: 17px;
   /* display: inline-block; */
   margin: 10px;
   /* flex-shrink: 1; */
