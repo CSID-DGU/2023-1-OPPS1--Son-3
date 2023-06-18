@@ -6,7 +6,7 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
       <BuildingContainer className="detailPage">
         <InfosContainer>
           <Key style={{ width: "100%", marginTop: "15px" }}>
-            건물정보가 존재하지 않습니다
+            건물정보가 존재하지 않습니다.
           </Key>
         </InfosContainer>
       </BuildingContainer>
