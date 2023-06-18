@@ -46,9 +46,6 @@ export default function MapCanvas({
   canvasHeight,
   nodePositions,
   color,
-  clickPosition,
-  // arrivalPinPosition,
-  // departurePinPosition,
 }) {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
@@ -101,11 +98,9 @@ export default function MapCanvas({
         i++;
         if(i===2) {
           drawStart([beforeNodeX, beforeNodeY], [beforeNodeX, beforeNodeY]);
-          // console.log("first");
         }
         else if(i === 3 && JSON.stringify(nodePositions[i-3]) === JSON.stringify(nodePositions[i-2])){
           drawStart([beforeNodeX, beforeNodeY], [beforeNodeX, beforeNodeY]);
-          // console.log("second");
         }
         else if (i >= nodePositions.length || StartState !== state.current()){
           clearInterval(animation); // continue until criteria
@@ -115,23 +110,6 @@ export default function MapCanvas({
       }
     }
   }, [isStart, ctx, nodePositions]);
-
-  useEffect(() => {
-    if (clickPosition) {
-      const { x, y } = clickPosition;
-      const [canvasX, canvasY] = [x - 127, y - 170];//192 235로 맞추면 150퍼에서 맞음
-      // const [canvasX, canvasY] = [x - 192, y - 235];
-      setTimeout(() => {
-        drawCircle([canvasX, canvasY], [canvasX, canvasY]);
-      }, 10);
-      console.log(
-        "node x : " +
-          (canvasX * 981) / canvasWidth +
-          "node y : " +
-          (canvasY * 532) / canvasHeight
-      );
-    }
-  }, [clickPosition, canvasWidth, canvasHeight]);
 
   const drawCircle = ([startX, startY], [endX, endY]) => {
     ctx.beginPath();

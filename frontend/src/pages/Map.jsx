@@ -16,7 +16,6 @@ import { conv } from "../lib/convenient";
 import convImages from "../lib/convImages";
 import { PinPosition2 } from "../lib/PinPosition";
 import CloseConvList from "../components/Convenient/CloseConvs";
-// import MapImg from "../components/MapImg";
 import MainIcon from "../components/MainIcon";
 
 const Map = () => {
@@ -34,12 +33,9 @@ const Map = () => {
 
   const [selectedData, setSelectedData] = useState({});
   const [minValue, setMinValue] = useState(Number.POSITIVE_INFINITY);
-  const [minBuilding, setMinBuilding] = useState(null);
   const [minDepart, setMinDepart] = useState(null);
   const [minArrive, setMinArrive] = useState(null);
-  const [arr2, setArr2] = useState(null);
 
-  const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 });
 
   const [toggleButton, setToggleButton] = useState(false);
 
@@ -104,7 +100,6 @@ const Map = () => {
       }
     
       let minValue = Number.POSITIVE_INFINITY;
-      let minRoute = null;
       let minDepart = null;
       let minArrive = null;
       
@@ -120,11 +115,9 @@ const Map = () => {
           }
         }
       }
-      minRoute = "빠른경로 : " + minDepart + " 에서 " + minArrive;
       
       setSelectedData(selectedData);
       setMinValue(minValue);
-      setMinBuilding(minRoute);
       //directionsli에서 사용할 submitt data(층수별로 바뀜)
       setSubmittedDepart(minDepart);
       setSubmittedArrive(minArrive);
@@ -176,7 +169,6 @@ const Map = () => {
     }
 
     let minValue = Number.POSITIVE_INFINITY;
-    let minRoute = null;
     let minDepart = null;
     let minArrive = null;
 
@@ -192,11 +184,9 @@ const Map = () => {
         }
       }
     }
-    minRoute = "빠른경로 : " + minDepart + " 에서 " + minArrive;
 
     setSelectedData(selectedData);
     setMinValue(minValue);
-    setMinBuilding(minRoute);
     //directionsli에서 사용할 submitt data(층수별로 바뀜)
     setSubmittedDepart(minDepart);
     setSubmittedArrive(minArrive);
@@ -227,10 +217,6 @@ const Map = () => {
       setDeparture(departures);
       setDepartBuilding(departures);
       setArriveBuilding(newDestination);
-      console.log(departures);
-      console.log(newDestination);
-      console.log(departBuilding);
-      console.log(arriveBuilding);
       appliedShortcut.current = isSlope ? SlopShortCut : Shortcut;
       setPinPositions2(departures, newDestination);
       setIsStart(!isStart);
@@ -248,12 +234,6 @@ const Map = () => {
     appliedShortcut.current = isSlope ? SlopShortCut : Shortcut;
     setIsStart(!isStart);
     setPinPositions();
-  };
-  const handleClick = (e) => {
-    var x = e.clientX;
-    var y = e.clientY;
-    console.log("마우스 클릭 좌표 - X: " + x + ", Y: " + y);
-    setClickPosition({ x, y });
   };
   const selectFloor = (buildingKey, index) => {
     setSubmittedDepart(minDepart);
@@ -288,7 +268,7 @@ const Map = () => {
         toggleButton={toggleButton}
       />
       <Section className="Section">
-        <MapContentContainer onClick={handleClick}>
+        <MapContentContainer>
           <MapCanvasContainer>
             <Pins>
               <PinWrapper>
@@ -311,7 +291,6 @@ const Map = () => {
                 canvasWidth={981}
                 canvasHeight={532}
                 color={isSlope ? "blue" : "red"}
-                clickPosition={clickPosition}
               />
             <Span>
               교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 빠른/
