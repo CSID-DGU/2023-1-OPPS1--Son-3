@@ -162,7 +162,7 @@ export default function BuildingInfo() {
           <b>길찾기</b>
         </ButtonPath>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
