@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
   .Section{
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
   }
   *:not(footer):not(a){
     font-family: "DONGGUK UNIVERSITY", sans-serif;
