@@ -66,16 +66,18 @@ const Map = () => {
   //이미지랑 건물 몇층어딘지 보여주기용
 
   const setPinPositions = () => {
-    const arr = [];
-    const data = isSlope ? pathSlopeData : pathData;
-    const sum_data = isSlope ? pathSlopeData_sum : pathData_sum;
-
-    const selectedData = {};
-
-    //To do
-    //넘겨받은 층수데이터를 이용해 해당 층수 출발일때 도착건물의 최단출입구를 구하기
-
-    for (const buildingKey in sum_data) {
+    if(arriveBuilding && departBuilding){
+      
+      const arr = [];
+      const data = isSlope ? pathSlopeData : pathData;
+      const sum_data = isSlope ? pathSlopeData_sum : pathData_sum;
+      
+      const selectedData = {};
+      
+      //To do
+      //넘겨받은 층수데이터를 이용해 해당 층수 출발일때 도착건물의 최단출입구를 구하기
+      
+      for (const buildingKey in sum_data) {
       if (buildingKey.includes(departBuilding) && buildingKey.includes("층")) {
         selectedData[buildingKey] = {};
         const buildingData = sum_data[buildingKey];
@@ -84,58 +86,59 @@ const Map = () => {
             selectedData[buildingKey][key] = buildingData[key];
           } else {
             selectedData[buildingKey][arriveBuilding] =
-              buildingData[arriveBuilding];
+            buildingData[arriveBuilding];
           }
         }
       } else {
-        selectedData[departBuilding] = {};
-        const buildingData = sum_data[departBuilding];
-        for (const key in buildingData) {
-          if (key.includes(arriveBuilding) && key.includes("층")) {
-            selectedData[departBuilding][key] = buildingData[key];
-          } else {
-            selectedData[departBuilding][arriveBuilding] =
+          selectedData[departBuilding] = {};
+          const buildingData = sum_data[departBuilding];
+          for (const key in buildingData) {
+            if (key.includes(arriveBuilding) && key.includes("층")) {
+              selectedData[departBuilding][key] = buildingData[key];
+            } else {
+              selectedData[departBuilding][arriveBuilding] =
               buildingData[arriveBuilding];
+            }
           }
         }
       }
-    }
-
-    let minValue = Number.POSITIVE_INFINITY;
-    let minRoute = null;
-    let minDepart = null;
-    let minArrive = null;
-
-    //sumdata에서 최단경로 계산
-    for (const selectedDepart in selectedData) {
-      const startbuilding = selectedData[selectedDepart];
-      for (const selectedArrive in startbuilding) {
-        const value = startbuilding[selectedArrive];
-        if (value < minValue) {
-          minValue = value;
-          minDepart = selectedDepart;
-          minArrive = selectedArrive;
+    
+      let minValue = Number.POSITIVE_INFINITY;
+      let minRoute = null;
+      let minDepart = null;
+      let minArrive = null;
+      
+      //sumdata에서 최단경로 계산
+      for (const selectedDepart in selectedData) {
+        const startbuilding = selectedData[selectedDepart];
+        for (const selectedArrive in startbuilding) {
+          const value = startbuilding[selectedArrive];
+          if (value < minValue) {
+            minValue = value;
+            minDepart = selectedDepart;
+            minArrive = selectedArrive;
+          }
         }
       }
-    }
-    minRoute = "빠른경로 : " + minDepart + " 에서 " + minArrive;
-
-    setSelectedData(selectedData);
-    setMinValue(minValue);
-    setMinBuilding(minRoute);
-    //directionsli에서 사용할 submitt data(층수별로 바뀜)
-    setSubmittedDepart(minDepart);
-    setSubmittedArrive(minArrive);
-    setMinDepart(minDepart);
-    setMinArrive(minArrive);
-
-    data[minDepart][minArrive].map((item) => {
-      arr.push(nodeData[item]);
-    });
-
-    setNodes([...arr]);
-  };
-
+      minRoute = "빠른경로 : " + minDepart + " 에서 " + minArrive;
+      
+      setSelectedData(selectedData);
+      setMinValue(minValue);
+      setMinBuilding(minRoute);
+      //directionsli에서 사용할 submitt data(층수별로 바뀜)
+      setSubmittedDepart(minDepart);
+      setSubmittedArrive(minArrive);
+      setMinDepart(minDepart);
+      setMinArrive(minArrive);
+      
+      data[minDepart][minArrive].map((item) => {
+        arr.push(nodeData[item]);
+      });
+      
+      setNodes([...arr]);
+    };
+  }
+  
   const setPinPositions2 = (departures, newDestination) => {
     const arr = [];
     const data = isSlope ? pathSlopeData : pathData;
