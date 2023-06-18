@@ -21,13 +21,13 @@ export default function SlopeIcon({
       }}
     >
       <Icon
-        src={isSlope ? "/markImgs/withoutSlope.png" : "/markImgs/Slope.png"} //경사 반영에 따른 이미지 변환
+        src={isSlope ? "/markImgs/Slope.png" : "/markImgs/withoutSlope.png"} //경사 반영에 따른 이미지 변환
       />
       <SlopeIconInfo className="smallerFont">
         {
           isSlope
             ? "빠른 경로 보기"
-            : "편한 반영 경로 보기" /*경사 반영에 따른 문구 변환*/
+            : "편한 경로 보기" /*경사 반영에 따른 문구 변환*/
         }
       </SlopeIconInfo>
     </SlopeIconWrapper>
