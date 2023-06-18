@@ -71,6 +71,8 @@ const Key = styled.p`
   margin: 0;
   width: 6.1em;
   text-align: start;
+  display: flex;
+  justify-content: center;
 `;
 const Val = styled.p`
   margin: 0;
