@@ -17,12 +17,9 @@ export default function MainIcon() {
 
 const Icon = styled.img`
   top: 20px;
-  width: 225px;
-  height: auto;
+  width: auto;
+  height: 45px;
   cursor: pointer;
-  position: absolute;
-  left: 30px;
-
   @media screen and (max-width: 800px) {
     top: 5px;
     width: 130px;
