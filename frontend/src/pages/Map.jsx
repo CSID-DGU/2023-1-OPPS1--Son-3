@@ -15,7 +15,7 @@ import MapHeader from "../components/Map/MapHeader";
 import { useLocation } from "react-router-dom";
 import { conv } from "../lib/convenient";
 import convImages from "../lib/convImages";
-import PinPosition from "../lib/PinPosition";
+import { PinPosition2 } from "../lib/PinPosition";
 import CloseConvList from "../components/Convenient/CloseConvs";
 import MapImg from "../components/MapImg";
 
@@ -56,9 +56,8 @@ const Map = () => {
     });
     setArrivalData(showDataArr);
   };
-
-  const [arrivalPinPosition, setArrivalPinPosition] = PinPosition([0, 0]);
-  const [departurePinPosition, setdeparturePinPosition] = PinPosition([0, 0]);
+  const [arrivalPinPosition, setArrivalPinPosition] = PinPosition2([0, 0]);
+  const [departurePinPosition, setdeparturePinPosition] = PinPosition2([0, 0]);
   const [departure, setDeparture] = useState("");
   const [arrival, setArrival] = useState("");
   const [arrivalData, setArrivalData] = useState([]);
@@ -315,11 +314,11 @@ const Map = () => {
             <Pins>
               <PinWrapper>
                 <PinName>출발 건물</PinName>
-                <Pin pinSrc={"/markImgs/MapMark.svg"}></Pin>
+                <Pin pinSrc={"/markImgs/depart.png"}></Pin>
               </PinWrapper>
               <PinWrapper>
                 <PinName>도착 건물</PinName>
-                <Pin pinSrc={"/markImgs/MapMark2.svg"}></Pin>
+                <Pin pinSrc={"/markImgs/arrive.png"}></Pin>
               </PinWrapper>
             </Pins>
             <MapH3>
@@ -327,19 +326,32 @@ const Map = () => {
               <span>{isSlope ? " 편한" : " 빠른"} </span>
               경로입니다.
             </MapH3>
-            <Canvas
-              isStart={isStart}
-              nodePositions={nodes}
-              // canvasWidth={1236}
-              // canvasHeight={853}
-              canvasWidth={981}
-              canvasHeight={532}
-              color={isSlope ? "blue" : "red"}
-              clickPosition={clickPosition}
-            />
+            <CanvasContainer>
+              <Canvas
+                isStart={isStart}
+                nodePositions={nodes}
+                // canvasWidth={1236}
+                // canvasHeight={853}
+                canvasWidth={981}
+                canvasHeight={532}
+                color={isSlope ? "blue" : "red"}
+                clickPosition={clickPosition}
+                // arrivalPinPosition={arrivalPinPosition}
+                // departurePinPosition={departurePinPosition}
+              />
+              {/* <SearchContainer>
+                <MapImg
+                  arrivalPinX={arrivalPinPosition[0]}
+                  arrivalPinY={arrivalPinPosition[1]}
+                  departurePinX={departurePinPosition[0]}
+                  departurePinY={departurePinPosition[1]}
+                  convenient={true}
+                ></MapImg>
+              </SearchContainer> */}
+            </CanvasContainer>
             <Span>
               교내 경로를 알려주는 페이지입니다. 사람아이콘 클릭 시 경사 빠른/
-              편한 경로를 볼 수 있습니다
+              편한 경로를 볼 수 있습니다.
             </Span>
           </MapCanvasContainer>
           <SlopeIcon
@@ -377,16 +389,6 @@ const Map = () => {
             })}
           </FloorSelector>
         </MapArticleContainer>
-
-        {/* <SearchContainer> */}
-        <MapImg
-          arrivalPinX={arrivalPinPosition[0]}
-          arrivalPinY={arrivalPinPosition[1]}
-          departurePinX={departurePinPosition[0]}
-          departurePinY={departurePinPosition[1]}
-          convenient={true}
-        ></MapImg>
-        {/* </SearchContainer> */}
 
         <ButtonInfo onClick={() => (window.location.href = "/buildingInfo")}>
           <b>건물 정보</b>
@@ -437,6 +439,8 @@ const Section = styled.section`
     }
     #canvas {
       max-height: 285px;
+      /* max-width: 100%;
+      max-height: 100%; */
     }
   }
   @media screen and (max-width: 1200px) and(min-width: 801px) {
@@ -603,15 +607,24 @@ const Pin = styled.div`
   background-image: url(${(props) => `${props.pinSrc}`});
   background-size: cover;
   background-repeat: no-repeat;
-  width: 20px;
+  width: 35px;
   height: 35px;
   margin-right: 10px;
 `;
 const PinName = styled.p``;
 
-// const SearchContainer = styled.article`
-//   flex-grow: 1;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// `;
+const SearchContainer = styled.article`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+
+const CanvasContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+`;
