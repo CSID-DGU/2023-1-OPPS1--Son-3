@@ -6,7 +6,6 @@ export default function MainIcon() {
   const navigate = useNavigate();
   return (
     <Icon
-      src="/markImgs/로고.png"
       alt="로고"
       onClick={() => {
         navigate("/map");
@@ -16,13 +15,15 @@ export default function MainIcon() {
 }
 
 const Icon = styled.img`
-  top: 20px;
-  width: auto;
-  height: 45px;
   cursor: pointer;
   @media screen and (max-width: 800px) {
-    top: 5px;
-    width: 130px;
-    max-width: 200px;
+  content: url('/markImgs/로고_그림.png');
+    width: 45px;
+    height: 45px;
+  }
+  @media screen and (min-width: 801px) {
+  content: url('/markImgs/로고.png');
+  width: 190px;
+  height: 45px;
   }
 `;

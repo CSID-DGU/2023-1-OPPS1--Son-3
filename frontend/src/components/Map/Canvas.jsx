@@ -29,15 +29,7 @@ const Canvas = styled.canvas`
     background-position: center; /* 모바일에서 가운데 정렬 */
     width: 90%;
     height: 90%;
-    transform: translateY(-25px);
   }
-
-  ${(props) =>
-    props.isMobile &&
-    css`
-      width: 170% !important;
-      height: 170% !important;
-    `}
 `;
 
 const StyledContainer = ({ children }) => {

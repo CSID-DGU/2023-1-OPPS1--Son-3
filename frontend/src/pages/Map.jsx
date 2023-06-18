@@ -267,12 +267,7 @@ const Map = () => {
     
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <Body>
       <TopHeader>
         <MainIcon />
         <ButtonInfo onClick={() => (window.location.href = "/buildingInfo")}>
@@ -390,24 +385,32 @@ const Map = () => {
           </FloorSelector>
         </MapArticleContainer>
       </Section>
-    </div>
+    </Body>
   );
 };
 export default Map;
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 800px) {
+    * {
+      font-size: 0.65rem;
+      /* font-size: 0.7rem; */
+    }
+  }
+`;
 const Section = styled.section`
   display: flex;
   height: calc(100vh - 125px);
   @media screen and (max-width: 800px) {
     flex-direction: column;
+    justify-content: space-between;
     header input {
       padding: 0px;
       width: 5rem;
       text-align: center;
       height: 2em;
-    }
-    *:not(footer > *) {
-      font-size: 0.65rem;
-      /* font-size: 0.8rem; */
     }
     button {
       width: 3rem;
@@ -425,13 +428,13 @@ const Section = styled.section`
     #DirectionList {
       margin: 0;
       img {
-        width: 50%;
+        width: 240px;
       }
     }
     #convenientList {
       margin: 0;
       img {
-        width: 50%;
+        width: 240px;
       }
     }
     .smallerFont {
@@ -446,10 +449,6 @@ const Section = styled.section`
   @media screen and (max-width: 1200px) and(min-width: 801px) {
     flex-direction: column;
     height: auto;
-    #convenientList {
-      margin: 0;
-      width: auto;
-    }
     header > form {
       flex-shrink: 1;
       input {
@@ -469,7 +468,7 @@ const TopHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 5vw 0 5vw;
+  padding: 5px 5vw;
 `;
 const MapContentContainer = styled.div`
   display: flex;
@@ -497,16 +496,14 @@ const MapCanvasContainer = styled.div`
     padding-left: 10vw;
   }
   @media screen and (max-width: 800px) {
-    padding-bottom: 3.5em;
   }
 `;
 const MapH3 = styled.span`
   position: relative;
-  font-size: 1.17em;
+  /* font-size: 1.17em; */
   font-weight: bold;
 `;
 const Span = styled.span`
-  font-size: 17px;
   /* display: inline-block; */
   margin: 10px;
   /* flex-shrink: 1; */
@@ -525,7 +522,6 @@ const ButtonInfo = styled.div`
   font-family: "DONGGUK UNIVERSITY";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
   line-height: 21px;
 
   display: flex;
@@ -542,6 +538,7 @@ const MapArticleContainer = styled.div`
     align-self: flex-end;
   }
   @media screen and (max-width: 800px) {
+    padding-top: 27px;
     width: 100%;
     flex-grow: 1;
     overflow-y: auto;
@@ -549,21 +546,27 @@ const MapArticleContainer = styled.div`
 `;
 const Tab = styled.div`
   position: absolute;
-  top: 0;
+  top: 2px;
   right: 0;
-  transform: translateY(calc(-100% + 1px));
+  @media screen and (min-width: 801px) {
+    transform: translateY(calc(-100% + 1px));
+  }
   display: flex;
   cursor: pointer;
   font-weight: bold;
 `;
 const Tab_child1 = styled.div`
-  height: 5vh;
-  width: 100px;
+  height: 25px;
+  width: 6.25em;
   border-radius: 10px 10px 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
   letter-spacing: 3px;
+  @media screen and (min-width: 801px ) {
+    letter-spacing: 3px;
+    height: 5vh;
+  }
   .selected {
     background-color: #ffd336;
     box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
@@ -575,13 +578,16 @@ const Tab_child1 = styled.div`
   }
 `
 const Tab_child2 = styled.div`
-  height: 5vh;
-  width: 100px;
+  height: 25px;
+  width: 6.25em;
   border-radius: 10px 10px 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  letter-spacing: 3px;
+  @media screen and (min-width: 801px ) {
+    letter-spacing: 3px;
+    height: 5vh;
+  }
   .selected {
     background-color: #ffc370;
     box-shadow: 0px 0px 3.84px rgba(0, 0, 0, 0.25);
@@ -601,7 +607,7 @@ const FloorSelector = styled.div`
     left: -45px;
   }
   @media screen and (max-width: 800px) {
-    top: -25px;
+    top: 7px;
     left: 35px;
   }
 `;
@@ -609,8 +615,6 @@ const FloorSelection = styled.div`
   border-radius: 50%;
   width: 4.2em;
   height: 4.2em;
-
-  
 
   :first-child {
     background-color: #ffe68c;
@@ -626,12 +630,12 @@ const FloorSelection = styled.div`
   font-family: "DONGGUK UNIVERSITY";
   font-style: normal;
   font-weight: bold;
-  font-size: 20px;
 
   display: flex;
   @media screen and (min-width: 801px) {
     align-items: center;
     padding-left: 0.6em;
+    font-size: 20px;
   }
   @media screen and (max-width: 800px) {
     justify-content: center;
@@ -644,6 +648,10 @@ const Pins = styled.div`
   position: absolute;
   top: 15%;
   left: 10%;
+  @media screen and (max-width: 800px) {
+    top: 0;
+    left: 15px;
+  }
   z-index: 1;
   display: flex; /* 추가 */
   flex-direction: row; /* 추가 */
@@ -662,6 +670,11 @@ const Pin = styled.div`
   background-repeat: no-repeat;
   width: 35px;
   height: 35px;
+  @media screen and (max-width: 800px) {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+  }
   margin-right: 10px;
 `;
 const PinName = styled.p``;

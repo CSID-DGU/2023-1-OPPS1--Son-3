@@ -121,7 +121,7 @@ const Header = styled.header`
   display: flex;
   align-items: flex-start;
   height: 75px;
-  width: fill-available;
+  width: 100vw;
   justify-content: center;
   z-index: 3;
 `;
@@ -131,10 +131,12 @@ const Form = styled.form`
   align-items: center;
   justify-content: space-between;
   gap: 15px;
+  @media screen and (max-width: 800px) {
+    gap: 3px;
+  }
 `;
 
 const Div = styled.div`
-  padding: 10px;
   display: flex;
   align-items: center;
   position: relative;
@@ -144,15 +146,20 @@ const Input = styled.input`
   border-radius: 10px;
   padding: 8px;
   width: 10em;
-  font-size: 18px;
+  @media screen and (max-width: 800px) {
+    font-size: 10px !important;
+  }
+  @media screen and (min-width: 801px) {
+    font-size: 18px;
+  }
   border: 2px black solid;
 `;
 
 const Button = styled.button`
   font-size: 18px;
   font-weight: bold;
-  width: 58px;
-  height: 42px;
+  width: 3.222em;
+  height: 2.333em;
   background: #ffd336;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -168,15 +175,16 @@ const Span = styled.span`
   font-size: 25px;
   font-weight: bold;
   display: inline-block;
-  margin: 10px;
   flex-shrink: 1;
   width: 4.5em;
-  text-align: end;
+  text-align: center;
 `;
 
 const ToggleButton = styled.button`
   position: absolute;
-  left: 4em;
+  @media screen and (min-width: 801px) {
+    left: 1rem;
+  }
   transform: translateY(-103%);
   img {
     object-fit: contain;
@@ -184,7 +192,6 @@ const ToggleButton = styled.button`
     @media screen and (max-width: 800px) {
       width: 40px;
       top: 70px;
-      transform: translateX(-65px);
     }
   }
   border: none;
