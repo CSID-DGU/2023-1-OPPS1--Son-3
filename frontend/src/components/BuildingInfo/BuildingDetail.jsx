@@ -6,7 +6,7 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
       <BuildingContainer className="detailPage">
         <InfosContainer>
           <Key style={{ width: "100%", marginTop: "15px" }}>
-            건물정보가 존재하지 않습니다
+            건물정보가 존재하지 않습니다.
           </Key>
         </InfosContainer>
       </BuildingContainer>
@@ -72,6 +72,9 @@ const Key = styled.p`
   flex: none;
   margin: 0;
   width: 6.1em;
+  text-align: start;
+  display: flex;
+  justify-content: center;
 `;
 const Val = styled.p`
   margin: 0;
