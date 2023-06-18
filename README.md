@@ -43,8 +43,8 @@
 |frontend/src/components/MainPage|메인 페이지(홈)를 구성하는 데 활용될 컴포넌트들|
 |frontend/src/components/asset|컴포넌트로 만들어 사용할 .svg 파일|
 |makejson/closeBuilding.py|출발 건물로부터 선택한 편의시설을 가까운 순으로 정렬하고, 각 건물에 어떤 편의시설이 있는지 정리하는 알고리즘|
-|makejson/find_path.py|출발지에서 도착지까지의 경사 미반영 경로 노드를 출력하는 알고리즘|
-|makejson/find_path2.py|출발지에서 도착지까지의 경사 반영 경로 노드를 출력하는 알고리즘|
+|makejson/find_path.py|출발지에서 도착지까지의 빠른 경로 노드를 출력하는 알고리즘|
+|makejson/find_path2.py|출발지에서 도착지까지의 편한 경로 노드를 출력하는 알고리즘|
 |makejson/find_shortcut.py|출발지에서 도착지까지의 지름길 정보를 출력하는 알고리즘|
 
 
@@ -69,7 +69,7 @@
 ###### 출발 건물 및 편의시설을 입력 시, 건물에서부터 가까운 순서대로 리스트 출력한다. 편의시설까지의 경로도 같이 안내한다.
 <img width="1419" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/2915e65f-db8c-48fb-b176-9e775930ab3a">
 
-###### 우측 하단에 빠른 경로 보기 버튼을 클릭하여 빠른 경로로 전환할 수 있다. 우측 탭은 지름길 정보를 안내한다.
+###### 상단의 토글 버튼을 클릭하여 경로 안내 탭으로 전환할 수 있고, 우측 하단에 빠른 경로 보기 버튼을 클릭하여 빠른 경로로 전환할 수 있다. 경로안내 탭은 지름길 정보를 안내한다.
 <img width="1419" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/06bd6d05-bf1a-4949-9e8d-5a56240c2eb0">
 
 
@@ -107,6 +107,7 @@
 ##### ❃ 가중치 = 노드와 노드 사이 직선거리
 
 #### 알고리즘의 결과를 미리 JSON 파일로 저장
+##### ★결과를 미리 저장해놓기 때문에 경로 출력 시간이 짧아진다.
 <br/><br/>
 
 
@@ -134,14 +135,14 @@
 #### ✤ 경로 계산 알고리즘 : /makejson/find_path.py, /makejson/find_path2.py
 
 ![image](https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/2db1f0b9-31ac-4249-aaf9-e6f3a04e6c3a)
-##### ❃ 왼쪽 : 경사 미반영 그래프 (가중치 = 노드 간 직선 거리)
-##### ❃ 오른쪽 : 경사 반영 그래프 (가중치 = 간선을 지날 때의 에너지 소비량)
+##### ❃ 왼쪽 : 빠른 경로 그래프 (가중치 = 노드 간 직선 거리)
+##### ❃ 오른쪽 : 편한 경로 그래프 (가중치 = 간선을 지날 때의 에너지 소비량)
 <br/><br/>
 ![image](https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/c55015a9-77bb-4776-8e33-b8529c5f90e9)
-##### ❃ 일부 건물에 대해 경사 미반영 그래프와 경사 반영 그래프의 결과가 다름
-##### ❃ 왼쪽 : 경사 미반영 그래프 (후문 -> 경영관에서 헐떡고개를 지나는 경로 안내)
-##### ❃ 오른쪽 : 경사 반영 그래프 (후문 -> 경영관에서 원흥관을 지나는 경로 안내)
-##### ❃ 경사 미반영 그래프의 출력 결과는 /frontend/src/lib/path/path1.json 파일로, 경사 반영 그래프의 출력 결과는 /frontend/src/lib/path/path2.json 파일로 저장
+##### ❃ 일부 건물에 대해 빠른 경로 그래프와 편한 경로 그래프의 결과가 다름
+##### ❃ 왼쪽 : 빠른 경로 그래프 (후문 -> 경영관에서 헐떡고개를 지나는 경로 안내)
+##### ❃ 오른쪽 : 편한 경로 그래프 (후문 -> 경영관에서 원흥관을 지나는 경로 안내)
+##### ❃ 빠른 경로 그래프의 출력 결과는 /frontend/src/lib/path/path1.json 파일로, 편한 경로 그래프의 출력 결과는 /frontend/src/lib/path/path2.json 파일로 저장
 <br/><br/>
 
 
@@ -152,8 +153,8 @@
 
 ![image](https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/561a5cb1-17a3-4be7-b3b8-b277ed0f0d3e)
 ##### ❃ 지름길에 해당하는 노드를 지날 때 딕셔너리의 결과물이 출력
-##### ❃ 경사 미반영 그래프의 출력 결과는 /frontend/src/lib/shortcut/shortcut1.json 파일로, 경사 반영 그래프의 출력 결과는 /frontend/src/lib/shortcut/shortcut2.json 파일로 저장
-
+##### ❃ 빠른 경로 그래프의 출력 결과는 /frontend/src/lib/shortcut/shortcut1.json 파일로, 편한 경로 그래프의 출력 결과는 /frontend/src/lib/shortcut/shortcut2.json 파일로 저장
+<br>
 ##### + 기존 프로젝트에서 누락된 지름길 정보 추가(법학관, 혜화관, 학림관 등)
 ![shortcutnew](https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/c3587c30-1cca-42dd-b38d-6b63f1df1389)
 
