@@ -1,20 +1,23 @@
 import React from "react";
 import styled from "styled-components/macro";
-export default function BuildingDetailConv({ setIsDetailPageConv, detailPageContentConv}) {
+export default function BuildingDetailConv({
+  setIsDetailPageConv,
+  detailPageContentConv,
+}) {
   if (!detailPageContentConv) {
     return (
       <BuildingContainer className="detailPage">
-      <InfosContainer>
-        <Key style={{ width: "100%", marginTop: "15px" }}>편의시설이 존재하지 않습니다.</Key>
-      </InfosContainer>
-    </BuildingContainer>
-    )  // Display "X" when detailPageContent is null
+        <InfosContainer>
+          <Key style={{ width: "100%", marginTop: "15px" }}>
+            편의시설이 존재하지 않습니다.
+          </Key>
+        </InfosContainer>
+      </BuildingContainer>
+    ); // Display "X" when detailPageContent is null
   }
-  
-  
+
   const info = detailPageContentConv;
   return (
-    
     <BuildingContainer className="detailPage">
       <InfosContainer>
         {Object.keys(info).map((key, index) => (
@@ -44,7 +47,7 @@ const InfosContainer = styled.div`
   align-items: center;
   gap: 10px;
   text-align: center;
-  font-size: 14px;
+  font-size: 15px;
   &:not(:last-child) {
     margin-bottom: 7px;
   }
@@ -72,4 +75,4 @@ const Div = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3px;
-`
+`;
