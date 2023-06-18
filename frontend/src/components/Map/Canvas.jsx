@@ -2,23 +2,25 @@ import React, { useEffect, useRef, useState } from "react";
 import styled, { css } from "styled-components/macro";
 
 const Container = styled.div`
-  width: 100%;
+  /* width: 100%;
   height: 100%;
 
   @media screen and (max-width: 800px) {
     width: 87%;
     height: 87%;
-  }
+  } */
 `;
 
 const Canvas = styled.canvas`
   background-image: url("/backgroundImgs/map.png");
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: left top; /* 기본 위치 (상단 왼쪽) */
-  max-width: 100%;
-  max-height: 100%;
-  transform: translateY(90px);
+  background-size: cover;
+  /* background-position: left top; 기본 위치 (상단 왼쪽) */
+  /* max-width: 100%;
+  max-height: 100%; */
+  /* transform: translateY(90px); */
+  width: 100%;
+  height: auto;
 
   @media screen and (max-width: 800px) {
     background-position: center; /* 모바일에서 가운데 정렬 */
@@ -26,8 +28,6 @@ const Canvas = styled.canvas`
     height: 90%;
     transform: translateY(-25px);
   }
-  width: 150%;
-  height: 150%;
 
   ${(props) =>
     props.isMobile &&
@@ -111,8 +111,8 @@ export default function MapCanvas({
   useEffect(() => {
     if (clickPosition) {
       const { x, y } = clickPosition;
-      // const [canvasX, canvasY] = [x - 310, y - 165];//192 235로 맞추면 150퍼에서 맞음
-      const [canvasX, canvasY] = [x - 192, y - 235];
+      const [canvasX, canvasY] = [x - 320, y - 275];//192 235로 맞추면 150퍼에서 맞음
+      // const [canvasX, canvasY] = [x - 192, y - 235];
       setTimeout(() => {
         drawCircle([canvasX, canvasY], [canvasX, canvasY]);
       }, 10);
@@ -136,8 +136,8 @@ export default function MapCanvas({
   };
 
   return (
-    <StyledContainer>
+    // <StyledContainer>
       <StyledCanvas canvasRef={canvasRef} isMobile={isMobile} />
-    </StyledContainer>
+    // </StyledContainer>
   );
 }

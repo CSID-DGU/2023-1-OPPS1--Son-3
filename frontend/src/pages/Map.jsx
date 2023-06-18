@@ -343,10 +343,10 @@ const Map = () => {
             <Canvas
               isStart={isStart}
               nodePositions={nodes}
-              canvasWidth={1236}
-              canvasHeight={853}
-              // canvasWidth={796.99}
-              // canvasHeight={548.16}
+              // canvasWidth={1236}
+              // canvasHeight={853}
+              canvasWidth={981}
+              canvasHeight={532}
               color={isSlope ? "blue" : "red"}
               clickPosition={clickPosition}
             />
