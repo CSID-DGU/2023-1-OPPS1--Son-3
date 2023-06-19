@@ -98,10 +98,12 @@ const Map = () => {
           }
         }
       }
+      // selectFloor(buildingKey, index);
     
       let minValue = Number.POSITIVE_INFINITY;
       let minDepart = null;
       let minArrive = null;
+      // let minindex = 0;
       
       //sumdata에서 최단경로 계산
       for (const selectedDepart in selectedData) {
@@ -129,6 +131,7 @@ const Map = () => {
       });
       
       setNodes([...arr]);
+      // selectFloor(minDepart, );
     };
   }
   
