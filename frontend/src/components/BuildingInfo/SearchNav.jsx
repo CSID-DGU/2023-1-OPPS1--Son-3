@@ -73,13 +73,13 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 65px;
 `;
 
 const Form = styled.form`
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  gap: 10px;
 `;
 
 const Span = styled.span`
@@ -90,7 +90,6 @@ const Span = styled.span`
 `;
 
 const Div = styled.div`
-  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

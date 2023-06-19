@@ -15,7 +15,7 @@ export default function BuildingDetail({ setIsDetailPage, detailPageContent }) {
 
   const info = detailPageContent.info;
   return (
-    <BuildingContainer className="detailPage">
+    <BuildingContainer className="detailPage" style={{width: "300px"}}>
       <Img src={detailPageContent.img}></Img>
       <InfosContainer>
         <Key>건물명</Key>
