@@ -1,6 +1,8 @@
+![Logo_Character](https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/286fe99f-1987-4443-b675-1cfadaf60f4e)
+
 # 동국대의 모든 정보가 담겨있는 [동대여지도] 
 
-### 📜 동국대학교 교내 정보, 길찾기 서비스![Logo_Character](https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/87875bd4-8a1c-4585-9522-b993f69d261e)
+### 📜 동국대학교 교내 정보, 길찾기 서비스
 
 
 
