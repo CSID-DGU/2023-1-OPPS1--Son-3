@@ -156,7 +156,7 @@
 ##### ❃ 빠른 경로 그래프의 출력 결과는 /frontend/src/lib/shortcut/shortcut1.json 파일로, 편한 경로 그래프의 출력 결과는 /frontend/src/lib/shortcut/shortcut2.json 파일로 저장
 <br>
 ##### + 기존 프로젝트에서 누락된 지름길 정보 추가(법학관, 혜화관, 학림관 등)
-![shortcutnew](https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/c3587c30-1cca-42dd-b38d-6b63f1df1389)
+![image](https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/c3587c30-1cca-42dd-b38d-6b63f1df1389)
 
 
 #
