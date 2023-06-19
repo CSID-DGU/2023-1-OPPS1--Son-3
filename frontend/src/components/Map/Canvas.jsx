@@ -135,7 +135,7 @@ export default function MapCanvas({
   
   const drawStart = ([startX, startY], [endX, endY]) => {
     ctx.beginPath();
-    ctx.strokeStyle = "yellow";
+    ctx.strokeStyle = "#FFD76B";
     ctx.lineWidth = 20;
     ctx.lineCap = "round";
     ctx.moveTo(startX, startY);
