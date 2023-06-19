@@ -86,25 +86,29 @@ export default function MapCanvas({
 
   useEffect(() => {
     if (nodePositions.length !== 0) {
-      let i = 1;
+      let i = 0;
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
       const animation = setInterval(animate, 0);
       function animate() {
         const StartState = isStart;
-        const [beforeNodeX, beforeNodeY] = rightPosition(nodePositions[i - 1]);
-        const [rightNodeX, rightNodeY] = rightPosition(nodePositions[i]);
+        const [beforeNodeX, beforeNodeY] = rightPosition(nodePositions[i]);
+        const [rightNodeX, rightNodeY] = rightPosition(nodePositions[i+1]);
         drawCircle([beforeNodeX, beforeNodeY], [rightNodeX, rightNodeY]);
 
         i++;
-        if(i===2) {
+        if(i===1) {
+          drawStart([beforeNodeX, beforeNodeY], [beforeNodeX, beforeNodeY]);
+          if(nodePositions.length === 2){
+            drawEnd([rightNodeX, rightNodeY], [rightNodeX, rightNodeY]);
+            clearInterval(animation); // continue until criteria
+          }
+        }
+        else if(i === 2 && JSON.stringify(nodePositions[i-2]) === JSON.stringify(nodePositions[i-1])){
           drawStart([beforeNodeX, beforeNodeY], [beforeNodeX, beforeNodeY]);
         }
-        else if(i === 3 && JSON.stringify(nodePositions[i-3]) === JSON.stringify(nodePositions[i-2])){
-          drawStart([beforeNodeX, beforeNodeY], [beforeNodeX, beforeNodeY]);
-        }
-        else if (i >= nodePositions.length || StartState !== state.current()){
-          clearInterval(animation); // continue until criteria
+        else if (i >= nodePositions.length - 1  || StartState !== state.current()){
           drawEnd([rightNodeX, rightNodeY], [rightNodeX, rightNodeY]);
+          clearInterval(animation); // continue until criteria
         }
           
       }
