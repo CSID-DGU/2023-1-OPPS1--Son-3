@@ -198,6 +198,14 @@ const Map = () => {
       }
     }
 
+
+    
+    Object.keys(selectedData).map((key,num)=>{
+      if(key ===minDepart){
+        setIsSelected(num);
+      }
+    });
+
     setSelectedData(selectedData);
     setMinValue(minValue);
     //directionsli에서 사용할 submitt data(층수별로 바뀜)
