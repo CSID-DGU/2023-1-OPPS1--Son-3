@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components/macro";
 
 export default function MainIcon() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <Icon
       alt="로고"
       onClick={() => {
-        navigate("/map");
+        window.location.replace("/map");
+        // navigate("/map");
       }}
     />
   );
