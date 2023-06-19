@@ -1,6 +1,6 @@
 # 동국대의 모든 정보가 담겨있는 [동대여지도] 
 
-### 	📜 동국대학교 교내 정보, 길찾기 서비스![Logo_Character](https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/87875bd4-8a1c-4585-9522-b993f69d261e)
+### 📜 동국대학교 교내 정보, 길찾기 서비스![Logo_Character](https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/87875bd4-8a1c-4585-9522-b993f69d261e)
 
 
 
@@ -12,7 +12,7 @@
 
 <img src="https://img.shields.io/badge/License : MIT -E8E8E8?style=flat&TypeScript=white">   <img src="https://img.shields.io/badge/Window-0078D6?style=flat&logo=windows&logoColor=white"/>
 
-<img src="https://img.shields.io/badge/VScode -007ACC?style=flat&logo=Visual Studio Code&logoColor=white"/> <img src="https://img.shields.io/badge/React 18.2.0 -61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/styled-components-DB7093?style=flat&logo=styled-components&logoColor=white"/>  <img src="https://img.shields.io/badge/Python 3.8.8 -3776AB?style=flat&logo=Python&logoColor=white"/>
+<img src="https://img.shields.io/badge/VScode -007ACC?style=flat&logo=Visual Studio Code&logoColor=white"/> <img src="https://img.shields.io/badge/Pycharm -000000?style=flat&logo=Pycharm&logoColor=white" /> <img src="https://img.shields.io/badge/React 18.2.0 -61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/Yarn 1.22.19 -2C8EBB?style=flat&logo=Yarn&logoColor=white" /> <img src="https://img.shields.io/badge/styled-components-DB7093?style=flat&logo=styled-components&logoColor=white"/>  <img src="https://img.shields.io/badge/Python 3.8.8 -3776AB?style=flat&logo=Python&logoColor=white"/>
 
 
 
@@ -60,17 +60,17 @@
 ### 편의시설 및 경로 찾기 페이지
 ###### 처음 접속 시 보여지는 화면, 교내 경로와 편의시설을 검색할 수 있다. '도착지' 위에 있는 토글 버튼으로 화면을 전환할 수 있다.
 
-<img width="1429" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/363697f9-578e-412f-9868-5cf5d5d27465">
+<img width="1429" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/d615a207-ee74-494d-9423-bf87ca4be278">
 
 
 #    
    
 ### 교내 편의시설 탭
 ###### 출발 건물 및 편의시설을 입력 시, 건물에서부터 가까운 순서대로 리스트 출력한다. 편의시설까지의 경로도 같이 안내한다.
-<img width="1419" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/2915e65f-db8c-48fb-b176-9e775930ab3a">
+<img width="1419" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/a1ae4cf1-d24c-42ca-a187-5ef67f2d3f31">
 
 ###### 상단의 토글 버튼을 클릭하여 경로 안내 탭으로 전환할 수 있고, 우측 하단에 빠른 경로 보기 버튼을 클릭하여 빠른 경로로 전환할 수 있다. 경로안내 탭은 지름길 정보를 안내한다.
-<img width="1419" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/06bd6d05-bf1a-4949-9e8d-5a56240c2eb0">
+<img width="1419" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/90cbfaf5-4983-41a0-a54e-7d3202155185">
 
 
 
@@ -80,11 +80,11 @@
 
 ### 교내 건물 정보 페이지
 ###### 교내 학사운영실, 열람실 정보, 전화번호를 안내하는 탭
-<img width="1421" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/fd99401a-95c3-4865-a743-2451320a3e98">
+<img width="1421" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/b435dac4-5261-4476-83da-5861dcc03c67">
 
 
 ###### 건물 내에 있는 편의시설 정보를 안내하는 탭
-<img width="1421" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/68e54f57-8b4a-4e8b-8779-60ddda7ee5c0">
+<img width="1421" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/2a68a0d4-ee0a-4e50-81d3-60dd8ab9591e">
 
 
 
@@ -156,7 +156,7 @@
 ##### ❃ 빠른 경로 그래프의 출력 결과는 /frontend/src/lib/shortcut/shortcut1.json 파일로, 편한 경로 그래프의 출력 결과는 /frontend/src/lib/shortcut/shortcut2.json 파일로 저장
 <br>
 ##### + 기존 프로젝트에서 누락된 지름길 정보 추가(법학관, 혜화관, 학림관 등)
-![image](https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/c3587c30-1cca-42dd-b38d-6b63f1df1389)
+<img width="1421" src="https://github.com/CSID-DGU/2023-1-OPPS1-SonOfMidas-3/assets/126967574/c3587c30-1cca-42dd-b38d-6b63f1df1389">
 
 
 #
