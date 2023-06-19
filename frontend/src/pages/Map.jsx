@@ -387,7 +387,7 @@ const Body = styled.div`
 `;
 const Section = styled.section`
   display: flex;
-  height: calc(100vh - 115px);
+  height: calc(100vh - 130px);
   @media screen and (max-width: 800px) {
     flex-direction: column;
     justify-content: space-between;
