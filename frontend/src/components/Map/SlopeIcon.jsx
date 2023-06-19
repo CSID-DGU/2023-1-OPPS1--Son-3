@@ -51,7 +51,7 @@ const SlopeIconWrapper = styled.div`
   width: 13%;
   cursor: pointer;
   @media screen and (max-width: 800px) {
-    bottom: 150%;
+    bottom: 15%;
   }
   @media screen and (min-width: 801px) {
     bottom: 8%;
@@ -63,4 +63,5 @@ const SlopeIconInfo = styled.span`
   text-align: center;
   flex: none;
   font-size: 14px;
+  word-break : keep-all;
 `;

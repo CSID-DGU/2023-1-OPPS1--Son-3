@@ -226,6 +226,8 @@ const Container = styled.section`
   /* min-height: calc(100vh - ); */
   // 반응형
   @media screen and (max-width: 600px) {
+    position: relative;
+
     flex-direction: column;
     height: 100vh;
     section {
@@ -405,7 +407,6 @@ const BuildingInfoContainer = styled.div`
     flex-grow: 1;
   }
   @media screen and (max-width: 600px) {
-    margin-top: 70px; 
   }
   flex-shrink: 1;
 `;

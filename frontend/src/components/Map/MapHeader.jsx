@@ -160,7 +160,7 @@ const Input = styled.input`
 const Button = styled.button`
   font-size: 18px;
   font-weight: bold;
-  width: 3.222em;
+  width: 4em;
   height: 2.333em;
   background: #ffd336;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
