@@ -118,6 +118,14 @@ const Map = () => {
           }
         }
       }
+
+      Object.keys(selectedData).map((key,num)=>{
+        if(key ===minDepart){
+          setIsSelected(num);
+        }
+      });
+      
+
       
       setSelectedData(selectedData);
       setMinValue(minValue);
