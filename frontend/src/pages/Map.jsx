@@ -105,7 +105,8 @@ const Map = () => {
       let minArrive = null;
       // let minindex = 0;
       
-      //sumdata에서 최단경로 계산
+    // console.log(Object.values(selectedData));
+    //sumdata에서 최단경로 계산
       for (const selectedDepart in selectedData) {
         const startbuilding = selectedData[selectedDepart];
         for (const selectedArrive in startbuilding) {
@@ -176,6 +177,7 @@ const Map = () => {
     let minArrive = null;
 
     //sumdata에서 최단경로 계산
+    // console.log(Object.keys(selectedData));
     for (const selectedDepart in selectedData) {
       const startbuilding = selectedData[selectedDepart];
       for (const selectedArrive in startbuilding) {
@@ -250,7 +252,8 @@ const Map = () => {
     setNodes([...arr]);
     setIsSelected(index);
     setIsStart(!isStart);
-    
+    setSubmittedDepart(buildingKey);
+
   };
   return (
     <Body>
