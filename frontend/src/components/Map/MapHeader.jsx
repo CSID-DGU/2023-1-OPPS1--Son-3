@@ -61,6 +61,7 @@ export default function MapHeader({
           <Span>출발지</Span>
           <DropDownWrapper>
             <Input
+              readOnly
               type="text"
               name="departInput"
               innerRef={departInput}
@@ -90,6 +91,7 @@ export default function MapHeader({
           </ToggleButton>
           <DropDownWrapper>
             <Input
+              readOnly
               type="text"
               name={toggleName}
               innerRef={arriveInput}
