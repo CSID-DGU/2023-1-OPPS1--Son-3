@@ -306,8 +306,11 @@ const Tab = styled.div`
 `;
 const Div = styled.div`
   height: 5vh;
+  width: 6.25em;
+  @media screen and (max-width: 600px) {
+    height: 25px;  
+  }
   display: flex;
-  margin-top: 12px;
   flex-direction: column;
   .selected {
     background-color: #ffd336;
@@ -320,8 +323,11 @@ const Div = styled.div`
 `;
 const Div2 = styled.div`
   height: 5vh;
+  width: 6.25em;
+  @media screen and (max-width: 600px) {
+    height: 25px;  
+  }
   display: flex;
-  margin-top: 12px;
   flex-direction: column;
   .selected {
     background-color: #ffc370;
@@ -333,7 +339,6 @@ const Div2 = styled.div`
   }
 `;
 const Item = styled.div`
-  width: 100px;
   border-right: 0px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -344,12 +349,9 @@ const Item = styled.div`
   align-items: center;
   span {
     display: inline-block;
-    padding: 10px;
-    font-size: 15px;
   }
 `;
 const Item2 = styled.div`
-  width: 100px;
   border-right: 0px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -360,8 +362,6 @@ const Item2 = styled.div`
   align-items: center;
   span {
     display: inline-block;
-    padding: 10px;
-    font-size: 15px;
   }
 `;
 const BuildingContent = styled.ul`
