@@ -207,7 +207,7 @@ const buildingInfo = [
     ]),
   },
 
-  { name: "충무로 영상상센터" },
+  { name: "충무로 영상센터" },
   { name: "팔정도" },
 
   {
