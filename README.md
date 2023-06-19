@@ -12,7 +12,7 @@
 
 <img src="https://img.shields.io/badge/License : MIT -E8E8E8?style=flat&TypeScript=white">   <img src="https://img.shields.io/badge/Window-0078D6?style=flat&logo=windows&logoColor=white"/>
 
-<img src="https://img.shields.io/badge/VScode -007ACC?style=flat&logo=Visual Studio Code&logoColor=white"/> <img src="https://img.shields.io/badge/Pycharm -000000?style=flat&logo=Pycharm&logoColor=white" /> <img src="https://img.shields.io/badge/React 18.2.0 -61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/Yarn 1.22.19 -2C8EBB?style=flat&logo=Yarn&logoColor=white" /> <img src="https://img.shields.io/badge/styled-components-DB7093?style=flat&logo=styled-components&logoColor=white"/>  <img src="https://img.shields.io/badge/Python 3.8.8 -3776AB?style=flat&logo=Python&logoColor=white"/>
+<img src="https://img.shields.io/badge/VScode -007ACC?style=flat&logo=Visual Studio Code&logoColor=white"/> <img src="https://img.shields.io/badge/Pycharm -000000?style=flat&logo=Pycharm&logoColor=white" /> <img src="https://img.shields.io/badge/React 18.2.0 -61DAFB?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/Yarn 1.22.19 -2C8EBB?style=flat&logo=Yarn&logoColor=white" /> <img src="https://img.shields.io/badge/styled-components-DB7093?style=flat&logo=styled-components&logoColor=white"/>  <img src="https://img.shields.io/badge/Python 3.8.8 -3776AB?style=flat&logo=Python&logoColor=white"/> <img src="https://img.shields.io/badge/Figma -F24E1E?style=flat&logo=Figma&logoColor=white"/> <img src="https://img.shields.io/badge/Notion -000000?style=flat&logo=Notion&logoColor=white"/> 
 
 
 
@@ -40,7 +40,6 @@
 |frontend/src/components/BuildingInfo|건물 정보 페이지를 구성하는 데 활용될 컴포넌트들|
 |frontend/src/components/Convenient|편의시설 검색 페이지를 구성하는 데 활용될 컴포넌트들|
 |frontend/src/components/Map|교내 경로 페이지를 구성하는 데 활용될 컴포넌트들|
-|frontend/src/components/MainPage|메인 페이지(홈)를 구성하는 데 활용될 컴포넌트들|
 |frontend/src/components/asset|컴포넌트로 만들어 사용할 .svg 파일|
 |makejson/closeBuilding.py|출발 건물로부터 선택한 편의시설을 가까운 순으로 정렬하고, 각 건물에 어떤 편의시설이 있는지 정리하는 알고리즘|
 |makejson/find_path.py|출발지에서 도착지까지의 빠른 경로 노드를 출력하는 알고리즘|

@@ -173,6 +173,16 @@ const Body = styled.div`
   justify-content: space-between;
   height: 100vh;
   width: 100vw;
+  @media screen and (max-width: 600px) {
+    * {
+      font-size: 0.65rem;
+    }
+  }
+  @media screen and (min-width: 601px) and (max-width: 900px) {
+    * {
+      font-size: 0.9rem;
+    }
+  }
 `;
 const Headers = styled.div`
   display: flex;
@@ -198,7 +208,6 @@ const ButtonPath = styled.div`
   font-family: "DONGGUK UNIVERSITY";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
   line-height: 21px;
 
   display: flex;
@@ -218,14 +227,14 @@ const Container = styled.section`
   // 반응형
   @media screen and (max-width: 600px) {
     position: relative;
+
     flex-direction: column;
     height: 100vh;
     section {
-      height: calc(100vh - 341px);
+      height: 100%;
     }
     article {
       width: 100%;
-      margin-left: 0;
       .content {
         flex-grow: 1;
         height: fit-content;
@@ -234,6 +243,9 @@ const Container = styled.section`
         }
       }
       .buildingContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 100%;
         padding: 0 10vw;
       }
@@ -245,28 +257,23 @@ const Container = styled.section`
     /* .selected {
       display: none;
     } */
-    *:not(footer > *) {
-      font-size: 0.8rem;
-    }
     #icon {
       display: none;
     }
     .buttonPath {
       top: 70px;
     }
+    ul {
+      img {
+        width: 240px;
+        height: auto;
+      }
+    }
   }
   @media screen and (min-width: 601px) and (max-width: 900px) {
     height: auto;
-    *:not(footer > *) {
-      font-size: 0.9rem;
-    }
-    .detailPage {
-      top: 200px;
-      left: 50%;
-    }
     article {
       flex-grow: 1;
-      margin-left: 0;
       .content {
         flex-grow: 1;
         height: fit-content;
@@ -278,14 +285,20 @@ const Container = styled.section`
   }
 `;
 const Article = styled.article`
+@media screen and (max-width: 600px) {
+  height: calc(100vh - 324px);
+}
+@media screen and (min-width: 601px) {
   height: calc(100vh - 130px);
   align-self: flex-end;
+}
 `;
 const InfoWrapper = styled.section`
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  overflow-y: auto;
 `;
 const Tab = styled.div`
   display: flex;
@@ -369,11 +382,6 @@ const BuildingContent = styled.ul`
     background-color: #ffd336;
   }
 `;
-const BuildingName = styled.span`
-  list-style-type: unset;
-  padding: 10px;
-  font-size: 1.25rem;
-`;
 const BuildingTag = styled.span`
   display: center;
   align-items: center;
@@ -395,18 +403,12 @@ const BuildingInfoContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  @media screen and (min-width: 801px) {
+  @media screen and (min-width: 601px) {
     flex-grow: 1;
   }
   @media screen and (max-width: 600px) {
-    /* padding-top: 70px;  */
   }
   flex-shrink: 1;
-`;
-const InfoIcon = styled.img`
-  width: 7%;
-  vertical-align: text-bottom;
-  margin: 0 2px;
 `;
 const PageInfo = styled.p`
   margin: 0;
@@ -437,7 +439,7 @@ const SearchContainer = styled.article`
 //핀 정보
 const Pins = styled.div`
   position: absolute;
-  top: 120px;
+  top: 12%;
   left: 12%;
   z-index: 1;
 `;

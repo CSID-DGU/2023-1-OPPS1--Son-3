@@ -18,8 +18,8 @@ const Icon = styled.img`
   cursor: pointer;
   @media screen and (max-width: 800px) {
   content: url('/markImgs/로고_그림.png');
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
   }
   @media screen and (min-width: 801px) {
   content: url('/markImgs/로고.png');
