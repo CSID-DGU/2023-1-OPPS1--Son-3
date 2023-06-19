@@ -100,7 +100,7 @@ const Button = styled.button`
   align-self: center;
   font-weight: bold;
   font-size: 20px;
-  width: 3.5em;
+  width: 4em;
   height: 2.25em;
   background: #ffd336;
   box-shadow: 0px 3.84px 3.84px rgba(0, 0, 0, 0.25);
